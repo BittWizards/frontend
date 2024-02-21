@@ -1,62 +1,64 @@
-import "./App.css"
 import { Counter } from "./features/counter/Counter"
 import { Quotes } from "./features/quotes/Quotes"
+
 import logo from "./logo.svg"
 
+import style from "./App.module.scss"
+
 const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
+  <div className={style.App}>
+    <header className={style.Appheader}>
+      <img src={logo} className={style.Applogo} alt="logo" />
       <Counter />
       <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+        Edit <code>src/App.tsx</code> and save to reload.
       </p>
       <Quotes />
       <span>
         <span>Learn </span>
         <a
-          className="App-link"
+          className={style.Applink}
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-            React
+          React
         </a>
         <span>, </span>
         <a
-          className="App-link"
+          className={style.Applink}
           href="https://redux.js.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-            Redux
+          Redux
         </a>
         <span>, </span>
         <a
-          className="App-link"
+          className={style.Applink}
           href="https://redux-toolkit.js.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-            Redux Toolkit
+          Redux Toolkit
         </a>
         <span>, </span>
         <a
-          className="App-link"
+          className={style.Applink}
           href="https://react-redux.js.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-            React Redux
+          React Redux
         </a>
-          ,<span> and </span>
+        ,<span> and </span>
         <a
-          className="App-link"
+          className={style.Applink}
           href="https://reselect.js.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-            Reselect
+          Reselect
         </a>
       </span>
     </header>
