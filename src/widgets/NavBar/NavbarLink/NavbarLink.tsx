@@ -1,17 +1,16 @@
-import type { FC } from "react"
-import { NavLink } from "react-router-dom"
+import type { FC } from 'react';
+import { NavLink } from 'react-router-dom';
+import { INavbarLinkProps } from '../types/types';
 
-interface INavbarLinkProps {
-  text: string
-  to: string
-  Icon?: React.FC<React.SVGProps<SVGSVGElement>>
-}
+import style from './NavbarLink.module.scss';
 
-const NavbarLink: FC<INavbarLinkProps> = ({ text, to, Icon }) => (
-  <NavLink to={to} end>
-    {Icon && <Icon />}
-    {text}
-  </NavLink>
-)
+const NavbarLink: FC<INavbarLinkProps> = ({ text, to, icon }) => (
+  <div className={style.container}>
+    <NavLink to={to} className={style.link} end>
+      {icon && <img src={icon} className={style.logo} alt={`${text} icon`} />}
+      <span>{text}</span>
+    </NavLink>
+  </div>
+);
 
-export default NavbarLink
+export default NavbarLink;

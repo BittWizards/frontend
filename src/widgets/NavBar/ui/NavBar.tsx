@@ -1,9 +1,17 @@
-import type { FC } from "react"
+import type { FC } from 'react';
+import { INavbarProps } from '../types/types';
+import { NavbarLink } from '..';
 
-interface NavbarProps {
-  children: React.ReactNode
-}
+import style from './NavBar.module.scss';
 
-const Navbar: FC<NavbarProps> = ({ children }) => <nav>{children}</nav>
+const Navbar: FC<INavbarProps> = ({ links }) => {
+  return (
+    <nav className={style.nav}>
+      {links.map((link, index) => (
+        <NavbarLink key={index} {...link} />
+      ))}
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
