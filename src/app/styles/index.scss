@@ -1,0 +1,21 @@
+@import './fonts/fonts.scss';
+@import './variables.scss';
+
+* {
+  --font-family: YSDisplay, sans-serif;
+  font-family: var(--font-family);
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
