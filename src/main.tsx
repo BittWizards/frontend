@@ -1,10 +1,9 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter, RouterProvider } from "react-router-dom"
 
-import App from "./App"
-import { store } from "./app/store"
+import { store, router } from "./app/index"
 
 import "./index.scss"
 
@@ -15,11 +14,9 @@ if (container) {
 
   root.render(
     <React.StrictMode>
-      <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </BrowserRouter>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </React.StrictMode>,
   )
 } else {
