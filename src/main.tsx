@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
 import { RouterProvider } from "react-router-dom"
 
-import { store, router } from "./app/index"
+import { store, router } from "src/app/index"
 
 import "./index.scss"
 

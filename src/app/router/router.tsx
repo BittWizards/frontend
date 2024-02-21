@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom"
-import App from "../ui/App"
-import { ErrorPage } from "../../pages/ErrorPage"
-import { Counter } from "../../features/counter/Counter"
-import { Quotes } from "../../features/quotes/Quotes"
+import { Counter } from "src/features/counter/Counter"
+import { Quotes } from "src/features/quotes/Quotes"
+import { ErrorPage } from "src/pages/ErrorPage"
+import App from "src/app/ui/App"
 
 export const router = createBrowserRouter([
   {

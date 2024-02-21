@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom"
 
-import logo from "../../shared/icons/logo.svg"
+import logo from "src/shared/icons/logo.svg"
 
 import style from "./App.module.scss"
 
