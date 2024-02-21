@@ -1,5 +1,15 @@
-import type { FC } from "react"
+import type { FC } from 'react';
 
-const Header: FC = () => <header>header</header>
+import logo from 'src/shared/icons/logo.svg';
 
-export default Header
+import style from './Header.module.scss';
+
+const Header: FC = () => {
+  return (
+    <header className={style.header}>
+      <img src={logo} className={style.logo} alt="logo" />
+    </header>
+  );
+};
+
+export default Header;

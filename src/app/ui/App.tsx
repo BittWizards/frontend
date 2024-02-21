@@ -1,31 +1,18 @@
-import { Link, Outlet, useLocation } from "react-router-dom"
+import { Outlet } from 'react-router-dom';
 
-import logo from "src/shared/icons/logo.svg"
+import Header from 'src/widgets/Header';
 
-import style from "./App.module.scss"
+import style from './App.module.scss';
 
 const App = () => {
-  const { pathname } = useLocation()
-  console.log(pathname === "/")
   return (
-    <div className={style.App}>
-      <header className={style.Appheader}>
-        <img src={logo} className={style.Applogo} alt="logo" />
-        <p>header</p>
-      </header>
-      {pathname === "/" && (
-        <>
-          <Link to="/counter">Counter </Link>
-          <Link to="/quotes">Quotes</Link>
-        </>
-      )}
-      <Outlet />
-      <footer>
-        <p>footer</p>
-        <img src={logo} className={style.Applogo} alt="logo" />
-      </footer>
+    <div className={style.app}>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

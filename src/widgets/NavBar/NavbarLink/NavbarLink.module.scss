@@ -1,0 +1,23 @@
+@import 'src/app/styles/variables.scss';
+
+.container {
+  padding: 5px;
+  border-left: 2px solid $statusColorActive;
+}
+
+.link {
+  display: flex;
+
+  align-items: center;
+  text-decoration: none;
+  color: $baseColorInactive;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $baseColorWhite;
+  }
+}
+
+.logo {
+  margin-right: 20px;
+}
