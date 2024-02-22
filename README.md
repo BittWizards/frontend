@@ -1,27 +1,64 @@
-# vite-template-redux
+# О проекте
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+Проект представляет собой ...
 
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
-```
+# О команде
 
-## Goals
+- Наташа - [@UltraNata](https://t.me/UltraNata)
+- Роман - [@tici_tac](https://t.me/tici_tac)
+- Софья - [@sofia_frikina](https://t.me/sofia_frikina)
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+# Ссылка на проект
 
-## Scripts
+[Ссылка на проект]()
 
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
+# Стек технологий
 
-## Inspiration
+<div> 
+ <img src="https://img.shields.io/badge/TypeScript-%23404d59.svg?style=for-the-badge&logo=typescript&logoColor=blue" alt="TypeScript Badge" />
+<img src="https://img.shields.io/badge/javascript-%23404d59.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript Badge" />
+<img src="https://img.shields.io/badge/Redux-%23404d59.svg?style=for-the-badge&logo=Redux&logoColor=violet" alt="Redux Badge" /> 
+<img src="https://img.shields.io/badge/react-%23404d59.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React Badge" />
+<img src="https://img.shields.io/badge/css3-%23404d59.svg?style=for-the-badge&logo=css3&logoColor=lightblue" alt="CSS3 Badge" />
+<img src="https://img.shields.io/badge/SASS-%23404d59.svg?style=for-the-badge&logo=SASS&logoColor=hotpink" alt="SASS Badge" />
+<img src="https://img.shields.io/badge/html5-%23404d59.svg?style=for-the-badge&logo=html5&logoColor=orange" alt="HTML5 Badge" />
 
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+ </div>
+
+ ### Инструменты разработчика
+
+---
+
+<div id="general" style="display: inline">
+  <img src="https://img.shields.io/badge/git-%23404d59.svg?style=for-the-badge&logo=git&logoColor=red" alt="Git Badge" />
+  <img src="https://img.shields.io/badge/ESLint-%23404d59?style=for-the-badge&logo=eslint&logoColor=violet" alt="ESLint Badge" />
+  <img src="https://img.shields.io/badge/babel-%23404d59?style=for-the-badge&logo=vscode&logoColor=white" alt="Babel" />
+  <img src="https://img.shields.io/badge/NPM-%23404d59?style=for-the-badge&logo=npm&logoColor=red" alt="NPM Badge" />
+  <img src="https://img.shields.io/badge/figma-%23404d59.svg?style=for-the-badge&logo=figma&logoColor=purple" alt="Figma Badge" />
+  <img src="https://img.shields.io/badge/vscode-%23404d59?style=for-the-badge&logo=vscode&logoColor=white" alt="VScode Badge" />
+  
+### Ссылки на сторонние библиотеки и шрифты
+
+# Установка
+
+- `git clone ` - клонируйте репозиторий;
+
+- `cd frontend` - перейдите в директорию проекта;
+
+- `npm install` - yстановите зависимости;
+
+- `npm start` - запустите проект;
+
+# Архив с кодом репозитория из main
+
+[Ссылка на архив с кодом репозитория из main]()
+
+# Архив со скриншотами
+
+[Ссылка на архив со скриншотами]()
+
+# Вид приложения
+
+<details><summary> Скриншот интерфейса приложения</summary>
+
+</details>
