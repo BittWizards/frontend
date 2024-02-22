@@ -1,8 +1,8 @@
-@import './fonts/fonts.scss';
+@import './fonts/fonts.css';
 @import './variables.scss';
 
 * {
-  --font-family: YSDisplay, sans-serif;
+  --font-family: YSText, sans-serif;
   font-family: var(--font-family);
 }
 
