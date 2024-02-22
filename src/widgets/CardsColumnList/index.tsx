@@ -1,3 +1,3 @@
-import PromoColumnList from './ui/CardsColumnList';
+import CardsColumnList from './ui/CardsColumnList';
 
-export { PromoColumnList}
+export { CardsColumnList };

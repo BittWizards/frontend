@@ -3,7 +3,7 @@ import { TPromoColumnListProps } from '../types/types';
 
 import style from './CardsColumnList.module.scss';
 
-const PromoColumnList: React.FC<TPromoColumnListProps> = ({
+const CardsColumnList: React.FC<TPromoColumnListProps> = ({
   promoData,
   children,
 }) => {
@@ -22,4 +22,4 @@ const PromoColumnList: React.FC<TPromoColumnListProps> = ({
   );
 };
 
-export default PromoColumnList;
+export default CardsColumnList;
