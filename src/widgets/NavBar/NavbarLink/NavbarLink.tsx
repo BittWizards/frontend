@@ -5,12 +5,12 @@ import { INavbarLinkProps } from '../types/types';
 import style from './NavbarLink.module.scss';
 
 const NavbarLink: FC<INavbarLinkProps> = ({ text, to, icon }) => (
-  <div className={style.container}>
-    <NavLink to={to} className={style.link} end>
+  <li className={style.listItem}>
+    <NavLink to={to} className={style.link} replace>
       {icon && <img src={icon} className={style.logo} alt={`${text} icon`} />}
       <span>{text}</span>
     </NavLink>
-  </div>
+  </li>
 );
 
 export default NavbarLink;

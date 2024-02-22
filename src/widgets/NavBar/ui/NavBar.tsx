@@ -6,11 +6,15 @@ import style from './NavBar.module.scss';
 
 const Navbar: FC<INavbarProps> = ({ links }) => {
   return (
-    <nav className={style.nav}>
-      {links.map((link, index) => (
-        <NavbarLink key={index} {...link} />
-      ))}
-    </nav>
+    <aside className={style.aside}>
+      <nav className={style.nav}>
+        <ul className={style.list}>
+          {links.map((link, index) => (
+            <NavbarLink key={index} {...link} />
+          ))}
+        </ul>
+      </nav>
+    </aside>
   );
 };
 

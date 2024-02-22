@@ -1,15 +1,15 @@
 import Navbar from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 
-import style from './MainPage.module.scss';
+import style from './MailingPage.module.scss';
 
-const MainPage = () => {
+const MailingPage = () => {
   return (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
-      <div className={style.content}>контент</div>
+      <div className={style.content}>Рассылки</div>
     </div>
   );
 };
 
-export default MainPage;
+export default MailingPage;

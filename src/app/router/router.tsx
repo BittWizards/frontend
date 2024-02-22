@@ -1,9 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Counter } from 'src/features/counter/Counter';
-import { Quotes } from 'src/features/quotes/Quotes';
-import { ErrorPage } from 'src/pages/ErrorPage';
+
 import App from 'src/app/ui/App';
+import { ErrorPage } from 'src/pages/ErrorPage';
 import { MainPage } from 'src/pages/MainPage';
+import { AmbassadorPage } from 'src/pages/AmbassadorPage';
+import { ContentPage } from 'src/pages/ContentPage';
+import { StatsPage } from 'src/pages/StatsPage';
+import { MailingPage } from 'src/pages/MailingPage';
+import { MerchPage } from 'src/pages/MerchPage';
+import { PromocodePage } from 'src/pages/PromocodePage';
 
 export const router = createBrowserRouter([
   {
@@ -16,12 +21,28 @@ export const router = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: 'counter',
-        element: <Counter />,
+        path: 'ambassadors',
+        element: <AmbassadorPage />,
       },
       {
-        path: 'quotes',
-        element: <Quotes />,
+        path: 'promocode',
+        element: <PromocodePage />,
+      },
+      {
+        path: 'content',
+        element: <ContentPage />,
+      },
+      {
+        path: 'merch',
+        element: <MerchPage />,
+      },
+      {
+        path: 'mailing',
+        element: <MailingPage />,
+      },
+      {
+        path: 'stats',
+        element: <StatsPage />,
       },
     ],
   },
