@@ -1,0 +1,31 @@
+@import 'src/app/styles/variables.scss';
+
+.card {
+  border-left: 4px solid $statusColorSpecifying;
+  font-family: 'YSText';
+  color: $baseColorWhite;
+  padding-left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+.name {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 100%;
+}
+
+.date {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 100%;
+}
