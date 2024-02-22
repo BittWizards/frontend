@@ -57,7 +57,7 @@ function ContentList() {
             <p className={style.contentList__paragraph}>Рейтинг</p>
             <div className={style.contentList__ratingContainer}>
               <img className={style.contentList__arrow} src={arrowDown} alt='Стрелка вниз' />
-              <p className={style.contentList__raitingcountYellow}>-2 позиции</p>
+              <p className={`${style.contentList__raitingcount}  ${style.contentList__raitingcountYellow}`}>-2 позиции</p>
             </div>
           </div>
         </div>
