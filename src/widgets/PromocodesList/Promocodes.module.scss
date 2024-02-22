@@ -1,0 +1,80 @@
+.promocodesList {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.promocodesList__element {
+    margin: 0;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 280px;
+    border-left: 4px solid #9747FF;
+}
+
+.promocodesList__element:nth-child(2) {
+    border-left: 4px solid #DAA700;
+}
+
+.promocodesList__element:nth-child(3) {
+    border-left: 4px solid #14AE5C;
+}
+
+.promocodesList__element:nth-child(4) {
+    border-left: 4px solid #1C89EE;
+}
+
+.promocodesList__title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.promocodesList__ambassador {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 120%;
+    color: #FFFFFF;
+    display: flex;
+}
+
+.promocodesList__fio {
+    margin: 0;
+    padding: 0;
+    margin-left: 4px;
+}
+
+.promocodesList__data {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 11px;
+    color: #FFFFFF;
+}
+
+.promocodesList__data_day {
+    margin: 0;
+    padding: 0;
+    line-height: 120%;
+}
+
+.promocodesList__data_time {
+    margin: 0;
+    padding: 0;
+    line-height: 109%;
+}
