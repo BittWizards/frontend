@@ -4,6 +4,7 @@ import logo from "src/shared/icons/logo.svg"
 
 import style from "./App.module.scss"
 
+
 const App = () => {
   const { pathname } = useLocation()
   console.log(pathname === "/")
@@ -11,6 +12,7 @@ const App = () => {
     <div className={style.App}>
       <header className={style.Appheader}>
         <img src={logo} className={style.Applogo} alt="logo" />
+
         <p>header</p>
       </header>
       {pathname === "/" && (
