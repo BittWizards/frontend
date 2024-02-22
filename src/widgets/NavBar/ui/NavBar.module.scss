@@ -1,5 +1,25 @@
+.aside {
+  margin: 0;
+  padding: 0;
+  width: 240px;
+  flex-shrink: 0;
+  //border: 1px solid red;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
 .nav {
+  margin: 0;
+  padding: 0;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  width: 100%;
 }

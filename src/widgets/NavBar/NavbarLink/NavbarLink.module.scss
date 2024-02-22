@@ -1,23 +1,47 @@
 @import 'src/app/styles/variables.scss';
 
-.container {
-  padding: 5px;
-  border-left: 2px solid $statusColorActive;
+.listItem {
+  list-style: none;
+  margin: 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+
+  &.active {
+    border-left: 4px solid $statusColorActive;
+  }
 }
 
 .link {
   display: flex;
-
+  flex-direction: row;
   align-items: center;
   text-decoration: none;
   color: $baseColorInactive;
   transition: color 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     color: $baseColorWhite;
+
+    & img {
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
+    }
+  }
+
+  // Стили для активной вкладки
+  &.active,
+  &:active,
+  &:focus {
+    color: $baseColorWhite; // Цвет текста для активной вкладки
+
+    & img {
+      filter: brightness(0) invert(1); // Цвет иконки для активной вкладки
+    }
   }
 }
 
 .logo {
-  margin-right: 20px;
+  margin-right: 10px;
 }

@@ -1,14 +1,16 @@
-import { useRouteError } from "react-router-dom"
+import { useRouteError } from 'react-router-dom';
+
+import style from './ErrorPage.module.scss';
 
 export function ErrorPage() {
-  const error = useRouteError()
+  const error = useRouteError();
   {
     /* @ts-ignore */
   }
-  console.error(error)
+  console.error(error);
 
   return (
-    <div id="error-page">
+    <div id="error-page" className={style.container}>
       <h1>Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
       <p>
@@ -16,5 +18,5 @@ export function ErrorPage() {
         <i>{error.statusText || error.message}</i>
       </p>
     </div>
-  )
+  );
 }
