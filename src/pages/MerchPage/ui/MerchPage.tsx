@@ -3,13 +3,11 @@ import { navbarLinks } from 'src/utils/constants/navLinks';
 
 import style from './MerchPage.module.scss';
 
-const MerchPage = () => {
-  return (
-    <div className={style.main}>
-      <Navbar links={navbarLinks} />
-      <div className={style.content}>MerchPage</div>
-    </div>
-  );
-};
+const MerchPage = () => (
+  <div className={style.main}>
+    <Navbar links={navbarLinks} />
+    <div className={style.content}>MerchPage</div>
+  </div>
+);
 
 export default MerchPage;

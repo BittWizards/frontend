@@ -3,13 +3,11 @@ import { navbarLinks } from 'src/utils/constants/navLinks';
 
 import style from './ContentPage.module.scss';
 
-const ContentPage = () => {
-  return (
-    <div className={style.main}>
-      <Navbar links={navbarLinks} />
-      <div className={style.content}>Контент страница</div>
-    </div>
-  );
-};
+const ContentPage = () => (
+  <div className={style.main}>
+    <Navbar links={navbarLinks} />
+    <div className={style.content}>Контент страница</div>
+  </div>
+);
 
 export default ContentPage;

@@ -3,13 +3,11 @@ import { navbarLinks } from 'src/utils/constants/navLinks';
 
 import style from './MailingPage.module.scss';
 
-const MailingPage = () => {
-  return (
-    <div className={style.main}>
-      <Navbar links={navbarLinks} />
-      <div className={style.content}>Рассылки</div>
-    </div>
-  );
-};
+const MailingPage = () => (
+  <div className={style.main}>
+    <Navbar links={navbarLinks} />
+    <div className={style.content}>Рассылки</div>
+  </div>
+);
 
 export default MailingPage;

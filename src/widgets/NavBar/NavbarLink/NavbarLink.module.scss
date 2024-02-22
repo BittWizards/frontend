@@ -6,9 +6,11 @@
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 12px;
+  border-left: 4px solid transparent;
 
   &.active {
     border-left: 4px solid $statusColorActive;
+    transition: border-left 0.3s ease;
   }
 }
 
