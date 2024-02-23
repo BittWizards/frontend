@@ -3,7 +3,7 @@ import Navbar from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
 
-import { ambassadorCardsData } from 'src/utils/constants/ambassadorCardData';
+import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 
 import style from './AmbassadorPage.module.scss';
 
@@ -35,7 +35,7 @@ const AmbassadorPage = () => {
         ) : (
           <>
             <div className={style.cardsContainer}>
-              {ambassadorCardsData.map(cardData => (
+              {userCardsData.map(cardData => (
                 <AmbassadorCard key={cardData.id} data={cardData} />
               ))}
             </div>

@@ -1,9 +1,10 @@
 import avatar from 'src/shared/icons/userAvatar.png';
 
-const ambassadorCardsData = [
+const userCardsData = [
   {
     id: '1',
     avatar: avatar,
+    telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
     secondname: 'Сергеевна',
@@ -13,6 +14,7 @@ const ambassadorCardsData = [
   {
     id: '2',
     avatar: avatar,
+    telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
     secondname: 'Сергеевна',
@@ -22,6 +24,7 @@ const ambassadorCardsData = [
   {
     id: '3',
     avatar: avatar,
+    telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
     secondname: 'Сергеевна',
@@ -31,6 +34,7 @@ const ambassadorCardsData = [
   {
     id: '4',
     avatar: avatar,
+    telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
     secondname: 'Сергеевна',
@@ -40,6 +44,7 @@ const ambassadorCardsData = [
   {
     id: '5',
     avatar: avatar,
+    telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
     secondname: 'Сергеевна',
@@ -49,6 +54,7 @@ const ambassadorCardsData = [
   {
     id: '6',
     avatar: avatar,
+    telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
     secondname: 'Сергеевна',
@@ -57,4 +63,4 @@ const ambassadorCardsData = [
   },
 ];
 
-export { ambassadorCardsData };
+export { userCardsData };
