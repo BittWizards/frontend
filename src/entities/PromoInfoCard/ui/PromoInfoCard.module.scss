@@ -1,22 +1,28 @@
 @import 'src/app/styles/variables.scss';
 
 .card {
-  border-left: 4px solid $statusColorSpecifying;
-  font-family: 'YSText';
+  margin: 0;
+  padding: 8px 16px 8px 12px;
+  box-sizing: border-box;
+  width: 280px;
   color: $baseColorWhite;
-  padding-left: 12px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  border-left: 4px solid $statusColorSpecifying;
 }
 
 .title {
+  margin: 0;
+  padding: 0;
   font-size: 16px;
   font-weight: 500;
   line-height: 100%;
 }
 
 .name {
+  margin: 0;
+  padding: 0;
   display: block;
   font-size: 13px;
   font-weight: 400;
@@ -24,6 +30,8 @@
 }
 
 .date {
+  margin: 0;
+  padding: 0;
   display: block;
   font-size: 11px;
   font-weight: 400;

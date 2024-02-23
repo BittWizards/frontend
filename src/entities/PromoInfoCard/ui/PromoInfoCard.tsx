@@ -1,4 +1,4 @@
-import { TPromoInfoCardProps } from '../types/types';
+import type { TPromoInfoCardProps } from '../types/types';
 
 import style from './PromoInfoCard.module.scss';
 
