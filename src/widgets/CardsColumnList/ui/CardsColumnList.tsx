@@ -1,5 +1,5 @@
 import React from 'react';
-import { TPromoColumnListProps } from '../types/types';
+import type { TPromoColumnListProps } from '../types/types';
 
 import style from './CardsColumnList.module.scss';
 

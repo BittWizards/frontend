@@ -1,4 +1,4 @@
-import { TPromoInfoCardProps } from 'src/entities/PromoInfoCard/types/types';
+import type { TPromoInfoCardProps } from 'src/entities/PromoInfoCard/types/types';
 
 type TPromoColumnListProps = {
   promoData: TPromoInfoCardProps[];
