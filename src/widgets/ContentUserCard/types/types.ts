@@ -1,4 +1,4 @@
-type TAmbassadorCardProps = {
+type TCardProps = {
   data: {
     id: string;
     avatar: string;
@@ -11,4 +11,4 @@ type TAmbassadorCardProps = {
   };
 };
 
-export type { TAmbassadorCardProps };
+export type { TCardProps };
