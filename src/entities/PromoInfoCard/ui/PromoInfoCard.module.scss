@@ -2,19 +2,23 @@
 
 .card {
   margin: 0;
-  padding: 8px 16px 8px 12px;
-  box-sizing: border-box;
-  width: 280px;
+  padding: 0;
+  border-left: 4px solid $statusColorSpecifying;
+  font-family: 'YSText';
   color: $baseColorWhite;
+  padding-left: 12px;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-left: 4px solid $statusColorSpecifying;
+  width: 280px;
+  height: 81px;
 }
 
 .title {
   margin: 0;
   padding: 0;
+  display: block;
   font-size: 16px;
   font-weight: 500;
   line-height: 100%;
