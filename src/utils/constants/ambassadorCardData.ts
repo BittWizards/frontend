@@ -10,6 +10,9 @@ const userCardsData = [
     secondname: 'Сергеевна',
     position: 'Продвинутый Go-разработчик',
     date: '2024-02-19T13:45:00',
+    statusActive: true,
+    promocode: 'Выдра',
+    activationDate: '2024-01-31T13:45:00',
   },
   {
     id: '2',
@@ -20,6 +23,9 @@ const userCardsData = [
     secondname: 'Сергеевна',
     position: 'Продвинутый Go-разработчик',
     date: '2024-02-19T13:45:00',
+    statusActive: true,
+    promocode: 'Выдра',
+    activationDate: '2024-01-31T13:45:00',
   },
   {
     id: '3',
@@ -30,6 +36,9 @@ const userCardsData = [
     secondname: 'Сергеевна',
     position: 'Продвинутый Go-разработчик',
     date: '2024-02-19T13:45:00',
+    statusActive: true,
+    promocode: 'Выдра',
+    activationDate: '2024-01-31T13:45:00',
   },
   {
     id: '4',
@@ -40,6 +49,9 @@ const userCardsData = [
     secondname: 'Сергеевна',
     position: 'Продвинутый Go-разработчик',
     date: '2024-02-19T13:45:00',
+    statusActive: true,
+    promocode: 'Выдра',
+    activationDate: '2024-01-31T13:45:00',
   },
   {
     id: '5',
@@ -50,6 +62,9 @@ const userCardsData = [
     secondname: 'Сергеевна',
     position: 'Продвинутый Go-разработчик',
     date: '2024-02-19T13:45:00',
+    statusActive: false,
+    promocode: 'Выдра',
+    activationDate: '2024-01-31T13:45:00',
   },
   {
     id: '6',
@@ -60,6 +75,9 @@ const userCardsData = [
     secondname: 'Сергеевна',
     position: 'Продвинутый Go-разработчик',
     date: '2024-02-19T13:45:00',
+    statusActive: false,
+    promocode: 'Выдра',
+    activationDate: '2024-01-31T13:45:00',
   },
 ];
 
