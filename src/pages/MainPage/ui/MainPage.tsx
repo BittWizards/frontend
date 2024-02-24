@@ -7,12 +7,16 @@ import { contentData } from 'src/utils/constants/contentInfoCard';
 import { PromoInfoCard } from 'src/entities/PromoInfoCard';
 import { ContentInfoCard } from 'src/entities/ContentInfoCard';
 import ContentContainer from 'src/widgets/ContentContainer';
+import StaticsAnaliticsContainer from 'src/widgets/StatisticsAnalyticsContainer';
 
 import style from './MainPage.module.scss';
 
 const MainPage = () => (
   <div className={style.main}>
     <Navbar links={navbarLinks} />
+    <ContentContainer title="Статистика и Аналитика" link="/stats">
+      <StaticsAnaliticsContainer />
+    </ContentContainer>
     <ContentContainer title="Промокоды" link="/promocode">
       <CardsColumnList promoData={promoData}>
         {[<PromoInfoCard />]}
