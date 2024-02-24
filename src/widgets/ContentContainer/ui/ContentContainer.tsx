@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import type { IContentContainerProps } from '../types/types';
 import arrowForward from 'src/shared/icons/arrow-forward.svg';
+import type { IContentContainerProps } from '../types/types';
 
 import style from './ContentContainer.module.scss';
 

@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 449px;
+  height: 395px;
 }
 
 .statisticsAnalytics__title {
@@ -28,9 +30,3 @@
   line-height: 120%;
 }
 
-.statisticsAnalytics__diagram {
-  margin: 0;
-  padding: 0;
-  width: 449px;
-  height: 328px;
-}
