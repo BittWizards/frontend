@@ -5,7 +5,9 @@ import calendarIcon from 'src/shared/icons/calendar.svg';
 import style from './AmbassadorCard.module.scss';
 
 const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
-  const formattedDate = new Date(data.date).toLocaleDateString('en-GB');
+  const formattedDate = new Date(data.date)
+    .toLocaleDateString('en-GB')
+    .replace(/\//g, '.');
 
   return (
     <div className={style.cardContainer}>
@@ -21,7 +23,7 @@ const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
         <img src={calendarIcon} alt="Calendar" style={{ marginRight: '5px' }} />
         <span className={style.date}>{formattedDate}</span>
       </div>
-      <hr className={style.line} />
+      <div className={style.line}></div>
       <div className={style.btnWrapper}>
         <button
           className={style.btn}

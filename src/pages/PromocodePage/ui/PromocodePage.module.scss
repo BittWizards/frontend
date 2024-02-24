@@ -3,5 +3,22 @@
   gap: 50px;
 }
 .content {
-  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+
+.headerTopWrapper {
+  display: flex;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
 }

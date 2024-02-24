@@ -9,6 +9,7 @@ import { StatsPage } from 'src/pages/StatsPage';
 import { MailingPage } from 'src/pages/MailingPage';
 import { MerchPage } from 'src/pages/MerchPage';
 import { PromocodePage } from 'src/pages/PromocodePage';
+import { AmbassadorDetailPage } from '../../pages/AmbassadorDetailPage';
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: 'ambassadors',
         element: <AmbassadorPage />,
+      },
+      {
+        path: 'ambassadors/:id',
+        element: <AmbassadorDetailPage />,
       },
       {
         path: 'promocode',

@@ -7,7 +7,9 @@ import tgIcon from 'src/shared/icons/tgIcon.svg';
 import style from './ContentUserCard.module.scss';
 
 const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
-  const formattedDate = new Date(data.date).toLocaleDateString('en-GB');
+  const formattedDate = new Date(data.date)
+    .toLocaleDateString('en-GB')
+    .replace(/\//g, '.');
 
   return (
     <div className={style.cardContainer}>
@@ -33,7 +35,7 @@ const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
         <img src={calendarIcon} alt="Calendar" className={style.calendarIcon} />
         <span className={style.date}>{formattedDate}</span>
       </div>
-      <hr className={style.line} />
+      <div className={style.line}></div>
       <div className={style.btnWrapper}>
         <button
           className={style.btn}
