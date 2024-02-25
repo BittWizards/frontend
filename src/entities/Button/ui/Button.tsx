@@ -7,10 +7,9 @@ const ButtonComponent: FC<ButtonProps> = ({
   width,
   height,
   label,
-  onClick,
-  type,
+  onClick
 }) => (
-  <Button type={type} onClick={onClick} sx={{
+  <Button onClick={onClick} sx={{
     background: '#9747FF',
     textTransform: 'none',
     fontFamily: 'YSText',
