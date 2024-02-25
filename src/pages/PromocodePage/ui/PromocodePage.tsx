@@ -3,7 +3,6 @@ import { navbarLinks } from 'src/utils/constants/navLinks';
 import { PromocodeUserInfoCard } from 'src/widgets/PromocodeUserInfoCard';
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 import ButtonComponent from 'src/entities/Button';
-
 import style from './PromocodePage.module.scss';
 
 const PromocodePage = () => (
@@ -14,7 +13,10 @@ const PromocodePage = () => (
         <div className={style.headerTopWrapper}>
           <div className={style.leftWrapper}>
             <h2>Промокоды</h2>
-            <ButtonComponent label="Добавить промокод" width={244} height={48} onClick="" type="button" />
+            <ButtonComponent label="Добавить промокод" width={244} height={48}
+              onClick={(e) => {
+                console.log(e);
+              }} />
           </div>
           <div>
             <div>
