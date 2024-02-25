@@ -3,7 +3,6 @@ import { TCardProps } from '../types/types';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 
 import style from './MerchUserInfoCard.module.scss';
-import { useState } from 'react';
 
 const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
   const formattedDate = new Date(data.activationDate)
