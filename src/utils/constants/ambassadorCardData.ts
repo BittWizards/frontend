@@ -13,6 +13,7 @@ const userCardsData = [
     statusActive: true,
     promocode: 'Выдра',
     activationDate: '2024-01-31T13:45:00',
+    trackingNumber: 'RV 12345678',
   },
   {
     id: '2',
@@ -26,6 +27,7 @@ const userCardsData = [
     statusActive: true,
     promocode: 'Выдра',
     activationDate: '2024-01-31T13:45:00',
+    trackingNumber: 'RV 12345678',
   },
   {
     id: '3',
@@ -39,6 +41,7 @@ const userCardsData = [
     statusActive: true,
     promocode: 'Выдра',
     activationDate: '2024-01-31T13:45:00',
+    trackingNumber: 'RV 12345678',
   },
   {
     id: '4',
@@ -52,6 +55,7 @@ const userCardsData = [
     statusActive: true,
     promocode: 'Выдра',
     activationDate: '2024-01-31T13:45:00',
+    trackingNumber: 'RV 12345678',
   },
   {
     id: '5',
@@ -65,6 +69,7 @@ const userCardsData = [
     statusActive: false,
     promocode: 'Выдра',
     activationDate: '2024-01-31T13:45:00',
+    trackingNumber: 'RV 12345678',
   },
   {
     id: '6',
@@ -78,6 +83,7 @@ const userCardsData = [
     statusActive: false,
     promocode: 'Выдра',
     activationDate: '2024-01-31T13:45:00',
+    trackingNumber: 'RV 12345678',
   },
 ];
 
