@@ -5,10 +5,10 @@ import style from './AmbassadorList.module.scss';
 
 const AmbassadorList: FC<TAmbassadorList> = ({ ambassadorData, children }) => (
   <div className={style.cardList}>
-    {ambassadorData.map((promo, index) => (
+    {ambassadorData.map((ambassador, index) => (
       <Fragment key={index}>
         {Children.map(children, child =>
-          isValidElement(child) ? cloneElement(child, { ...promo }) : null
+          isValidElement(child) ? cloneElement(child, { ...ambassador }) : null
         )}
       </Fragment>
     ))}

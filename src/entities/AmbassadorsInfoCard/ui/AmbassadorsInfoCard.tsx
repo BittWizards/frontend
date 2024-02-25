@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import type { TAmbassadorsInfoCardProps } from '../types/types';
+import { Avatar } from 'src/entities/Avatar';
 
 import style from './AmbassadorsInfoCard.module.scss';
 
@@ -19,7 +20,7 @@ const AmbassadorsInfoCard: FC<TAmbassadorsInfoCardProps> = ({
   return (
     <div className={style.card}>
       <div className={style.avatarContainer}>
-      <img src={avatar} className={style.avatar} alt="Avatar" />
+      <Avatar link={avatar} />
       <img src={achievment} className={style.achievment} alt="Achievment" />
       </div>
       <div className={style.container}>

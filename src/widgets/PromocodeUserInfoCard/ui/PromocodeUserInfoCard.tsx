@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 import { TCardProps } from '../types/types';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
+import { Avatar } from 'src/entities/Avatar';
 
 import style from './PromocodeUserInfoCard.module.scss';
 
@@ -17,7 +18,7 @@ const PromocodeUserInfoCard: React.FC<TCardProps> = ({ data }) => {
       >
         <div className={style.userInfoWrapper}>
           {data.avatar && (
-            <img src={data.avatar} className={style.avatar} alt="Avatar" />
+            <Avatar link={data.avatar} />
           )}
           <div className={style.userInfo}>
             <p
