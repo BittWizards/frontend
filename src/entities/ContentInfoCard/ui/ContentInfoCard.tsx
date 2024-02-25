@@ -3,7 +3,7 @@ import type { TContentInfoCardProps } from '../types/types';
 import style from './ContentInfoCard.module.scss';
 import arrowUp from "../../../shared/icons/arrow-up.svg"
 import youTube from "../../../shared/icons/youTubeIcon.svg"
-import hIcon from "../../../shared/icons/hIcon.svg"
+import hIcon from "../../../shared/icons/habr.svg"
 import telegram from "../../../shared/icons/telegramIcon.svg"
 import instagram from "../../../shared/icons/instIcon.svg"
 
