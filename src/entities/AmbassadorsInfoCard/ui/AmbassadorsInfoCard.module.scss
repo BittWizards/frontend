@@ -1,0 +1,92 @@
+@import 'src/app/styles/variables.scss';
+
+.card {
+  background-color: $baseLightBg;
+  width: 100%;
+  max-width: 165px;
+  max-height: 194px;
+  border-radius: 20px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatarContainer {
+  position: relative;
+}
+
+.achievment {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 125px;
+}
+
+.name {
+  max-width: 125px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: $baseColorDark;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.job {
+  max-width: 100px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.2;
+  color: $baseColorDark;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status {
+  margin: 0;
+  padding: 5px 0;
+  width: 100%;
+  max-width: 69px;
+  border: 1px solid;
+  border-radius: 16px;
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.status::first-letter {
+  text-transform: uppercase;
+}
+
+.active {
+  color: $baseColorInactive;
+  border-color: $statusColorActive;
+}
+
+.qualify  {
+  color: $statusColorSpecifying;
+  border-color: $statusColorSpecifying;
+}
+
+.pause {
+  color: $statusColorPause;
+  border-color: $statusColorPause;
+}
