@@ -5,8 +5,8 @@
   gap: 50px;
 }
 .content {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
+  display: flex;
+  flex-wrap: wrap;
   gap: 32px;
   color: $baseColorWhite;
 }
