@@ -1,8 +1,12 @@
+@import 'src/app/styles/variables.scss';
+
 .main {
   display: flex;
   gap: 50px;
 }
 .content {
-  color: aliceblue;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 32px;
+  color: $baseColorWhite;
 }
-

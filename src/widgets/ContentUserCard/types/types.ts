@@ -8,6 +8,7 @@ type TCardProps = {
     secondname: string;
     position: string;
     date: string;
+    trackingNumber: string;
   };
 };
 

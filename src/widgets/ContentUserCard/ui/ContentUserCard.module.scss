@@ -68,6 +68,11 @@
   font-family: 'YSText';
   font-size: 18px;
   font-weight: 500;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $baseColorWhite;
+  }
 }
 
 .calendarIcon {
