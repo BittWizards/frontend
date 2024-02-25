@@ -1,5 +1,8 @@
 import Navbar from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
+import { AmbassadorsInfoCard } from 'src/entities/AmbassadorsInfoCard';
+import { AmbassadorList } from 'src/widgets/AmbassadorList';
+import { ambassadorCardData } from 'src/utils/constants/newAmbassarodCardData';
 import { CardsColumnList } from 'src/widgets/CardsColumnList';
 import { ContentColumnList } from 'src/widgets/ContentColumnList';
 import { promoData } from 'src/utils/constants/promoInfoCardData';
@@ -17,7 +20,9 @@ const MainPage = () => (
     <Navbar links={navbarLinks} />
     <div className={style.content}>
       <ContentContainer title="Амбассадоры" link="/anbassadors">
-        <div>Карточки пользователей</div>
+        <AmbassadorList ambassadorData={ambassadorCardData}>
+          {[<AmbassadorsInfoCard />]}
+        </AmbassadorList>
       </ContentContainer>
 
       <ContentContainer title="Статистика и Аналитика" link="/stats">
