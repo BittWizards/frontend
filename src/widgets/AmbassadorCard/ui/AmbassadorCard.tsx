@@ -1,6 +1,7 @@
 import { TAmbassadorCardProps } from '../types/types';
 
 import calendarIcon from 'src/shared/icons/calendar.svg';
+import { Avatar } from 'src/entities/Avatar';
 
 import style from './AmbassadorCard.module.scss';
 
@@ -12,7 +13,7 @@ const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
   return (
     <div className={style.cardContainer}>
       {data.avatar && (
-        <img src={data.avatar} className={style.avatar} alt="Avatar" />
+        <Avatar link={data.avatar} />
       )}
       <p className={style.name}>{data.surname}</p>
       <p className={style.name}>
