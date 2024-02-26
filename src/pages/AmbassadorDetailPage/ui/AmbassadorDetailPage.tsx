@@ -6,6 +6,7 @@ import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorDetailPage.module.scss';
+import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 
 const AmbassadorDetailPage = () => {
   const { id } = useParams();
@@ -15,7 +16,8 @@ const AmbassadorDetailPage = () => {
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <div>Карточка амбассадора в разработке</div>
+        <QuestionnaireProfileInfo />
+        {/* <div>Карточка амбассадора в разработке</div> */}
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ const PromocodeUserInfoCard: React.FC<TCardProps> = ({ data }) => {
         className={`${style.cardContainer} ${data.statusActive ? '' : style.cardContainerInactive}`}
       >
         <div className={style.userInfoWrapper}>
-          {data.avatar && <Avatar link={data.avatar} />}
+          {data.avatar && <Avatar link={data.avatar} width={48} height={48} />}
           <div className={style.userInfo}>
             <p
               className={`${style.name} ${data.statusActive ? '' : style.nameInactive}`}

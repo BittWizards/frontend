@@ -20,7 +20,7 @@ const AmbassadorsInfoCard: FC<TAmbassadorsInfoCardProps> = ({
   return (
     <div className={style.card}>
       <div className={style.avatarContainer}>
-      <Avatar link={avatar} />
+      <Avatar link={avatar} width={48} height={48} />
       <img src={achievment} className={style.achievment} alt="Achievment" />
       </div>
       <div className={style.container}>

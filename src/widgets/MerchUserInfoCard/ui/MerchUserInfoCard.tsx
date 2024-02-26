@@ -23,7 +23,7 @@ const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
     <NavLink to={`/ambassadors/${data.id}/merch`} className={style.navLink}>
       <div className={style.cardContainer}>
         <div className={style.userInfoWrapper}>
-          {data.avatar && <Avatar link={data.avatar} />}
+          {data.avatar && <Avatar link={data.avatar} width={48} height={48} />}
           <div className={style.userInfo}>
             <p className={style.name}>
               {data.surname} {data.name}
