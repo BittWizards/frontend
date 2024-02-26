@@ -1,0 +1,28 @@
+@import 'src/app/styles/variables.scss';
+
+.input {
+  border-radius: 4px;
+  border: 1px solid $baseColorInactive;
+  background-color: inherit;
+  padding: 12px 16px;
+  color: $baseLightBg;
+  font-size: 16px;
+  line-height: 1.2;
+
+  &:focus {
+    outline: thin solid $additionalPurple;
+  }
+
+  &:hover {
+    border: 1px solid $additionalPurple;
+  }
+
+  &:disabled {
+    border-color: $baseColorInactive;
+    background-color: $primaryDarkgrey;
+  }
+
+  &:invalid {
+    border-color: $additionalRed;
+  }
+}

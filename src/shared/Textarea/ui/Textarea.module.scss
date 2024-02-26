@@ -1,0 +1,21 @@
+@import 'src/app/styles/variables.scss';
+
+.textarea {
+  border-radius: 4px;
+  border: 1px solid $baseColorInactive;
+  background-color: inherit;
+  padding: 12px 16px;
+  color: $baseLightBg;
+  font-size: 16px;
+  line-height: 1.2;
+  resize: none;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: thin solid $additionalPurple;
+  }
+
+  &:hover {
+    border: 1px solid $additionalPurple;
+  }
+}

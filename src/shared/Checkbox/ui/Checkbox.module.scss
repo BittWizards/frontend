@@ -1,0 +1,40 @@
+@import 'src/app/styles/variables.scss';
+
+.checkbox {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  margin: 0;
+
+  &:checked + span {
+    background: url(../../../shared/icons/checkbox-checked.svg);
+  }
+
+  &:disabled + span {
+    background: url(../../../shared/icons/checkbox-disabled.svg);
+    cursor: auto;
+  }
+}
+
+.label {
+  display: flex;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  color: $baseColorWhite;
+  white-space: nowrap;
+}
+
+.label span {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url(../../../shared/icons/checkbox.svg);
+  border-radius: 4px;
+  cursor: pointer;
+}
