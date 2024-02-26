@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import style from './Input.module.scss';
-import { IInput } from './types/types';
+import { IInput } from '../types/types';
 
 const Input: FC<IInput> = ({ value, placeholder, type, disabled }) => {
   return (
