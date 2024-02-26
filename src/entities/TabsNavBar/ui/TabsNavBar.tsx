@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
 import { TTabsNavBarProps } from '../types/type';
 import style from './TabsNavBar.module.scss';
 
 const TabsNavBar: React.FC<TTabsNavBarProps> = ({ tabs }) => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,7 +24,7 @@ const TabsNavBar: React.FC<TTabsNavBarProps> = ({ tabs }) => {
 
   const handleTabClickInternal = (key: string) => {
     setSelectedOption(key);
-    navigate(`/ambassadors/1/${key}`);
+    navigate(`/ambassadors/${id}/${key}`);
   };
 
   return (
