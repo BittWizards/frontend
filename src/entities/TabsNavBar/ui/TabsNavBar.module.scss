@@ -1,13 +1,5 @@
 @import 'src/app/styles/variables.scss';
 
-.main {
-  display: flex;
-  gap: 50px;
-}
-.content {
-  color: aliceblue;
-}
-
 .navBar {
   padding-bottom: 40px;
 }
@@ -17,7 +9,7 @@
   padding: 0;
   color: $baseColorWhite;
   display: flex;
-  gap: 95px;
+  gap: 40px;
 }
 
 .navItem {
