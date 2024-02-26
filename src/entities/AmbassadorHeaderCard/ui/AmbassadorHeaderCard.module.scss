@@ -1,0 +1,54 @@
+@import 'src/app/styles/variables.scss';
+
+.ambassadorHeaderCard {
+  color: $baseColorWhite;
+}
+
+.title {
+  font-family: 'YSDisplay';
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 32px;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+}
+.column {
+  display: flex;
+}
+
+.nameStatus {
+  margin-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nameText {
+  margin: 0;
+  padding: 0;
+  font-family: 'YSDisplay';
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 0.8;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.additionalInfo {
+  margin-top: 20px;
+  font-size: 14px;
+}

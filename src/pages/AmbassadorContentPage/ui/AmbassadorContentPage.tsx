@@ -3,21 +3,28 @@ import { useParams } from 'react-router-dom';
 import Navbar from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
+import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
+
 import { tabsData } from '../model/data';
+import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 
 import style from './AmbassadorContentPage.module.scss';
+import ButtonComponent from '../../../entities/Button';
 
 const AmbassadorContentPage = () => {
   const { id } = useParams();
+  const selectedUser = userCardsData.find(user => user.id === id);
 
-  return (
+  return selectedUser ? (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <div>Контент амбассадора в разработке</div>
+        <AmbassadorHeaderCard title="Контент Амбассадора" data={selectedUser} />
       </div>
     </div>
+  ) : (
+    <div>Пользоваетель с id ${id} не найдет</div>
   );
 };
 

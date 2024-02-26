@@ -15,6 +15,15 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'Active',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
+    promocodes: [
+      { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
+      { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
+      { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+      { id: '4', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
   },
   {
     id: '2',
@@ -30,6 +39,18 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'OnPause',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
+    promocodes: [
+      { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
+      { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
+      { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+      { id: '4', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
+      { id: '5', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
+      { id: '6', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+      { id: '7', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
   },
   {
     id: '3',
@@ -45,6 +66,14 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'PendingConfirmation',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
+    promocodes: [
+      { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
+      { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
+      { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
   },
   {
     id: '4',
@@ -60,6 +89,14 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'Inactive',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
+    promocodes: [
+      { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
+      { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
+      { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
   },
   {
     id: '5',
@@ -75,6 +112,14 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'Active',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
+    promocodes: [
+      { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
+      { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
+      { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
   },
   {
     id: '6',
@@ -90,6 +135,14 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'Active',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
+    promocodes: [
+      { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
+      { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
+      { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
   },
   {
     id: '7',
@@ -105,6 +158,10 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'PendingConfirmation',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
+    promocodes: [],
   },
 ];
 
