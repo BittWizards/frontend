@@ -15,6 +15,9 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'Active',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
   },
   {
     id: '2',
@@ -30,6 +33,9 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'OnPause',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
   },
   {
     id: '3',
@@ -45,6 +51,9 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'PendingConfirmation',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
   },
   {
     id: '4',
@@ -60,6 +69,9 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'Inactive',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
   },
   {
     id: '5',
@@ -75,6 +87,9 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'Active',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
   },
   {
     id: '6',
@@ -90,6 +105,9 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'Active',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
   },
   {
     id: '7',
@@ -105,6 +123,9 @@ const userCardsData = [
     activationDate: '2024-01-31T13:45:00',
     trackingNumber: 'RV 12345678',
     userStatus: 'PendingConfirmation',
+    phone: '+7 798 123 45 68',
+    email: 'test@yandex.ru',
+    city: 'Саратов',
   },
 ];
 
