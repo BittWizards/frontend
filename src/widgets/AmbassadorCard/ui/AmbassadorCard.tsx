@@ -10,13 +10,9 @@ import style from './AmbassadorCard.module.scss';
 const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
   return (
     <div className={style.cardContainer}>
-<<<<<<< HEAD
       {data.avatar && (
         <Avatar link={data.avatar} width={48} height={48} />
       )}
-=======
-      {data.avatar && <Avatar link={data.avatar} />}
->>>>>>> develop
       <p className={style.name}>{data.surname}</p>
       <p className={style.name}>
         {data.name} {data.secondname}
