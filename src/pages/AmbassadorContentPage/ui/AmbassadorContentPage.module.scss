@@ -5,7 +5,9 @@
   gap: 50px;
 }
 .content {
-  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .navBar {
@@ -34,4 +36,14 @@
     transition: color 0.3s ease;
     transition: border-bottom 0.3s ease;
   }
+}
+.tableWrapper {
+  display: flex;
+  width: 100%;
+}
+
+.socialWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
