@@ -13,10 +13,14 @@ const PromocodePage = () => (
         <div className={style.headerTopWrapper}>
           <div className={style.leftWrapper}>
             <h2>Промокоды</h2>
-            <ButtonComponent label="Добавить промокод" width={244} height={48}
-              onClick={(e) => {
+            <ButtonComponent
+              label="Добавить промокод"
+              width={244}
+              height={48}
+              onClick={e => {
                 console.log(e);
-              }} />
+              }}
+            />
           </div>
           <div>
             <div>

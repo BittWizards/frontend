@@ -10,6 +10,9 @@ import { MailingPage } from 'src/pages/MailingPage';
 import { MerchPage } from 'src/pages/MerchPage';
 import { PromocodePage } from 'src/pages/PromocodePage';
 import { AmbassadorDetailPage } from '../../pages/AmbassadorDetailPage';
+import { AmbassadorMerchPage } from '../../pages/AmbassadorMerchPage';
+import { AmbassadorContentPage } from '../../pages/AmbassadorContentPage';
+import { AmbassadorPromocodePage } from '../../pages/AmbassadorPromocodePage';
 
 export const router = createBrowserRouter([
   {
@@ -26,8 +29,20 @@ export const router = createBrowserRouter([
         element: <AmbassadorPage />,
       },
       {
-        path: 'ambassadors/:id',
+        path: 'ambassadors/:id/detail',
         element: <AmbassadorDetailPage />,
+      },
+      {
+        path: 'ambassadors/:id/promocode',
+        element: <AmbassadorPromocodePage />,
+      },
+      {
+        path: 'ambassadors/:id/content',
+        element: <AmbassadorContentPage />,
+      },
+      {
+        path: 'ambassadors/:id/merch',
+        element: <AmbassadorMerchPage />,
       },
       {
         path: 'promocode',

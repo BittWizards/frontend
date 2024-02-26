@@ -5,7 +5,7 @@ import avatar from 'src/shared/icons/userAvatar.png';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 
 import style from './AmbassadorTable.module.scss';
-import { statusMappings } from '../../../utils/constants/statusMappings';
+import { statusMappings } from 'src/utils/constants/statusMappings';
 
 const AmbassadorTable: React.FC<TCardProps> = ({ data }) => {
   const statusOrder = ['Active', 'OnPause', 'PendingConfirmation', 'Inactive'];
@@ -51,7 +51,7 @@ const AmbassadorTable: React.FC<TCardProps> = ({ data }) => {
         {sortedData.map((ambassador, index) => (
           <NavLink
             key={ambassador.id}
-            to={`/ambassadors/${ambassador.id}`}
+            to={`/ambassadors/${ambassador.id}/detail`}
             className={style.tableLink}
           >
             <div

@@ -20,12 +20,10 @@ const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
   }
 
   return (
-    <NavLink to={`/ambassadors/${data.id}`} className={style.navLink}>
+    <NavLink to={`/ambassadors/${data.id}/merch`} className={style.navLink}>
       <div className={style.cardContainer}>
         <div className={style.userInfoWrapper}>
-          {data.avatar && (
-            <Avatar link={data.avatar} />
-          )}
+          {data.avatar && <Avatar link={data.avatar} />}
           <div className={style.userInfo}>
             <p className={style.name}>
               {data.surname} {data.name}

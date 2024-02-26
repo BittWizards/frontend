@@ -5,9 +5,9 @@ import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { tabsData } from '../model/data';
 
-import style from './AmbassadorDetailPage.module.scss';
+import style from './AmbassadorPromocodePage.module.scss';
 
-const AmbassadorDetailPage = () => {
+const AmbassadorPromocodePage = () => {
   const { id } = useParams();
 
   return (
@@ -15,10 +15,10 @@ const AmbassadorDetailPage = () => {
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <div>Карточка амбассадора в разработке</div>
+        <div>Промокоды амбассадора в разработке</div>
       </div>
     </div>
   );
 };
 
-export default AmbassadorDetailPage;
+export default AmbassadorPromocodePage;

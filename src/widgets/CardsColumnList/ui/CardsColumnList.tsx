@@ -1,22 +1,20 @@
-import React from 'react';
+import { FC, Fragment, Children, isValidElement, cloneElement } from 'react';
 import type { TPromoColumnListProps } from '../types/types';
 
 import style from './CardsColumnList.module.scss';
 
-const CardsColumnList: React.FC<TPromoColumnListProps> = ({
+const CardsColumnList: FC<TPromoColumnListProps> = ({
   promoData,
   children,
 }) => {
   return (
     <div className={style.cardColumnList}>
       {promoData.map((promo, index) => (
-        <React.Fragment key={index}>
-          {React.Children.map(children, child =>
-            React.isValidElement(child)
-              ? React.cloneElement(child, { ...promo })
-              : null
+        <Fragment key={index}>
+          {Children.map(children, child =>
+            isValidElement(child) ? cloneElement(child, { ...promo }) : null
           )}
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );

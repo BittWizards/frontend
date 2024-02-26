@@ -12,14 +12,12 @@ const PromocodeUserInfoCard: React.FC<TCardProps> = ({ data }) => {
     .replace(/\//g, '.');
 
   return (
-    <NavLink to={`/ambassadors/${data.id}`} className={style.navLink}>
+    <NavLink to={`/ambassadors/${data.id}/promocode`} className={style.navLink}>
       <div
         className={`${style.cardContainer} ${data.statusActive ? '' : style.cardContainerInactive}`}
       >
         <div className={style.userInfoWrapper}>
-          {data.avatar && (
-            <Avatar link={data.avatar} />
-          )}
+          {data.avatar && <Avatar link={data.avatar} />}
           <div className={style.userInfo}>
             <p
               className={`${style.name} ${data.statusActive ? '' : style.nameInactive}`}
