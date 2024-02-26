@@ -9,6 +9,7 @@ import { tabsData } from '../model/data';
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 
 import style from './AmbassadorContentPage.module.scss';
+import ButtonComponent from '../../../entities/Button';
 
 const AmbassadorContentPage = () => {
   const { id } = useParams();
