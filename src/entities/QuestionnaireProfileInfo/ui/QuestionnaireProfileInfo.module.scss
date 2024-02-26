@@ -1,0 +1,84 @@
+@import 'src/app/styles/variables.scss';
+
+.profile {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  max-width: fit-content;
+}
+
+.photoContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 120px;
+  gap: 6px;
+}
+
+.downloadLink {
+  border: none;
+  background-color: inherit;
+  color: $baseLightBg;
+  font-size: 11px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    transition: 0.3s ease;
+    opacity: 0.7;
+  }
+  &:focus {
+    transition: 0.3s ease;
+    opacity: 0.7;
+  }
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.name {
+  margin: 0;
+  color: $baseColorWhite;
+  font-family: 'YSDisplay';
+  font-size: 20px;
+  line-height: 0.8;
+  font-weight: 500;
+}
+
+.fieldset {
+  border: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.radio {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+
+  &:checked + span {
+    background: url(../../../shared/icons/radio-button-checked.svg);
+  }
+}
+
+.label {
+  display: flex;
+  gap: 8px;
+}
+
+.label span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url(../../../shared/icons/radio-button.svg) no-repeat center / cover;
+  border-radius: 50%;
+}
