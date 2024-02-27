@@ -60,6 +60,7 @@ const userCardsData = [
         price: '500',
       },
     ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
@@ -177,6 +178,7 @@ const userCardsData = [
         price: '500',
       },
     ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
@@ -297,6 +299,7 @@ const userCardsData = [
         price: '500',
       },
     ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
@@ -413,6 +416,7 @@ const userCardsData = [
         price: '500',
       },
     ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
@@ -529,6 +533,7 @@ const userCardsData = [
         price: '500',
       },
     ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
@@ -645,6 +650,7 @@ const userCardsData = [
         price: '500',
       },
     ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
@@ -719,6 +725,7 @@ const userCardsData = [
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
     city: 'Саратов',
+    reviews: 5,
     promocodes: [],
     content: [
       {
