@@ -6,6 +6,7 @@ import { Avatar } from 'src/entities/Avatar';
 import type { TCardProps } from '../types/types';
 
 import style from './ContentUserCard.module.scss';
+import ButtonSecondaryComponent from '../../../entities/ButtonSecondary';
 
 const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
   const formattedDate = new Date(data.date)
@@ -14,9 +15,7 @@ const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
 
   return (
     <div className={style.cardContainer}>
-      {data.avatar && (
-        <Avatar link={data.avatar} />
-      )}
+      {data.avatar && <Avatar link={data.avatar} />}
       <p className={style.name}>{data.surname}</p>
       <p className={style.name}>
         {data.name} {data.secondname}
@@ -38,17 +37,15 @@ const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
       </div>
       <div className={style.line}></div>
       <div className={style.btnWrapper}>
-        <button
-          className={style.btn}
+        <ButtonSecondaryComponent
+          label="Посмотреть"
+          width={296}
+          height={48}
           onClick={() => console.log(`Посмотреть отчет с id=${data.id}`)}
-        >
-          Посмотреть
-        </button>
+        />
       </div>
     </div>
   );
 };
 
 export default ContentUserCard;
-
-//TODO кнопка MUI Посмотреть

@@ -5,7 +5,9 @@
   gap: 50px;
 }
 .content {
-  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .navBar {
@@ -34,4 +36,26 @@
     transition: color 0.3s ease;
     transition: border-bottom 0.3s ease;
   }
+}
+
+.tableWrapper {
+  display: flex;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.subtitle {
+  font-family: 'YSDisplay';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $baseLightBg;
+}
+
+.text {
+  font-family: 'YSText';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $baseLightBg;
 }
