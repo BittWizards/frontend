@@ -8,13 +8,10 @@ type TAllContentCardProps = {
     date: string;
     statusActive: boolean,
     reviews: number,
-    youTube: number,
-    hIcon: number,
-    telegramSocial: number,
-    instagram: number,
-    vc: number,
-    in: number,
-    question: number,
+    content: {
+      platform: string,
+      fileCounter: string,
+    },
   }
 };
 
