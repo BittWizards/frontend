@@ -10,6 +10,7 @@ import mailIcon from 'src/shared/icons/mail-white.svg';
 import style from './AmbassadorHeaderCard.module.scss';
 import { InfoLogoText } from '../../../shared/InfoLogoText';
 import { InfoLogoLink } from '../../../shared/InfoLogoLink';
+import { StatusIcon } from '../../../shared/StatusIcon';
 
 const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({
   title,
@@ -25,7 +26,7 @@ const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({
             <p className={style.nameText}>{data.surname || ''}</p>
             <p className={style.nameText}>{data.name || ''}</p>
             <p className={style.nameText}>{data.secondname || ''}</p>
-            <p className={style.status}>{data.userStatus}</p>
+            <StatusIcon data={data} />
           </div>
         </div>
         <div className={style.column}>

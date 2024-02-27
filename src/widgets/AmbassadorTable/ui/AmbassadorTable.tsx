@@ -1,13 +1,14 @@
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
+import { statusMappings } from 'src/utils/constants/statusMappings';
 import { TCardProps } from '../types/type';
-
 import avatar from 'src/shared/icons/userAvatar.png';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 
 import style from './AmbassadorTable.module.scss';
-import { statusMappings } from 'src/utils/constants/statusMappings';
+import { StatusIcon } from '../../../shared/StatusIcon';
 
-const AmbassadorTable: React.FC<TCardProps> = ({ data }) => {
+const AmbassadorTable: FC<TCardProps> = ({ data }) => {
   const statusOrder = ['Active', 'OnPause', 'PendingConfirmation', 'Inactive'];
 
   const sortedData = data.sort((a, b) => {
@@ -67,17 +68,7 @@ const AmbassadorTable: React.FC<TCardProps> = ({ data }) => {
                   </p>
                 </div>
               </div>
-              <div className={style.statusCell}>
-                {ambassador.userStatus ? (
-                  <span
-                    className={`${style.status}  ${getStatusColorClass(ambassador.userStatus)}`}
-                  >
-                    {statusMappings[ambassador.userStatus]}
-                  </span>
-                ) : (
-                  ''
-                )}
-              </div>
+              <StatusIcon data={ambassador} />
               <div className={`${style.positionCell} `}>
                 <p className={style.textPosition}>{ambassador.position}</p>
               </div>
