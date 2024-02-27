@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { TCardProps } from '../types/types';
 import calendarIcon from 'src/shared/icons/calendar.svg';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
+import type { TCardProps } from '../types/types';
 
 import style from './ContentUserCard.module.scss';
 

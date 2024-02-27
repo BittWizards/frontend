@@ -1,6 +1,6 @@
-import { TAmbassadorCardProps } from '../types/types';
-
 import calendarIcon from 'src/shared/icons/calendar.svg';
+import type { TAmbassadorCardProps } from '../types/types';
+
 
 import style from './AmbassadorCard.module.scss';
 
