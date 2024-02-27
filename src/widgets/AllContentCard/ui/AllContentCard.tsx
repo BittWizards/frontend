@@ -77,7 +77,7 @@ const AllContentCard: React.FC<TAllContentCardProps> = ({ data }) => {
           <div className={style.allContentCard__contentGroup}>
             {data.content.map((row, index) => (
               <div key={index} className={style.allContentCard__social}>
-                <div className={style.allContentCard__icon} alt='Иконка соц сети'>{getPlatformIcon(row.platform)}</div>
+                <div className={style.allContentCard__icon}>{getPlatformIcon(row.platform)}</div>
                 <span className={style.allContentCard__iconCount}>{row.fileCounter}</span>
               </div>
             ))}

@@ -473,6 +473,7 @@ const userCardsData = [
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
     city: 'Саратов',
+    reviews: 5,
     promocodes: [],
     content: [
       {
