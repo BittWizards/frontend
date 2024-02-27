@@ -4,9 +4,9 @@ import calendarIcon from 'src/shared/icons/calendar.svg';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
 import type { TCardProps } from '../types/types';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
 import style from './ContentUserCard.module.scss';
-import ButtonSecondaryComponent from '../../../entities/ButtonSecondary';
 
 const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
   const formattedDate = new Date(data.date)

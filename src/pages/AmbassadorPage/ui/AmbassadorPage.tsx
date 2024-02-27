@@ -3,11 +3,11 @@ import Navbar from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
 import ButtonComponent from 'src/entities/Button';
+import { AmbassadorTable } from 'src/widgets/AmbassadorTable';
 
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 
 import style from './AmbassadorPage.module.scss';
-import { AmbassadorTable } from '../../../widgets/AmbassadorTable';
 
 const AmbassadorPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые запросы');

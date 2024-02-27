@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { TCardProps } from '../types/types';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
+import { StatusIcon } from 'src/shared/StatusIcon';
 
 import style from './PromocodeUserInfoCard.module.scss';
 
@@ -13,15 +14,11 @@ const PromocodeUserInfoCard: React.FC<TCardProps> = ({ data }) => {
 
   return (
     <NavLink to={`/ambassadors/${data.id}/promocode`} className={style.navLink}>
-      <div
-        className={`${style.cardContainer} ${data.statusActive ? '' : style.cardContainerInactive}`}
-      >
+      <div className={`${style.cardContainer} `}>
         <div className={style.userInfoWrapper}>
           {data.avatar && <Avatar link={data.avatar} />}
           <div className={style.userInfo}>
-            <p
-              className={`${style.name} ${data.statusActive ? '' : style.nameInactive}`}
-            >
+            <p className={`${style.name}`}>
               {data.surname} {data.name}
             </p>
             <p className={style.position}>{data.position}</p>
@@ -39,11 +36,7 @@ const PromocodeUserInfoCard: React.FC<TCardProps> = ({ data }) => {
               {data.telegram}
             </Link>
           </div>
-          <div
-            className={`${style.status} ${data.statusActive ? style.statusActive : style.statusInactive}`}
-          >
-            {data.statusActive ? <span>Активен</span> : <span>Не активен</span>}
-          </div>
+          <StatusIcon data={data} />
         </div>
         <div className={style.line}></div>
         <div className={style.promocodeWrapper}>

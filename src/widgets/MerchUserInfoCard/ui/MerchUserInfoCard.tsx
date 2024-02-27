@@ -2,9 +2,10 @@ import { Link, NavLink } from 'react-router-dom';
 import { TCardProps } from '../types/types';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
+import { StatusIcon } from 'src/shared/StatusIcon';
 
 import style from './MerchUserInfoCard.module.scss';
-import ButtonSecondaryComponent from '../../../entities/ButtonSecondary';
 
 const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
   const formattedDate = new Date(data.activationDate)
@@ -44,9 +45,7 @@ const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
               {data.telegram}
             </Link>
           </div>
-          <div className={style.status}>
-            {data.statusActive ? <span>Активен</span> : <span>Не активен</span>}
-          </div>
+          <StatusIcon data={data} />
         </div>
         <div className={style.line}></div>
         <div className={style.promocodeWrapper}>

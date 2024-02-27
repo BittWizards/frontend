@@ -1,0 +1,43 @@
+@import 'src/app/styles/variables.scss';
+
+.statusCell {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  padding: 5px;
+  width: 69px;
+  font-family: 'YSText';
+  font-size: 11px;
+  line-height: 100%;
+  font-weight: 400;
+}
+
+.statusActive {
+  color: $statusColorActive;
+  border-color: $statusColorActive;
+}
+
+.statusOnPause {
+  color: $statusColorPause;
+  border-color: $statusColorPause;
+}
+
+.statusPendingConfirmation {
+  color: $statusColorPending;
+  border-color: $statusColorPending;
+}
+
+.statusInactive {
+  color: $statusColorInActive;
+  border-color: $statusColorInActive;
+}

@@ -4,10 +4,9 @@ import calendarIcon from 'src/shared/icons/calendar.svg';
 import { Avatar } from 'src/entities/Avatar';
 
 import { formatDateString } from 'src/utils/constants/formatDate';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary/ui/ButtonSecondary';
 
 import style from './AmbassadorCard.module.scss';
-import ButtonGrayComponent from '../../../entities/ButtonSecondary/ui/ButtonSecondary';
-import ButtonSecondaryComponent from '../../../entities/ButtonSecondary/ui/ButtonSecondary';
 
 const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
   return (
