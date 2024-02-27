@@ -4,6 +4,7 @@ import Navbar from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 import { MerchUserInfoCard } from 'src/widgets/MerchUserInfoCard';
+import { MerchStatisticTable } from '../../../entities/MerchStatisticTable';
 
 import style from './MerchPage.module.scss';
 
@@ -30,10 +31,10 @@ const MerchPage = () => {
             </li>
           </ul>
         </nav>
-        <div>Заявки. ПАНЕЛЬ ПОИСКА</div>
+        <div>Компонент ПАНЕЛЬ ПОИСКА</div>
         {selectedOption === 'Учет мерча' ? (
-          <div className={style.navList}>
-            Страница "Учет мерча" в разработке
+          <div className={style.tableWrapper}>
+            <MerchStatisticTable />
           </div>
         ) : (
           <div className={style.cardsContainer}>

@@ -61,10 +61,10 @@ const userCardsData = [
     merch: [
       {
         id: '1',
-        merchType: 'Толстовка',
-        merchSize: 'M(44-46)',
+        merchType: 'Клуб',
+        merchSize: '',
         date: '2023-10-14T13:45:00',
-        quantity: '2',
+        quantity: '1',
         price: '3900',
       },
       {
@@ -80,12 +80,12 @@ const userCardsData = [
         merchType: 'Кофе',
         merchSize: '',
         date: '2023-10-14T13:45:00',
-        quantity: '3',
+        quantity: '1',
         price: '2000',
       },
       {
         id: '4',
-        merchType: 'Алиса',
+        merchType: 'Алисабот',
         merchSize: '',
         date: '2023-10-14T13:45:00',
         quantity: '1',
@@ -179,10 +179,10 @@ const userCardsData = [
     merch: [
       {
         id: '1',
-        merchType: 'Толстовка',
-        merchSize: 'M(44-46)',
+        merchType: 'Стикеры',
+        merchSize: '',
         date: '2023-10-14T13:45:00',
-        quantity: '2',
+        quantity: '1',
         price: '3900',
       },
       {
@@ -195,10 +195,10 @@ const userCardsData = [
       },
       {
         id: '3',
-        merchType: 'Кофе',
+        merchType: 'Плюс',
         merchSize: '',
         date: '2023-10-14T13:45:00',
-        quantity: '3',
+        quantity: '1',
         price: '2000',
       },
       {
@@ -303,7 +303,7 @@ const userCardsData = [
         merchType: 'Толстовка',
         merchSize: 'M(44-46)',
         date: '2023-10-14T13:45:00',
-        quantity: '2',
+        quantity: '1',
         price: '3900',
       },
       {
@@ -316,10 +316,10 @@ const userCardsData = [
       },
       {
         id: '3',
-        merchType: 'Кофе',
+        merchType: 'Шопер',
         merchSize: '',
         date: '2023-10-14T13:45:00',
-        quantity: '3',
+        quantity: '1',
         price: '2000',
       },
       {
@@ -420,7 +420,7 @@ const userCardsData = [
         merchType: 'Толстовка',
         merchSize: 'M(44-46)',
         date: '2023-10-14T13:45:00',
-        quantity: '2',
+        quantity: '1',
         price: '3900',
       },
       {
@@ -436,7 +436,7 @@ const userCardsData = [
         merchType: 'Кофе',
         merchSize: '',
         date: '2023-10-14T13:45:00',
-        quantity: '3',
+        quantity: '1',
         price: '2000',
       },
       {
@@ -537,13 +537,13 @@ const userCardsData = [
         merchType: 'Толстовка',
         merchSize: 'M(44-46)',
         date: '2023-10-14T13:45:00',
-        quantity: '2',
+        quantity: '1',
         price: '3900',
       },
       {
         id: '2',
-        merchType: 'Футболка',
-        merchSize: 'M(44-46)',
+        merchType: 'Сумка',
+        merchSize: '',
         date: '2023-10-14T13:45:00',
         quantity: '1',
         price: '1900',
@@ -553,7 +553,7 @@ const userCardsData = [
         merchType: 'Кофе',
         merchSize: '',
         date: '2023-10-14T13:45:00',
-        quantity: '3',
+        quantity: '1',
         price: '2000',
       },
       {
@@ -654,7 +654,7 @@ const userCardsData = [
         merchType: 'Толстовка',
         merchSize: 'M(44-46)',
         date: '2023-10-14T13:45:00',
-        quantity: '2',
+        quantity: '1',
         price: '3900',
       },
       {
@@ -670,7 +670,7 @@ const userCardsData = [
         merchType: 'Кофе',
         merchSize: '',
         date: '2023-10-14T13:45:00',
-        quantity: '3',
+        quantity: '1',
         price: '2000',
       },
       {
@@ -767,6 +767,7 @@ const userCardsData = [
     city: 'Саратов',
     reviews: 5,
     promocodes: [],
+    merch: [],
     content: [
       {
         id: '1',

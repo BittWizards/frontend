@@ -1,12 +1,11 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import { statusMappings } from 'src/utils/constants/statusMappings';
 import { TCardProps } from '../types/type';
 import avatar from 'src/shared/icons/userAvatar.png';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
+import { StatusIcon } from '../../../shared/StatusIcon';
 
 import style from './AmbassadorTable.module.scss';
-import { StatusIcon } from '../../../shared/StatusIcon';
 
 const AmbassadorTable: FC<TCardProps> = ({ data }) => {
   const statusOrder = ['Active', 'OnPause', 'PendingConfirmation', 'Inactive'];
@@ -17,22 +16,6 @@ const AmbassadorTable: FC<TCardProps> = ({ data }) => {
 
     return indexA - indexB;
   });
-
-  // Функция для определения класса цвета в зависимости от статуса
-  const getStatusColorClass = (userStatus: string) => {
-    switch (userStatus) {
-      case 'Active':
-        return style.statusActive;
-      case 'OnPause':
-        return style.statusOnPause;
-      case 'PendingConfirmation':
-        return style.statusPendingConfirmation;
-      case 'Inactive':
-        return style.statusInactive;
-      default:
-        return '';
-    }
-  };
 
   const handleRowClick = (number: number) => {
     console.log(`Row clicked: ${number}`);
