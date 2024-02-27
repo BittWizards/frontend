@@ -1,0 +1,86 @@
+@import 'src/app/styles/variables.scss';
+
+.main {
+  display: flex;
+  gap: 50px;
+}
+.content {
+  color: $baseColorWhite;
+}
+
+.navBar {
+  padding-bottom: 40px;
+}
+
+.navList {
+  margin: 0;
+  padding: 0;
+  color: $baseColorWhite;
+  display: flex;
+  gap: 95px;
+}
+
+.navItem {
+  list-style: none;
+  cursor: pointer;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 9px;
+  border-bottom: 3px solid transparent;
+
+  &.active {
+    color: $statusColorActive;
+    border-bottom: 3px solid $statusColorActive;
+    transition: color 0.3s ease;
+    transition: border-bottom 0.3s ease;
+  }
+}
+
+.promoContainer {
+  width: 320px;
+  padding: 25px 20px 32px 20px;
+  border: 1px solid $baseDarkBg;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  margin-top: 32px;
+}
+
+.promoContentWrapper {
+  border-left: 5px solid $statusColorSpecifying;
+  padding-left: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.promoTitle {
+  font-family: 'YSText';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $baseColorInactive;
+}
+
+.promoText {
+  font-family: 'YSDisplay';
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 0.8;
+}
+
+.btnWrapper {
+  margin-bottom: 72px;
+}
+.tableTitle {
+  margin: 0;
+  padding: 0;
+  font-family: 'YSDisplay';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}

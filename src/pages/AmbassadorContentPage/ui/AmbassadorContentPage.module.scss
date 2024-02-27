@@ -1,0 +1,49 @@
+@import 'src/app/styles/variables.scss';
+
+.main {
+  display: flex;
+  gap: 50px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.navBar {
+  padding-bottom: 40px;
+}
+
+.navList {
+  margin: 0;
+  padding: 0;
+  color: $baseColorWhite;
+  display: flex;
+  gap: 95px;
+}
+
+.navItem {
+  list-style: none;
+  cursor: pointer;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 9px;
+  border-bottom: 3px solid transparent;
+
+  &.active {
+    color: $statusColorActive;
+    border-bottom: 3px solid $statusColorActive;
+    transition: color 0.3s ease;
+    transition: border-bottom 0.3s ease;
+  }
+}
+.tableWrapper {
+  display: flex;
+  width: 100%;
+}
+
+.socialWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

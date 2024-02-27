@@ -6,6 +6,7 @@ import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 
 import style from './AmbassadorPage.module.scss';
+import { AmbassadorTable } from '../../../widgets/AmbassadorTable';
 
 const AmbassadorPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые запросы');
@@ -31,7 +32,10 @@ const AmbassadorPage = () => {
           </ul>
         </nav>
         {selectedOption === 'Все амбассадоры' ? (
-          <div className={style.navList}>Страница в разработке</div>
+          <>
+            <div className={style.navList}>ПАНЕЛЬ ПОИСКА И ФИЛЬТРАЦИИ</div>
+            <AmbassadorTable data={userCardsData} />
+          </>
         ) : (
           <>
             <div className={style.cardsContainer}>

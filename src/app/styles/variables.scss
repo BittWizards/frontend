@@ -1,6 +1,7 @@
 // Базовые цвета
 $baseColorWhite: #fff;
-$baseColorDark: #080716;
+//$baseColorDark: #080716;
+$baseColorDark: #1b1c1e;
 $baseColorInactive: #939393;
 $baseLightBg: #ebeef4;
 $baseDarkBg: #474646;
@@ -8,12 +9,14 @@ $baseDarkBg: #474646;
 // Цвета статусов
 $statusColorActive: #14ae5c;
 $statusColorInActive: #ff5f37;
-$statusColorSpecifying: #9747ff;
-$statusColorSpecifyingHover: #722cce;
-$statusColorPause: #1c89ee;
+$statusColorSpecifying: #512da8;
+$statusColorSpecifyingHover: #512da8;
+$statusColorPending: #1c89ee;
 $statusColorPause: #daa700;
 
 // Цвета кнопок и состояний
+
+$primaryDarkGrey: rgba(71, 70, 70, 0.6);
 
 // Дополнительное
 $borderColorDark: #2e2d33;

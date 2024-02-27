@@ -11,6 +11,8 @@
   &.active {
     border-left: 4px solid $statusColorActive;
     transition: border-left 0.3s ease;
+    background: $primaryDarkGrey;
+    border-radius: 1px 4px 4px 1px;
   }
 }
 

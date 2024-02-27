@@ -1,9 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
 import { TCardProps } from '../types/types';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
+import { Avatar } from 'src/entities/Avatar';
 
 import style from './MerchUserInfoCard.module.scss';
-import { useState } from 'react';
 
 const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
   const formattedDate = new Date(data.activationDate)
@@ -20,12 +20,10 @@ const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
   }
 
   return (
-    <NavLink to={`/ambassadors/${data.id}`} className={style.navLink}>
+    <NavLink to={`/ambassadors/${data.id}/merch`} className={style.navLink}>
       <div className={style.cardContainer}>
         <div className={style.userInfoWrapper}>
-          {data.avatar && (
-            <img src={data.avatar} className={style.avatar} alt="Avatar" />
-          )}
+          {data.avatar && <Avatar link={data.avatar} />}
           <div className={style.userInfo}>
             <p className={style.name}>
               {data.surname} {data.name}

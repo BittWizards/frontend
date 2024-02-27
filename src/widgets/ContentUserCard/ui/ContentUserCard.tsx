@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import calendarIcon from 'src/shared/icons/calendar.svg';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
+import { Avatar } from 'src/entities/Avatar';
 import type { TCardProps } from '../types/types';
 
 import style from './ContentUserCard.module.scss';
@@ -14,7 +15,7 @@ const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
   return (
     <div className={style.cardContainer}>
       {data.avatar && (
-        <img src={data.avatar} className={style.avatar} alt="Avatar" />
+        <Avatar link={data.avatar} />
       )}
       <p className={style.name}>{data.surname}</p>
       <p className={style.name}>

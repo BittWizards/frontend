@@ -1,19 +1,16 @@
-import calendarIcon from 'src/shared/icons/calendar.svg';
-import type { TAmbassadorCardProps } from '../types/types';
+import { TAmbassadorCardProps } from '../types/types';
 
+import calendarIcon from 'src/shared/icons/calendar.svg';
+import { Avatar } from 'src/entities/Avatar';
+
+import { formatDateString } from 'src/utils/constants/formatDate';
 
 import style from './AmbassadorCard.module.scss';
 
 const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
-  const formattedDate = new Date(data.date)
-    .toLocaleDateString('en-GB')
-    .replace(/\//g, '.');
-
   return (
     <div className={style.cardContainer}>
-      {data.avatar && (
-        <img src={data.avatar} className={style.avatar} alt="Avatar" />
-      )}
+      {data.avatar && <Avatar link={data.avatar} />}
       <p className={style.name}>{data.surname}</p>
       <p className={style.name}>
         {data.name} {data.secondname}
@@ -21,7 +18,7 @@ const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
       <p className={style.position}>{data.position}</p>
       <div className={style.dateContainer}>
         <img src={calendarIcon} alt="Calendar" style={{ marginRight: '5px' }} />
-        <span className={style.date}>{formattedDate}</span>
+        <span className={style.date}>{formatDateString(data.date)}</span>
       </div>
       <div className={style.line}></div>
       <div className={style.btnWrapper}>
@@ -37,5 +34,3 @@ const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
 };
 
 export default AmbassadorCard;
-
-//TODO кнопка MUI Посмотреть

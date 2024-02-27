@@ -19,7 +19,7 @@ const MainPage = () => (
   <div className={style.main}>
     <Navbar links={navbarLinks} />
     <div className={style.content}>
-      <ContentContainer title="Амбассадоры" link="/anbassadors">
+      <ContentContainer title="Амбассадоры" link="/ambassadors">
         <AmbassadorList ambassadorData={ambassadorCardData}>
           {[<AmbassadorsInfoCard />]}
         </AmbassadorList>
