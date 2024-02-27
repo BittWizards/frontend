@@ -8,6 +8,7 @@ import telegram from 'src/shared/icons/telegramIcon.svg';
 import inIcon from 'src/shared/icons/inIcon.svg';
 import instagram from 'src/shared/icons/instIcon.svg';
 import questionIcon from 'src/shared/icons/questionIcon.svg';
+import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 import type { TAllContentCardProps } from '../types/types';
 import style from './AllContentCard.module.scss';
 
@@ -19,6 +20,26 @@ const AllContentCard: React.FC<TAllContentCardProps> = ({ data }) => {
   if (!data.statusActive) {
     return null; // Если не активен, не рендерим карточку
   }
+
+
+  const getPlatformIcon = (platform: string): JSX.Element => {
+    switch (platform) {
+      case 'habr':
+        return <img src={hIcon} alt="Habr" />;
+      case 'vc':
+        return <img src={vc} alt="VC" />;
+      case 'youtube':
+        return <img src={youTube} alt="YouTube" />;
+      case 'telegram':
+        return <img src={telegram} alt="Telegram" />;
+      case 'linkedin':
+        return <img src={inIcon} alt="LinkedIn" />;
+      case 'instagram':
+        return <img src={instagram} alt="Instagram" />;
+      default:
+        return <img src={questionIcon} alt="Other" />;
+    }
+  };
 
   return (
     <div className={style.allContentCard}>
@@ -54,34 +75,12 @@ const AllContentCard: React.FC<TAllContentCardProps> = ({ data }) => {
         <div className={style.allContentCard__contentContainer}>
           <h3 className={style.allContentCard__contentTitle}>Опубликовано контента</h3>
           <div className={style.allContentCard__contentGroup}>
-            <div className={style.allContentCard__social}>
-              <img src={hIcon} className={style.allContentCard__icon} alt='Иконка соц сети' />
-              <span className={style.allContentCard__iconCount}>{data.hIcon}</span>
-            </div>
-            <div className={style.allContentCard__social}>
-              <img src={vc} className={style.allContentCard__icon_vc} alt='Иконка соц сети' />
-              <span className={style.allContentCard__iconCount}>{data.vc}</span>
-            </div>
-            <div className={style.allContentCard__social}>
-              <img src={youTube} className={style.allContentCard__icon} alt='Иконка соц сети' />
-              <span className={style.allContentCard__iconCount}>{data.youTube}</span>
-            </div>
-            <div className={style.allContentCard__social}>
-              <img src={telegram} className={style.allContentCard__icon} alt='Иконка соц сети' />
-              <span className={style.allContentCard__iconCount}>{data.telegramSocial}</span>
-            </div>
-            <div className={style.allContentCard__social}>
-              <img src={inIcon} className={style.allContentCard__icon} alt='Иконка соц сети' />
-              <span className={style.allContentCard__iconCount}>{data.in}</span>
-            </div>
-            <div className={style.allContentCard__social}>
-              <img src={instagram} className={style.allContentCard__icon} alt='Иконка соц сети' />
-              <span className={style.allContentCard__iconCount}>{data.instagram}</span>
-            </div>
-            <div className={style.allContentCard__social}>
-              <img src={questionIcon} className={style.allContentCard__icon} alt='Иконка соц сети' />
-              <span className={style.allContentCard__iconCount}>{data.question}</span>
-            </div>
+            {data.content.map((row, index) => (
+              <div key={index} className={style.allContentCard__social}>
+                <div className={style.allContentCard__icon} alt='Иконка соц сети'>{getPlatformIcon(row.platform)}</div>
+                <span className={style.allContentCard__iconCount}>{row.fileCounter}</span>
+              </div>
+            ))}
           </div>
         </div>
 
