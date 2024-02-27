@@ -4,6 +4,7 @@ import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
 
 import style from './MerchUserInfoCard.module.scss';
+import ButtonSecondaryComponent from '../../../entities/ButtonSecondary';
 
 const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
   const formattedDate = new Date(data.activationDate)
@@ -59,9 +60,12 @@ const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
           </div>
         </div>
         <div className={style.btnWrapper}>
-          <button className={style.btn} onClick={handleDeliveryClick}>
-            Доставлено
-          </button>
+          <ButtonSecondaryComponent
+            label="Доставлено"
+            width={480}
+            height={48}
+            onClick={handleDeliveryClick}
+          />
         </div>
       </div>
     </NavLink>

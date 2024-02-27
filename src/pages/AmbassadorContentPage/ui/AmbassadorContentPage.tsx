@@ -115,7 +115,7 @@ const AmbassadorContentPage = () => {
       </div>
     </div>
   ) : (
-    <div>Пользоваетель с id ${id} не найдет</div>
+    <div>Пользоваетель с id ${id} не найден</div>
   );
 };
 

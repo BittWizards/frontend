@@ -6,6 +6,8 @@ import { Avatar } from 'src/entities/Avatar';
 import { formatDateString } from 'src/utils/constants/formatDate';
 
 import style from './AmbassadorCard.module.scss';
+import ButtonGrayComponent from '../../../entities/ButtonSecondary/ui/ButtonSecondary';
+import ButtonSecondaryComponent from '../../../entities/ButtonSecondary/ui/ButtonSecondary';
 
 const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
   return (
@@ -22,12 +24,12 @@ const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
       </div>
       <div className={style.line}></div>
       <div className={style.btnWrapper}>
-        <button
-          className={style.btn}
+        <ButtonSecondaryComponent
+          label="Посмотреть"
+          width={296}
+          height={48}
           onClick={() => console.log(`Посмотреть карточку с id=${data.id}`)}
-        >
-          Посмотреть
-        </button>
+        />
       </div>
     </div>
   );

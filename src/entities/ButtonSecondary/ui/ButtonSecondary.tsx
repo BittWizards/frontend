@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import Button from '@mui/material/Button';
 import type { ButtonProps } from '../types/types';
 
-const ButtonGrayComponent: FC<ButtonProps> = ({
+const ButtonSecondaryComponent: FC<ButtonProps> = ({
   width,
   height,
   label,
@@ -24,11 +24,11 @@ const ButtonGrayComponent: FC<ButtonProps> = ({
         background: 'rgba(55, 54, 54, 0.6)',
       },
       '&:active': {
-        background: '#474646'
+        background: '#474646',
       },
       '&:disabled': {
-        cursor: 'auto'
-      }
+        cursor: 'auto',
+      },
     }}
     variant="contained"
   >
@@ -36,4 +36,4 @@ const ButtonGrayComponent: FC<ButtonProps> = ({
   </Button>
 );
 
-export default ButtonGrayComponent;
+export default ButtonSecondaryComponent;
