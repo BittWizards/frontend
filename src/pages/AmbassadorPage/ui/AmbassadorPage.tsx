@@ -2,11 +2,12 @@ import { useState } from 'react';
 import Navbar from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
+import ButtonComponent from 'src/entities/Button';
+import { AmbassadorTable } from 'src/widgets/AmbassadorTable';
 
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 
 import style from './AmbassadorPage.module.scss';
-import { AmbassadorTable } from '../../../widgets/AmbassadorTable';
 
 const AmbassadorPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые запросы');
@@ -44,12 +45,12 @@ const AmbassadorPage = () => {
               ))}
             </div>
             <div className={style.btnWrapper}>
-              <button
-                className={style.btn}
+              <ButtonComponent
+                label="Добавить амбассадора"
+                width={244}
+                height={48}
                 onClick={() => console.log('Добавить амбассадора')}
-              >
-                Добавить амбассадора
-              </button>
+              />
             </div>
           </>
         )}
@@ -58,5 +59,4 @@ const AmbassadorPage = () => {
   );
 };
 
-//TODO кнопка MUI Добавить амбассадора
 export default AmbassadorPage;

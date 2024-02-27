@@ -1,5 +1,45 @@
 import avatar from 'src/shared/icons/userAvatar.png';
 
+type TCardData = {
+  id: string;
+  avatar: string;
+  telegram: string;
+  name: string;
+  surname: string;
+  secondname: string;
+  position: string;
+  date: string;
+  statusActive: boolean;
+  promocode: string;
+  activationDate: string;
+  trackingNumber: string;
+  userStatus: string;
+  phone: string;
+  email: string;
+  city: string;
+  merch: {
+    id: string;
+    merchType: string;
+    merchSize: string;
+    date: string;
+    quantity: string;
+    price: string;
+  }[];
+  reviews: number;
+  promocodes: {
+    id: string;
+    promocode: string;
+    date: string;
+  }[];
+  content: {
+    id: string;
+    date: string;
+    link: string;
+    platform: string;
+    fileCounter: string;
+  }[];
+};
+
 const userCardsData = [
   {
     id: '1',
@@ -18,11 +58,105 @@ const userCardsData = [
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
     city: 'Саратов',
+    merch: [
+      {
+        id: '1',
+        merchType: 'Клуб',
+        merchSize: '',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '3900',
+      },
+      {
+        id: '2',
+        merchType: 'Футболка',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '1900',
+      },
+      {
+        id: '3',
+        merchType: 'Кофе',
+        merchSize: '',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '2000',
+      },
+      {
+        id: '4',
+        merchType: 'Алисабот',
+        merchSize: '',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '23000',
+      },
+      {
+        id: '5',
+        merchType: 'Носки',
+        merchSize: '38-40',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '500',
+      },
+    ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
       { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
       { id: '4', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
+    content: [
+      {
+        id: '1',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'telegram',
+        fileCounter: '12',
+      },
+      {
+        id: '2',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'instagram',
+        fileCounter: '0',
+      },
+      {
+        id: '3',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '4',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'linkedin',
+        fileCounter: '1',
+      },
+      {
+        id: '5',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылкаsasas.com',
+        platform: 'youtube',
+        fileCounter: '1',
+      },
+      {
+        id: '6',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'other',
+        fileCounter: '6',
+      },
+      {
+        id: '7',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'vc',
+        fileCounter: '3',
+      },
     ],
   },
   {
@@ -42,6 +176,49 @@ const userCardsData = [
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
     city: 'Саратов',
+    merch: [
+      {
+        id: '1',
+        merchType: 'Стикеры',
+        merchSize: '',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '3900',
+      },
+      {
+        id: '2',
+        merchType: 'Футболка',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '1900',
+      },
+      {
+        id: '3',
+        merchType: 'Плюс',
+        merchSize: '',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '2000',
+      },
+      {
+        id: '4',
+        merchType: 'Алиса',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '23000',
+      },
+      {
+        id: '5',
+        merchType: 'Носки',
+        merchSize: '(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '500',
+      },
+    ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
@@ -50,6 +227,57 @@ const userCardsData = [
       { id: '5', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
       { id: '6', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
       { id: '7', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
+    content: [
+      {
+        id: '1',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'telegram',
+        fileCounter: '12',
+      },
+      {
+        id: '2',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'instagram',
+        fileCounter: '0',
+      },
+      {
+        id: '3',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '4',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '5',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'youtube',
+        fileCounter: '1',
+      },
+      {
+        id: '6',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'other',
+        fileCounter: '6',
+      },
+      {
+        id: '7',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'vc',
+        fileCounter: '3',
+      },
     ],
   },
   {
@@ -69,10 +297,104 @@ const userCardsData = [
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
     city: 'Саратов',
+    merch: [
+      {
+        id: '1',
+        merchType: 'Толстовка',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '3900',
+      },
+      {
+        id: '2',
+        merchType: 'Футболка',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '1900',
+      },
+      {
+        id: '3',
+        merchType: 'Шопер',
+        merchSize: '',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '2000',
+      },
+      {
+        id: '4',
+        merchType: 'Алиса',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '23000',
+      },
+      {
+        id: '5',
+        merchType: 'Носки',
+        merchSize: '(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '500',
+      },
+    ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
       { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
+    content: [
+      {
+        id: '1',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'telegram',
+        fileCounter: '12',
+      },
+      {
+        id: '2',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'instagram',
+        fileCounter: '0',
+      },
+      {
+        id: '3',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '4',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '5',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'youtube',
+        fileCounter: '1',
+      },
+      {
+        id: '6',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'other',
+        fileCounter: '6',
+      },
+      {
+        id: '7',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'vc',
+        fileCounter: '3',
+      },
     ],
   },
   {
@@ -92,10 +414,104 @@ const userCardsData = [
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
     city: 'Саратов',
+    merch: [
+      {
+        id: '1',
+        merchType: 'Толстовка',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '3900',
+      },
+      {
+        id: '2',
+        merchType: 'Футболка',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '1900',
+      },
+      {
+        id: '3',
+        merchType: 'Кофе',
+        merchSize: '',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '2000',
+      },
+      {
+        id: '4',
+        merchType: 'Алиса',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '23000',
+      },
+      {
+        id: '5',
+        merchType: 'Носки',
+        merchSize: '(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '500',
+      },
+    ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
       { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
+    content: [
+      {
+        id: '1',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'telegram',
+        fileCounter: '12',
+      },
+      {
+        id: '2',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'instagram',
+        fileCounter: '0',
+      },
+      {
+        id: '3',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '4',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '5',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'youtube',
+        fileCounter: '1',
+      },
+      {
+        id: '6',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'other',
+        fileCounter: '6',
+      },
+      {
+        id: '7',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'vc',
+        fileCounter: '3',
+      },
     ],
   },
   {
@@ -115,10 +531,104 @@ const userCardsData = [
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
     city: 'Саратов',
+    merch: [
+      {
+        id: '1',
+        merchType: 'Толстовка',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '3900',
+      },
+      {
+        id: '2',
+        merchType: 'Сумка',
+        merchSize: '',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '1900',
+      },
+      {
+        id: '3',
+        merchType: 'Кофе',
+        merchSize: '',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '2000',
+      },
+      {
+        id: '4',
+        merchType: 'Алиса',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '23000',
+      },
+      {
+        id: '5',
+        merchType: 'Носки',
+        merchSize: '(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '500',
+      },
+    ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
       { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
+    content: [
+      {
+        id: '1',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'telegram',
+        fileCounter: '12',
+      },
+      {
+        id: '2',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'instagram',
+        fileCounter: '0',
+      },
+      {
+        id: '3',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '4',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '5',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'youtube',
+        fileCounter: '1',
+      },
+      {
+        id: '6',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'other',
+        fileCounter: '6',
+      },
+      {
+        id: '7',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'vc',
+        fileCounter: '3',
+      },
     ],
   },
   {
@@ -138,10 +648,104 @@ const userCardsData = [
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
     city: 'Саратов',
+    merch: [
+      {
+        id: '1',
+        merchType: 'Толстовка',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '3900',
+      },
+      {
+        id: '2',
+        merchType: 'Футболка',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '1900',
+      },
+      {
+        id: '3',
+        merchType: 'Кофе',
+        merchSize: '',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '2000',
+      },
+      {
+        id: '4',
+        merchType: 'Алиса',
+        merchSize: 'M(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '23000',
+      },
+      {
+        id: '5',
+        merchType: 'Носки',
+        merchSize: '(44-46)',
+        date: '2023-10-14T13:45:00',
+        quantity: '1',
+        price: '500',
+      },
+    ],
+    reviews: 5,
     promocodes: [
       { id: '1', promocode: 'ILOVEYP', date: '2023-10-14T13:45:00' },
       { id: '2', promocode: 'PONOMAREVA23', date: '2023-10-14T13:45:00' },
       { id: '3', promocode: 'ZIMA23', date: '2023-09-01T13:45:00' },
+    ],
+    content: [
+      {
+        id: '1',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'telegram',
+        fileCounter: '12',
+      },
+      {
+        id: '2',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'instagram',
+        fileCounter: '0',
+      },
+      {
+        id: '3',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '4',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '5',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'youtube',
+        fileCounter: '1',
+      },
+      {
+        id: '6',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'other',
+        fileCounter: '6',
+      },
+      {
+        id: '7',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'vc',
+        fileCounter: '3',
+      },
     ],
   },
   {
@@ -161,8 +765,62 @@ const userCardsData = [
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
     city: 'Саратов',
+    reviews: 5,
     promocodes: [],
+    merch: [],
+    content: [
+      {
+        id: '1',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'telegram',
+        fileCounter: '12',
+      },
+      {
+        id: '2',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'instagram',
+        fileCounter: '0',
+      },
+      {
+        id: '3',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '4',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'habr',
+        fileCounter: '1',
+      },
+      {
+        id: '5',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'youtube',
+        fileCounter: '1',
+      },
+      {
+        id: '6',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'other',
+        fileCounter: '6',
+      },
+      {
+        id: '7',
+        date: '2023-10-14T13:45:00',
+        link: 'https://ссылка.com',
+        platform: 'vc',
+        fileCounter: '3',
+      },
+    ],
   },
 ];
 
 export { userCardsData };
+export type { TCardData };

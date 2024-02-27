@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 
-import { TCardProps } from '../types/types';
 import calendarIcon from 'src/shared/icons/calendar.svg';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
+import type { TCardProps } from '../types/types';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
 import style from './ContentUserCard.module.scss';
 
@@ -38,17 +39,15 @@ const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
       </div>
       <div className={style.line}></div>
       <div className={style.btnWrapper}>
-        <button
-          className={style.btn}
+        <ButtonSecondaryComponent
+          label="Посмотреть"
+          width={296}
+          height={48}
           onClick={() => console.log(`Посмотреть отчет с id=${data.id}`)}
-        >
-          Посмотреть
-        </button>
+        />
       </div>
     </div>
   );
 };
 
 export default ContentUserCard;
-
-//TODO кнопка MUI Посмотреть

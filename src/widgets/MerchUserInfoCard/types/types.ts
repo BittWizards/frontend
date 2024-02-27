@@ -12,6 +12,7 @@ type TCardProps = {
     promocode: string;
     activationDate: string;
     trackingNumber: string;
+    userStatus: string;
   };
 };
 
