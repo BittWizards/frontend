@@ -9,9 +9,12 @@ type TAllContentCardProps = {
     statusActive: boolean,
     reviews: number,
     content: {
-      platform: string,
-      fileCounter: string,
-    },
+      id: string;
+      date: string;
+      link: string;
+      platform: string;
+      fileCounter: string;
+    }[],
   }
 };
 
