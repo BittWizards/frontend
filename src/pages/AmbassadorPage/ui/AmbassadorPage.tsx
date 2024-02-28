@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
-import ButtonComponent from 'src/entities/Button';
+import { ButtonComponent } from 'src/entities/Button';
 import { AmbassadorTable } from 'src/widgets/AmbassadorTable';
 
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
@@ -34,7 +34,19 @@ const AmbassadorPage = () => {
         </nav>
         {selectedOption === 'Все амбассадоры' ? (
           <>
-            <div className={style.navList}>ПАНЕЛЬ ПОИСКА И ФИЛЬТРАЦИИ</div>
+            <div className={style.navList}>
+              <div className={style.titleBtnWrapper}>
+                <h2 className={style.pageTitle}>Амбассадоры</h2>
+                <ButtonComponent
+                  label="Добавить амбассадора"
+                  width={244}
+                  height={48}
+                  onClick={e => {
+                    console.log(e);
+                  }}
+                />
+              </div>
+            </div>
             <AmbassadorTable data={userCardsData} />
           </>
         ) : (

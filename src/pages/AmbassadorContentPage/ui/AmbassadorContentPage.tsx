@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
@@ -38,6 +38,7 @@ const AmbassadorContentPage = () => {
     fontWeight: '400',
     fontSize: '14px',
     lineHeight: '1.2',
+    borderBottom: '1px solid #47464699',
   };
 
   const headerCellStyle = {

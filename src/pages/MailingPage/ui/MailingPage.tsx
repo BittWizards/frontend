@@ -1,8 +1,10 @@
 import { useState } from 'react';
 
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
-import ButtonComponent from 'src/entities/Button';
+import { ButtonComponent } from 'src/entities/Button';
+
+import { MailingDataGrid } from '../../../widgets/MailingDataGrid';
 
 import style from './MailingPage.module.scss';
 
@@ -46,6 +48,7 @@ const MailingPage = () => {
                   />
                 </div>
               </div>
+              <MailingDataGrid />
             </div>
           </div>
         )}

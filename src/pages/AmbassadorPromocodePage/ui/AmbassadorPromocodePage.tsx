@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { tabsData } from '../model/data';
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
-import ButtonComponent from 'src/entities/Button';
+import { ButtonComponent } from 'src/entities/Button';
 
 import trashIcon from 'src/shared/icons/trash.svg';
 
@@ -33,6 +33,7 @@ const AmbassadorPromocodePage = () => {
     fontWeight: '400',
     fontSize: '14px',
     lineHeight: '1.2',
+    borderBottom: '1px solid #47464699',
   };
 
   const headerCellStyle = {
@@ -94,7 +95,7 @@ const AmbassadorPromocodePage = () => {
                 <TableCell style={commonCellStyle}>
                   {formatDateString(row.date)}
                 </TableCell>
-                <TableCell>
+                <TableCell style={commonCellStyle}>
                   <IconButton aria-label="delete">
                     <img src={trashIcon} alt="trashBtn" />
                   </IconButton>
