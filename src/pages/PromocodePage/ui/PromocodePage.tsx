@@ -13,7 +13,7 @@ const PromocodePage = () => (
       <div className={style.headerWrapper}>
         <div className={style.headerTopWrapper}>
           <div className={style.leftWrapper}>
-            <h2>Промокоды</h2>
+            <h2 className={style.pageTitle}>Промокоды</h2>
             <ButtonComponent
               label="Добавить промокод"
               width={244}
@@ -23,21 +23,6 @@ const PromocodePage = () => (
               }}
             />
           </div>
-          <div>
-            <div>
-              <input type="text" />
-            </div>
-            <button
-              className={style.searchBtn}
-              onClick={() => console.log('Найти')}
-            >
-              Найти
-            </button>
-          </div>
-        </div>
-        <div>
-          <span>Сортировка</span>
-          <span>По дате</span>
         </div>
       </div>
       <div className={style.cardsContainer}>

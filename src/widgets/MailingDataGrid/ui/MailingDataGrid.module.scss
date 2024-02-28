@@ -1,0 +1,18 @@
+@import 'src/app/styles/variables.scss';
+
+.btnDeleteWrapper {
+  margin-top: 32px;
+  align-self: flex-end;
+}
+
+.cellWrapper {
+  display: flex;
+  width: 360px;
+  gap: 10px;
+}
+
+.cellText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

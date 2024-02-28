@@ -1,3 +1,5 @@
+@import 'src/app/styles/variables.scss';
+
 .main {
   display: flex;
   gap: 50px;
@@ -5,6 +7,7 @@
 .content {
   display: flex;
   flex-direction: column;
+  color: $baseColorWhite;
 }
 
 .headerWrapper {
@@ -21,4 +24,16 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
+}
+
+.pageTitle {
+  font-family: 'YSDisplay';
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.leftWrapper {
+  display: flex;
+  gap: 32px;
+  align-items: center;
 }

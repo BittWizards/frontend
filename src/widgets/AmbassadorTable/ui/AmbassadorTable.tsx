@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { TCardProps } from '../types/type';
+import { StatusIcon } from 'src/shared/StatusIcon';
+
 import avatar from 'src/shared/icons/userAvatar.png';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
-import { StatusIcon } from '../../../shared/StatusIcon';
 
 import style from './AmbassadorTable.module.scss';
 
