@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 import { MerchUserInfoCard } from 'src/widgets/MerchUserInfoCard';

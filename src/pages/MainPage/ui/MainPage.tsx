@@ -1,4 +1,4 @@
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorsInfoCard } from 'src/entities/AmbassadorsInfoCard';
 import { AmbassadorList } from 'src/widgets/AmbassadorList';
