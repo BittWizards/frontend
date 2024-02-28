@@ -1,8 +1,8 @@
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { PromocodeUserInfoCard } from 'src/widgets/PromocodeUserInfoCard';
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
-import ButtonComponent from 'src/entities/Button';
+import { ButtonComponent } from 'src/entities/Button';
 
 import style from './PromocodePage.module.scss';
 
