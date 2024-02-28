@@ -5,7 +5,7 @@ import Navbar from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { tabsData } from '../model/data';
-import ButtonComponent from '../../../entities/Button';
+import ButtonComponent from 'src/entities/Button';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
