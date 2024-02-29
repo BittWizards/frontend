@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
 import { ContentUserCard } from 'src/widgets/ContentUserCard';
@@ -7,11 +7,11 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import sortImage from 'src/shared/icons/sortImage.svg';
-
-import style from './ContentPage.module.scss';
 import { AllContentCard } from 'src/widgets/AllContentCard';
 
-const sortingOptions = ['По рейтингу', 'По дате']
+import style from './ContentPage.module.scss';
+
+const sortingOptions = ['По рейтингу', 'По дате'];
 const ContentPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые отчеты');
   const [value, setValue] = useState<string | null>(sortingOptions[0]);
@@ -40,20 +40,33 @@ const ContentPage = () => {
         {selectedOption === 'Весь контент' ? (
           <div className={style.allcontent}>
             <div className={style.allcontent__searchGroup}>
-              <input className={style.allcontent__search} type="search" placeholder='Поиск' />
-              <Button sx={{
-                background: '#47464699',
-                border: 0,
-                color: '#939393',
-                textTransform: 'none',
-                padding: 0,
-                width: 152,
-                height: 48,
-              }} variant="outlined">Найти</Button>
+              <input
+                className={style.allcontent__search}
+                type="search"
+                placeholder="Поиск"
+              />
+              <Button
+                sx={{
+                  background: '#47464699',
+                  border: 0,
+                  color: '#939393',
+                  textTransform: 'none',
+                  padding: 0,
+                  width: 152,
+                  height: 48,
+                }}
+                variant="outlined"
+              >
+                Найти
+              </Button>
             </div>
             <div className={style.allcontent__sortGroup}>
               <div className={style.allcontent__sort}>
-                <img className={style.allcontent__sortImage} src={sortImage} alt='Сортировка со стрелкой вниз' />
+                <img
+                  className={style.allcontent__sortImage}
+                  src={sortImage}
+                  alt="Сортировка со стрелкой вниз"
+                />
                 <p className={style.allcontent__sortText}>Сортировка</p>
               </div>
               <Autocomplete
@@ -83,7 +96,7 @@ const ContentPage = () => {
                     color: '#FFFFFF',
                   },
                 }}
-                renderInput={(params) => <TextField {...params} />}
+                renderInput={params => <TextField {...params} />}
               />
             </div>
             <div className={style.allcontent__reitingList}>

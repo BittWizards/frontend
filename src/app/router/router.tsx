@@ -16,7 +16,7 @@ import { AmbassadorPromocodePage } from '../../pages/AmbassadorPromocodePage';
 
 export const router = createBrowserRouter([
   {
-    path: '',
+    path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
     children: [

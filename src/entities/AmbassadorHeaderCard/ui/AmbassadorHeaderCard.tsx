@@ -7,10 +7,11 @@ import phoneIcon from 'src/shared/icons/phone.svg';
 import tgIcon from 'src/shared/icons/telegramIcon.svg';
 import mailIcon from 'src/shared/icons/mail-white.svg';
 
+import { InfoLogoText } from 'src/shared/InfoLogoText';
+import { InfoLogoLink } from 'src/shared/InfoLogoLink';
+import { StatusIcon } from 'src/shared/StatusIcon';
+
 import style from './AmbassadorHeaderCard.module.scss';
-import { InfoLogoText } from '../../../shared/InfoLogoText';
-import { InfoLogoLink } from '../../../shared/InfoLogoLink';
-import { StatusIcon } from '../../../shared/StatusIcon';
 
 const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({
   title,

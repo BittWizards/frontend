@@ -1,3 +1,3 @@
-import StaticsAnaliticsContainer from "./ui/StatisticsAnalyticsContainer"
+import StaticsAnaliticsContainer from './ui/StatisticsAnalyticsContainer';
 
-export default StaticsAnaliticsContainer
+export { StaticsAnaliticsContainer };

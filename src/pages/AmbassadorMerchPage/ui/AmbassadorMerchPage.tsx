@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { tabsData } from '../model/data';
-import ButtonComponent from '../../../entities/Button';
+import { ButtonComponent } from 'src/entities/Button';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
@@ -48,6 +48,7 @@ const AmbassadorMerchPage = () => {
     fontWeight: '400',
     fontSize: '14px',
     lineHeight: '1.2',
+    borderBottom: '1px solid #47464699',
   };
 
   const headerCellStyle = {
@@ -105,11 +106,11 @@ const AmbassadorMerchPage = () => {
                   </TableRow>
                 ))}
                 <TableRow>
-                  <TableCell />
-                  <TableCell />
-                  <TableCell />
-                  <TableCell />
-                  <TableCell />
+                  <TableCell style={{ borderBottom: '1px solid #47464699' }} />
+                  <TableCell style={{ borderBottom: '1px solid #47464699' }} />
+                  <TableCell style={{ borderBottom: '1px solid #47464699' }} />
+                  <TableCell style={{ borderBottom: '1px solid #47464699' }} />
+                  <TableCell style={{ borderBottom: '1px solid #47464699' }} />
                   <TableCell style={commonCellStyle}>
                     {totalSum.toLocaleString('ru-RU', {
                       style: 'currency',
