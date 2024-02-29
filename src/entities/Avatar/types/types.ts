@@ -1,5 +1,7 @@
-type TAvatar = {
-  link?: string,
+type TAvatarProps = {
+  link?: string;
+  size?: 's' | 'm' | 'l';
+  status?: string;
 };
 
-export type { TAvatar };
+export type { TAvatarProps };
