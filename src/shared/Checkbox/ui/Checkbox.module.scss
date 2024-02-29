@@ -38,3 +38,23 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.read {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  margin: 0;
+
+  &:checked:disabled + span {
+    background: url(../../../shared/icons/checkbox-read-only.svg);
+  }
+
+  &:disabled + span {
+    background: url(../../../shared/icons/checkbox.svg);
+    cursor: auto;
+  }
+}

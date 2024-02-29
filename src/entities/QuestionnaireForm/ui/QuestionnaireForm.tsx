@@ -9,10 +9,19 @@ import { Textarea } from 'src/shared/Textarea';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { ButtonComponent } from 'src/entities/Button';
 
+import telegram from '../../../shared/icons/telegramIcon.svg';
+import whatsapp from '../../../shared/icons/whatsappIcon.svg';
+import habr from '../../../shared/icons/habr.svg';
+import email from '../../../shared/icons/mail.svg';
+import phone from '../../../shared/icons/phone.svg';
+
 import style from './QuestionnaireForm.module.scss';
 
 const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
   const [isEdit, setIsEdit] = useState(false);
+  const handleClick = () => {
+    setIsEdit(!isEdit)
+  }
 
   return (
     <div>
@@ -105,52 +114,97 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
         <label className={style.label}>
           Контактная информация
           <fieldset className={style.fieldset}>
-            <Input
-              type="url"
-              placeholder="https://t.me/"
-              name="telegram"
-              value={user.telegram}
-              isEdit={isEdit}
-            />
-            <Input
-              type="url"
-              placeholder="https://wa.me/"
-              name="wa"
-              value={user.wa}
-              isEdit={isEdit}
-            />
-            <Input
-              type="url"
-              placeholder="https://habr.com/ru/users"
-              name="habr"
-              value={user.habr}
-              isEdit={isEdit}
-            />
-            <Input
-              type="email"
-              placeholder="@mail.ru"
-              name="email"
-              value={user.email}
-              isEdit={isEdit}
-            />
-            <Input
-              type="phone"
-              placeholder="+7 "
-              name="phone"
-              value={user.phone}
-              isEdit={isEdit}
-            />
+            <div className={style.inputIcons}>
+              <img src={telegram} className={style.icon} alt="telegram" />
+              <Input
+                type="url"
+                placeholder="https://t.me/"
+                name="telegram"
+                value={user.telegram}
+                isEdit={isEdit}
+              />
+            </div>
+            <div className={style.inputIcons}>
+              <img src={whatsapp} className={style.icon} alt="whatsapp" />
+              <Input
+                type="url"
+                placeholder="https://wa.me/"
+                name="wa"
+                value={user.wa}
+                isEdit={isEdit}
+              />
+            </div>
+            <div className={style.inputIcons}>
+              <img src={habr} className={style.icon} alt="habr" />
+              <Input
+                type="url"
+                placeholder="https://habr.com/ru/users"
+                name="habr"
+                value={user.habr}
+                isEdit={isEdit}
+              />
+            </div>
+            <div className={style.inputIcons}>
+              <img src={email} className={style.icon} alt="email" />
+              <Input
+                type="email"
+                placeholder="@mail.ru"
+                name="email"
+                value={user.email}
+                isEdit={isEdit}
+              />
+            </div>
+            <div className={style.inputIcons}>
+              <img src={phone} className={style.icon} alt="phone" />
+              <Input
+                type="phone"
+                placeholder="+7 "
+                name="phone"
+                value={user.phone}
+                isEdit={isEdit}
+              />
+            </div>
           </fieldset>
         </label>
         <label className={`${style.label} ${style.box6}`}>
           Деятельность
           <fieldset className={style.fieldset}>
-            <Checkbox label="Ведение блога" />
-            <Checkbox label="Развитие сообщества" />
-            <Checkbox label="Написание статей" />
-            <Checkbox label="Съёмка видео" />
-            <Checkbox label="Консультации по Яндекс Практикуму" />
-            <Checkbox label="Выступление на мероприятиях" />
+            <Checkbox
+              label="Ведение блога"
+              isEdit={isEdit}
+              checked={true}
+              name="blog"
+            />
+            <Checkbox
+              label="Развитие сообщества"
+              isEdit={isEdit}
+              checked={true}
+              name="community"
+            />
+            <Checkbox
+              label="Написание статей"
+              isEdit={isEdit}
+              checked={false}
+              name="article"
+            />
+            <Checkbox
+              label="Съёмка видео"
+              isEdit={isEdit}
+              checked={false}
+              name="video"
+            />
+            <Checkbox
+              label="Консультации по Яндекс Практикуму"
+              isEdit={isEdit}
+              checked={true}
+              name="advice"
+            />
+            <Checkbox
+              label="Выступление на мероприятиях"
+              isEdit={isEdit}
+              checked={true}
+              name="speaking"
+            />
           </fieldset>
         </label>
         <label className={`${style.label} ${style.boxDown}`}>
@@ -160,6 +214,7 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
               width={976}
               height={155}
               placeholder="Дополнительная информация об Амбассадоре"
+              isEdit={isEdit}
             />
           </fieldset>
         </label>

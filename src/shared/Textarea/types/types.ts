@@ -3,6 +3,7 @@ interface ITextarea {
   height?: number;
   value?: string | number;
   placeholder?: string;
+  isEdit: boolean;
 }
 
 export type { ITextarea };

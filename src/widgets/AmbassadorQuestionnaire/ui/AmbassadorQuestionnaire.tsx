@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { FormProvider, useForm, SubmitHandler } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { IAmbassadorQuestionnaire } from '../types/types';
 
 import style from './AmbassadorQuestionnaire.module.scss';
