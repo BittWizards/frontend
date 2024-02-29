@@ -1,0 +1,27 @@
+@import 'src/app/styles/variables.scss';
+
+.navBar {
+  padding-bottom: 40px;
+}
+
+.navList {
+  margin: 0;
+  padding: 0;
+  color: $baseColorWhite;
+  display: flex;
+  gap: 44px;
+}
+
+.navItem {
+  list-style: none;
+  cursor: pointer;
+  padding-bottom: 9px;
+  border-bottom: 3px solid transparent;
+
+  &.active {
+    color: $statusColorActive;
+    border-bottom: 3px solid $statusColorActive;
+    transition: color 0.3s ease;
+    transition: border-bottom 0.3s ease;
+  }
+}

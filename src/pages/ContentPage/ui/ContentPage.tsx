@@ -8,16 +8,24 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import sortImage from 'src/shared/icons/sortImage.svg';
 import { AllContentCard } from 'src/widgets/AllContentCard';
+import { MainTabsNav } from 'src/entities/MainTabsNav';
+
 import type { User } from '../types/types';
+
 import style from './ContentPage.module.scss';
 
 const sortingOptions = ['По рейтингу', 'По дате'];
+
 const ContentPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые отчеты');
+
   const [value, setValue] = useState<string | null>(sortingOptions[0]);
   const [inputValue, setInputValue] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
+
+  const tabs: string[] = ['Новые отчеты', 'Весь контент'];
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
@@ -41,22 +49,11 @@ const ContentPage = () => {
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
-        <nav className={style.navBar}>
-          <ul className={style.navList}>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Новые отчеты' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Новые отчеты')}
-            >
-              Новые отчеты
-            </li>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Весь контент' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Весь контент')}
-            >
-              Весь контент
-            </li>
-          </ul>
-        </nav>
+        <MainTabsNav
+          tabs={tabs}
+          selectedTab={selectedOption}
+          onSelectTab={setSelectedOption}
+        />
         {selectedOption === 'Весь контент' ? (
           <div className={style.allcontent}>
             <div className={style.allcontent__searchGroup}>

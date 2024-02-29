@@ -3,33 +3,24 @@ import { useState } from 'react';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { ButtonComponent } from 'src/entities/Button';
-
-import { MailingDataGrid } from '../../../widgets/MailingDataGrid';
+import { MainTabsNav } from 'src/entities/MainTabsNav';
+import { MailingDataGrid } from 'src/widgets/MailingDataGrid';
 
 import style from './MailingPage.module.scss';
 
 const MailingPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новая рассылка');
+  const tabs: string[] = ['Новая рассылка', 'Все рассылки'];
+
   return (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
-        <nav className={style.navBar}>
-          <ul className={style.navList}>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Новая рассылка' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Новая рассылка')}
-            >
-              Новая рассылка
-            </li>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Все рассылки' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Все рассылки')}
-            >
-              Все рассылки
-            </li>
-          </ul>
-        </nav>
+        <MainTabsNav
+          tabs={tabs}
+          selectedTab={selectedOption}
+          onSelectTab={setSelectedOption}
+        />
         {selectedOption === 'Новая рассылка' ? (
           <div className={style.allcontent}>Новая рассылка в разработке</div>
         ) : (
