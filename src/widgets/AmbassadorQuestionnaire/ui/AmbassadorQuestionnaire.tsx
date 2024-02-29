@@ -1,11 +1,13 @@
-import { FC, useEffect } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FC } from 'react';
+import { FormProvider, useForm, SubmitHandler } from 'react-hook-form';
 import { IAmbassadorQuestionnaire } from '../types/types';
 
 import style from './AmbassadorQuestionnaire.module.scss';
 
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
+import { ButtonComponent } from 'src/entities/Button';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
 const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
   const methods = useForm({
@@ -17,7 +19,7 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
       index: user.index,
       clothingSize: user.clothingSize,
       shoeSize: user.shoeSize,
-      programm: user.programm,
+      position: user.position,
       purpose: user.purpose,
       education: user.education,
       workPlace: user.workPlace,
@@ -32,27 +34,34 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
       video: false,
       advice: true,
       speaking: false,
-      info: ''
+      info: '',
     },
   });
 
-  const submit = (data: Object) => {
+  const submitForm = (data: Object) => {
     console.log(data);
   };
 
-  // useEffect(() => {
-  //   setValue('gender', 'female')
-  // }, [])
-
   return (
     <FormProvider {...methods}>
-      <form
-        className={style.questionnaire}
-        onSubmit={methods.handleSubmit(submit)}
-      >
+      <form className={style.questionnaire}>
         <h2 className={style.title}>Анкета Амбассадора</h2>
         <QuestionnaireProfileInfo user={user} />
         <QuestionnaireForm user={user} />
+        <div className={style.buttons}>
+          <ButtonComponent
+            label={'Сохранить'}
+            width={244}
+            height={48}
+            onClick={methods.handleSubmit(submitForm)}
+          />
+          <ButtonSecondaryComponent
+            label={'Отменить'}
+            width={244}
+            height={48}
+            onClick={() => {}}
+          />
+        </div>
       </form>
     </FormProvider>
   );

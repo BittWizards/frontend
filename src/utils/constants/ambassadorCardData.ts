@@ -22,7 +22,6 @@ type TCardData = {
   index: number;
   clothingSize: string;
   shoeSize: number;
-  programm: string;
   purpose: string;
   education: string;
   workPlace: string;
@@ -74,7 +73,6 @@ const userCardsData = [
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
-    programm: 'Дизайнер интерфейсов',
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
@@ -204,7 +202,6 @@ const userCardsData = [
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
-    programm: 'Дизайнер интерфейсов',
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
@@ -337,7 +334,6 @@ const userCardsData = [
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
-    programm: 'Дизайнер интерфейсов',
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
@@ -466,7 +462,6 @@ const userCardsData = [
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
-    programm: 'Дизайнер интерфейсов',
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
@@ -595,7 +590,6 @@ const userCardsData = [
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
-    programm: 'Дизайнер интерфейсов',
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
@@ -724,7 +718,6 @@ const userCardsData = [
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
-    programm: 'Дизайнер интерфейсов',
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
@@ -853,7 +846,6 @@ const userCardsData = [
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
-    programm: 'Дизайнер интерфейсов',
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',

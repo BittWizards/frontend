@@ -1,26 +1,7 @@
+import { TCardData } from 'src/utils/constants/ambassadorCardData';
+
 interface IQuestionnaireForm {
-  user: {
-    country: string;
-    city: string;
-    adress: string;
-    index: number;
-
-    clothingSize: string;
-    shoeSize: number;
-
-    programm: string;
-    purpose: string;
-    education: string;
-    workPlace: string;
-
-    telegram: string;
-    wa: string;
-    habr: string;
-    email: string;
-    phone: string;
-    
-    other: string;
-  };
+  user: TCardData;
 }
 
 export type { IQuestionnaireForm };

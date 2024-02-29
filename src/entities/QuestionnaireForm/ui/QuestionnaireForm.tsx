@@ -78,7 +78,7 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
             <Input
               type="text"
               placeholder="Программа обучения в Практикуме"
-              name="programm"
+              name="position"
               isEdit={isEdit}
             />
             <Input
@@ -186,20 +186,6 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
             />
           </fieldset>
         </label>
-      </div>
-      <div className={style.buttons}>
-        <ButtonComponent
-          label={'Сохранить'}
-          width={244}
-          height={48}
-          onClick={() => {}}
-        />
-        <ButtonSecondaryComponent
-          label={'Отменить'}
-          width={244}
-          height={48}
-          onClick={() => {}}
-        />
       </div>
     </div>
   );
