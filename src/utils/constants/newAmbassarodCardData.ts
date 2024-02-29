@@ -1,11 +1,10 @@
 import avatar from 'src/shared/icons/userAvatar.png';
-import achievment from 'src/shared/icons/Achievment.svg';
 
 const ambassadorCardData = [
   {
     id: 1,
     avatar,
-    achievment,
+    achievment: 'new',
     name: 'Анна',
     surname: 'Маркина',
     position: 'Дизайнер интерфейсов',
@@ -14,7 +13,7 @@ const ambassadorCardData = [
   {
     id: 2,
     avatar,
-    achievment,
+    achievment: 'friend',
     name: 'Лиза',
     surname: 'Руденко',
     position: 'Дизайнер интерфейсов',
@@ -23,7 +22,7 @@ const ambassadorCardData = [
   {
     id: 3,
     avatar,
-    achievment,
+    achievment: 'master',
     name: 'Олег',
     surname: 'Свиридов',
     position: 'Дизайнер интерфейсов',
@@ -32,7 +31,7 @@ const ambassadorCardData = [
   {
     id: 4,
     avatar,
-    achievment,
+    achievment: 'new',
     name: 'Ирина',
     surname: 'Иванова',
     position: 'Дизайнер интерфейсов',
@@ -41,7 +40,7 @@ const ambassadorCardData = [
   {
     id: 5,
     avatar,
-    achievment,
+    achievment: 'friend',
     name: 'Артём',
     surname: 'Степанов',
     position: 'Дизайнер интерфейсов',
@@ -50,7 +49,7 @@ const ambassadorCardData = [
   {
     id: 6,
     avatar,
-    achievment,
+    achievment: 'friend',
     name: 'Анна',
     surname: 'Маркина',
     position: 'Дизайнер интерфейсов',
