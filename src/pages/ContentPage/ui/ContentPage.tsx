@@ -9,7 +9,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import sortImage from 'src/shared/icons/sortImage.svg';
 import { AllContentCard } from 'src/widgets/AllContentCard';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
-
+import { SortComponent } from 'src/entities/SortComponent';
 import type { User } from '../types/types';
 
 import style from './ContentPage.module.scss';
@@ -18,9 +18,6 @@ const sortingOptions = ['По рейтингу', 'По дате'];
 
 const ContentPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые отчеты');
-
-  const [value, setValue] = useState<string | null>(sortingOptions[0]);
-  const [inputValue, setInputValue] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
 
@@ -89,35 +86,7 @@ const ContentPage = () => {
                 />
                 <p className={style.allcontent__sortText}>Сортировка</p>
               </div>
-              <Autocomplete
-                value={value}
-                onChange={(event: any, newValue: string | null) => {
-                  setValue(newValue);
-                }}
-                inputValue={inputValue}
-                onInputChange={(event, newInputValue) => {
-                  setInputValue(newInputValue);
-                }}
-                id="controllable-states-demo"
-                options={sortingOptions}
-                sx={{
-                  width: 244,
-                  height: 48,
-                  padding: 0,
-                  border: '1px solid #FFFFFF',
-                  borderRadius: '4px',
-                  '& .MuiInputBase-root': {
-                    padding: '5px 4px 7px 11px',
-                  },
-                  '& .MuiInputBase-input': {
-                    color: '#FFFFFF',
-                  },
-                  '& .MuiSvgIcon-root': {
-                    color: '#FFFFFF',
-                  },
-                }}
-                renderInput={params => <TextField {...params} />}
-              />
+              <SortComponent width={244} height={48} color="#FFFFFF" options={sortingOptions} />
             </div>
             <div className={style.allcontent__reitingList}>
               {searchResults.map(cardData => (

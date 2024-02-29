@@ -1,3 +1,5 @@
+import avatar from 'src/shared/icons/userAvatar.png';
+
 type TColumn = {
   id: string;
   label: string;
@@ -9,6 +11,12 @@ type TRow = {
   date: string;
   recipients: string;
   text: string;
+  avatar: string;
+  name: string;
+  surname: string;
+  position: string;
+  gender: string;
+  telegram: string;
 };
 
 const columns: TColumn[] = [
@@ -24,30 +32,60 @@ const rows: TRow[] = [
     recipients:
       '(25) user@example.com, user@example.com, user@example.com, user@example.com, user@example.com',
     text: 'Добрый день! Рассылаю рассылку о посылке очень важно',
+    avatar: avatar,
+    name: 'Екатерина',
+    surname: 'Константинопольская',
+    position: 'Продакт-менеджер для специалистов с опытом',
+    gender: 'жен',
+    telegram: 'ponomarevaangelina',
   },
   {
     id: 2,
     date: '2023-10-14T13:45:00',
     recipients: 'anotheruser@example.com',
     text: 'Добрый день! Рассылаю рассылку о посылке очень важно, Добрый день! Рассылаю рассылку о посылке очень важно Рассылаю рассылку о посылке очень важно, Добрый день! Рассылаю рассылку о посылке очень важно Рассылаю рассылку о посылке очень важно',
+    avatar: avatar,
+    name: 'Екатерина',
+    surname: 'Константинопольская',
+    position: 'Продакт-менеджер для специалистов с опытом',
+    gender: 'жен',
+    telegram: 'ponomarevaangelina',
   },
   {
     id: 3,
     date: '2023-10-14T13:45:00',
     recipients: 'Все',
     text: 'Добрый день! Рассылаю рассылку о посылке очень важно Рассылаю рассылку о посылке очень важно',
+    avatar: avatar,
+    name: 'Екатерина',
+    surname: 'Константинопольская',
+    position: 'Продакт-менеджер для специалистов с опытом',
+    gender: 'жен',
+    telegram: 'ponomarevaangelina',
   },
   {
     id: 4,
     date: '2023-10-14T13:45:00',
     recipients: 'anotheruser@example.com',
     text: 'Добрый день! Рассылаю рассылку о посылке очень важно',
+    avatar: avatar,
+    name: 'Екатерина',
+    surname: 'Константинопольская',
+    position: 'Продакт-менеджер для специалистов с опытом',
+    gender: 'жен',
+    telegram: 'ponomarevaangelina',
   },
   {
     id: 5,
     date: '2023-10-14T13:45:00',
     recipients: 'Все',
     text: 'Добрый день! Рассылаю рассылку о посылке очень важно',
+    avatar: avatar,
+    name: 'Екатерина',
+    surname: 'Константинопольская',
+    position: 'Продакт-менеджер для специалистов с опытом',
+    gender: 'жен',
+    telegram: 'ponomarevaangelina',
   },
   {
     id: 6,
@@ -55,6 +93,12 @@ const rows: TRow[] = [
     recipients:
       '(20) anotheruser@example.com, anotheruser@example.com, anotheruser@example.com',
     text: 'Добрый день! Рассылаю рассылку о посылке очень важно',
+    avatar: avatar,
+    name: 'Екатерина',
+    surname: 'Константинопольская',
+    position: 'Продакт-менеджер для специалистов с опытом',
+    gender: 'жен',
+    telegram: 'ponomarevaangelina',
   },
 ];
 

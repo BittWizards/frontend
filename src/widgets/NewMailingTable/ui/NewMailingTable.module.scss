@@ -1,0 +1,42 @@
+@import 'src/app/styles/variables.scss';
+
+.avatar {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.name {
+  margin: 0;
+  padding: 0;
+}
+
+.position {
+  margin: 0;
+  padding: 0;
+}
+
+.gender {
+  margin: 0;
+  padding: 0;
+  margin-right: 45px;
+}
+
+.cellWrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.socialIcon {
+  margin: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.cellText {
+  margin: 0;
+  padding: 0;
+  align-self: center;
+}

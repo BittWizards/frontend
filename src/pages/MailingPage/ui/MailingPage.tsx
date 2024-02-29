@@ -1,17 +1,42 @@
 import { useState } from 'react';
-
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { ButtonComponent } from 'src/entities/Button';
-import { MainTabsNav } from 'src/entities/MainTabsNav';
+import { SortComponent } from 'src/entities/SortComponent';
+import { Checkbox, styled } from '@mui/material';
+import { NewMailingTable } from 'src/widgets/NewMailingTable';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary'; import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { MailingDataGrid } from 'src/widgets/MailingDataGrid';
 
 import style from './MailingPage.module.scss';
 
 const MailingPage = () => {
+  const genderOptions = ['Пол', 'Женский', 'Мужской'];
+  const jobOptions = ['Специальность', 'Разраб', 'Дизайнер', 'Аналитик', 'Продакт', 'Проджект'];
   const [selectedOption, setSelectedOption] = useState('Новая рассылка');
   const tabs: string[] = ['Новая рассылка', 'Все рассылки'];
 
+  const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
+    width: 24,
+    height: 24,
+    borderRadius: 4,
+    backgroundColor: '#ebeef4',
+    border: '1px solid #939393',
+    '& .MuiSvgIcon-root path': {
+      fill: '#ebeef4',
+    },
+    '&:hover': {
+      border: '1px solid #512da8',
+      backgroundColor: '#ebeef4',
+    },
+    '&.Mui-checked': {
+      color: '#ebeef4',
+      backgroundColor: '#14ae5c',
+      '& .MuiSvgIcon-root path': {
+        fill: '#ebeef4',
+      },
+    },
+  }));
   return (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
@@ -22,7 +47,53 @@ const MailingPage = () => {
           onSelectTab={setSelectedOption}
         />
         {selectedOption === 'Новая рассылка' ? (
-          <div className={style.allcontent}>Новая рассылка в разработке</div>
+          <form className={style.newmailing} noValidate>
+            <input className={`${style.newmailing__textfield} ${style.newmailing__textfield_get}`} type='text'
+              placeholder='Кому (Получатель или Список получателей)' />
+            <input className={`${style.newmailing__textfield} ${style.newmailing__textfield_small}`}
+              type='text' placeholder='Текст рассылки' />
+            <input className={`${style.newmailing__textfield} ${style.newmailing__textfield_big}`}
+              type='text' placeholder='Текст рассылки' />
+            <input
+              className={style.newmailing__search}
+              type="search"
+              placeholder="Поиск"
+            />
+            <div className={style.newmailing__sortgroup}>
+              <div className={style.newmailing__dropdown}>
+                <SortComponent width={220} height={48} color="#939393" options={genderOptions} />
+                <SortComponent width={220} height={48} color="#939393" options={jobOptions} />
+              </div>
+              <ul className={style.newmailing__checkboxGroup}>
+                <li className={style.newmailing__checkbox}>
+                  <StyledCheckbox className={style.newmailing__sortgroup} />
+                  <p className={style.newmailing__checkboxtext}>Закончил гайд</p>
+                </li>
+                <li className={style.newmailing__checkbox}>
+                  <StyledCheckbox />
+                  <p className={style.newmailing__checkboxtext}>Выбрать всех</p>
+                </li>
+              </ul>
+            </div>
+            <NewMailingTable />
+            <div className={style.newmailing__checkboxdown}>
+              <StyledCheckbox className={style.newmailing__sortgroup} />
+              <p className={style.newmailing__checkboxtext}>Отложенная отправка</p>
+            </div>
+            <div className={style.newmailing__buttonsGroup}>
+              <ButtonComponent
+                label="Отправить"
+                width={244}
+                height={48}
+                onClick={() => console.log(`Отправить рассылку`)} />
+              <ButtonSecondaryComponent
+                label="Удалить"
+                width={244}
+                height={48}
+                onClick={() => console.log(`Удалить рассылку`)}
+              />
+            </div>
+          </form>
         ) : (
           <div className={style.cardsContainer}>
             <div className={style.pageContent}>
@@ -42,9 +113,10 @@ const MailingPage = () => {
               <MailingDataGrid />
             </div>
           </div>
-        )}
-      </div>
-    </div>
+        )
+        }
+      </div >
+    </div >
   );
 };
 
