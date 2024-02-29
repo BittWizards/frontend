@@ -5,8 +5,8 @@ import { ButtonComponent } from 'src/entities/Button';
 import { SortComponent } from 'src/entities/SortComponent';
 import { Checkbox, styled } from '@mui/material';
 import { NewMailingTable } from 'src/widgets/NewMailingTable';
-import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
-import { MailingDataGrid } from '../../../widgets/MailingDataGrid';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary'; import { MainTabsNav } from 'src/entities/MainTabsNav';
+import { MailingDataGrid } from 'src/widgets/MailingDataGrid';
 
 import style from './MailingPage.module.scss';
 
@@ -14,7 +14,7 @@ const MailingPage = () => {
   const genderOptions = ['Пол', 'Женский', 'Мужской'];
   const jobOptions = ['Специальность', 'Разраб', 'Дизайнер', 'Аналитик', 'Продакт', 'Проджект'];
   const [selectedOption, setSelectedOption] = useState('Новая рассылка');
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+  const tabs: string[] = ['Новая рассылка', 'Все рассылки'];
 
   const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
     width: 24,
@@ -41,22 +41,11 @@ const MailingPage = () => {
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
-        <nav className={style.navBar}>
-          <ul className={style.navList}>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Новая рассылка' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Новая рассылка')}
-            >
-              Новая рассылка
-            </li>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Все рассылки' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Все рассылки')}
-            >
-              Все рассылки
-            </li>
-          </ul>
-        </nav>
+        <MainTabsNav
+          tabs={tabs}
+          selectedTab={selectedOption}
+          onSelectTab={setSelectedOption}
+        />
         {selectedOption === 'Новая рассылка' ? (
           <form className={style.newmailing} noValidate>
             <input className={`${style.newmailing__textfield} ${style.newmailing__textfield_get}`} type='text'
@@ -77,18 +66,18 @@ const MailingPage = () => {
               </div>
               <ul className={style.newmailing__checkboxGroup}>
                 <li className={style.newmailing__checkbox}>
-                  <StyledCheckbox className={style.newmailing__sortgroup} {...label} />
+                  <StyledCheckbox className={style.newmailing__sortgroup} />
                   <p className={style.newmailing__checkboxtext}>Закончил гайд</p>
                 </li>
                 <li className={style.newmailing__checkbox}>
-                  <StyledCheckbox {...label} />
+                  <StyledCheckbox />
                   <p className={style.newmailing__checkboxtext}>Выбрать всех</p>
                 </li>
               </ul>
             </div>
             <NewMailingTable />
             <div className={style.newmailing__checkboxdown}>
-              <StyledCheckbox className={style.newmailing__sortgroup} {...label} />
+              <StyledCheckbox className={style.newmailing__sortgroup} />
               <p className={style.newmailing__checkboxtext}>Отложенная отправка</p>
             </div>
             <div className={style.newmailing__buttonsGroup}>

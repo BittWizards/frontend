@@ -1,7 +1,7 @@
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { PromocodeUserInfoCard } from 'src/widgets/PromocodeUserInfoCard';
-import { userCardsData } from 'src/utils/constants/ambassadorCardData';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { ButtonComponent } from 'src/entities/Button';
 
 import style from './PromocodePage.module.scss';
@@ -26,7 +26,7 @@ const PromocodePage = () => (
         </div>
       </div>
       <div className={style.cardsContainer}>
-        {userCardsData.map(cardData => (
+        {mockCardsData.map(cardData => (
           <PromocodeUserInfoCard key={cardData.id} data={cardData} />
         ))}
       </div>

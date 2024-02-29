@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import type { FC} from 'react';
+import { useState } from 'react';
 
 import { ButtonComponent } from 'src/entities/Button';
 import { formatDateString } from 'src/utils/constants/formatDate';

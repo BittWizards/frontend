@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
-import { tabsData } from '../model/data';
-import { userCardsData } from 'src/utils/constants/ambassadorCardData';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 import { ButtonComponent } from 'src/entities/Button';
 
@@ -20,12 +20,13 @@ import {
 } from '@mui/material';
 
 import { formatDateString } from 'src/utils/constants/formatDate';
+import { tabsData } from '../model/data';
 
 import style from './AmbassadorPromocodePage.module.scss';
 
 const AmbassadorPromocodePage = () => {
   const { id } = useParams();
-  const selectedUser = userCardsData.find(user => user.id === id);
+  const selectedUser = mockCardsData.find(user => user.id === id);
 
   const commonCellStyle = {
     color: '#fff',
@@ -84,12 +85,12 @@ const AmbassadorPromocodePage = () => {
               <TableCell style={headerCellStyle}>№</TableCell>
               <TableCell style={headerCellStyle}>Промокод</TableCell>
               <TableCell style={headerCellStyle}>Дата</TableCell>
-              <TableCell></TableCell> {/* Пустой столбец для иконки удаления */}
+              <TableCell /> {/* Пустой столбец для иконки удаления */}
             </TableRow>
           </TableHead>
           <TableBody>
             {selectedUser.promocodes.map((row, index) => (
-              <TableRow key={index}>
+              <TableRow key={uuidv4()}>
                 <TableCell style={commonCellStyle}>{index + 1}</TableCell>
                 <TableCell style={commonCellStyle}>{row.promocode}</TableCell>
                 <TableCell style={commonCellStyle}>

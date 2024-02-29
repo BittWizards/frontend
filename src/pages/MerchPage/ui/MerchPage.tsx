@@ -2,35 +2,26 @@ import { useState } from 'react';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
-import { userCardsData } from 'src/utils/constants/ambassadorCardData';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { MerchUserInfoCard } from 'src/widgets/MerchUserInfoCard';
-import { MerchStatisticTable } from '../../../entities/MerchStatisticTable';
+import { MerchStatisticTable } from 'src/entities/MerchStatisticTable';
+import { MainTabsNav } from 'src/entities/MainTabsNav';
 
 import style from './MerchPage.module.scss';
 
 const MerchPage = () => {
   const [selectedOption, setSelectedOption] = useState('Заявки на отправку');
+  const tabs: string[] = ['Заявки на отправку', 'Учет мерча'];
 
   return (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
-        <nav className={style.navBar}>
-          <ul className={style.navList}>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Заявки на отправку' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Заявки на отправку')}
-            >
-              Заявки на отправку
-            </li>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Учет мерча' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Учет мерча')}
-            >
-              Учет мерча
-            </li>
-          </ul>
-        </nav>
+        <MainTabsNav
+          tabs={tabs}
+          selectedTab={selectedOption}
+          onSelectTab={setSelectedOption}
+        />
         <div>Компонент ПАНЕЛЬ ПОИСКА</div>
         {selectedOption === 'Учет мерча' ? (
           <div className={style.tableWrapper}>
@@ -38,7 +29,7 @@ const MerchPage = () => {
           </div>
         ) : (
           <div className={style.cardsContainer}>
-            {userCardsData.map(cardData => (
+            {mockCardsData.map(cardData => (
               <MerchUserInfoCard key={cardData.id} data={cardData} />
             ))}
           </div>

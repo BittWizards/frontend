@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import calendarIcon from 'src/shared/icons/calendar.svg';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
-import type { TCardProps } from '../types/types';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
+import type { TCardProps } from '../types/types';
 
 import style from './ContentUserCard.module.scss';
 
@@ -35,7 +35,7 @@ const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
         <img src={calendarIcon} alt="Calendar" className={style.calendarIcon} />
         <span className={style.date}>{formattedDate}</span>
       </div>
-      <div className={style.line}></div>
+      <div className={style.line} />
       <div className={style.btnWrapper}>
         <ButtonSecondaryComponent
           label="Посмотреть"

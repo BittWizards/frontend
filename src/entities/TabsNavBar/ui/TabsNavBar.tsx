@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import type React from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
-import { TTabsNavBarProps } from '../types/type';
+import type { TTabsNavBarProps } from '../types/type';
 import style from './TabsNavBar.module.scss';
 
 const TabsNavBar: React.FC<TTabsNavBarProps> = ({ tabs }) => {

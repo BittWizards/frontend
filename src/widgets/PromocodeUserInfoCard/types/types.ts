@@ -1,19 +1,7 @@
+import type { TMockData } from 'src/utils/types/typeMockData';
+
 type TCardProps = {
-  data: {
-    id: string;
-    avatar: string;
-    telegram: string;
-    name: string;
-    surname: string;
-    secondname: string;
-    position: string;
-    date: string;
-    statusActive: boolean;
-    promocode: string;
-    activationDate: string;
-    trackingNumber: string;
-    userStatus: string;
-  };
+  data: TMockData;
 };
 
 export type { TCardProps };

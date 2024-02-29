@@ -4,34 +4,26 @@ import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
 import { ButtonComponent } from 'src/entities/Button';
 import { AmbassadorTable } from 'src/widgets/AmbassadorTable';
+import { MainTabsNav } from 'src/entities/MainTabsNav';
 
-import { userCardsData } from 'src/utils/constants/ambassadorCardData';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
 import style from './AmbassadorPage.module.scss';
 
 const AmbassadorPage = () => {
-  const [selectedOption, setSelectedOption] = useState('Новые запросы');
+  const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
+
+  const tabs: string[] = ['Новые запросы', 'Все амбассадоры'];
 
   return (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
-        <nav className={style.navBar}>
-          <ul className={style.navList}>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Новые запросы' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Новые запросы')}
-            >
-              Новые запросы
-            </li>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Все амбассадоры' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Все амбассадоры')}
-            >
-              Все амбассадоры
-            </li>
-          </ul>
-        </nav>
+        <MainTabsNav
+          tabs={tabs}
+          selectedTab={selectedOption}
+          onSelectTab={setSelectedOption}
+        />
         {selectedOption === 'Все амбассадоры' ? (
           <>
             <div className={style.navList}>
@@ -47,12 +39,12 @@ const AmbassadorPage = () => {
                 />
               </div>
             </div>
-            <AmbassadorTable data={userCardsData} />
+            <AmbassadorTable data={mockCardsData} />
           </>
         ) : (
           <>
             <div className={style.cardsContainer}>
-              {userCardsData.map(cardData => (
+              {mockCardsData.map(cardData => (
                 <AmbassadorCard key={cardData.id} data={cardData} />
               ))}
             </div>

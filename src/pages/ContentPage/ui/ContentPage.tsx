@@ -1,59 +1,56 @@
 import { useEffect, useState } from 'react';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
-import { userCardsData } from 'src/utils/constants/ambassadorCardData';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { ContentUserCard } from 'src/widgets/ContentUserCard';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import sortImage from 'src/shared/icons/sortImage.svg';
 import { AllContentCard } from 'src/widgets/AllContentCard';
+import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { SortComponent } from 'src/entities/SortComponent';
 import type { User } from '../types/types';
+
 import style from './ContentPage.module.scss';
 
 const sortingOptions = ['По рейтингу', 'По дате'];
+
 const ContentPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые отчеты');
-  const [value, setValue] = useState<string | null>(sortingOptions[0]);
-  const [inputValue, setInputValue] = useState('');
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
+
+  const tabs: string[] = ['Новые отчеты', 'Весь контент'];
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
   useEffect(() => {
-    setSearchResults(userCardsData);
+    setSearchResults(mockCardsData);
   }, [searchTerm]);
 
   const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     // eslint-disable-next-line max-len
-    const results = userCardsData.filter((ambassador) => (ambassador.name.toLowerCase().includes(searchTerm.toLowerCase()) || ambassador.surname.toLowerCase().includes(searchTerm.toLowerCase())));
+    const results = mockCardsData.filter(
+      ambassador =>
+        ambassador.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ambassador.surname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     setSearchResults(results);
-  }
+  };
 
   return (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
-        <nav className={style.navBar}>
-          <ul className={style.navList}>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Новые отчеты' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Новые отчеты')}
-            >
-              Новые отчеты
-            </li>
-            <li
-              className={`${style.navItem} ${selectedOption === 'Весь контент' ? style.active : ''}`}
-              onClick={() => setSelectedOption('Весь контент')}
-            >
-              Весь контент
-            </li>
-          </ul>
-        </nav>
+        <MainTabsNav
+          tabs={tabs}
+          selectedTab={selectedOption}
+          onSelectTab={setSelectedOption}
+        />
         {selectedOption === 'Весь контент' ? (
           <div className={style.allcontent}>
             <div className={style.allcontent__searchGroup}>
@@ -92,14 +89,14 @@ const ContentPage = () => {
               <SortComponent width={244} height={48} color="#FFFFFF" options={sortingOptions} />
             </div>
             <div className={style.allcontent__reitingList}>
-              {searchResults.map((cardData) => (
+              {searchResults.map(cardData => (
                 <AllContentCard key={cardData.id} data={cardData} />
               ))}
             </div>
           </div>
         ) : (
           <div className={style.cardsContainer}>
-            {userCardsData.map(cardData => (
+            {mockCardsData.map(cardData => (
               <ContentUserCard key={cardData.id} data={cardData} />
             ))}
           </div>

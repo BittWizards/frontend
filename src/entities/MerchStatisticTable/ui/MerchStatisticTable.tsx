@@ -1,7 +1,4 @@
-import {
-  TCardData,
-  userCardsData,
-} from 'src/utils/constants/ambassadorCardData';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
 import {
   Table,
@@ -69,7 +66,7 @@ const MerchStatisticTable = () => {
     transform: 'rotate(-90deg)',
   };
 
-  return userCardsData ? (
+  return mockCardsData ? (
     <Table style={{ width: '100%' }}>
       <TableHead className={style.tableHead}>
         <TableRow className={style.tableRow}>
@@ -86,7 +83,7 @@ const MerchStatisticTable = () => {
       </TableHead>
 
       <TableBody>
-        {userCardsData.map((user: TCardData) => (
+        {mockCardsData.map(user => (
           <TableRow key={user.id}>
             <TableCell style={commonCellStyle}>
               <div className={style.userInfoWrapper}>
