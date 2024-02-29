@@ -9,8 +9,8 @@ import { promoData } from 'src/utils/constants/promoInfoCardData';
 import { contentData } from 'src/utils/constants/contentInfoCard';
 import { PromoInfoCard } from 'src/entities/PromoInfoCard';
 import { ContentInfoCard } from 'src/entities/ContentInfoCard';
-import ContentContainer from 'src/widgets/ContentContainer';
-import StaticsAnaliticsContainer from 'src/widgets/StatisticsAnalyticsContainer';
+import { ContentContainer } from 'src/widgets/ContentContainer';
+import { StaticsAnaliticsContainer } from 'src/widgets/StatisticsAnalyticsContainer';
 import diagramMain from 'src/shared/icons/diagramMain.svg';
 
 import style from './MainPage.module.scss';
