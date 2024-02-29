@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { userCardsData } from 'src/utils/constants/ambassadorCardData';
@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import sortImage from 'src/shared/icons/sortImage.svg';
 import { AllContentCard } from 'src/widgets/AllContentCard';
-
+import type { User } from '../types/types';
 import style from './ContentPage.module.scss';
 
 const sortingOptions = ['По рейтингу', 'По дате'];
@@ -16,6 +16,22 @@ const ContentPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые отчеты');
   const [value, setValue] = useState<string | null>(sortingOptions[0]);
   const [inputValue, setInputValue] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState<User[]>([]);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    setSearchResults(userCardsData);
+  }, [searchTerm]);
+
+  const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    // eslint-disable-next-line max-len
+    const results = userCardsData.filter((ambassador) => (ambassador.name.toLowerCase().includes(searchTerm.toLowerCase()) || ambassador.surname.toLowerCase().includes(searchTerm.toLowerCase())));
+    setSearchResults(results);
+  }
 
   return (
     <div className={style.main}>
@@ -44,8 +60,11 @@ const ContentPage = () => {
                 className={style.allcontent__search}
                 type="search"
                 placeholder="Поиск"
+                value={searchTerm}
+                onChange={handleChange}
               />
               <Button
+                onClick={onSearch}
                 sx={{
                   background: '#47464699',
                   border: 0,
@@ -100,7 +119,7 @@ const ContentPage = () => {
               />
             </div>
             <div className={style.allcontent__reitingList}>
-              {userCardsData.map(cardData => (
+              {searchResults.map((cardData) => (
                 <AllContentCard key={cardData.id} data={cardData} />
               ))}
             </div>
