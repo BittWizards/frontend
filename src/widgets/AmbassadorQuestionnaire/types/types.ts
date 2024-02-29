@@ -1,5 +1,6 @@
+import { TCardData } from 'src/utils/constants/ambassadorCardData';
 interface IAmbassadorQuestionnaire {
-  id?: string;
+  user: TCardData;
 }
 
 export type { IAmbassadorQuestionnaire };

@@ -18,11 +18,7 @@ const AmbassadorDetailPage = () => {
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <div>
-          Карточка амбассадора {selectedUser.surname} {selectedUser.name} в
-          разработке
-        </div>
-        <AmbassadorQuestionnaire id={id}/>
+        <AmbassadorQuestionnaire user={selectedUser} />
       </div>
     </div>
   ) : (

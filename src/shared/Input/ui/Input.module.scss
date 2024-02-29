@@ -26,3 +26,17 @@
     border-color: $additionalRed;
   }
 }
+
+.read {
+  background-color: inherit;
+  border: none;
+  cursor: auto;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    border: none;
+  }
+}

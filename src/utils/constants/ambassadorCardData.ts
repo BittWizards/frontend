@@ -17,6 +17,18 @@ type TCardData = {
   phone: string;
   email: string;
   city: string;
+  country: string;
+  adress: string;
+  index: number;
+  clothingSize: string;
+  shoeSize: number;
+  programm: string;
+  purpose: string;
+  education: string;
+  workPlace: string;
+  wa: string;
+  habr: string;
+  other: string;
   merch: {
     id: string;
     merchType: string;
@@ -57,7 +69,18 @@ const userCardsData = [
     userStatus: 'Active',
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
+    country: 'Россия',
     city: 'Саратов',
+    index: 564021,
+    clothingSize: 'М (44-46)',
+    shoeSize: 38,
+    programm: 'Дизайнер интерфейсов',
+    purpose: 'Смена деятельности',
+    education: 'Высшее (оконченное)',
+    workPlace: 'OOO “МегаКура”',
+    wa: '77981234568',
+    habr: 'ru/users/username',
+    adress: 'ул. Фёдора Луковского 11-23',
     merch: [
       {
         id: '1',
@@ -175,7 +198,9 @@ const userCardsData = [
     userStatus: 'OnPause',
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
+    country: 'Россия',
     city: 'Саратов',
+    adress: 'ул. Фёдора Луковского 11-23',
     merch: [
       {
         id: '1',
@@ -296,7 +321,9 @@ const userCardsData = [
     userStatus: 'PendingConfirmation',
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
+    country: 'Россия',
     city: 'Саратов',
+    adress: 'ул. Фёдора Луковского 11-23',
     merch: [
       {
         id: '1',
@@ -413,7 +440,9 @@ const userCardsData = [
     userStatus: 'Inactive',
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
+    country: 'Россия',
     city: 'Саратов',
+    adress: 'ул. Фёдора Луковского 11-23',
     merch: [
       {
         id: '1',
@@ -530,7 +559,9 @@ const userCardsData = [
     userStatus: 'Active',
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
+    country: 'Россия',
     city: 'Саратов',
+    adress: 'ул. Фёдора Луковского 11-23',
     merch: [
       {
         id: '1',
@@ -647,7 +678,9 @@ const userCardsData = [
     userStatus: 'Active',
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
+    country: 'Россия',
     city: 'Саратов',
+    adress: 'ул. Фёдора Луковского 11-23',
     merch: [
       {
         id: '1',
@@ -764,7 +797,9 @@ const userCardsData = [
     userStatus: 'PendingConfirmation',
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
+    country: 'Россия',
     city: 'Саратов',
+    adress: 'ул. Фёдора Луковского 11-23',
     reviews: 5,
     promocodes: [],
     merch: [],

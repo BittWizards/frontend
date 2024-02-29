@@ -1,10 +1,10 @@
-import { Noop, RefCallBack } from 'react-hook-form';
-
 interface IInput {
   value?: string | number;
   placeholder?: string;
   type: string;
   disabled?: boolean;
+  name: string;
+  isEdit: boolean;
 }
 
 export type { IInput };
