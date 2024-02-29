@@ -1,18 +1,13 @@
 import { FC } from 'react';
 import { IInput } from '../types/types';
-
-// import { Input } from '@mui/material';
 import { TextField } from '@mui/material';
 
 import style from './Input.module.scss';
 
-const Innput: FC<IInput> = ({ value, placeholder, type, disabled }) => {
+const Innput: FC<IInput> = ({field}) => {
   return (
     <TextField
-      disabled={disabled}
-      type={type}
-      defaultValue={value}
-      placeholder={placeholder}
+    {...field}
       id="outlined-basic"
       variant="outlined"
       sx={{
