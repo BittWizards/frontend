@@ -4,14 +4,9 @@ import { useFormContext } from 'react-hook-form'
 import { ICheckbox } from '../types/types';
 import style from './Checkbox.module.scss';
 
-const Checkbox: FC<ICheckbox> = ({ checked, label, disabled, isEdit, name }) => {
+const Checkbox: FC<ICheckbox> = ({ label, disabled, isEdit, name }) => {
 
-  const { register, setValue } = useFormContext();
-  // const [checked, setChecked] = useState(false)
-
-  useEffect(() => {
-    setValue(name, checked)
-  }, [])
+  const { register } = useFormContext();
 
   return (
     <label className={style.label}>

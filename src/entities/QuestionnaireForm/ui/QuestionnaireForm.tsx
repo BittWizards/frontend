@@ -19,9 +19,9 @@ import style from './QuestionnaireForm.module.scss';
 
 const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
   const [isEdit, setIsEdit] = useState(false);
-  const handleClick = () => {
-    setIsEdit(!isEdit)
-  }
+  const handleEdit = () => {
+    setIsEdit(!isEdit);
+  };
 
   return (
     <div>
@@ -33,28 +33,24 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
               type="text"
               placeholder="Страна"
               name="country"
-              value={user.country}
               isEdit={isEdit}
             />
             <Input
               type="text"
               placeholder="Город"
               name="city"
-              value={user.city}
               isEdit={isEdit}
             />
             <Input
               type="text"
               placeholder="Адрес"
               name="adress"
-              value={user.adress}
               isEdit={isEdit}
             />
             <Input
               type="text"
               placeholder="Индекс"
               name="index"
-              value={user.index}
               isEdit={isEdit}
             />
           </fieldset>
@@ -66,14 +62,12 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
               type="text"
               placeholder="Размер одежды"
               name="clothingSize"
-              value={user.clothingSize}
               isEdit={isEdit}
             />
             <Input
               type="text"
               placeholder="Размер обуви"
               name="shoeSize"
-              value={user.shoeSize}
               isEdit={isEdit}
             />
           </fieldset>
@@ -85,28 +79,24 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
               type="text"
               placeholder="Программа обучения в Практикуме"
               name="programm"
-              value={user.programm}
               isEdit={isEdit}
             />
             <Input
               type="text"
               placeholder="Цель обучения в Практикуме"
               name="purpose"
-              value={user.purpose}
               isEdit={isEdit}
             />
             <Input
               type="text"
               placeholder="Образование"
               name="education"
-              value={user.education}
               isEdit={isEdit}
             />
             <Input
               type="text"
               placeholder="Место работы"
               name="workPlace"
-              value={user.workPlace}
               isEdit={isEdit}
             />
           </fieldset>
@@ -120,7 +110,6 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
                 type="url"
                 placeholder="https://t.me/"
                 name="telegram"
-                value={user.telegram}
                 isEdit={isEdit}
               />
             </div>
@@ -130,7 +119,6 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
                 type="url"
                 placeholder="https://wa.me/"
                 name="wa"
-                value={user.wa}
                 isEdit={isEdit}
               />
             </div>
@@ -140,7 +128,6 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
                 type="url"
                 placeholder="https://habr.com/ru/users"
                 name="habr"
-                value={user.habr}
                 isEdit={isEdit}
               />
             </div>
@@ -150,7 +137,6 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
                 type="email"
                 placeholder="@mail.ru"
                 name="email"
-                value={user.email}
                 isEdit={isEdit}
               />
             </div>
@@ -160,7 +146,6 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
                 type="phone"
                 placeholder="+7 "
                 name="phone"
-                value={user.phone}
                 isEdit={isEdit}
               />
             </div>
@@ -169,40 +154,22 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
         <label className={`${style.label} ${style.box6}`}>
           Деятельность
           <fieldset className={style.fieldset}>
-            <Checkbox
-              label="Ведение блога"
-              isEdit={isEdit}
-              checked={true}
-              name="blog"
-            />
+            <Checkbox label="Ведение блога" isEdit={isEdit} name="blog" />
             <Checkbox
               label="Развитие сообщества"
               isEdit={isEdit}
-              checked={true}
               name="community"
             />
-            <Checkbox
-              label="Написание статей"
-              isEdit={isEdit}
-              checked={false}
-              name="article"
-            />
-            <Checkbox
-              label="Съёмка видео"
-              isEdit={isEdit}
-              checked={false}
-              name="video"
-            />
+            <Checkbox label="Написание статей" isEdit={isEdit} name="article" />
+            <Checkbox label="Съёмка видео" isEdit={isEdit} name="video" />
             <Checkbox
               label="Консультации по Яндекс Практикуму"
               isEdit={isEdit}
-              checked={true}
               name="advice"
             />
             <Checkbox
               label="Выступление на мероприятиях"
               isEdit={isEdit}
-              checked={true}
               name="speaking"
             />
           </fieldset>
@@ -215,6 +182,7 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = ({ user }) => {
               height={155}
               placeholder="Дополнительная информация об Амбассадоре"
               isEdit={isEdit}
+              name='info'
             />
           </fieldset>
         </label>

@@ -1,5 +1,4 @@
 interface ICheckbox {
-  checked?: boolean;
   label: string;
   disabled?: boolean;
   isEdit: boolean;

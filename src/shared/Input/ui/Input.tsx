@@ -5,14 +5,8 @@ import { IInput } from '../types/types';
 
 import style from './Input.module.scss';
 
-const Innput: FC<IInput> = ({ value, placeholder, type, name, isEdit }) => {
-
-  const { register, setValue } = useFormContext();
-
-
-  useEffect(() => {
-    setValue(name, value)
-  }, [])
+const Innput: FC<IInput> = ({ placeholder, type, name, isEdit }) => {
+  const { register } = useFormContext();
 
   return (
     <input
