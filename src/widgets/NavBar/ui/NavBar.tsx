@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import type { FC } from 'react';
-import type { INavbarProps } from '../types/types';
-import { NavbarLink } from '..';
 import { Avatar } from 'src/entities/Avatar';
 import avatar from 'src/shared/icons/userAvatar.png';
+import type { INavbarProps } from '../types/types';
+import { NavbarLink } from '..';
 
 import style from './NavBar.module.scss';
 

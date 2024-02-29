@@ -1,9 +1,10 @@
 import avatar from 'src/shared/icons/userAvatar.png';
+import type { TMockData } from '../types/typeMockData';
 
-const userCardsData = [
+const mockCardsData: TMockData[] = [
   {
     id: '1',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Екатерина',
     surname: 'Константинопольская',
@@ -121,7 +122,7 @@ const userCardsData = [
   },
   {
     id: '2',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Марина',
     surname: 'Князева',
@@ -242,7 +243,7 @@ const userCardsData = [
   },
   {
     id: '3',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
@@ -359,7 +360,7 @@ const userCardsData = [
   },
   {
     id: '4',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
@@ -476,7 +477,7 @@ const userCardsData = [
   },
   {
     id: '5',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
@@ -593,7 +594,7 @@ const userCardsData = [
   },
   {
     id: '6',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
@@ -710,7 +711,7 @@ const userCardsData = [
   },
   {
     id: '7',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Варвара',
     surname: 'Пономарева',
@@ -782,5 +783,4 @@ const userCardsData = [
   },
 ];
 
-export { userCardsData };
-export type { TCardData };
+export { mockCardsData };

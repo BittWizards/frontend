@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
-import { userCardsData } from 'src/utils/constants/ambassadorCardData';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { MerchUserInfoCard } from 'src/widgets/MerchUserInfoCard';
 import { MerchStatisticTable } from '../../../entities/MerchStatisticTable';
 
@@ -38,7 +38,7 @@ const MerchPage = () => {
           </div>
         ) : (
           <div className={style.cardsContainer}>
-            {userCardsData.map(cardData => (
+            {mockCardsData.map(cardData => (
               <MerchUserInfoCard key={cardData.id} data={cardData} />
             ))}
           </div>

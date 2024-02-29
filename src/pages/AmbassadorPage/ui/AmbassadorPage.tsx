@@ -5,7 +5,7 @@ import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
 import { ButtonComponent } from 'src/entities/Button';
 import { AmbassadorTable } from 'src/widgets/AmbassadorTable';
 
-import { userCardsData } from 'src/utils/constants/ambassadorCardData';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
 import style from './AmbassadorPage.module.scss';
 
@@ -47,12 +47,12 @@ const AmbassadorPage = () => {
                 />
               </div>
             </div>
-            <AmbassadorTable data={userCardsData} />
+            <AmbassadorTable data={mockCardsData} />
           </>
         ) : (
           <>
             <div className={style.cardsContainer}>
-              {userCardsData.map(cardData => (
+              {mockCardsData.map(cardData => (
                 <AmbassadorCard key={cardData.id} data={cardData} />
               ))}
             </div>

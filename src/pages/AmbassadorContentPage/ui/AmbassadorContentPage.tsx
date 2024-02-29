@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 
-import { tabsData } from '../model/data';
-import { userCardsData } from 'src/utils/constants/ambassadorCardData';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
 import {
   Table,
@@ -25,12 +25,13 @@ import telegramIcon from 'src/shared/icons/telegramIcon.svg';
 import linkedinIcon from 'src/shared/icons/linkedinIcon.svg';
 import instagramIcon from 'src/shared/icons/instIcon.svg';
 import otherSocialIcon from 'src/shared/icons/question-mark-circle.svg';
+import { tabsData } from '../model/data';
 
 import style from './AmbassadorContentPage.module.scss';
 
 const AmbassadorContentPage = () => {
   const { id } = useParams();
-  const selectedUser = userCardsData.find(user => user.id === id);
+  const selectedUser = mockCardsData.find(user => user.id === id);
 
   const commonCellStyle = {
     color: '#fff',
@@ -51,20 +52,20 @@ const AmbassadorContentPage = () => {
 
   const getPlatformIcon = (platform: string): JSX.Element => {
     switch (platform) {
-      case 'habr':
-        return <img src={habrIcon} alt="Habr" />;
-      case 'vc':
-        return <img src={vcIcon} alt="VC" />;
-      case 'youtube':
-        return <img src={youtubeIcon} alt="YouTube" />;
-      case 'telegram':
-        return <img src={telegramIcon} alt="Telegram" />;
-      case 'linkedin':
-        return <img src={linkedinIcon} alt="LinkedIn" />;
-      case 'instagram':
-        return <img src={instagramIcon} alt="Instagram" />;
-      default:
-        return <img src={otherSocialIcon} alt="Other" />;
+    case 'habr':
+      return <img src={habrIcon} alt="Habr" />;
+    case 'vc':
+      return <img src={vcIcon} alt="VC" />;
+    case 'youtube':
+      return <img src={youtubeIcon} alt="YouTube" />;
+    case 'telegram':
+      return <img src={telegramIcon} alt="Telegram" />;
+    case 'linkedin':
+      return <img src={linkedinIcon} alt="LinkedIn" />;
+    case 'instagram':
+      return <img src={instagramIcon} alt="Instagram" />;
+    default:
+      return <img src={otherSocialIcon} alt="Other" />;
     }
   };
 
@@ -92,7 +93,7 @@ const AmbassadorContentPage = () => {
               {selectedUser.content.map((row, index) => (
                 <TableRow
                   sx={{ cursor: 'pointer' }}
-                  key={index}
+                  key={uuidv4()}
                   onClick={() => handleRowClick(index)}
                 >
                   <TableCell style={commonCellStyle}>{index + 1}</TableCell>
