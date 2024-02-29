@@ -1,3 +1,3 @@
-import ButtonComponent from "./ui/Button"
+import ButtonComponent from './ui/Button';
 
-export default ButtonComponent
+export { ButtonComponent };

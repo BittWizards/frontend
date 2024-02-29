@@ -1,4 +1,4 @@
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorsInfoCard } from 'src/entities/AmbassadorsInfoCard';
 import { AmbassadorList } from 'src/widgets/AmbassadorList';
@@ -9,8 +9,8 @@ import { promoData } from 'src/utils/constants/promoInfoCardData';
 import { contentData } from 'src/utils/constants/contentInfoCard';
 import { PromoInfoCard } from 'src/entities/PromoInfoCard';
 import { ContentInfoCard } from 'src/entities/ContentInfoCard';
-import ContentContainer from 'src/widgets/ContentContainer';
-import StaticsAnaliticsContainer from 'src/widgets/StatisticsAnalyticsContainer';
+import { ContentContainer } from 'src/widgets/ContentContainer';
+import { StaticsAnaliticsContainer } from 'src/widgets/StatisticsAnalyticsContainer';
 import diagramMain from 'src/shared/icons/diagramMain.svg';
 
 import style from './MainPage.module.scss';

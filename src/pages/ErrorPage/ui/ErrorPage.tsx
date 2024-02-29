@@ -1,6 +1,6 @@
 import { useRouteError } from 'react-router-dom';
 
-import Navbar from 'src/widgets/NavBar/index';
+import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 
 import style from './ErrorPage.module.scss';
