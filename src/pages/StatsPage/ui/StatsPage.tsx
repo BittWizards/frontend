@@ -1,12 +1,13 @@
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
-import ContentContainer from 'src/widgets/ContentContainer';
+import { ContentContainer } from 'src/widgets/ContentContainer';
+import { StaticsAnaliticsContainer } from 'src/widgets/StatisticsAnalyticsContainer';
+
 import ambassadorDiagram from 'src/shared/icons/ambassadorDiagram.svg';
 import diagramMain from 'src/shared/icons/diagramMain.svg';
 import merchDiagram from 'src/shared/icons/wavesDiagram.svg';
 import promocodeDiagram from 'src/shared/icons/promocodeDiagramNew.svg';
 
-import StaticsAnaliticsContainer from 'src/widgets/StatisticsAnalyticsContainer';
 import style from './StatsPage.module.scss';
 
 const StatsPage = () => (
