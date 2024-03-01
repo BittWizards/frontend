@@ -24,7 +24,7 @@ const NewAmbassadorPage = () => {
           <form className={style.questionnaire}>
             <h2 className={style.title}>Анкета Амбассадора</h2>
             <QuestionnaireProfileInfo isEdit={true} />
-            <QuestionnaireForm />
+            <QuestionnaireForm isEdit={true} />
             <div className={style.buttons}>
               <ButtonComponent
                 label={'Сохранить'}

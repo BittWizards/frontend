@@ -6,7 +6,7 @@ interface IQuestionnaireProfileInfo {
     secondname: string;
     avatar: string;
   };
-  isEdit?: boolean;
+  isEdit: boolean;
 }
 
 export type { IQuestionnaireProfileInfo };

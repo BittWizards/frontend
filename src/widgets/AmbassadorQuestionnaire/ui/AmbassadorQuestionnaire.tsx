@@ -50,8 +50,8 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
     <FormProvider {...methods}>
       <form className={style.questionnaire}>
         <h2 className={style.title}>Анкета Амбассадора</h2>
-        <QuestionnaireProfileInfo user={user} />
-        <QuestionnaireForm />
+        <QuestionnaireProfileInfo isEdit={false} user={user} />
+        <QuestionnaireForm isEdit={false} />
         <div className={style.buttons}>
           <ButtonComponent
             label={'Сохранить'}

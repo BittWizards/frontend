@@ -16,7 +16,7 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
   return (
     <div className={style.profile}>
       <div className={style.photoContainer}>
-        {user?.avatar ? <Avatar link={user.avatar} size="l" /> : <Avatar />}
+        {user?.avatar ? <Avatar link={user.avatar} size="l" /> : <Avatar size='l' />}
         <input
           type="button"
           value="+ Загрузить фото"
