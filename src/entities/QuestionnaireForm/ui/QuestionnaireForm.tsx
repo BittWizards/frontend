@@ -10,8 +10,7 @@ import { WorkAndEducation } from 'src/entities/WorkAndEducation';
 import { Contacts } from 'src/entities/Contacts';
 import { Activity } from 'src/entities/Activity';
 
-const QuestionnaireForm: FC<IQuestionnaireForm> = () => {
-  const [isEdit, setIsEdit] = useState(false);
+const QuestionnaireForm: FC<IQuestionnaireForm> = ({ isEdit }) => {
 
   return (
     <div>

@@ -1,4 +1,5 @@
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
@@ -18,7 +19,7 @@ const AmbassadorPage = () => {
   const [searchResults, setSearchResults] = useState<User[]>([]);
 
   const tabs: string[] = ['Новые запросы', 'Все амбассадоры'];
-
+  const navigate = useNavigate();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
@@ -55,9 +56,7 @@ const AmbassadorPage = () => {
                   label="Добавить амбассадора"
                   width={244}
                   height={48}
-                  onClick={e => {
-                    console.log(e);
-                  }}
+                  onClick={() => navigate('new-ambassador', { replace: true })}
                 />
               </div>
               <FilterComponent
@@ -81,7 +80,7 @@ const AmbassadorPage = () => {
                 label="Добавить амбассадора"
                 width={244}
                 height={48}
-                onClick={() => console.log('Добавить амбассадора')}
+                onClick={() => navigate('new-ambassador', { replace: true })}
               />
             </div>
           </>

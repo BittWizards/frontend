@@ -9,11 +9,12 @@
   max-width: 390px;
   box-shadow: none;
 }
+
 .modalContainer {
   display: flex;
   flex-direction: column;
-  background-color: $baseColorDark;
   padding: 32px;
+  position: relative;
 }
 
 .btnWrapper {
@@ -35,4 +36,16 @@
   font-weight: 400;
   line-height: 120%;
   color: $baseLightBg;
+}
+
+.closeBtn {
+  margin: 0;
+  padding: 0;
+  align-self: flex-end;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  right: 20px;
 }

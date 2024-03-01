@@ -30,3 +30,21 @@ onCancel={handleClose}
 onConfirm={handleClose}
 /> */
 }
+
+//TODO Здесь пример модалки с инпутом
+
+{
+  /* <InputModal
+open={openModal}
+onClose={handleClose}
+title="Изменить промокод "
+content="Введите новый промокод"
+tableSpan="Текущий промокод сохранится в истории промокодов"
+placeholderTextArea="Введите промокод"
+heightTextArea={43}
+onCancelLabel="Отменить"
+onConfirmLabel="Сохранить"
+onCancel={handleClose}
+onConfirm={handleClose}
+/> */
+}

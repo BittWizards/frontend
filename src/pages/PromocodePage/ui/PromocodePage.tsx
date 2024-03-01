@@ -5,8 +5,8 @@ import { navbarLinks } from 'src/utils/constants/navLinks';
 import { PromocodeUserInfoCard } from 'src/widgets/PromocodeUserInfoCard';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { ButtonComponent } from 'src/entities/Button';
+import { ChoiceModal, InputModal, SuccessModal } from 'src/entities/Modals';
 
-import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import type { User } from 'src/utils/constants/types/types';
 import style from './PromocodePage.module.scss';
@@ -74,12 +74,14 @@ const PromocodePage: FC = () => {
           ))}
         </div>
       </div>
-      <ChoiceModal
+      <InputModal
         open={openModal}
         onClose={handleClose}
-        title="Отменить редактирование "
-        content="Внесённые изменения не будут сохранены.
-                Выйти без сохранения данных?"
+        title="Изменить промокод "
+        content="Введите новый промокод"
+        tableSpan="Текущий промокод сохранится в истории промокодов"
+        placeholderTextArea="Введите промокод"
+        heightTextArea={43}
         onCancelLabel="Отменить"
         onConfirmLabel="Сохранить"
         onCancel={handleClose}
@@ -91,30 +93,3 @@ const PromocodePage: FC = () => {
 };
 
 export default PromocodePage;
-
-//TODO Здесь пример модалки об успехе
-
-{
-  /* <SuccessModal
-open={openModal}
-onClose={handleClose}
-title="Успех"
-content="Все данные были успешно сохранены!"
-/> */
-}
-
-//TODO Здесь пример модалки выбора
-
-{
-  /* <ChoiceModal
-open={openModal}
-onClose={handleClose}
-title="Отменить редактирование "
-content="Внесённые изменения не будут сохранены.
-Выйти без сохранения данных?"
-onCancelLabel="Отменить"
-onConfirmLabel="Сохранить"
-onCancel={handleClose}
-onConfirm={handleClose}
-/> */
-}

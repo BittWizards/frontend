@@ -3,6 +3,8 @@ import { Dialog, DialogActions } from '@mui/material';
 
 import { ButtonComponent } from 'src/entities/Button/';
 
+import closeBtnIcon from 'src/shared/icons/closeButton.svg';
+
 import style from './SuccessModal.module.scss';
 
 type TSuccessModalProps = {
@@ -20,8 +22,19 @@ const SuccessModal: FC<TSuccessModalProps> = ({
 }) => {
   return (
     <div className={style.modalWrapper}>
-      <Dialog open={open} onClose={onClose}>
+      <Dialog
+        open={open}
+        onClose={onClose}
+        sx={{
+          '& .MuiPaper-root': {
+            backgroundColor: '#1b1c1e',
+          },
+        }}
+      >
         <div className={style.modalContainer}>
+          <button className={style.closeBtn} onClick={onClose}>
+            <img src={closeBtnIcon} />
+          </button>
           <h2 className={style.title}>{title}</h2>
           <span className={style.text}>{content}</span>
           <div className={style.btnWrapper}>
