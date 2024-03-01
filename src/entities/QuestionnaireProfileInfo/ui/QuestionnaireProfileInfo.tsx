@@ -29,19 +29,19 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
             <Input
               type="text"
               isEdit={isEdit}
-              {...register('surname')}
+              name='surname'
               placeholder="Фамилия"
             />
             <Input
               type="text"
               isEdit={isEdit}
-              {...register('name')}
+              name='name'
               placeholder="Имя"
             />
             <Input
               type="text"
               isEdit={isEdit}
-              {...register('secondname')}
+              name='secondname'
               placeholder="Отчество"
             />
           </div>

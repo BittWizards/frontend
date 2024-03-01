@@ -35,7 +35,7 @@ const AmbassadorPage = () => {
                   label="Добавить амбассадора"
                   width={244}
                   height={48}
-                  onClick={() => navigate('new-ambassador', {replace: false})}
+                  onClick={() => navigate('new-ambassador', {replace: true})}
                 />
               </div>
             </div>
@@ -53,7 +53,7 @@ const AmbassadorPage = () => {
                 label="Добавить амбассадора"
                 width={244}
                 height={48}
-                onClick={() => navigate('new-ambassador', {replace: false})}
+                onClick={() => navigate('new-ambassador', {replace: true})}
               />
             </div>
           </>
