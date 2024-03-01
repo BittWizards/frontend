@@ -7,6 +7,7 @@ import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { ButtonComponent } from 'src/entities/Button';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
+import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
 
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
@@ -61,12 +62,21 @@ const AmbassadorMerchPage = () => {
     lineHeight: '1.2',
   };
 
+  const additionalCellStyle = {
+    color: '#189251',
+  };
+
+  const combinedStyle = { ...commonCellStyle, ...additionalCellStyle };
+
   return selectedUser ? (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <AmbassadorHeaderCard title="Мерч Амбассадора" data={selectedUser} />
+        <AmbassadorHeaderCard data={selectedUser} />
+        <div className={style.subtitleWrapper}>
+          <SubtitleWithEditBtn title="Мерч Амбассадора" />
+        </div>
         <div className={style.tableWrapper}>
           <Table style={{ width: '100%' }}>
             <TableHead className={style.tableHead}>
@@ -103,6 +113,7 @@ const AmbassadorMerchPage = () => {
                       ).toLocaleString('ru-RU', {
                         style: 'currency',
                         currency: 'RUB',
+                        minimumFractionDigits: 0,
                       })}
                     </TableCell>
                   </TableRow>
@@ -113,10 +124,11 @@ const AmbassadorMerchPage = () => {
                   <TableCell style={{ borderBottom: '1px solid #47464699' }} />
                   <TableCell style={{ borderBottom: '1px solid #47464699' }} />
                   <TableCell style={{ borderBottom: '1px solid #47464699' }} />
-                  <TableCell style={commonCellStyle}>
+                  <TableCell style={combinedStyle}>
                     {totalSum.toLocaleString('ru-RU', {
                       style: 'currency',
                       currency: 'RUB',
+                      minimumFractionDigits: 0,
                     })}
                   </TableCell>
                 </TableRow>

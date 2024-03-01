@@ -1,0 +1,31 @@
+@import 'src/app/styles/variables.scss';
+
+.ambassadorHeaderCard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title {
+  margin: 0;
+  padding: 0;
+  font-family: 'YSDisplay';
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $baseLightBg;
+}
+
+.line {
+  border-bottom: 1px solid $baseDarkBg;
+  width: 620px;
+}
+
+.editBtn {
+  background-color: $baseDarkBg;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}

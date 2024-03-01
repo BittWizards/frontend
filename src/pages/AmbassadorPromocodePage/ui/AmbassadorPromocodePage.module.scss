@@ -5,6 +5,9 @@
   gap: 50px;
 }
 .content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   color: $baseColorWhite;
 }
 

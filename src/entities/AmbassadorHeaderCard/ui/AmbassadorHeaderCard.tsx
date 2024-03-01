@@ -4,7 +4,7 @@ import locationIcon from 'src/shared/icons/location-marker.svg';
 import professionIcon from 'src/shared/icons/academic-cap.svg';
 import phoneIcon from 'src/shared/icons/phone.svg';
 import tgIcon from 'src/shared/icons/telegramIcon.svg';
-import mailIcon from 'src/shared/icons/mail-white.svg';
+import mailIcon from 'src/shared/icons/mail.svg';
 
 import { InfoLogoText } from 'src/shared/InfoLogoText';
 import { InfoLogoLink } from 'src/shared/InfoLogoLink';
@@ -15,12 +15,8 @@ import type { TAmbassadorHeaderCardProps } from '../types/types';
 
 import style from './AmbassadorHeaderCard.module.scss';
 
-const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({
-  title,
-  data,
-}) => (
+const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({ data }) => (
   <div className={style.ambassadorHeaderCard}>
-    <h2 className={style.title}>{title}</h2>
     <div className={style.infoContainer}>
       <div className={style.column}>
         <Avatar link={data.avatar} size="l" />
