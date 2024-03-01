@@ -31,6 +31,8 @@ const ButtonSecondaryComponent: FC<ButtonProps> = ({
       },
     }}
     variant="contained"
+    disableRipple
+    disableElevation
   >
     {label}
   </Button>

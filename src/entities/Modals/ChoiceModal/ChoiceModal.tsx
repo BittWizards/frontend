@@ -28,13 +28,7 @@ const ChoiceModal: FC<TChoiceModalModalProps> = ({
 }) => {
   return (
     <div className={style.modalWrapper}>
-      <Dialog
-        open={open}
-        onClose={onClose}
-        classes={{ paper: style.customPaperClass }}
-        maxWidth={'xs'}
-        fullWidth={false}
-      >
+      <Dialog open={open} onClose={onClose} maxWidth={'xs'} fullWidth={false}>
         <div className={style.modalContainer}>
           <h2 className={style.title}>{title}</h2>
           <span className={style.text}>{content}</span>

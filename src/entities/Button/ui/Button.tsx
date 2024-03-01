@@ -24,13 +24,15 @@ const ButtonComponent: FC<ButtonProps> = ({
         background: '#47298E',
       },
       '&:active': {
-        background: '#341c6c'
+        background: '#341c6c',
       },
       '&:disabled': {
-        cursor: 'auto'
-      }
+        cursor: 'auto',
+      },
     }}
     variant="contained"
+    disableRipple
+    disableElevation
   >
     {label}
   </Button>
