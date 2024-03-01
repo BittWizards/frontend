@@ -17,7 +17,6 @@ type TAmbassadorHeaderCardProps = {
     email: string;
     city: string;
   };
-  title: string;
 };
 
 export type { TAmbassadorHeaderCardProps };
