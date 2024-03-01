@@ -42,7 +42,7 @@ const InputModal: FC<TInputModalModalProps> = ({
             {tableSpan}
             <div className={style.textArea}>
               <TextField
-                id="outlined-textarea"
+                id="modal-textarea"
                 placeholder={placeholderTextArea}
                 multiline
                 sx={{
@@ -55,7 +55,7 @@ const InputModal: FC<TInputModalModalProps> = ({
                   outline: 'none',
                   '& .MuiOutlinedInput-root': {
                     '&.Mui-focused fieldset': {
-                      borderColor: 'white',
+                      border: '1px solid #ebeef4',
                     },
                     '& input:hover + fieldset': {
                       borderColor: '#512da8',
@@ -65,27 +65,12 @@ const InputModal: FC<TInputModalModalProps> = ({
                     },
                   },
                   '& .MuiInputBase-root': {
-                    height: heightTextArea,
+                    minHeight: heightTextArea,
                     fontFamily: 'YSText',
                     fontWeight: 400,
                     fontSize: 16,
                     lineHeight: 1.2,
                     color: '#939393',
-                    outline: 'none',
-                    '&:focus': {
-                      borderColor: 'transparent',
-                      boxShadow: 'none',
-                      outline: 'none',
-                    },
-                    '&:hover': {
-                      borderColor: '#474646',
-                      boxShadow: 'none', // Убираем boxShadow
-                      outline: 'none',
-                    },
-                  },
-                  '&:focus': {
-                    borderColor: 'transparent',
-                    boxShadow: 'none',
                   },
                 }}
               />
@@ -114,17 +99,3 @@ const InputModal: FC<TInputModalModalProps> = ({
 };
 
 export default InputModal;
-
-{
-  /* <label className={style.textAreaWrapper}>
-{tableSpan}
-<fieldset className={style.fieldset}>
-  extareaAutosize<T
-    placeholder={placeholderTextArea}
-    readOnly={false}
-    maxRows={1}
-    style={{ backgroundColor: "yellow" }}
-  />
-</fieldset>
-</label> */
-}
