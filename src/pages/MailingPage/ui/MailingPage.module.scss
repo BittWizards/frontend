@@ -25,13 +25,15 @@
   font-size: 24px;
   line-height: 120%;
   color: $baseLightBg;
+  padding-top: 9.5px;
 }
 
 .headerColumn {
+  margin: 0;
+  padding: 0;
   display: flex;
   gap: 32px;
-  align-items: center;
-  margin-bottom: 32px;
+  
 }
 
 .newmailing {
@@ -145,3 +147,12 @@
     display: flex;
     gap: 32px;
   }
+
+  .header {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 168px;
+  }
+
+  

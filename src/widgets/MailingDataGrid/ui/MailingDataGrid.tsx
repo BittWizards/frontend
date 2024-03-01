@@ -1,9 +1,8 @@
-import type { FC} from 'react';
+import type { FC } from 'react';
 import { useState } from 'react';
-
 import { ButtonComponent } from 'src/entities/Button';
 import { formatDateString } from 'src/utils/constants/formatDate';
-import { columns, rows } from 'src/utils/constants/allMailingData';
+import { columns } from 'src/utils/constants/allMailingData';
 
 import {
   Table,
@@ -16,10 +15,11 @@ import {
 } from '@mui/material';
 
 import tgIcon from 'src/shared/icons/telegramIcon.svg';
+import type { TMailingProps } from '../types/type';
 
 import style from './MailingDataGrid.module.scss';
 
-const MailingDataGrid: FC = () => {
+const MailingDataGrid: React.FC<TMailingProps> = ({ rows }) => {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
 
   const commonCellStyle = {

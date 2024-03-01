@@ -35,15 +35,27 @@
   font-weight: 500;
 }
 
+
+.titleBtnWrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+
+}
 .pageTitle {
+  margin: 0;
+  padding: 0;
+  padding-top: 9.5px;
   font-family: 'YSDisplay';
   font-size: 24px;
   font-weight: 400;
   color: $baseLightBg;
 }
 
-.titleBtnWrapper {
+.navList {
+  margin: 0;
+  padding: 0;
   display: flex;
-  gap: 32px;
-  align-items: center;
+  gap: 122px
 }

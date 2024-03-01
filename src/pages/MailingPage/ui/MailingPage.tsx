@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { ButtonComponent } from 'src/entities/Button';
@@ -7,7 +7,9 @@ import { Checkbox, styled } from '@mui/material';
 import { NewMailingTable } from 'src/widgets/NewMailingTable';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary'; import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { MailingDataGrid } from 'src/widgets/MailingDataGrid';
-
+import type { TRow } from 'src/utils/constants/allMailingData';
+import { FilterComponent } from 'src/entities/FilterComponent';
+import { rows } from 'src/utils/constants/allMailingData';
 import style from './MailingPage.module.scss';
 
 const MailingPage = () => {
@@ -15,6 +17,30 @@ const MailingPage = () => {
   const jobOptions = ['Специальность', 'Разраб', 'Дизайнер', 'Аналитик', 'Продакт', 'Проджект'];
   const [selectedOption, setSelectedOption] = useState('Новая рассылка');
   const tabs: string[] = ['Новая рассылка', 'Все рассылки'];
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState<TRow[]>([]);
+  const sortingOptions = ['По фамилия', 'По статусу', 'По специальности', 'По дате', 'По рейтингу'];
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    setSearchResults(rows);
+  }, [searchTerm]);
+
+  const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    // eslint-disable-next-line max-len
+    const results = rows.filter(
+      ambassador =>
+        ambassador.date.toLowerCase().includes(searchTerm) ||
+        ambassador.recipients.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ambassador.text.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  };
+
 
   const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
     width: 24,
@@ -109,8 +135,14 @@ const MailingPage = () => {
                     }}
                   />
                 </div>
+                <FilterComponent
+                  onSearch={onSearch}
+                  sortingOptions={sortingOptions}
+                  searchTerm={searchTerm}
+                  handleChange={handleChange}
+                />
               </div>
-              <MailingDataGrid />
+              <MailingDataGrid rows={searchResults} />
             </div>
           </div>
         )

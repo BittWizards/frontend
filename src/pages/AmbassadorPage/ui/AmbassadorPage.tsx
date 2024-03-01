@@ -1,20 +1,42 @@
-import { useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
 import { ButtonComponent } from 'src/entities/Button';
 import { AmbassadorTable } from 'src/widgets/AmbassadorTable';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
-
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
+import { FilterComponent } from 'src/entities/FilterComponent';
+import type { User } from '../../../utils/constants/types/types';
 import style from './AmbassadorPage.module.scss';
 
 const AmbassadorPage = () => {
   const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
+  const sortingOptions = ['По фамилии', 'По статусу', 'По специальности', 'По дате'];
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState<User[]>([]);
 
   const tabs: string[] = ['Новые запросы', 'Все амбассадоры'];
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    setSearchResults(mockCardsData);
+  }, [searchTerm]);
+
+  const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    // eslint-disable-next-line max-len
+    const results = mockCardsData.filter(
+      ambassador =>
+        ambassador.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ambassador.surname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  };
   return (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
@@ -38,8 +60,14 @@ const AmbassadorPage = () => {
                   }}
                 />
               </div>
+              <FilterComponent
+                onSearch={onSearch}
+                sortingOptions={sortingOptions}
+                searchTerm={searchTerm}
+                handleChange={handleChange}
+              />
             </div>
-            <AmbassadorTable data={mockCardsData} />
+            <AmbassadorTable data={searchResults} />
           </>
         ) : (
           <>

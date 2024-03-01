@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
@@ -10,16 +10,16 @@ import sortImage from 'src/shared/icons/sortImage.svg';
 import { AllContentCard } from 'src/widgets/AllContentCard';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { SortComponent } from 'src/entities/SortComponent';
-import type { User } from '../types/types';
+import { FilterComponent } from 'src/entities/FilterComponent';
+import type { User } from '../../../utils/constants/types/types';
 
 import style from './ContentPage.module.scss';
-
-const sortingOptions = ['По рейтингу', 'По дате'];
 
 const ContentPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые отчеты');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
+  const sortingOptions = ['По фамилия', 'По статусу', 'По специальности', 'По дате', 'По рейтингу'];
 
   const tabs: string[] = ['Новые отчеты', 'Весь контент'];
 
@@ -53,41 +53,11 @@ const ContentPage = () => {
         />
         {selectedOption === 'Весь контент' ? (
           <div className={style.allcontent}>
-            <div className={style.allcontent__searchGroup}>
-              <input
-                className={style.allcontent__search}
-                type="search"
-                placeholder="Поиск"
-                value={searchTerm}
-                onChange={handleChange}
-              />
-              <Button
-                onClick={onSearch}
-                sx={{
-                  background: '#47464699',
-                  border: 0,
-                  color: '#939393',
-                  textTransform: 'none',
-                  padding: 0,
-                  width: 152,
-                  height: 48,
-                }}
-                variant="outlined"
-              >
-                Найти
-              </Button>
-            </div>
-            <div className={style.allcontent__sortGroup}>
-              <div className={style.allcontent__sort}>
-                <img
-                  className={style.allcontent__sortImage}
-                  src={sortImage}
-                  alt="Сортировка со стрелкой вниз"
-                />
-                <p className={style.allcontent__sortText}>Сортировка</p>
-              </div>
-              <SortComponent width={244} height={48} color="#FFFFFF" options={sortingOptions} />
-            </div>
+            <FilterComponent
+              onSearch={onSearch}
+              sortingOptions={sortingOptions}
+              searchTerm={searchTerm}
+              handleChange={handleChange} />
             <div className={style.allcontent__reitingList}>
               {searchResults.map(cardData => (
                 <AllContentCard key={cardData.id} data={cardData} />

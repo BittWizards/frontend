@@ -1,15 +1,21 @@
-import { FC, useState } from 'react';
+import type { FC } from 'react';
+import { useEffect, useState } from 'react';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { PromocodeUserInfoCard } from 'src/widgets/PromocodeUserInfoCard';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { ButtonComponent } from 'src/entities/Button';
 
-import style from './PromocodePage.module.scss';
 import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
+import { FilterComponent } from 'src/entities/FilterComponent';
+import type { User } from 'src/utils/constants/types/types';
+import style from './PromocodePage.module.scss';
 
 const PromocodePage: FC = () => {
   const [openModal, setModalOpen] = useState(false);
+  const sortingOptions = ['По фамилии', 'По статусу', 'По специальности', 'По дате'];
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState<User[]>([]);
 
   const handleOpen = () => {
     setModalOpen(true);
@@ -18,6 +24,27 @@ const PromocodePage: FC = () => {
   const handleClose = () => {
     setModalOpen(false);
   };
+
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    setSearchResults(mockCardsData);
+  }, [searchTerm]);
+
+  const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    // eslint-disable-next-line max-len
+    const results = mockCardsData.filter(
+      ambassador =>
+        ambassador.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ambassador.surname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  };
+
   return (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
@@ -32,27 +59,34 @@ const PromocodePage: FC = () => {
                 height={48}
                 onClick={handleOpen}
               />
-              <ChoiceModal
-                open={openModal}
-                onClose={handleClose}
-                title="Отменить редактирование "
-                content="Внесённые изменения не будут сохранены.
-                Выйти без сохранения данных?"
-                onCancelLabel="Отменить"
-                onConfirmLabel="Сохранить"
-                onCancel={handleClose}
-                onConfirm={handleClose}
-              />
             </div>
+            <FilterComponent
+              onSearch={onSearch}
+              sortingOptions={sortingOptions}
+              searchTerm={searchTerm}
+              handleChange={handleChange}
+            />
           </div>
         </div>
         <div className={style.cardsContainer}>
-          {mockCardsData.map(cardData => (
+          {searchResults.map(cardData => (
             <PromocodeUserInfoCard key={cardData.id} data={cardData} />
           ))}
         </div>
       </div>
+      <ChoiceModal
+        open={openModal}
+        onClose={handleClose}
+        title="Отменить редактирование "
+        content="Внесённые изменения не будут сохранены.
+                Выйти без сохранения данных?"
+        onCancelLabel="Отменить"
+        onConfirmLabel="Сохранить"
+        onCancel={handleClose}
+        onConfirm={handleClose}
+      />
     </div>
+
   );
 };
 
