@@ -7,6 +7,7 @@ import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorDetailPage.module.scss';
+import { AmbassadorQuestionnaire } from 'src/widgets/AmbassadorQuestionnaire';
 
 const AmbassadorDetailPage = () => {
   const { id } = useParams();
@@ -17,10 +18,7 @@ const AmbassadorDetailPage = () => {
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <div>
-          Карточка амбассадора {selectedUser.surname} {selectedUser.name} в
-          разработке
-        </div>
+        <AmbassadorQuestionnaire user={selectedUser} />
       </div>
     </div>
   ) : (

@@ -16,7 +16,7 @@ const PromocodeUserInfoCard: React.FC<TCardProps> = ({ data }) => {
     <NavLink to={`/ambassadors/${data.id}/promocode`} className={style.navLink}>
       <div className={`${style.cardContainer} `}>
         <div className={style.userInfoWrapper}>
-          {data.avatar && <Avatar link={data.avatar} />}
+          {data.avatar && <Avatar link={data.avatar} size='m' />}
           <div className={style.userInfo}>
             <p className={`${style.name}`}>
               {data.surname} {data.name}

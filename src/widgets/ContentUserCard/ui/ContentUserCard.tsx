@@ -15,7 +15,9 @@ const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
 
   return (
     <div className={style.cardContainer}>
-      {data.avatar && <Avatar link={data.avatar} />}
+      {data.avatar && (
+        <Avatar link={data.avatar} size='m' />
+      )}
       <p className={style.name}>{data.surname}</p>
       <p className={style.name}>
         {data.name} {data.secondname}

@@ -15,6 +15,17 @@ type TMockData = {
   phone: string;
   email: string;
   city: string;
+  country: string;
+  adress: string;
+  index: number;
+  clothingSize: string;
+  shoeSize: number;
+  purpose: string;
+  education: string;
+  workPlace: string;
+  wa: string;
+  habr: string;
+  other: string;
   merch: {
     id: string;
     merchType: string;

@@ -23,7 +23,7 @@ const Navbar: FC<INavbarProps> = ({ links }) => (
       </ul>
     </nav>
     <button className={style.button}>
-      <Avatar link={avatar} />
+      <Avatar link={avatar} size='m' />
     </button>
   </aside>
 );
