@@ -7,14 +7,16 @@ import { IQuestionnaireProfileInfo } from '../types/types';
 import { Avatar } from 'src/entities/Avatar';
 import { Input } from 'src/shared/Input';
 
-const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
+const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
+  user,
+  isEdit,
+}) => {
   const { register } = useFormContext();
-  const isEdit = false;
 
   return (
     <div className={style.profile}>
       <div className={style.photoContainer}>
-        <Avatar link={user.avatar} size="l" />
+        {user?.avatar ? <Avatar link={user.avatar} size="l" /> : <Avatar size='l' />}
         <input
           type="button"
           value="+ Загрузить фото"
@@ -22,17 +24,32 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
         />
       </div>
       <div className={style.infoContainer}>
-      {isEdit ? (
+        {isEdit ? (
           <div className={style.info}>
-            <Input type="text" isEdit={isEdit} {...register('surname')} />
-            <Input type="text" isEdit={isEdit} {...register('name')} />
-            <Input type="text" isEdit={isEdit} {...register('secondname')} />
+            <Input
+              type="text"
+              isEdit={isEdit}
+              name='surname'
+              placeholder="Фамилия"
+            />
+            <Input
+              type="text"
+              isEdit={isEdit}
+              name='name'
+              placeholder="Имя"
+            />
+            <Input
+              type="text"
+              isEdit={isEdit}
+              name='secondname'
+              placeholder="Отчество"
+            />
           </div>
         ) : (
           <div className={style.info}>
-            <p className={style.name}>{user.surname} </p>
-            <p className={style.name}>{user.name} </p>
-            <p className={style.name}>{user.secondname}</p>
+            <p className={style.name}>{user?.surname} </p>
+            <p className={style.name}>{user?.name} </p>
+            <p className={style.name}>{user?.secondname}</p>
           </div>
         )}
         <fieldset className={style.fieldset}>

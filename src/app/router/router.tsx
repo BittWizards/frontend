@@ -13,6 +13,7 @@ import { AmbassadorDetailPage } from '../../pages/AmbassadorDetailPage';
 import { AmbassadorMerchPage } from '../../pages/AmbassadorMerchPage';
 import { AmbassadorContentPage } from '../../pages/AmbassadorContentPage';
 import { AmbassadorPromocodePage } from '../../pages/AmbassadorPromocodePage';
+import { NewAmbassadorPage } from 'src/pages/NewAmbassadorPage';
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: 'ambassadors/:id/merch',
         element: <AmbassadorMerchPage />,
+      },
+      {
+        path: 'ambassadors/new-ambassador',
+        element: <NewAmbassadorPage />,
       },
       {
         path: 'promocode',

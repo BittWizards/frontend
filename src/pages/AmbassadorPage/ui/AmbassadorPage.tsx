@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
@@ -14,6 +15,7 @@ const AmbassadorPage = () => {
   const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
 
   const tabs: string[] = ['Новые запросы', 'Все амбассадоры'];
+  const navigate = useNavigate();
 
   return (
     <div className={style.main}>
@@ -33,9 +35,7 @@ const AmbassadorPage = () => {
                   label="Добавить амбассадора"
                   width={244}
                   height={48}
-                  onClick={e => {
-                    console.log(e);
-                  }}
+                  onClick={() => navigate('new-ambassador', {replace: true})}
                 />
               </div>
             </div>
@@ -53,7 +53,7 @@ const AmbassadorPage = () => {
                 label="Добавить амбассадора"
                 width={244}
                 height={48}
-                onClick={() => console.log('Добавить амбассадора')}
+                onClick={() => navigate('new-ambassador', {replace: true})}
               />
             </div>
           </>
