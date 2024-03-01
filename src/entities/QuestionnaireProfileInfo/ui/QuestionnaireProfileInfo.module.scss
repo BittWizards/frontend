@@ -40,6 +40,12 @@
   gap: 16px;
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .name {
   margin: 0;
   color: $baseColorWhite;
@@ -68,12 +74,19 @@
   &:checked + span {
     background: url(../../../shared/icons/radio-button-checked.svg);
   }
+
+  &:disabled:hover + span {
+    cursor: auto;
+  }
+
+  &:hover + span {
+    cursor: pointer;
+  }
 }
 
 .label {
   display: flex;
   gap: 8px;
-  cursor: pointer;
 }
 
 .label span {
