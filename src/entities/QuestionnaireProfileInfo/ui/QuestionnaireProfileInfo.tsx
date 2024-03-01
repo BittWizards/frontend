@@ -1,9 +1,11 @@
 import { FC, useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
-import style from './QuestionnaireProfileInfo.module.scss';
-import { IQuestionnaireProfileInfo } from '../types/types';
 
+import style from './QuestionnaireProfileInfo.module.scss';
+
+import { IQuestionnaireProfileInfo } from '../types/types';
 import { Avatar } from 'src/entities/Avatar';
+import { Input } from 'src/shared/Input';
 
 const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
   const { register } = useFormContext();
@@ -20,9 +22,19 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
         />
       </div>
       <div className={style.infoContainer}>
-        <p className={style.name}>{user.surname} </p>
-        <p className={style.name}>{user.name} </p>
-        <p className={style.name}>{user.secondname}</p>
+      {isEdit ? (
+          <div className={style.info}>
+            <Input type="text" isEdit={isEdit} {...register('surname')} />
+            <Input type="text" isEdit={isEdit} {...register('name')} />
+            <Input type="text" isEdit={isEdit} {...register('secondname')} />
+          </div>
+        ) : (
+          <div className={style.info}>
+            <p className={style.name}>{user.surname} </p>
+            <p className={style.name}>{user.name} </p>
+            <p className={style.name}>{user.secondname}</p>
+          </div>
+        )}
         <fieldset className={style.fieldset}>
           <label className={style.label}>
             <input
