@@ -9,7 +9,7 @@ const mockCardsData: TMockData[] = [
     name: 'Екатерина',
     surname: 'Константинопольская',
     secondname: 'Олеговна',
-    position: 'Продакт-менеджер для специалистов с опытом',
+    position: 'Продакт-менеджер для специалистов',
     date: '2024-02-19T13:45:00',
     statusActive: true,
     promocode: 'Выдра',

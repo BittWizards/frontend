@@ -14,7 +14,12 @@ import style from './AmbassadorPage.module.scss';
 
 const AmbassadorPage = () => {
   const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
-  const sortingOptions = ['По фамилии', 'По статусу', 'По специальности', 'По дате'];
+  const sortingOptions = [
+    'По фамилии',
+    'По статусу',
+    'По специальности',
+    'По дате',
+  ];
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
 
@@ -70,18 +75,22 @@ const AmbassadorPage = () => {
           </>
         ) : (
           <>
+            <div className={style.pageHeader}>
+              <div className={style.titleBtnWrapper}>
+                <h2 className={style.pageTitle}>Амбассадоры</h2>
+                <ButtonComponent
+                  label="Добавить амбассадора"
+                  width={244}
+                  height={48}
+                  onClick={() => navigate('new-ambassador')}
+                />
+              </div>
+            </div>
+
             <div className={style.cardsContainer}>
               {mockCardsData.map(cardData => (
                 <AmbassadorCard key={cardData.id} data={cardData} />
               ))}
-            </div>
-            <div className={style.btnWrapper}>
-              <ButtonComponent
-                label="Добавить амбассадора"
-                width={244}
-                height={48}
-                onClick={() => navigate('new-ambassador', { replace: true })}
-              />
             </div>
           </>
         )}
