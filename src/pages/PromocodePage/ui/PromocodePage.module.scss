@@ -13,11 +13,13 @@
 .headerWrapper {
   display: flex;
   flex-direction: column;
-  padding-bottom: 40px;
 }
 
 .headerTopWrapper {
+  margin: 0;
+  padding: 0;
   display: flex;
+  gap: 143px;
 }
 
 .cardsContainer {
@@ -27,13 +29,18 @@
 }
 
 .pageTitle {
+  margin: 0;
+  padding: 0;
+  padding-top: 9.5px;
   font-family: 'YSDisplay';
   font-size: 24px;
   font-weight: 400;
+  
 }
 
 .leftWrapper {
+  margin: 0;
+  padding: 0;
   display: flex;
   gap: 32px;
-  align-items: center;
 }

@@ -28,7 +28,7 @@ const columns: TColumn[] = [
 const rows: TRow[] = [
   {
     id: 1,
-    date: '2023-10-14T13:45:00',
+    date: '2023-10-11T13:45:00',
     recipients:
       '(25) user@example.com, user@example.com, user@example.com, user@example.com, user@example.com',
     text: 'Добрый день! Рассылаю рассылку о посылке очень важно',
@@ -103,3 +103,4 @@ const rows: TRow[] = [
 ];
 
 export { rows, columns };
+export type { TRow };

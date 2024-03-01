@@ -16,3 +16,33 @@
 .tableWrapper {
   margin-top: 42px;
 }
+
+.headerTopWrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 194px;
+  justify-content: flex-end;
+}
+
+.pageTitle {
+  margin: 0;
+  padding: 0;
+  padding-top: 9.5px;
+  font-family: 'YSDisplay';
+  font-size: 24px;
+  font-weight: 400;
+  
+}
+
+.leftWrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+}
+
+.leftWrapper_disabled {
+  display: none;
+  visibility: hidden;
+}

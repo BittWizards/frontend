@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 
 import style from './MerchStatisticTable.module.scss';
+import type { TMerchStatisticProps } from '../types/type';
 
 type TReferenceDictionary = {
   Hoodie: string;
@@ -44,7 +45,7 @@ const referenceDictionary: TReferenceDictionary = {
 
 const merchTypes = Object.values(referenceDictionary);
 
-const MerchStatisticTable = () => {
+const MerchStatisticTable: React.FC<TMerchStatisticProps> = ({ merchArray }) => {
   const commonCellStyle = {
     color: '#ebeef4',
     fontFamily: 'YSText',
@@ -66,7 +67,7 @@ const MerchStatisticTable = () => {
     transform: 'rotate(-90deg)',
   };
 
-  return mockCardsData ? (
+  return merchArray ? (
     <Table style={{ width: '100%' }}>
       <TableHead className={style.tableHead}>
         <TableRow className={style.tableRow}>
@@ -83,7 +84,7 @@ const MerchStatisticTable = () => {
       </TableHead>
 
       <TableBody>
-        {mockCardsData.map(user => (
+        {merchArray.map(user => (
           <TableRow key={user.id}>
             <TableCell style={commonCellStyle}>
               <div className={style.userInfoWrapper}>
