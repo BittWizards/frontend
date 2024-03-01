@@ -1,9 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
-import { TCardProps } from '../types/types';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { StatusIcon } from 'src/shared/StatusIcon';
+import type { TCardProps } from '../types/types';
 
 import style from './MerchUserInfoCard.module.scss';
 
@@ -25,7 +25,7 @@ const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
     <NavLink to={`/ambassadors/${data.id}/merch`} className={style.navLink}>
       <div className={style.cardContainer}>
         <div className={style.userInfoWrapper}>
-          {data.avatar && <Avatar link={data.avatar} width={48} height={48} />}
+          {data.avatar && <Avatar link={data.avatar} size='m' />}
           <div className={style.userInfo}>
             <p className={style.name}>
               {data.surname} {data.name}
@@ -47,7 +47,7 @@ const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
           </div>
           <StatusIcon data={data} />
         </div>
-        <div className={style.line}></div>
+        <div className={style.line} />
         <div className={style.promocodeWrapper}>
           <div className={style.promocodeColumn}>
             <span className={style.title}>Трек-номер</span>

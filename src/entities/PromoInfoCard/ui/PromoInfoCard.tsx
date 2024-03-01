@@ -1,12 +1,28 @@
+import type { FC} from 'react';
+import { useEffect, useState } from 'react';
+
+import { colorList } from '../model/data';
+
 import type { TPromoInfoCardProps } from '../types/types';
 
 import style from './PromoInfoCard.module.scss';
 
-const PromoInfoCard: React.FC<TPromoInfoCardProps> = ({
+let currentColorIndex = 0;
+
+const PromoInfoCard: FC<TPromoInfoCardProps> = ({
   promoCode,
   ambassador,
   date,
 }) => {
+  const [localColorIndex, setLocalColorIndex] = useState(currentColorIndex);
+
+  useEffect(() => {
+    setLocalColorIndex(currentColorIndex);
+    currentColorIndex = (currentColorIndex + 1) % colorList.length;
+  }, []);
+
+  const borderColor = colorList[localColorIndex];
+
   if (!promoCode || !ambassador || !date) {
     return null;
   }
@@ -45,7 +61,7 @@ const PromoInfoCard: React.FC<TPromoInfoCardProps> = ({
   )}`;
 
   return (
-    <div className={style.card}>
+    <div className={style.card} style={{ borderLeftColor: borderColor }}>
       <h2 className={style.title}>Промокод “{promoCode}”</h2>
       <span className={style.name}>Амбассадор : {ambassador}</span>
       <span className={style.date}>

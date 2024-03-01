@@ -7,12 +7,12 @@ import { Avatar } from 'src/entities/Avatar';
 
 const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
   const { register } = useFormContext();
-  const isEdit = false
+  const isEdit = false;
 
   return (
     <div className={style.profile}>
       <div className={style.photoContainer}>
-        <Avatar link={user.avatar} width={120} height={120} />
+        <Avatar link={user.avatar} size="l" />
         <input
           type="button"
           value="+ Загрузить фото"
@@ -25,11 +25,23 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
         <p className={style.name}>{user.secondname}</p>
         <fieldset className={style.fieldset}>
           <label className={style.label}>
-            <input type="radio" value='male' disabled={!isEdit} className={style.radio} {...register('gender')} />
+            <input
+              type="radio"
+              value="male"
+              disabled={!isEdit}
+              className={style.radio}
+              {...register('gender')}
+            />
             <span></span>М
           </label>
           <label className={style.label}>
-            <input type="radio" value='female' disabled={!isEdit} className={style.radio} {...register('gender')} />
+            <input
+              type="radio"
+              value="female"
+              disabled={!isEdit}
+              className={style.radio}
+              {...register('gender')}
+            />
             <span></span>Ж
           </label>
         </fieldset>

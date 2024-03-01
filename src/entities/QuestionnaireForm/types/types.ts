@@ -1,4 +1,4 @@
-import { TCardData } from 'src/utils/constants/ambassadorCardData';
+import { TMockData } from 'src/utils/types/typeMockData';
 
 interface IQuestionnaireForm {
   

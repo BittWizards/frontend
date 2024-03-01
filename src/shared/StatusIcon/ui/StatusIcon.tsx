@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { statusMappings } from 'src/utils/constants/statusMappings';
-import { StatusIconProps } from '../types/type';
+import type { StatusIconProps } from '../types/type';
 
 import style from './StatusIcon.module.scss';
 
@@ -8,16 +8,16 @@ const StatusIcon: FC<StatusIconProps> = ({ data }) => {
   // Функция для определения класса цвета в зависимости от статуса
   const getStatusColorClass = (userStatus: string) => {
     switch (userStatus) {
-      case 'Active':
-        return style.statusActive;
-      case 'OnPause':
-        return style.statusOnPause;
-      case 'PendingConfirmation':
-        return style.statusPendingConfirmation;
-      case 'Inactive':
-        return style.statusInactive;
-      default:
-        return '';
+    case 'Active':
+      return style.statusActive;
+    case 'OnPause':
+      return style.statusOnPause;
+    case 'PendingConfirmation':
+      return style.statusPendingConfirmation;
+    case 'Inactive':
+      return style.statusInactive;
+    default:
+      return '';
     }
   };
 

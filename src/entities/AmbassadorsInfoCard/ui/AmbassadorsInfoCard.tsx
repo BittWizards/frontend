@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import type { TAmbassadorsInfoCardProps } from '../types/types';
+import type { FC } from 'react';
 import { Avatar } from 'src/entities/Avatar';
+import type { TAmbassadorsInfoCardProps } from '../types/types';
 
 import style from './AmbassadorsInfoCard.module.scss';
 
@@ -20,8 +20,7 @@ const AmbassadorsInfoCard: FC<TAmbassadorsInfoCardProps> = ({
   return (
     <div className={style.card}>
       <div className={style.avatarContainer}>
-      <Avatar link={avatar} width={48} height={48} />
-      <img src={achievment} className={style.achievment} alt="Achievment" />
+        <Avatar link={avatar} size="m" status={achievment} />
       </div>
       <div className={style.container}>
         <p className={style.name}>

@@ -1,10 +1,11 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import { TCardProps } from '../types/type';
 import { StatusIcon } from 'src/shared/StatusIcon';
+import { Avatar } from 'src/entities/Avatar';
 
 import avatar from 'src/shared/icons/userAvatar.png';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
+import type { TCardProps } from '../types/type';
 
 import style from './AmbassadorTable.module.scss';
 
@@ -46,7 +47,7 @@ const AmbassadorTable: FC<TCardProps> = ({ data }) => {
               <div className={style.idCell}>{index + 1}</div>
               <div className={style.nameCell}>
                 <div className={style.userInfoWrapper}>
-                  <img src={avatar} className={style.avatar} alt="Avatar" />
+                  <Avatar link={avatar} size="s" />
                   <p className={style.textPosition}>
                     {ambassador.surname} {ambassador.name}
                   </p>

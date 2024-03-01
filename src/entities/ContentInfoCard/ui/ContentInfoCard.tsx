@@ -1,13 +1,15 @@
+import type { FC } from 'react';
+
+import arrowUp from 'src/shared/icons/arrow-up.svg';
+import youTube from 'src/shared/icons/youTubeIcon.svg';
+import hIcon from 'src/shared/icons/habr.svg';
+import telegram from 'src/shared/icons/telegramIcon.svg';
+import instagram from 'src/shared/icons/instIcon.svg';
+import style from './ContentInfoCard.module.scss';
+
 import type { TContentInfoCardProps } from '../types/types';
 
-import style from './ContentInfoCard.module.scss';
-import arrowUp from "../../../shared/icons/arrow-up.svg"
-import youTube from "../../../shared/icons/youTubeIcon.svg"
-import hIcon from "../../../shared/icons/habr.svg"
-import telegram from "../../../shared/icons/telegramIcon.svg"
-import instagram from "../../../shared/icons/instIcon.svg"
-
-const ContentInfoCard: React.FC<TContentInfoCardProps> = ({
+const ContentInfoCard: FC<TContentInfoCardProps> = ({
   ambassador,
   content,
 }) => (
@@ -20,7 +22,11 @@ const ContentInfoCard: React.FC<TContentInfoCardProps> = ({
       <div className={style.contentList__rating}>
         <p className={style.contentList__paragraph}>Рейтинг</p>
         <div className={style.contentList__ratingContainer}>
-          <img className={style.contentList__arrow} src={arrowUp} alt='Стрелка вверх' />
+          <img
+            className={style.contentList__arrow}
+            src={arrowUp}
+            alt="Стрелка вверх"
+          />
           <p className={style.contentList__raitingcount}>+2 позиции</p>
         </div>
       </div>
@@ -29,19 +35,35 @@ const ContentInfoCard: React.FC<TContentInfoCardProps> = ({
       <h2 className={style.contentList__titleContent}>Опубликовано контента</h2>
       <ul className={style.contentList__icons}>
         <li className={style.contentList__icon}>
-          <img src={youTube} className={style.contentList__imageIcon} alt='YouTube' />
+          <img
+            src={youTube}
+            className={style.contentList__imageIcon}
+            alt="YouTube"
+          />
           <span className={style.contentList__count}>{content.youTube}</span>
         </li>
         <li className={style.contentList__icon}>
-          <img src={hIcon} className={style.contentList__imageIcon} alt='HIcon' />
+          <img
+            src={hIcon}
+            className={style.contentList__imageIcon}
+            alt="HIcon"
+          />
           <span className={style.contentList__count}>{content.hIcon}</span>
         </li>
         <li className={style.contentList__icon}>
-          <img src={telegram} className={style.contentList__imageIcon} alt='Telegram' />
+          <img
+            src={telegram}
+            className={style.contentList__imageIcon}
+            alt="Telegram"
+          />
           <span className={style.contentList__count}>{content.telegram}</span>
         </li>
         <li className={style.contentList__icon}>
-          <img src={instagram} className={style.contentList__imageIcon} alt='Instagram' />
+          <img
+            src={instagram}
+            className={style.contentList__imageIcon}
+            alt="Instagram"
+          />
           <span className={style.contentList__count}>{content.instagram}</span>
         </li>
       </ul>

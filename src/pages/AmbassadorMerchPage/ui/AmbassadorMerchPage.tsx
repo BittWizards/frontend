@@ -1,14 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
-import { tabsData } from '../model/data';
 import { ButtonComponent } from 'src/entities/Button';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 
-import { userCardsData } from 'src/utils/constants/ambassadorCardData';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
 import {
   Table,
@@ -19,23 +19,25 @@ import {
 } from '@mui/material';
 
 import { formatDateString } from 'src/utils/constants/formatDate';
+import { tabsData } from '../model/data';
 
 import style from './AmbassadorMerchPage.module.scss';
 
 const AmbassadorMerchPage = () => {
   const { id } = useParams();
-  const selectedUser = userCardsData.find(user => user.id === id);
+  const selectedUser = mockCardsData.find(user => user.id === id);
 
   const [totalSum, setTotalSum] = useState(0);
 
   useEffect(() => {
     // При изменении данных мерча пересчитываем общую сумму
     if (selectedUser && selectedUser.merch) {
-      const sum = selectedUser.merch.reduce((acc, row) => {
-        return (
-          acc + parseInt(row.quantity) * parseFloat(row.price.replace(',', '.'))
-        );
-      }, 0);
+      const sum = selectedUser.merch.reduce(
+        (acc, row) =>
+          acc +
+          parseInt(row.quantity) * parseFloat(row.price.replace(',', '.')),
+        0
+      );
       setTotalSum(sum);
     } else {
       setTotalSum(0);
@@ -80,7 +82,7 @@ const AmbassadorMerchPage = () => {
             {selectedUser.merch && selectedUser.merch.length > 0 ? (
               <TableBody>
                 {selectedUser.merch.map((row, index) => (
-                  <TableRow key={index}>
+                  <TableRow key={uuidv4()}>
                     <TableCell style={commonCellStyle}>{index + 1}</TableCell>
                     <TableCell style={commonCellStyle}>
                       {formatDateString(row.date)}

@@ -1,60 +1,10 @@
 import avatar from 'src/shared/icons/userAvatar.png';
+import type { TMockData } from '../types/typeMockData';
 
-type TCardData = {
-  id: string;
-  avatar: string;
-  telegram: string;
-  name: string;
-  surname: string;
-  secondname: string;
-  position: string;
-  date: string;
-  statusActive: boolean;
-  promocode: string;
-  activationDate: string;
-  trackingNumber: string;
-  userStatus: string;
-  phone: string;
-  email: string;
-  city: string;
-  country: string;
-  adress: string;
-  index: number;
-  clothingSize: string;
-  shoeSize: number;
-  purpose: string;
-  education: string;
-  workPlace: string;
-  wa: string;
-  habr: string;
-  other: string;
-  merch: {
-    id: string;
-    merchType: string;
-    merchSize: string;
-    date: string;
-    quantity: string;
-    price: string;
-  }[];
-  reviews: number;
-  promocodes: {
-    id: string;
-    promocode: string;
-    date: string;
-  }[];
-  content: {
-    id: string;
-    date: string;
-    link: string;
-    platform: string;
-    fileCounter: string;
-  }[];
-};
-
-const userCardsData = [
+const mockCardsData: TMockData[] = [
   {
     id: '1',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Екатерина',
     surname: 'Константинопольская',
@@ -69,17 +19,19 @@ const userCardsData = [
     phone: '+7 798 123 45 68',
     email: 'test@yandex.ru',
     city: 'Саратов',
+
     country: 'Россия',
+    adress: 'ул. Фёдора Луковского 11-23',
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
-    wa: '77981234568',
-    habr: 'ru/users/username',
-    adress: 'ул. Фёдора Луковского 11-23',
+    wa: 'https://wa.me/77981234568',
+    habr: 'https://habr.com/ru/users/username/',
     other: '',
+
     merch: [
       {
         id: '1',
@@ -183,7 +135,7 @@ const userCardsData = [
   },
   {
     id: '2',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Марина',
     surname: 'Князева',
@@ -199,15 +151,15 @@ const userCardsData = [
     email: 'test@yandex.ru',
     city: 'Саратов',
     country: 'Россия',
+    adress: 'ул. Фёдора Луковского 11-23',
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
-    wa: '77981234568',
-    habr: 'ru/users/username',
-    adress: 'ул. Фёдора Луковского 11-23',
+    wa: 'https://wa.me/77981234568',
+    habr: 'https://habr.com/ru/users/username/',
     other: '',
     merch: [
       {
@@ -315,7 +267,7 @@ const userCardsData = [
   },
   {
     id: '3',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
@@ -331,15 +283,15 @@ const userCardsData = [
     email: 'test@yandex.ru',
     city: 'Саратов',
     country: 'Россия',
+    adress: 'ул. Фёдора Луковского 11-23',
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
-    wa: '77981234568',
-    habr: 'ru/users/username',
-    adress: 'ул. Фёдора Луковского 11-23',
+    wa: 'https://wa.me/77981234568',
+    habr: 'https://habr.com/ru/users/username/',
     other: '',
     merch: [
       {
@@ -443,7 +395,7 @@ const userCardsData = [
   },
   {
     id: '4',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
@@ -459,15 +411,15 @@ const userCardsData = [
     email: 'test@yandex.ru',
     city: 'Саратов',
     country: 'Россия',
+    adress: 'ул. Фёдора Луковского 11-23',
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
-    wa: '77981234568',
-    habr: 'ru/users/username',
-    adress: 'ул. Фёдора Луковского 11-23',
+    wa: 'https://wa.me/77981234568',
+    habr: 'https://habr.com/ru/users/username/',
     other: '',
     merch: [
       {
@@ -571,7 +523,7 @@ const userCardsData = [
   },
   {
     id: '5',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
@@ -587,15 +539,15 @@ const userCardsData = [
     email: 'test@yandex.ru',
     city: 'Саратов',
     country: 'Россия',
+    adress: 'ул. Фёдора Луковского 11-23',
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
-    wa: '77981234568',
-    habr: 'ru/users/username',
-    adress: 'ул. Фёдора Луковского 11-23',
+    wa: 'https://wa.me/77981234568',
+    habr: 'https://habr.com/ru/users/username/',
     other: '',
     merch: [
       {
@@ -699,7 +651,7 @@ const userCardsData = [
   },
   {
     id: '6',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
@@ -715,15 +667,15 @@ const userCardsData = [
     email: 'test@yandex.ru',
     city: 'Саратов',
     country: 'Россия',
+    adress: 'ул. Фёдора Луковского 11-23',
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
-    wa: '77981234568',
-    habr: 'ru/users/username',
-    adress: 'ул. Фёдора Луковского 11-23',
+    wa: 'https://wa.me/77981234568',
+    habr: 'https://habr.com/ru/users/username/',
     other: '',
     merch: [
       {
@@ -827,7 +779,7 @@ const userCardsData = [
   },
   {
     id: '7',
-    avatar: avatar,
+    avatar,
     telegram: 'ponomarevaangelina',
     name: 'Варвара',
     surname: 'Пономарева',
@@ -843,15 +795,15 @@ const userCardsData = [
     email: 'test@yandex.ru',
     city: 'Саратов',
     country: 'Россия',
+    adress: 'ул. Фёдора Луковского 11-23',
     index: 564021,
     clothingSize: 'М (44-46)',
     shoeSize: 38,
     purpose: 'Смена деятельности',
     education: 'Высшее (оконченное)',
     workPlace: 'OOO “МегаКура”',
-    wa: '77981234568',
-    habr: 'ru/users/username',
-    adress: 'ул. Фёдора Луковского 11-23',
+    wa: 'https://wa.me/77981234568',
+    habr: 'https://habr.com/ru/users/username/',
     other: '',
     reviews: 5,
     promocodes: [],
@@ -910,5 +862,4 @@ const userCardsData = [
   },
 ];
 
-export { userCardsData };
-export type { TCardData };
+export { mockCardsData };
