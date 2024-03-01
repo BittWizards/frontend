@@ -23,10 +23,28 @@ import { formatDateString } from 'src/utils/constants/formatDate';
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorPromocodePage.module.scss';
+import { ChoiceModal, InputModal } from '../../../entities/Modals';
+import { useState } from 'react';
+import ButtonSecondaryComponent from '../../../entities/ButtonSecondary';
 
 const AmbassadorPromocodePage = () => {
   const { id } = useParams();
+  const [openInputModal, setInputModalOpen] = useState(false);
+  const [openChoiceModal, setChoiceModalOpen] = useState(false);
+
   const selectedUser = mockCardsData.find(user => user.id === id);
+
+  const handleChoiceOpen = () => {
+    setChoiceModalOpen(true);
+  };
+  const handleInputOpen = () => {
+    setInputModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setInputModalOpen(false);
+    setChoiceModalOpen(false);
+  };
 
   const commonCellStyle = {
     color: '#fff',
@@ -73,9 +91,13 @@ const AmbassadorPromocodePage = () => {
             label="Изменить промокод"
             width={244}
             height={48}
-            onClick={e => {
-              console.log(e);
-            }}
+            onClick={handleInputOpen}
+          />
+          <ButtonSecondaryComponent
+            label="Удалить"
+            width={244}
+            height={48}
+            onClick={handleChoiceOpen}
           />
         </div>
         <h3 className={style.tableTitle}>История промокодов</h3>
@@ -97,7 +119,7 @@ const AmbassadorPromocodePage = () => {
                   {formatDateString(row.date)}
                 </TableCell>
                 <TableCell style={commonCellStyle}>
-                  <IconButton aria-label="delete">
+                  <IconButton aria-label="delete" onClick={handleChoiceOpen}>
                     <img src={trashIcon} alt="trashBtn" />
                   </IconButton>
                 </TableCell>
@@ -106,6 +128,29 @@ const AmbassadorPromocodePage = () => {
           </TableBody>
         </Table>
       </div>
+      <ChoiceModal
+        open={openChoiceModal}
+        onClose={handleClose}
+        title="Удалить  промокод"
+        content="Вы действительно хотите удалить активный промокод и перенести его в историю?"
+        onCancelLabel="Отменить"
+        onConfirmLabel="Удалить"
+        onCancel={handleClose}
+        onConfirm={handleClose}
+      />
+      <InputModal
+        open={openInputModal}
+        onClose={handleClose}
+        title="Изменить промокод "
+        content="Введите новый промокод"
+        tableSpan="Текущий промокод сохранится в истории промокодов"
+        placeholderTextArea="Введите промокод"
+        heightTextArea={43}
+        onCancelLabel="Отменить"
+        onConfirmLabel="Сохранить"
+        onCancel={handleClose}
+        onConfirm={handleClose}
+      />
     </div>
   ) : (
     <div>Пользоваетель с id ${id} не найден</div>

@@ -3,6 +3,8 @@ import { Dialog, DialogActions } from '@mui/material';
 import { ButtonComponent } from 'src/entities/Button/';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
+import closeBtnIcon from 'src/shared/icons/closeButton.svg';
+
 import style from './ChoiceModal.module.scss';
 
 type TChoiceModalModalProps = {
@@ -28,8 +30,21 @@ const ChoiceModal: FC<TChoiceModalModalProps> = ({
 }) => {
   return (
     <div className={style.modalWrapper}>
-      <Dialog open={open} onClose={onClose} maxWidth={'xs'} fullWidth={false}>
+      <Dialog
+        open={open}
+        sx={{
+          '& .MuiPaper-root': {
+            backgroundColor: '#1b1c1e',
+          },
+        }}
+        onClose={onClose}
+        maxWidth={'xs'}
+        fullWidth={false}
+      >
         <div className={style.modalContainer}>
+          <button className={style.closeBtn} onClick={onClose}>
+            <img src={closeBtnIcon} />
+          </button>
           <h2 className={style.title}>{title}</h2>
           <span className={style.text}>{content}</span>
           <div className={style.btnWrapper}>

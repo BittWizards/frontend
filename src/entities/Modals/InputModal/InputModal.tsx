@@ -1,7 +1,9 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Dialog, DialogActions, TextField } from '@mui/material';
 import { ButtonComponent } from 'src/entities/Button/';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
+
+import closeBtnIcon from 'src/shared/icons/closeButton.svg';
 
 import style from './InputModal.module.scss';
 
@@ -32,10 +34,25 @@ const InputModal: FC<TInputModalModalProps> = ({
   onCancel,
   onConfirm,
 }) => {
+  const [textInputValue, setTextInputValue] = useState('');
+
   return (
     <div className={style.modalWrapper}>
-      <Dialog open={open} onClose={onClose} maxWidth={'xs'} fullWidth={false}>
+      <Dialog
+        open={open}
+        sx={{
+          '& .MuiPaper-root': {
+            backgroundColor: '#1b1c1e',
+          },
+        }}
+        onClose={onClose}
+        maxWidth={'xs'}
+        fullWidth={false}
+      >
         <div className={style.modalContainer}>
+          <button className={style.closeBtn} onClick={onClose}>
+            <img src={closeBtnIcon} />
+          </button>
           <h2 className={style.title}>{title}</h2>
           <span className={style.text}>{content}</span>
           <label className={style.textAreaWrapper}>
@@ -44,6 +61,9 @@ const InputModal: FC<TInputModalModalProps> = ({
               <TextField
                 id="modal-textarea"
                 placeholder={placeholderTextArea}
+                type="text"
+                value={textInputValue}
+                onChange={e => setTextInputValue(e.target.value)}
                 multiline
                 sx={{
                   color: '#939393',
@@ -57,11 +77,14 @@ const InputModal: FC<TInputModalModalProps> = ({
                     '&.Mui-focused fieldset': {
                       border: '1px solid #ebeef4',
                     },
-                    '& input:hover + fieldset': {
+                    '&:hover fieldset': {
                       borderColor: '#512da8',
                     },
-                    '& input:invalid + fieldset': {
+                    '&:invalid fieldset': {
                       borderColor: '#cd4e2e',
+                    },
+                    '& fieldset': {
+                      borderColor: '#474646',
                     },
                   },
                   '& .MuiInputBase-root': {
