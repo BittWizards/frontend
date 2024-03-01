@@ -9,6 +9,7 @@
   font-size: 16px;
   line-height: 1.2;
   width: 336px;
+  box-sizing: border-box;
 
   &:focus {
     outline: thin solid $additionalPurple;

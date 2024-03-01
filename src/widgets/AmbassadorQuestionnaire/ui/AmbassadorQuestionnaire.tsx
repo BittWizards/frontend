@@ -10,9 +10,13 @@ import { ButtonComponent } from 'src/entities/Button';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
 const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
+
   const methods = useForm({
     defaultValues: {
       gender: 'female',
+      surname: user.surname,
+      name: user.name,
+      secondname: user.secondname,
       country: user.country,
       city: user.city,
       adress: user.adress,
@@ -38,8 +42,8 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
     },
   });
 
-  const submitForm = (data: Object) => {
-    console.log(data);
+  const submitForm = (user: Object) => {
+    console.log('saved', {user});
   };
 
   return (
@@ -47,7 +51,7 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
       <form className={style.questionnaire}>
         <h2 className={style.title}>Анкета Амбассадора</h2>
         <QuestionnaireProfileInfo user={user} />
-        <QuestionnaireForm user={user} />
+        <QuestionnaireForm />
         <div className={style.buttons}>
           <ButtonComponent
             label={'Сохранить'}

@@ -1,27 +1,5 @@
 @import 'src/app/styles/variables.scss';
 
-.container {
-  display: flex;
-  gap: 216px;
-  margin-bottom: 32px;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.left {
-  gap: 32px;
-  max-width: 336px;
-}
-
-.right {
-  gap: 148px;
-  max-width: 424px;
-}
-
 .label {
   display: block;
   font-weight: 500;
@@ -37,5 +15,4 @@
   margin: 16px 0 0 0;
   border: none;
   padding: 0;
-  max-width: 336px;
 }
