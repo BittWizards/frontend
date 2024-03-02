@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { IAmbassadorQuestionnaire } from '../types/types';
+import { ICandidateQuestionnaire } from '../types/types';
 
+import { FormContainer } from 'src/shared/FormContainer';
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
-import { FormContainer } from 'src/shared/FormContainer';
 
-const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
+const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = ({ user }) => {
   const defaultValues = {
     gender: 'female',
     surname: user.surname,
@@ -41,11 +41,11 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
 
   return (
     <FormContainer
-      title="Анкета Амбассадора"
+      title="Анкета Кандидата"
       defaultValues={defaultValues}
       onSubmit={submitForm}
-      submitButtonLabel="Сохранить"
-      cancelButtonLabel="Отменить"
+      submitButtonLabel="Принять"
+      cancelButtonLabel="Отклонить"
     >
       <QuestionnaireProfileInfo isEdit={false} user={user} />
       <QuestionnaireForm isEdit={false} />
@@ -53,4 +53,4 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
   );
 };
 
-export default AmbassadorQuestionnaire;
+export default CandidateQuestionnaire;

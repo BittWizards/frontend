@@ -14,6 +14,7 @@ import { AmbassadorMerchPage } from '../../pages/AmbassadorMerchPage';
 import { AmbassadorContentPage } from '../../pages/AmbassadorContentPage';
 import { AmbassadorPromocodePage } from '../../pages/AmbassadorPromocodePage';
 import { NewAmbassadorPage } from 'src/pages/NewAmbassadorPage';
+import { CandidateDetailPage } from 'src/pages/CandidateDetailPage';
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: 'ambassadors/:id/detail',
         element: <AmbassadorDetailPage />,
+      },
+      {
+        path: 'ambassadors/candidate/:id/detail',
+        element: <CandidateDetailPage />,
       },
       {
         path: 'ambassadors/:id/promocode',
