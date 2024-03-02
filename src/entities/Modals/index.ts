@@ -1,8 +1,9 @@
 import SuccessModal from 'src/entities/Modals/SuccessModal/SuccessModal';
 import ChoiceModal from 'src/entities/Modals/ChoiceModal/ChoiceModal';
 import InputModal from 'src/entities/Modals/InputModal/InputModal';
+import DateInputModal from 'src/entities/Modals/DateInputModal/ui/DateInputModal';
 
-export { SuccessModal, ChoiceModal, InputModal };
+export { SuccessModal, ChoiceModal, InputModal, DateInputModal };
 
 //TODO Здесь пример модалки об успехе
 

@@ -10,6 +10,7 @@ import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 import { ButtonComponent } from 'src/entities/Button';
 import { ChoiceModal, InputModal } from 'src/entities/Modals';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
+import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
 
 import trashIcon from 'src/shared/icons/trash.svg';
 
@@ -26,7 +27,6 @@ import { formatDateString } from 'src/utils/constants/formatDate';
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorPromocodePage.module.scss';
-import { SubtitleWithEditBtn } from '../../../shared/SubtitleWithEditBtn';
 
 const AmbassadorPromocodePage = () => {
   const { id } = useParams();
