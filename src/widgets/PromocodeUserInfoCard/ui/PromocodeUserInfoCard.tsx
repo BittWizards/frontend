@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
@@ -16,7 +16,7 @@ const PromocodeUserInfoCard: React.FC<TCardProps> = ({ data }) => {
     <NavLink to={`/ambassadors/${data.id}/promocode`} className={style.navLink}>
       <div className={`${style.cardContainer} `}>
         <div className={style.userInfoWrapper}>
-          {data.avatar && <Avatar link={data.avatar} size='m' />}
+          {data.avatar && <Avatar link={data.avatar} size="m" />}
           <div className={style.userInfo}>
             <p className={`${style.name}`}>
               {data.surname} {data.name}
@@ -27,14 +27,7 @@ const PromocodeUserInfoCard: React.FC<TCardProps> = ({ data }) => {
         <div className={style.statusWrapper}>
           <div className={style.socialWrapper}>
             <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-            <Link
-              className={style.tgLink}
-              to={`https://t.me/${data.telegram}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {data.telegram}
-            </Link>
+            <span className={style.tg}>{`@${data.telegram}`}</span>
           </div>
           <StatusIcon data={data} />
         </div>

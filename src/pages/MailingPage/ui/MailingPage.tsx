@@ -5,7 +5,8 @@ import { ButtonComponent } from 'src/entities/Button';
 import { SortComponent } from 'src/entities/SortComponent';
 import { Checkbox, styled } from '@mui/material';
 import { NewMailingTable } from 'src/widgets/NewMailingTable';
-import ButtonSecondaryComponent from 'src/entities/ButtonSecondary'; import { MainTabsNav } from 'src/entities/MainTabsNav';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
+import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { MailingDataGrid } from 'src/widgets/MailingDataGrid';
 import type { TRow } from 'src/utils/constants/allMailingData';
 import { FilterComponent } from 'src/entities/FilterComponent';
@@ -14,12 +15,25 @@ import style from './MailingPage.module.scss';
 
 const MailingPage = () => {
   const genderOptions = ['Пол', 'Женский', 'Мужской'];
-  const jobOptions = ['Специальность', 'Разраб', 'Дизайнер', 'Аналитик', 'Продакт', 'Проджект'];
+  const jobOptions = [
+    'Специальность',
+    'Разраб',
+    'Дизайнер',
+    'Аналитик',
+    'Продакт',
+    'Проджект',
+  ];
   const [selectedOption, setSelectedOption] = useState('Новая рассылка');
   const tabs: string[] = ['Новая рассылка', 'Все рассылки'];
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<TRow[]>([]);
-  const sortingOptions = ['По фамилия', 'По статусу', 'По специальности', 'По дате', 'По рейтингу'];
+  const sortingOptions = [
+    'По фамилия',
+    'По статусу',
+    'По специальности',
+    'По дате',
+    'По рейтингу',
+  ];
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -35,12 +49,13 @@ const MailingPage = () => {
     const results = rows.filter(
       ambassador =>
         ambassador.date.toLowerCase().includes(searchTerm) ||
-        ambassador.recipients.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ambassador.recipients
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
         ambassador.text.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
   };
-
 
   const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
     width: 24,
@@ -74,12 +89,21 @@ const MailingPage = () => {
         />
         {selectedOption === 'Новая рассылка' ? (
           <form className={style.newmailing} noValidate>
-            <input className={`${style.newmailing__textfield} ${style.newmailing__textfield_get}`} type='text'
-              placeholder='Кому (Получатель или Список получателей)' />
-            <input className={`${style.newmailing__textfield} ${style.newmailing__textfield_small}`}
-              type='text' placeholder='Текст рассылки' />
-            <input className={`${style.newmailing__textfield} ${style.newmailing__textfield_big}`}
-              type='text' placeholder='Текст рассылки' />
+            <input
+              className={`${style.newmailing__textfield} ${style.newmailing__textfield_get}`}
+              type="text"
+              placeholder="Кому (Получатель или Список получателей)"
+            />
+            <input
+              className={`${style.newmailing__textfield} ${style.newmailing__textfield_small}`}
+              type="text"
+              placeholder="Текст рассылки"
+            />
+            <input
+              className={`${style.newmailing__textfield} ${style.newmailing__textfield_big}`}
+              type="text"
+              placeholder="Текст рассылки"
+            />
             <input
               className={style.newmailing__search}
               type="search"
@@ -87,13 +111,25 @@ const MailingPage = () => {
             />
             <div className={style.newmailing__sortgroup}>
               <div className={style.newmailing__dropdown}>
-                <SortComponent width={220} height={48} color="#939393" options={genderOptions} />
-                <SortComponent width={220} height={48} color="#939393" options={jobOptions} />
+                <SortComponent
+                  width={220}
+                  height={48}
+                  color="#939393"
+                  options={genderOptions}
+                />
+                <SortComponent
+                  width={220}
+                  height={48}
+                  color="#939393"
+                  options={jobOptions}
+                />
               </div>
               <ul className={style.newmailing__checkboxGroup}>
                 <li className={style.newmailing__checkbox}>
                   <StyledCheckbox className={style.newmailing__sortgroup} />
-                  <p className={style.newmailing__checkboxtext}>Закончил гайд</p>
+                  <p className={style.newmailing__checkboxtext}>
+                    Закончил гайд
+                  </p>
                 </li>
                 <li className={style.newmailing__checkbox}>
                   <StyledCheckbox />
@@ -104,14 +140,17 @@ const MailingPage = () => {
             <NewMailingTable />
             <div className={style.newmailing__checkboxdown}>
               <StyledCheckbox className={style.newmailing__sortgroup} />
-              <p className={style.newmailing__checkboxtext}>Отложенная отправка</p>
+              <p className={style.newmailing__checkboxtext}>
+                Отложенная отправка
+              </p>
             </div>
             <div className={style.newmailing__buttonsGroup}>
               <ButtonComponent
                 label="Отправить"
                 width={244}
                 height={48}
-                onClick={() => console.log(`Отправить рассылку`)} />
+                onClick={() => console.log(`Отправить рассылку`)}
+              />
               <ButtonSecondaryComponent
                 label="Удалить"
                 width={244}
@@ -130,9 +169,7 @@ const MailingPage = () => {
                     label="Создать рассылку"
                     width={244}
                     height={48}
-                    onClick={e => {
-                      console.log(e);
-                    }}
+                    onClick={() => setSelectedOption('Новая рассылка')}
                   />
                 </div>
                 <FilterComponent
@@ -145,10 +182,9 @@ const MailingPage = () => {
               <MailingDataGrid rows={searchResults} />
             </div>
           </div>
-        )
-        }
-      </div >
-    </div >
+        )}
+      </div>
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ButtonComponent } from 'src/entities/Button';
 import { formatDateString } from 'src/utils/constants/formatDate';
 import { columns } from 'src/utils/constants/allMailingData';
+import { ChoiceModal } from 'src/entities/Modals';
 
 import {
   Table,
@@ -12,6 +13,7 @@ import {
   TableCell,
   Checkbox,
   styled,
+  Portal,
 } from '@mui/material';
 
 import tgIcon from 'src/shared/icons/telegramIcon.svg';
@@ -19,8 +21,22 @@ import type { TMailingProps } from '../types/type';
 
 import style from './MailingDataGrid.module.scss';
 
-const MailingDataGrid: React.FC<TMailingProps> = ({ rows }) => {
+const MailingDataGrid: FC<TMailingProps> = ({ rows }) => {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
+  const [openModal, setModalOpen] = useState(false);
+
+  const handleOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setModalOpen(false);
+  };
+
+  const handleOnConfirm = () => {
+    setModalOpen(false);
+    console.log('Удаление');
+  };
 
   const commonCellStyle = {
     color: '#ebeef4',
@@ -85,6 +101,7 @@ const MailingDataGrid: React.FC<TMailingProps> = ({ rows }) => {
   const isRowSelected = (rowId: number) => selectedRows.indexOf(rowId) !== -1;
 
   const handleDeleteButtonClick = () => {
+    handleOpen();
     console.log('Удалить выбранные строки:', selectedRows);
   };
 
@@ -152,6 +169,20 @@ const MailingDataGrid: React.FC<TMailingProps> = ({ rows }) => {
           />
         </div>
       )}
+      {openModal ? (
+        <Portal>
+          <ChoiceModal
+            open={openModal}
+            onClose={handleClose}
+            title="Удалить выбранные рассылки"
+            content="Вы действительно хотите удалить выбранные рассылки?"
+            onCancelLabel="Отменить"
+            onConfirmLabel="Удалить"
+            onCancel={handleClose}
+            onConfirm={handleOnConfirm}
+          />
+        </Portal>
+      ) : null}
     </>
   );
 };
