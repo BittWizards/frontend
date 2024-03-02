@@ -12,6 +12,11 @@
   width: 1047px;
   border: 1px solid $borderColorDark;
   border-radius: 20px;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: $statusColorSpecifyingHover;
+  }
 }
 
 .allContentCard__left {
@@ -24,7 +29,7 @@
 }
 
 .allContentCard__left:after {
-  content: "";
+  content: '';
   background-color: #939393;
   position: absolute;
   width: 1px;
@@ -88,14 +93,13 @@
 .allContentCard__status {
   margin: 0;
   padding: 5px 12.5px;
-  border: 1px solid #14AE5C;
+  border: 1px solid #14ae5c;
   border-radius: 16px;
-  color: #14AE5C;
+  color: #14ae5c;
   font-family: 'YSText';
   font-weight: 400;
   font-size: 11px;
   line-height: 120%;
-  
 }
 
 .allContentCard__reitingGroup {
@@ -145,7 +149,7 @@
 }
 
 .allContentCard__middle:after {
-  content: "";
+  content: '';
   background-color: #939393;
   position: absolute;
   width: 1px;
@@ -228,7 +232,6 @@
   padding: 0;
   height: 20px;
 }
-
 
 .allContentCard__iconCount {
   margin: 0;

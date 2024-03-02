@@ -6,18 +6,12 @@ import { Avatar } from 'src/entities/Avatar';
 import avatar from 'src/shared/icons/userAvatar.png';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import type { TCardProps } from '../types/type';
+import { sortByStatus } from 'src/utils/constants/sortByStatus';
 
 import style from './AmbassadorTable.module.scss';
 
 const AmbassadorTable: FC<TCardProps> = ({ data }) => {
-  const statusOrder = ['Active', 'OnPause', 'PendingConfirmation', 'Inactive'];
-
-  const sortedData = data.sort((a, b) => {
-    const indexA = statusOrder.indexOf(a.userStatus);
-    const indexB = statusOrder.indexOf(b.userStatus);
-
-    return indexA - indexB;
-  });
+  const sortedData = sortByStatus(data);
 
   const handleRowClick = (number: number) => {
     console.log(`Row clicked: ${number}`);

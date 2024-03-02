@@ -15,23 +15,14 @@ const ContentUserCard: React.FC<TCardProps> = ({ data }) => {
 
   return (
     <div className={style.cardContainer}>
-      {data.avatar && (
-        <Avatar link={data.avatar} size='m' />
-      )}
+      {data.avatar && <Avatar link={data.avatar} size="m" />}
       <p className={style.name}>{data.surname}</p>
       <p className={style.name}>
         {data.name} {data.secondname}
       </p>
       <div className={style.socialWrapper}>
         <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-        <Link
-          className={style.tgLink}
-          to={`https://t.me/${data.telegram}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {data.telegram}
-        </Link>
+        <span className={style.tg}>{`@${data.telegram}`}</span>
       </div>
       <div className={style.dateContainer}>
         <img src={calendarIcon} alt="Calendar" className={style.calendarIcon} />
