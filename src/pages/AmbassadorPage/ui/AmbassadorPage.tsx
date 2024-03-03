@@ -1,5 +1,7 @@
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
+
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
@@ -9,10 +11,14 @@ import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
 import { FilterComponent } from 'src/entities/FilterComponent';
-import type { User } from '../../../utils/constants/types/types';
+import type { User } from 'src/utils/constants/types/types';
+import { getAllAmbassadors } from 'src/shared/api/ambassadors';
+
 import style from './AmbassadorPage.module.scss';
+import { RootState } from '@reduxjs/toolkit/query';
 
 const AmbassadorPage = () => {
+  const dispatch = useAppDispatch();
   const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
   const sortingOptions = [
     'По фамилии',
@@ -30,8 +36,16 @@ const AmbassadorPage = () => {
   };
 
   useEffect(() => {
+    dispatch(getAllAmbassadors());
+  }, [dispatch]);
+
+  useEffect(() => {
     setSearchResults(mockCardsData);
   }, [searchTerm]);
+
+  const ambassadors = useAppSelector(state => state.ambassadors);
+
+  console.log('Ambassadors:', ambassadors);
 
   const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
