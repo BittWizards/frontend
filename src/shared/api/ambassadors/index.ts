@@ -12,27 +12,12 @@ export const getAllAmbassadors: AsyncThunk<
 > = createAsyncThunk('ambassadors/getAllAmbassadors', async (_, thunkApi) => {
   try {
     const response = await axios.get<IAmbassador[]>(
-      `${BASE_URL}/api/v1/ambassadors/`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      `${BASE_URL}/api/v1/ambassadors/`
     );
 
     return { data: response.data } as ResultWithErrors<IAmbassador[]>;
-  } catch (err) {
-    if (axios.isAxiosError(err)) {
-      console.error(
-        `Ошибка при запросе getAllAmbassadors: ${err.code}:${err.message}`
-      );
-      return thunkApi.rejectWithValue({ message: err.message, code: err.code });
-    } 
+  } catch (err: any) {
     console.error(`Другая ошибка при запросе getAllAmbassadors: ${err}`);
-    return thunkApi.rejectWithValue({
-      message: 'Unknown error',
-      code: 'UNKNOWN',
-    });
-    
+    return thunkApi.rejectWithValue({ message: err.message, code: err.code });
   }
 });

@@ -12,8 +12,5 @@ export type IAmbassador = {
 
 export type ResultWithErrors<T> = {
   data?: T;
-  error?: {
-    message: string;
-    code: string;
-  };
+  error?: string
 };
