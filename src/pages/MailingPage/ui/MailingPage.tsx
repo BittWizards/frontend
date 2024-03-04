@@ -114,13 +114,11 @@ const MailingPage = () => {
                 <SortComponent
                   width={220}
                   height={48}
-                  color="#939393"
                   options={genderOptions}
                 />
                 <SortComponent
                   width={220}
                   height={48}
-                  color="#939393"
                   options={jobOptions}
                 />
               </div>
@@ -172,12 +170,14 @@ const MailingPage = () => {
                     onClick={() => setSelectedOption('Новая рассылка')}
                   />
                 </div>
-                <FilterComponent
-                  onSearch={onSearch}
-                  sortingOptions={sortingOptions}
-                  searchTerm={searchTerm}
-                  handleChange={handleChange}
-                />
+                <div className={style.rightWrapper}>
+                  <FilterComponent
+                    onSearch={onSearch}
+                    searchTerm={searchTerm}
+                    handleChange={handleChange}
+                  />
+                  <SortComponent width={220} height={48} options={sortingOptions} />
+                </div>
               </div>
               <MailingDataGrid rows={searchResults} />
             </div>

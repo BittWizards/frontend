@@ -11,6 +11,7 @@ import { FilterComponent } from 'src/entities/FilterComponent';
 import type { User } from 'src/utils/constants/types/types';
 import { getNewContent } from 'src/shared/api/contents';
 
+import { SortComponent } from 'src/entities/SortComponent';
 import style from './ContentPage.module.scss';
 
 const ContentPage = () => {
@@ -66,12 +67,14 @@ const ContentPage = () => {
         />
         {selectedOption === 'Весь контент' ? (
           <div className={style.allcontent}>
-            <FilterComponent
-              onSearch={onSearch}
-              sortingOptions={sortingOptions}
-              searchTerm={searchTerm}
-              handleChange={handleChange}
-            />
+            <div className={style.filterWrapper}>
+              <FilterComponent
+                onSearch={onSearch}
+                searchTerm={searchTerm}
+                handleChange={handleChange}
+              />
+              <SortComponent width={220} height={48} options={sortingOptions} />
+            </div>
             <div className={style.allcontent__reitingList}>
               {searchResults.map(cardData => (
                 <AllContentCard key={cardData.id} data={cardData} />
@@ -79,10 +82,17 @@ const ContentPage = () => {
             </div>
           </div>
         ) : (
-          <div className={style.cardsContainer}>
-            {newContentsCardData.contents.map(cardData => (
-              <ContentUserCard key={cardData.id} data={cardData} />
-            ))}
+          <div className={style.newDocuments}>
+            <FilterComponent
+              onSearch={onSearch}
+              searchTerm={searchTerm}
+              handleChange={handleChange}
+            />
+            <div className={style.cardsContainer}>
+              {newContentsCardData.contents.map(cardData => (
+                <ContentUserCard key={cardData.id} data={cardData} />
+              ))}
+            </div>
           </div>
         )}
       </div>
