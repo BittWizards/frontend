@@ -1,7 +1,6 @@
-import { FC, useState } from 'react';
-import { IQuestionnaireForm } from '../types/types';
+import type { FC} from 'react';
+import { useState } from 'react';
 
-import style from './QuestionnaireForm.module.scss';
 
 import { PostalDetails } from 'src/entities/PostalDetails';
 import { Textarea } from 'src/shared/Textarea';
@@ -9,36 +8,35 @@ import { DataMerch } from 'src/entities/DataMerch';
 import { WorkAndEducation } from 'src/entities/WorkAndEducation';
 import { Contacts } from 'src/entities/Contacts';
 import { Activity } from 'src/entities/Activity';
+import type { IQuestionnaireForm } from '../types/types';
+import style from './QuestionnaireForm.module.scss';
 
-const QuestionnaireForm: FC<IQuestionnaireForm> = ({ isEdit }) => {
-
-  return (
-    <div>
-      <div className={style.container}>
-        <div className={`${style.column} ${style.left}`}>
-          <PostalDetails isEdit={isEdit} />
-          <DataMerch isEdit={isEdit} />
-          <WorkAndEducation isEdit={isEdit} />
-        </div>
-        <div className={`${style.column} ${style.right}`}>
-          <Contacts isEdit={isEdit} />
-          <Activity isEdit={isEdit} />
-        </div>
+const QuestionnaireForm: FC<IQuestionnaireForm> = ({ isEdit }) => (
+  <div>
+    <div className={style.container}>
+      <div className={`${style.column} ${style.left}`}>
+        <PostalDetails isEdit={isEdit} />
+        <DataMerch isEdit={isEdit} />
+        <WorkAndEducation isEdit={isEdit} />
       </div>
-      <label className={`${style.label}`}>
-        Дополнительная информация
-        <fieldset className={`${style.fieldset}`}>
-          <Textarea
-            width={976}
-            height={155}
-            placeholder="Дополнительная информация об Амбассадоре"
-            isEdit={isEdit}
-            name="info"
-          />
-        </fieldset>
-      </label>
+      <div className={`${style.column} ${style.right}`}>
+        <Contacts isEdit={isEdit} />
+        <Activity isEdit={isEdit} />
+      </div>
     </div>
-  );
-};
+    <label className={`${style.label}`}>
+        Дополнительная информация
+      <fieldset className={`${style.fieldset}`}>
+        <Textarea
+          width={976}
+          height={155}
+          placeholder="Дополнительная информация об Амбассадоре"
+          isEdit={isEdit}
+          name="info"
+        />
+      </fieldset>
+    </label>
+  </div>
+);
 
 export default QuestionnaireForm;

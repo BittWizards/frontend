@@ -9,12 +9,12 @@ import { StatsPage } from 'src/pages/StatsPage';
 import { MailingPage } from 'src/pages/MailingPage';
 import { MerchPage } from 'src/pages/MerchPage';
 import { PromocodePage } from 'src/pages/PromocodePage';
+import { NewAmbassadorPage } from 'src/pages/NewAmbassadorPage';
+import { CandidateDetailPage } from 'src/pages/CandidateDetailPage';
 import { AmbassadorDetailPage } from '../../pages/AmbassadorDetailPage';
 import { AmbassadorMerchPage } from '../../pages/AmbassadorMerchPage';
 import { AmbassadorContentPage } from '../../pages/AmbassadorContentPage';
 import { AmbassadorPromocodePage } from '../../pages/AmbassadorPromocodePage';
-import { NewAmbassadorPage } from 'src/pages/NewAmbassadorPage';
-import { CandidateDetailPage } from 'src/pages/CandidateDetailPage';
 
 export const router = createBrowserRouter([
   {

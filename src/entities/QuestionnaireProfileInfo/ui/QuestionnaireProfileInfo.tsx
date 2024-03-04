@@ -1,11 +1,12 @@
-import { FC, useEffect } from 'react';
+import type { FC} from 'react';
+import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import style from './QuestionnaireProfileInfo.module.scss';
-
-import { IQuestionnaireProfileInfo } from '../types/types';
 import { Avatar } from 'src/entities/Avatar';
 import { Input } from 'src/shared/Input';
+import style from './QuestionnaireProfileInfo.module.scss';
+
+import type { IQuestionnaireProfileInfo } from '../types/types';
 
 const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
   user,
@@ -61,7 +62,7 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
               className={style.radio}
               {...register('gender')}
             />
-            <span></span>М
+            <span />М
           </label>
           <label className={style.label}>
             <input
@@ -71,7 +72,7 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
               className={style.radio}
               {...register('gender')}
             />
-            <span></span>Ж
+            <span />Ж
           </label>
         </fieldset>
       </div>

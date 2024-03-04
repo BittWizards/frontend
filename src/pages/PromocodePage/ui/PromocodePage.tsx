@@ -13,8 +13,8 @@ import { InputAutoCompleteModal } from 'src/entities/Modals';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import type { User } from 'src/utils/constants/types/types';
 
-import style from './PromocodePage.module.scss';
 import { SortComponent } from 'src/entities/SortComponent';
+import style from './PromocodePage.module.scss';
 
 const PromocodePage: FC = () => {
   const [openModal, setModalOpen] = useState(false);

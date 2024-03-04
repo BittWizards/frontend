@@ -1,4 +1,3 @@
-import style from './NewAmbassadorPage.module.scss';
 
 import { Navbar } from 'src/widgets/NavBar';
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
@@ -6,6 +5,7 @@ import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
 
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { FormContainer } from 'src/shared/FormContainer';
+import style from './NewAmbassadorPage.module.scss';
 
 const NewAmbassadorPage = () => {
   const submitForm = (data: Object) => {
@@ -22,8 +22,8 @@ const NewAmbassadorPage = () => {
           submitButtonLabel="Сохранить"
           cancelButtonLabel="Отменить"
         >
-          <QuestionnaireProfileInfo isEdit={true} />
-          <QuestionnaireForm isEdit={true} />
+          <QuestionnaireProfileInfo isEdit />
+          <QuestionnaireForm isEdit />
         </FormContainer>
       </div>
     </div>

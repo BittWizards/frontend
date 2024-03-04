@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import type { FC} from 'react';
+import { useState } from 'react';
 import { Dialog, DialogActions, TextField } from '@mui/material';
 import { ButtonComponent } from 'src/entities/Button/';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
@@ -44,7 +45,7 @@ const DateInputModal: FC<TInputModalModalProps> = ({
           },
         }}
         onClose={onClose}
-        maxWidth={'xs'}
+        maxWidth="xs"
         fullWidth={false}
       >
         <div className={style.modalContainer}>

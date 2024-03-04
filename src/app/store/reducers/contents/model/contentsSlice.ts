@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ResultWithErrors } from 'src/shared/api/ambassadors/dtos';
-import { TNewContentCardData } from 'src/shared/api/contents/dtos';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { ResultWithErrors } from 'src/shared/api/ambassadors/dtos';
+import type { TNewContentCardData } from 'src/shared/api/contents/dtos';
 import { getNewContent } from 'src/shared/api/contents';
 
 type TContentsState = {

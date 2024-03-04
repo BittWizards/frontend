@@ -1,11 +1,11 @@
-import { FC } from 'react';
-import { IFormContainer } from '../types/types';
+import type { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import style from './FormContainer.module.scss';
 
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { ButtonComponent } from 'src/entities/Button';
+import type { IFormContainer } from '../types/types';
+import style from './FormContainer.module.scss';
 
 const FormContainer: FC<IFormContainer> = ({ title, children, defaultValues, onSubmit, submitButtonLabel, cancelButtonLabel }) => {
 
@@ -14,7 +14,7 @@ const FormContainer: FC<IFormContainer> = ({ title, children, defaultValues, onS
   }
 
   const methods = useForm({
-    defaultValues: defaultValues ? defaultValues : {}
+    defaultValues: defaultValues || {}
   });
 
   return (
@@ -23,19 +23,19 @@ const FormContainer: FC<IFormContainer> = ({ title, children, defaultValues, onS
         <h2 className={style.title}>{title}</h2>
         {children}
         <div className={style.buttons}>
-        <ButtonComponent
-          label={submitButtonLabel}
-          width={244}
-          height={48}
-          onClick={methods.handleSubmit(submitForm)}
-        />
-        <ButtonSecondaryComponent
-          label={cancelButtonLabel}
-          width={244}
-          height={48}
-          onClick={() => {}}
-        />
-      </div>
+          <ButtonComponent
+            label={submitButtonLabel}
+            width={244}
+            height={48}
+            onClick={methods.handleSubmit(submitForm)}
+          />
+          <ButtonSecondaryComponent
+            label={cancelButtonLabel}
+            width={244}
+            height={48}
+            onClick={() => {}}
+          />
+        </div>
       </form>
     </FormProvider>
   );

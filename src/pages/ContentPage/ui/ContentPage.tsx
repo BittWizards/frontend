@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
-
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
@@ -9,23 +7,21 @@ import { AllContentCard } from 'src/widgets/AllContentCard';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import type { User } from 'src/utils/constants/types/types';
-import { getNewContent } from 'src/shared/api/contents';
 
 import { SortComponent } from 'src/entities/SortComponent';
 import style from './ContentPage.module.scss';
 
 const ContentPage = () => {
-  const dispatch = useAppDispatch();
   const [selectedOption, setSelectedOption] = useState('Новые отчеты');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
 
-  useEffect(() => {
-    dispatch(getNewContent());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getNewContent());
+  // }, [dispatch]);
 
-  const newContentsCardData = useAppSelector(state => state.contents);
-  console.log(newContentsCardData);
+  // const newContentsCardData = useAppSelector(state => state.contents);
+  // console.log(newContentsCardData);
 
   const sortingOptions = [
     'По фамилии',
@@ -89,7 +85,7 @@ const ContentPage = () => {
               handleChange={handleChange}
             />
             <div className={style.cardsContainer}>
-              {newContentsCardData.contents.map(cardData => (
+              {mockCardsData.map(cardData => (
                 <ContentUserCard key={cardData.id} data={cardData} />
               ))}
             </div>

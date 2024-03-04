@@ -1,9 +1,9 @@
-import { FC } from 'react';
-import { ICandidateQuestionnaire } from '../types/types';
+import type { FC } from 'react';
 
 import { FormContainer } from 'src/shared/FormContainer';
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
+import type { ICandidateQuestionnaire } from '../types/types';
 
 const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = ({ user }) => {
   const defaultValues = {

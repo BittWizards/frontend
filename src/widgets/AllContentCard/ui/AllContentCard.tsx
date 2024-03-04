@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import calendarIcon from 'src/shared/icons/calendar.svg';
@@ -15,7 +16,7 @@ import type { TAllContentCardProps } from '../types/types';
 
 import style from './AllContentCard.module.scss';
 
-const AllContentCard: React.FC<TAllContentCardProps> = ({ data }) => {
+const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
   const formattedDate = new Date(data.date)
     .toLocaleDateString('en-GB')
     .replace(/\//g, '.');
@@ -26,20 +27,20 @@ const AllContentCard: React.FC<TAllContentCardProps> = ({ data }) => {
 
   const getPlatformIcon = (platform: string): JSX.Element => {
     switch (platform) {
-      case 'habr':
-        return <img src={hIcon} alt="Habr" />;
-      case 'vc':
-        return <img src={vc} alt="VC" />;
-      case 'youtube':
-        return <img src={youTube} alt="YouTube" />;
-      case 'telegram':
-        return <img src={telegram} alt="Telegram" />;
-      case 'linkedin':
-        return <img src={inIcon} alt="LinkedIn" />;
-      case 'instagram':
-        return <img src={instagram} alt="Instagram" />;
-      default:
-        return <img src={questionIcon} alt="Other" />;
+    case 'habr':
+      return <img src={hIcon} alt="Habr" />;
+    case 'vc':
+      return <img src={vc} alt="VC" />;
+    case 'youtube':
+      return <img src={youTube} alt="YouTube" />;
+    case 'telegram':
+      return <img src={telegram} alt="Telegram" />;
+    case 'linkedin':
+      return <img src={inIcon} alt="LinkedIn" />;
+    case 'instagram':
+      return <img src={instagram} alt="Instagram" />;
+    default:
+      return <img src={questionIcon} alt="Other" />;
     }
   };
 
@@ -66,7 +67,11 @@ const AllContentCard: React.FC<TAllContentCardProps> = ({ data }) => {
 
           <div className={style.allContentCard__statusGroup}>
             <div className={style.allContentCard__status}>
-              {data.statusActive ? <span>Активен</span> : <span>Не активен</span>}
+              {data.statusActive ? (
+                <span>Активен</span>
+              ) : (
+                <span>Не активен</span>
+              )}
             </div>
             <div className={style.allContentCard__reitingGroup}>
               <img

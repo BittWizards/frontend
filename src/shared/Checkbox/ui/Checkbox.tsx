@@ -1,7 +1,8 @@
-import { FC, useEffect, useState } from 'react';
+import type { FC} from 'react';
+import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form'
 
-import { ICheckbox } from '../types/types';
+import type { ICheckbox } from '../types/types';
 import style from './Checkbox.module.scss';
 
 const Checkbox: FC<ICheckbox> = ({ label, disabled, isEdit, name }) => {
@@ -16,7 +17,7 @@ const Checkbox: FC<ICheckbox> = ({ label, disabled, isEdit, name }) => {
         disabled={!isEdit || disabled}
         {...register(name)}
       />
-      <span></span>
+      <span />
       {label}
     </label>
   );

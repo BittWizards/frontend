@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Dialog, DialogActions } from '@mui/material';
 import { ButtonComponent } from 'src/entities/Button/';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
@@ -27,46 +27,44 @@ const ChoiceModal: FC<TChoiceModalModalProps> = ({
   onConfirmLabel,
   onCancel,
   onConfirm,
-}) => {
-  return (
-    <div className={style.modalWrapper}>
-      <Dialog
-        open={open}
-        sx={{
-          '& .MuiPaper-root': {
-            backgroundColor: '#1b1c1e',
-          },
-        }}
-        onClose={onClose}
-        maxWidth={'xs'}
-        fullWidth={false}
-      >
-        <div className={style.modalContainer}>
-          <button className={style.closeBtn} onClick={onClose}>
-            <img src={closeBtnIcon} />
-          </button>
-          <h2 className={style.title}>{title}</h2>
-          <span className={style.text}>{content}</span>
-          <div className={style.btnWrapper}>
-            <DialogActions>
-              <ButtonSecondaryComponent
-                label={onCancelLabel}
-                width={124}
-                height={48}
-                onClick={onCancel}
-              />
-              <ButtonComponent
-                label={onConfirmLabel}
-                width={124}
-                height={48}
-                onClick={onConfirm}
-              />
-            </DialogActions>
-          </div>
+}) => (
+  <div className={style.modalWrapper}>
+    <Dialog
+      open={open}
+      sx={{
+        '& .MuiPaper-root': {
+          backgroundColor: '#1b1c1e',
+        },
+      }}
+      onClose={onClose}
+      maxWidth="xs"
+      fullWidth={false}
+    >
+      <div className={style.modalContainer}>
+        <button className={style.closeBtn} onClick={onClose}>
+          <img src={closeBtnIcon} />
+        </button>
+        <h2 className={style.title}>{title}</h2>
+        <span className={style.text}>{content}</span>
+        <div className={style.btnWrapper}>
+          <DialogActions>
+            <ButtonSecondaryComponent
+              label={onCancelLabel}
+              width={124}
+              height={48}
+              onClick={onCancel}
+            />
+            <ButtonComponent
+              label={onConfirmLabel}
+              width={124}
+              height={48}
+              onClick={onConfirm}
+            />
+          </DialogActions>
         </div>
-      </Dialog>
-    </div>
-  );
-};
+      </div>
+    </Dialog>
+  </div>
+);
 
 export default ChoiceModal;

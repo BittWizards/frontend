@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 
-import { ButtonComponent } from 'src/entities/Button';
 import { rows } from 'src/utils/constants/allMailingData';
 
 import {
@@ -18,7 +17,6 @@ import { Avatar } from 'src/entities/Avatar';
 import style from './NewMailingTable.module.scss';
 
 const MailingDataGrid: FC = () => {
-
   const commonCellStyle = {
     color: '#ebeef4',
     fontFamily: 'YSText',
@@ -51,14 +49,15 @@ const MailingDataGrid: FC = () => {
     },
   }));
 
-
   return (
     <Table style={{ width: '1048px' }}>
-      <TableBody >
+      <TableBody>
         {rows.map(row => (
           <TableRow key={row.id}>
             <TableCell style={commonCellStyle}>
-              <div className={style.avatar}>{row.avatar && <Avatar link={row.avatar} />}</div>
+              <div className={style.avatar}>
+                {row.avatar && <Avatar link={row.avatar} />}
+              </div>
             </TableCell>
             <TableCell style={commonCellStyle}>
               <p className={style.name}>
@@ -73,24 +72,17 @@ const MailingDataGrid: FC = () => {
             </TableCell>
             <TableCell style={commonCellStyle}>
               <div className={style.cellWrapper}>
-                <img
-                  src={tgIcon}
-                  alt="telegram"
-                  className={style.socialIcon}
-                />
+                <img src={tgIcon} alt="telegram" className={style.socialIcon} />
                 <span className={style.cellText}>@{row.telegram}</span>
               </div>
             </TableCell>
-            <TableCell
-              padding="checkbox"
-              style={{ border: 'none' }}
-            >
+            <TableCell padding="checkbox" style={{ border: 'none' }}>
               <StyledCheckbox />
             </TableCell>
           </TableRow>
         ))}
       </TableBody>
-    </Table >
+    </Table>
   );
 };
 

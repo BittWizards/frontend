@@ -4,10 +4,10 @@ import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
+import { AmbassadorQuestionnaire } from 'src/widgets/AmbassadorQuestionnaire';
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorDetailPage.module.scss';
-import { AmbassadorQuestionnaire } from 'src/widgets/AmbassadorQuestionnaire';
 
 const AmbassadorDetailPage = () => {
   const { id } = useParams();

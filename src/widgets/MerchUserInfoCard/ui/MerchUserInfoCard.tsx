@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import Portal from '@mui/material/Portal';
@@ -7,12 +8,12 @@ import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { StatusIcon } from 'src/shared/StatusIcon';
-import type { TCardProps } from '../types/types';
 import { DateInputModal } from 'src/entities/Modals';
+import type { TCardProps } from '../types/types';
 
 import style from './MerchUserInfoCard.module.scss';
 
-const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
+const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {

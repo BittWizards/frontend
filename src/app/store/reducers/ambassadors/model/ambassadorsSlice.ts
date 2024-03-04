@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IAmbassador, ResultWithErrors } from 'src/shared/api/ambassadors/dtos';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { IAmbassador, ResultWithErrors } from 'src/shared/api/ambassadors/dtos';
 import { getAllAmbassadors } from 'src/shared/api/ambassadors';
 
 interface AmbassadorsState {

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { Dialog, DialogActions } from '@mui/material';
 
 import { ButtonComponent } from 'src/entities/Button/';
@@ -19,38 +19,36 @@ const SuccessModal: FC<TSuccessModalProps> = ({
   onClose,
   title,
   content,
-}) => {
-  return (
-    <div className={style.modalWrapper}>
-      <Dialog
-        open={open}
-        onClose={onClose}
-        sx={{
-          '& .MuiPaper-root': {
-            backgroundColor: '#1b1c1e',
-          },
-        }}
-      >
-        <div className={style.modalContainer}>
-          <button className={style.closeBtn} onClick={onClose}>
-            <img src={closeBtnIcon} />
-          </button>
-          <h2 className={style.title}>{title}</h2>
-          <span className={style.text}>{content}</span>
-          <div className={style.btnWrapper}>
-            <DialogActions>
-              <ButtonComponent
-                label="ОК"
-                width={124}
-                height={48}
-                onClick={onClose}
-              />
-            </DialogActions>
-          </div>
+}) => (
+  <div className={style.modalWrapper}>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      sx={{
+        '& .MuiPaper-root': {
+          backgroundColor: '#1b1c1e',
+        },
+      }}
+    >
+      <div className={style.modalContainer}>
+        <button className={style.closeBtn} onClick={onClose}>
+          <img src={closeBtnIcon} />
+        </button>
+        <h2 className={style.title}>{title}</h2>
+        <span className={style.text}>{content}</span>
+        <div className={style.btnWrapper}>
+          <DialogActions>
+            <ButtonComponent
+              label="ОК"
+              width={124}
+              height={48}
+              onClick={onClose}
+            />
+          </DialogActions>
         </div>
-      </Dialog>
-    </div>
-  );
-};
+      </div>
+    </Dialog>
+  </div>
+);
 
 export default SuccessModal;
