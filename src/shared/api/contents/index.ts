@@ -10,7 +10,7 @@ export const getNewContent: AsyncThunk<
   ResultWithErrors<TNewContentCardData[]>,
   void,
   {}
-> = createAsyncThunk('ambassadors/getAllAmbassadors', async (_, thunkApi) => {
+> = createAsyncThunk('ambassadors/getNewContent', async (_, thunkApi) => {
   try {
     const response = await axios.get<TNewContentCardData[]>(
       `${BASE_URL}/api/v1/allcontents/new/`,

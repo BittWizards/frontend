@@ -52,7 +52,7 @@ const contentsSlice = createSlice({
   },
 });
 
-export const newContents = (state: { contents: TContentsState }) =>
+export const selectNewContents = (state: { contents: TContentsState }) =>
   state.contents;
 
 export default contentsSlice.reducer;

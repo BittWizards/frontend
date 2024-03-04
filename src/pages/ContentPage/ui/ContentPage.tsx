@@ -1,4 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import type { User } from 'src/utils/constants/types/types';
+
+import style from './ContentPage.module.scss';
+
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
@@ -6,22 +11,25 @@ import { ContentUserCard } from 'src/widgets/ContentUserCard';
 import { AllContentCard } from 'src/widgets/AllContentCard';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { FilterComponent } from 'src/entities/FilterComponent';
-import type { User } from 'src/utils/constants/types/types';
-
 import { SortComponent } from 'src/entities/SortComponent';
-import style from './ContentPage.module.scss';
+import { getNewContent } from 'src/shared/api/contents';
+
+import { selectNewContents } from 'src/app/store/reducers/contents/model/contentsSlice';
+
 
 const ContentPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые отчеты');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
 
-  // useEffect(() => {
-  //   dispatch(getNewContent());
-  // }, [dispatch]);
+  const dispatch = useAppDispatch();
+  const {contents} = useAppSelector(selectNewContents);
 
-  // const newContentsCardData = useAppSelector(state => state.contents);
-  // console.log(newContentsCardData);
+  useEffect(() => {
+    dispatch(getNewContent());
+  }, [dispatch]);
+
+  console.log(contents);
 
   const sortingOptions = [
     'По фамилии',
