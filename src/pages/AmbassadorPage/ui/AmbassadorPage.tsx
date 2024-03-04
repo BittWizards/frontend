@@ -24,9 +24,26 @@ const AmbassadorPage = () => {
     setSearchTerm(event.target.value);
   };
 
+
   useEffect(() => {
     setSearchResults(mockCardsData);
   }, [searchTerm]);
+
+  /* const onSort = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    const sortResults = mockCardsData.sort((a, b) => {
+      const ab = new Date(a.date);
+      const bb = new Date(b.date);
+      return (bb.getTime() - ab.getTime())
+    });
+    if (sortingOptions[1]) {
+      setSearchResults(sortResults);
+    }
+  }; */
+
+
+
+
 
   const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -63,8 +80,7 @@ const AmbassadorPage = () => {
                 onSearch={onSearch}
                 sortingOptions={sortingOptions}
                 searchTerm={searchTerm}
-                handleChange={handleChange}
-              />
+                handleChange={handleChange} />
             </div>
             <AmbassadorTable data={searchResults} />
           </>

@@ -10,6 +10,9 @@ const SortComponent: FC<SortProps> = ({
 }) => {
   const [value, setValue] = useState<string | null>(options[0]);
   const [inputValue, setInputValue] = useState('');
+
+
+
   return (
     <Autocomplete
       value={value}
