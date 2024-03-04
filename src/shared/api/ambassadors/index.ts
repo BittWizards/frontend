@@ -1,8 +1,9 @@
-import { createAsyncThunk, AsyncThunk } from '@reduxjs/toolkit';
+import type { AsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { BASE_URL } from 'src/utils/constants/api';
-import { IAmbassador, ResultWithErrors } from './dtos';
+import type { IAmbassador, ResultWithErrors } from './dtos';
 
 export const getAllAmbassadors: AsyncThunk<
   ResultWithErrors<IAmbassador[]>,
@@ -26,12 +27,12 @@ export const getAllAmbassadors: AsyncThunk<
         `Ошибка при запросе getAllAmbassadors: ${err.code}:${err.message}`
       );
       return thunkApi.rejectWithValue({ message: err.message, code: err.code });
-    } else {
-      console.error(`Другая ошибка при запросе getAllAmbassadors: ${err}`);
-      return thunkApi.rejectWithValue({
-        message: 'Unknown error',
-        code: 'UNKNOWN',
-      });
-    }
+    } 
+    console.error(`Другая ошибка при запросе getAllAmbassadors: ${err}`);
+    return thunkApi.rejectWithValue({
+      message: 'Unknown error',
+      code: 'UNKNOWN',
+    });
+    
   }
 });

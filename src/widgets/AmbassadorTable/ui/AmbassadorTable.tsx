@@ -5,8 +5,8 @@ import { Avatar } from 'src/entities/Avatar';
 
 import avatar from 'src/shared/icons/userAvatar.png';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
-import type { TCardProps } from '../types/type';
 import { sortByStatus } from 'src/utils/constants/sortByStatus';
+import type { TCardProps } from '../types/type';
 
 import style from './AmbassadorTable.module.scss';
 

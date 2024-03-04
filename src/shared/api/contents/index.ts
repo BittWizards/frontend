@@ -1,9 +1,10 @@
-import { createAsyncThunk, AsyncThunk } from '@reduxjs/toolkit';
+import type { AsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { BASE_URL } from 'src/utils/constants/api';
-import { TNewContentCardData } from './dtos';
-import { ResultWithErrors } from 'src/shared/api/ambassadors/dtos';
+import type { ResultWithErrors } from 'src/shared/api/ambassadors/dtos';
+import type { TNewContentCardData } from './dtos';
 
 export const getNewContent: AsyncThunk<
   ResultWithErrors<TNewContentCardData[]>,
@@ -27,12 +28,12 @@ export const getNewContent: AsyncThunk<
         `Ошибка при запросе getNewContent: ${err.code}:${err.message}`
       );
       return thunkApi.rejectWithValue({ message: err.message, code: err.code });
-    } else {
-      console.error(`Другая ошибка при запросе getNewContent: ${err}`);
-      return thunkApi.rejectWithValue({
-        message: 'Unknown error',
-        code: 'UNKNOWN',
-      });
-    }
+    } 
+    console.error(`Другая ошибка при запросе getNewContent: ${err}`);
+    return thunkApi.rejectWithValue({
+      message: 'Unknown error',
+      code: 'UNKNOWN',
+    });
+    
   }
 });

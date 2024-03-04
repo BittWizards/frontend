@@ -1,4 +1,7 @@
-import { FC, useState } from 'react';
+import type { FC} from 'react';
+import { useState } from 'react';
+import type {
+  SelectChangeEvent} from '@mui/material';
 import {
   Dialog,
   DialogActions,
@@ -6,7 +9,6 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  SelectChangeEvent,
   TextField,
 } from '@mui/material';
 import { ButtonComponent } from 'src/entities/Button/';
@@ -56,7 +58,7 @@ const InputAutoCompleteModal: FC<TInputModalModalProps> = ({
           },
         }}
         onClose={onClose}
-        maxWidth={'xs'}
+        maxWidth="xs"
         fullWidth={false}
       >
         <div className={style.modalContainer}>

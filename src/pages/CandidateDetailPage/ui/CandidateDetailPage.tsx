@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 
-import style from './CandidateDetailPage.module.scss';
 
 import { Navbar } from 'src/widgets/NavBar';
 import { CandidateQuestionnaire } from 'src/widgets/CandidateQuestionnaire';
 
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
+import style from './CandidateDetailPage.module.scss';
 
 const CandidateDetailPage = () => {
   const { id } = useParams();

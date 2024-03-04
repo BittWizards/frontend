@@ -3,9 +3,9 @@ import { Avatar } from 'src/entities/Avatar';
 import { formatDateString } from 'src/utils/constants/formatDate';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary/ui/ButtonSecondary';
 
+import calendarIcon from 'src/shared/icons/calendar.svg';
 import type { TAmbassadorCardProps } from '../types/types';
 
-import calendarIcon from 'src/shared/icons/calendar.svg';
 
 import style from './AmbassadorCard.module.scss';
 

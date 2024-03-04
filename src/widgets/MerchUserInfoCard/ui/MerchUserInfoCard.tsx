@@ -7,8 +7,8 @@ import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { StatusIcon } from 'src/shared/StatusIcon';
-import type { TCardProps } from '../types/types';
 import { DateInputModal } from 'src/entities/Modals';
+import type { TCardProps } from '../types/types';
 
 import style from './MerchUserInfoCard.module.scss';
 

@@ -1,7 +1,8 @@
-import { FC, useEffect } from 'react';
+import type { FC} from 'react';
+import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { IInput } from '../types/types';
+import type { IInput } from '../types/types';
 
 import style from './Input.module.scss';
 

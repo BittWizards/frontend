@@ -10,8 +10,8 @@ import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { ButtonComponent } from 'src/entities/Button';
 import type { User } from 'src/utils/constants/types/types';
 import { FilterComponent } from 'src/entities/FilterComponent';
-import style from './MerchPage.module.scss';
 import { SortComponent } from 'src/entities/SortComponent';
+import style from './MerchPage.module.scss';
 
 const MerchPage = () => {
   const [selectedOption, setSelectedOption] = useState('Заявки на отправку');

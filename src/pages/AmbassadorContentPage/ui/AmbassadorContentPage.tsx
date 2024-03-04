@@ -53,20 +53,20 @@ const AmbassadorContentPage = () => {
 
   const getPlatformIcon = (platform: string): JSX.Element => {
     switch (platform) {
-      case 'habr':
-        return <img src={habrIcon} alt="Habr" />;
-      case 'vc':
-        return <img src={vcIcon} alt="VC" />;
-      case 'youtube':
-        return <img src={youtubeIcon} alt="YouTube" />;
-      case 'telegram':
-        return <img src={telegramIcon} alt="Telegram" />;
-      case 'linkedin':
-        return <img src={linkedinIcon} alt="LinkedIn" />;
-      case 'instagram':
-        return <img src={instagramIcon} alt="Instagram" />;
-      default:
-        return <img src={otherSocialIcon} alt="Other" />;
+    case 'habr':
+      return <img src={habrIcon} alt="Habr" />;
+    case 'vc':
+      return <img src={vcIcon} alt="VC" />;
+    case 'youtube':
+      return <img src={youtubeIcon} alt="YouTube" />;
+    case 'telegram':
+      return <img src={telegramIcon} alt="Telegram" />;
+    case 'linkedin':
+      return <img src={linkedinIcon} alt="LinkedIn" />;
+    case 'instagram':
+      return <img src={instagramIcon} alt="Instagram" />;
+    default:
+      return <img src={otherSocialIcon} alt="Other" />;
     }
   };
 

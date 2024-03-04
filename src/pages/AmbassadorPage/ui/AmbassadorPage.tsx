@@ -1,6 +1,5 @@
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
@@ -14,8 +13,9 @@ import { FilterComponent } from 'src/entities/FilterComponent';
 import type { User } from 'src/utils/constants/types/types';
 import { getAllAmbassadors } from 'src/shared/api/ambassadors';
 
-import style from './AmbassadorPage.module.scss';
 import { SortComponent } from 'src/entities/SortComponent';
+import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
+import style from './AmbassadorPage.module.scss';
 
 const AmbassadorPage = () => {
   const dispatch = useAppDispatch();
