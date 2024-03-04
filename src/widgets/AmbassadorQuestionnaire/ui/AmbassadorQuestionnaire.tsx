@@ -48,7 +48,7 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
       cancelButtonLabel="Отменить"
     >
       <QuestionnaireProfileInfo isEdit={false} user={user} />
-      <QuestionnaireForm isEdit={true} />
+      <QuestionnaireForm isEdit={false} />
     </FormContainer>
   );
 };

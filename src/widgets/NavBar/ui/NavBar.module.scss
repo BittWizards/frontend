@@ -6,11 +6,12 @@
   padding: 0 0 0 16px;
   width: 240px;
   flex-shrink: 0;
-  //border: 1px solid red;
+  height: calc(100vh - 90px);
 
   * {
     box-sizing: border-box;
   }
+  position: relative;
 }
 
 .nav {
@@ -28,6 +29,8 @@
 }
 
 .button {
+  position: absolute;
+  bottom: 15px;
   padding: 0;
   border: none;
   width: 48px;

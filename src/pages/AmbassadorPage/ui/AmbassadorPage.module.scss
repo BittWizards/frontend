@@ -10,16 +10,16 @@
   flex-direction: column;
 }
 
+.pageHeader {
+  margin-bottom: 32px;
+}
+
 .cardsContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   color: $baseLightBg;
   padding-bottom: 32px;
-}
-
-.btnWrapper {
-  align-self: flex-end;
 }
 
 .btn {
@@ -35,13 +35,11 @@
   font-weight: 500;
 }
 
-
 .titleBtnWrapper {
   margin: 0;
   padding: 0;
   display: flex;
   gap: 32px;
-
 }
 .pageTitle {
   margin: 0;
@@ -57,5 +55,5 @@
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 122px
+  gap: 122px;
 }

@@ -40,10 +40,26 @@
 .tableWrapper {
   display: flex;
   width: 100%;
+  margin-top: 32px;
 }
 
 .socialWrapper {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+
+.raitingWrapper {
+  display: flex;
+  gap: 100px;
+  margin-bottom: 40px;
+  margin-top: 24px;
+}
+
+.raitingText {
+  font-family: 'YSText';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $baseColorWhite;
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -7,6 +8,9 @@ import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 import { ButtonComponent } from 'src/entities/Button';
+import { ChoiceModal, InputModal } from 'src/entities/Modals';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
+import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
 
 import trashIcon from 'src/shared/icons/trash.svg';
 
@@ -23,9 +27,6 @@ import { formatDateString } from 'src/utils/constants/formatDate';
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorPromocodePage.module.scss';
-import { ChoiceModal, InputModal } from '../../../entities/Modals';
-import { useState } from 'react';
-import ButtonSecondaryComponent from '../../../entities/ButtonSecondary';
 
 const AmbassadorPromocodePage = () => {
   const { id } = useParams();
@@ -68,10 +69,8 @@ const AmbassadorPromocodePage = () => {
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <AmbassadorHeaderCard
-          title="Промокоды Амбассадора"
-          data={selectedUser}
-        />
+        <AmbassadorHeaderCard data={selectedUser} />
+        <SubtitleWithEditBtn title="Промокоды Амбассадора" />
         <div className={style.promoContainer}>
           <div className={style.promoContentWrapper}>
             <div className={style.contentColumn}>
@@ -128,29 +127,37 @@ const AmbassadorPromocodePage = () => {
           </TableBody>
         </Table>
       </div>
-      <ChoiceModal
-        open={openChoiceModal}
-        onClose={handleClose}
-        title="Удалить  промокод"
-        content="Вы действительно хотите удалить активный промокод и перенести его в историю?"
-        onCancelLabel="Отменить"
-        onConfirmLabel="Удалить"
-        onCancel={handleClose}
-        onConfirm={handleClose}
-      />
-      <InputModal
-        open={openInputModal}
-        onClose={handleClose}
-        title="Изменить промокод "
-        content="Введите новый промокод"
-        tableSpan="Текущий промокод сохранится в истории промокодов"
-        placeholderTextArea="Введите промокод"
-        heightTextArea={43}
-        onCancelLabel="Отменить"
-        onConfirmLabel="Сохранить"
-        onCancel={handleClose}
-        onConfirm={handleClose}
-      />
+      {openChoiceModal ? (
+        <ChoiceModal
+          open={openChoiceModal}
+          onClose={handleClose}
+          title="Удалить  промокод"
+          content="Вы действительно хотите удалить активный промокод и перенести его в историю?"
+          onCancelLabel="Отменить"
+          onConfirmLabel="Удалить"
+          onCancel={handleClose}
+          onConfirm={handleClose}
+        />
+      ) : (
+        ''
+      )}
+      {openInputModal ? (
+        <InputModal
+          open={openInputModal}
+          onClose={handleClose}
+          title="Изменить промокод "
+          content="Введите новый промокод"
+          tableSpan="Текущий промокод сохранится в истории промокодов"
+          placeholderTextArea="Введите промокод"
+          heightTextArea={43}
+          onCancelLabel="Отменить"
+          onConfirmLabel="Сохранить"
+          onCancel={handleClose}
+          onConfirm={handleClose}
+        />
+      ) : (
+        ''
+      )}
     </div>
   ) : (
     <div>Пользоваетель с id ${id} не найден</div>

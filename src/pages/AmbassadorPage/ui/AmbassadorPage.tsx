@@ -1,5 +1,7 @@
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
+
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorCard } from 'src/widgets/AmbassadorCard';
@@ -9,12 +11,20 @@ import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
 import { FilterComponent } from 'src/entities/FilterComponent';
-import type { User } from '../../../utils/constants/types/types';
+import type { User } from 'src/utils/constants/types/types';
+import { getAllAmbassadors } from 'src/shared/api/ambassadors';
+
 import style from './AmbassadorPage.module.scss';
 
 const AmbassadorPage = () => {
+  const dispatch = useAppDispatch();
   const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
-  const sortingOptions = ['По фамилии', 'По статусу', 'По специальности', 'По дате'];
+  const sortingOptions = [
+    'По фамилии',
+    'По статусу',
+    'По специальности',
+    'По дате',
+  ];
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
 
@@ -24,10 +34,18 @@ const AmbassadorPage = () => {
     setSearchTerm(event.target.value);
   };
 
+  useEffect(() => {
+    dispatch(getAllAmbassadors());
+  }, [dispatch]);
+
 
   useEffect(() => {
     setSearchResults(mockCardsData);
   }, [searchTerm]);
+
+  const ambassadors = useAppSelector(state => state.ambassadors);
+
+  console.log('Ambassadors:', ambassadors);
 
   /* const onSort = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
@@ -86,18 +104,22 @@ const AmbassadorPage = () => {
           </>
         ) : (
           <>
+            <div className={style.pageHeader}>
+              <div className={style.titleBtnWrapper}>
+                <h2 className={style.pageTitle}>Амбассадоры</h2>
+                <ButtonComponent
+                  label="Добавить амбассадора"
+                  width={244}
+                  height={48}
+                  onClick={() => navigate('new-ambassador')}
+                />
+              </div>
+            </div>
+
             <div className={style.cardsContainer}>
               {mockCardsData.map(cardData => (
                 <AmbassadorCard key={cardData.id} data={cardData} />
               ))}
-            </div>
-            <div className={style.btnWrapper}>
-              <ButtonComponent
-                label="Добавить амбассадора"
-                width={244}
-                height={48}
-                onClick={() => navigate('new-ambassador', { replace: true })}
-              />
             </div>
           </>
         )}

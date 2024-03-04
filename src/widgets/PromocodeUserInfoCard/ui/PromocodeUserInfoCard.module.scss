@@ -12,7 +12,7 @@
   flex-direction: column;
   gap: 16px;
   width: 520px;
-  color: $baseColorWhite;
+  color: $baseLightBg;
   transition: border-color 0.3s ease;
   box-sizing: border-box;
 
@@ -57,7 +57,9 @@
   padding: 0;
   font-family: 'YSText';
   font-size: 14px;
+  line-height: 120%;
   font-weight: 400;
+  color: $baseColorInactive;
 }
 
 .line {
@@ -77,42 +79,17 @@
   height: 24px;
 }
 
-.tgLink {
-  text-decoration: underline;
-  margin: 0;
-  padding: 0;
+.tg {
   font-family: 'YSText';
-  font-size: 16px;
+  font-size: 13px;
   line-height: 120%;
   font-weight: 400;
-  color: $baseLightBg;
+  color: $baseColorInactive;
 }
 
 .statusWrapper {
   display: flex;
   justify-content: space-between;
-}
-
-.status {
-  font-family: 'YSText';
-  font-size: 11px;
-  line-height: 120%;
-  font-weight: 400;
-  border: 1px solid;
-  border-radius: 16px;
-  padding: 5px 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.statusActive {
-  border-color: $statusColorActive;
-  color: $statusColorActive;
-}
-
-.statusInactive {
-  border-color: $statusColorInActive;
-  color: $statusColorInActive;
 }
 
 .promocodeWrapper {

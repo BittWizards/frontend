@@ -5,6 +5,7 @@ import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
+import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
 
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
@@ -52,20 +53,20 @@ const AmbassadorContentPage = () => {
 
   const getPlatformIcon = (platform: string): JSX.Element => {
     switch (platform) {
-    case 'habr':
-      return <img src={habrIcon} alt="Habr" />;
-    case 'vc':
-      return <img src={vcIcon} alt="VC" />;
-    case 'youtube':
-      return <img src={youtubeIcon} alt="YouTube" />;
-    case 'telegram':
-      return <img src={telegramIcon} alt="Telegram" />;
-    case 'linkedin':
-      return <img src={linkedinIcon} alt="LinkedIn" />;
-    case 'instagram':
-      return <img src={instagramIcon} alt="Instagram" />;
-    default:
-      return <img src={otherSocialIcon} alt="Other" />;
+      case 'habr':
+        return <img src={habrIcon} alt="Habr" />;
+      case 'vc':
+        return <img src={vcIcon} alt="VC" />;
+      case 'youtube':
+        return <img src={youtubeIcon} alt="YouTube" />;
+      case 'telegram':
+        return <img src={telegramIcon} alt="Telegram" />;
+      case 'linkedin':
+        return <img src={linkedinIcon} alt="LinkedIn" />;
+      case 'instagram':
+        return <img src={instagramIcon} alt="Instagram" />;
+      default:
+        return <img src={otherSocialIcon} alt="Other" />;
     }
   };
 
@@ -78,7 +79,12 @@ const AmbassadorContentPage = () => {
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <AmbassadorHeaderCard title="Контент Амбассадора" data={selectedUser} />
+        <AmbassadorHeaderCard data={selectedUser} />
+        <div className={style.raitingWrapper}>
+          <span className={style.raitingText}>Рейтинг Амбассадора</span>
+          <span className={style.raitingText}>46</span>
+        </div>
+        <SubtitleWithEditBtn title="Контент Амбассадора" />
         <div className={style.tableWrapper}>
           <Table style={{ width: '100%' }}>
             <TableHead className={style.tableHead}>
