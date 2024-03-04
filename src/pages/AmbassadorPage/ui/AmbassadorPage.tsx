@@ -15,7 +15,6 @@ import type { User } from 'src/utils/constants/types/types';
 import { getAllAmbassadors } from 'src/shared/api/ambassadors';
 
 import style from './AmbassadorPage.module.scss';
-import { RootState } from '@reduxjs/toolkit/query';
 
 const AmbassadorPage = () => {
   const dispatch = useAppDispatch();
