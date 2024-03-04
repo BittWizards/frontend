@@ -46,27 +46,13 @@ const AmbassadorPage = () => {
     dispatch(getAllAmbassadors())
   }, [])
 
+
   useEffect(() => {
     setSearchResults(mockCardsData);
   }, [searchTerm]);
 
-  /* const onSort = (event: { preventDefault: () => void; }) => {
-    event.preventDefault();
-    const sortResults = mockCardsData.sort((a, b) => {
-      const ab = new Date(a.date);
-      const bb = new Date(b.date);
-      return (bb.getTime() - ab.getTime())
-    });
-    if (sortingOptions[1]) {
-      setSearchResults(sortResults);
-    }
-  }; */
-
-
-
-
-
   const onSearch = (event: MouseEvent<HTMLButtonElement>) => {
+
     event.preventDefault();
     // eslint-disable-next-line max-len
     const results = mockCardsData.filter(
@@ -101,8 +87,16 @@ const AmbassadorPage = () => {
                 <FilterComponent
                   onSearch={onSearch}
                   searchTerm={searchTerm}
-                  handleChange={handleChange} />
-                <SortComponent width={220} height={48} options={sortingOptions} />
+                  handleChange={handleChange}
+                />
+                <SortComponent
+                  width={220}
+                  height={48}
+                  options={sortingOptions}
+                  onSortChange={selectedOption => {
+                    console.log('Selected sorting option:', selectedOption);
+                  }}
+                />
               </div>
             </div>
             <AmbassadorTable data={searchResults} />
@@ -122,7 +116,8 @@ const AmbassadorPage = () => {
               <FilterComponent
                 onSearch={onSearch}
                 searchTerm={searchTerm}
-                handleChange={handleChange} />
+                handleChange={handleChange}
+              />
             </div>
 
             <div className={style.cardsContainer}>

@@ -77,7 +77,14 @@ const ContentPage = () => {
                 searchTerm={searchTerm}
                 handleChange={handleChange}
               />
-              <SortComponent width={220} height={48} options={sortingOptions} />
+              <SortComponent
+                width={220}
+                height={48}
+                options={sortingOptions}
+                onSortChange={selectedOption => {
+                  console.log('Selected sorting option:', selectedOption);
+                }}
+              />
             </div>
             <div className={style.allcontent__reitingList}>
               {searchResults.map(cardData => (

@@ -5,23 +5,22 @@ import type { SortProps } from '../types/types';
 const SortComponent: FC<SortProps> = ({
   width,
   height,
-  options
+  options,
+  onSortChange,
 }) => {
-  const [value, setValue] = useState<string | null>(options[0]);
-  const [inputValue, setInputValue] = useState('');
+  const [selectedOption, setSelectedOption] = useState<string | null>(
+    options[0]
+  );
 
-
+  const handleSortChange = (newValue: string | null) => {
+    setSelectedOption(newValue);
+    onSortChange(newValue);
+  };
 
   return (
     <Autocomplete
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      inputValue={inputValue}
-      onInputChange={(event, newInputValue) => {
-        setInputValue(newInputValue);
-      }}
+      value={selectedOption}
+      onChange={(_, newValue) => handleSortChange(newValue)}
       id="controllable-states-demo"
       options={options}
       sx={{
@@ -42,7 +41,7 @@ const SortComponent: FC<SortProps> = ({
       }}
       renderInput={params => <TextField {...params} />}
     />
-  )
+  );
 };
 
 export default SortComponent;

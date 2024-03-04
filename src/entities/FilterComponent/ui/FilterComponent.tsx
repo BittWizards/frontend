@@ -1,9 +1,7 @@
-import { useState, type FC, MouseEvent } from 'react';
-import { Button } from '@mui/material';
-import { SortComponent } from 'src/entities/SortComponent';
-import sortImage from 'src/shared/icons/sortImage.svg';
+import type { FC } from 'react';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import type { FilterProps } from '../types/types';
+
 import style from './FilterComponent.module.scss';
 
 const FilterComponent: FC<FilterProps> = ({
@@ -19,8 +17,12 @@ const FilterComponent: FC<FilterProps> = ({
       value={searchTerm}
       onChange={handleChange}
     />
-    <ButtonSecondaryComponent label='Найти' width={152} height={48}
-      onClick={onSearch} />
+    <ButtonSecondaryComponent
+      label="Найти"
+      width={152}
+      height={48}
+      onClick={onSearch}
+    />
   </div>
 );
 
