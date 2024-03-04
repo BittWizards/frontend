@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Avatar } from 'src/entities/Avatar';
 import { formatDateString } from 'src/utils/constants/formatDate';
@@ -6,10 +7,9 @@ import ButtonSecondaryComponent from 'src/entities/ButtonSecondary/ui/ButtonSeco
 import calendarIcon from 'src/shared/icons/calendar.svg';
 import type { TAmbassadorCardProps } from '../types/types';
 
-
 import style from './AmbassadorCard.module.scss';
 
-const AmbassadorCard: React.FC<TAmbassadorCardProps> = ({ data }) => {
+const AmbassadorCard: FC<TAmbassadorCardProps> = ({ data }) => {
   const navigate = useNavigate();
 
   return (

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import Portal from '@mui/material/Portal';
@@ -12,7 +13,7 @@ import type { TCardProps } from '../types/types';
 
 import style from './MerchUserInfoCard.module.scss';
 
-const MerchUserInfoCard: React.FC<TCardProps> = ({ data }) => {
+const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {

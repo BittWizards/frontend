@@ -1,11 +1,11 @@
-import type React from 'react';
+import type { FC } from 'react';
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { useNavigate, useLocation, useParams, NavLink } from 'react-router-dom';
 
 import type { TTabsNavBarProps } from '../types/type';
 import style from './TabsNavBar.module.scss';
 
-const TabsNavBar: React.FC<TTabsNavBarProps> = ({ tabs }) => {
+const TabsNavBar: FC<TTabsNavBarProps> = ({ tabs }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();

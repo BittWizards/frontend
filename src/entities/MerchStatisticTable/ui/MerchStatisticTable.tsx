@@ -1,4 +1,4 @@
-import { mockCardsData } from 'src/utils/constants/mockCardsData';
+import type { FC } from 'react';
 
 import {
   Table,
@@ -45,7 +45,7 @@ const referenceDictionary: TReferenceDictionary = {
 
 const merchTypes = Object.values(referenceDictionary);
 
-const MerchStatisticTable: React.FC<TMerchStatisticProps> = ({ merchArray }) => {
+const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
   const commonCellStyle = {
     color: '#ebeef4',
     fontFamily: 'YSText',

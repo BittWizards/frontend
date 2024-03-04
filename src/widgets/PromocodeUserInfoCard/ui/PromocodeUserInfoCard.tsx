@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import tgIcon from 'src/shared/icons/tgIcon.svg';
@@ -7,7 +8,7 @@ import type { TCardProps } from '../types/types';
 
 import style from './PromocodeUserInfoCard.module.scss';
 
-const PromocodeUserInfoCard: React.FC<TCardProps> = ({ data }) => {
+const PromocodeUserInfoCard: FC<TCardProps> = ({ data }) => {
   const formattedDate = new Date(data.activationDate)
     .toLocaleDateString('en-GB')
     .replace(/\//g, '.');
