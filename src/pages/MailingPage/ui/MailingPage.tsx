@@ -115,11 +115,17 @@ const MailingPage = () => {
                   width={220}
                   height={48}
                   options={genderOptions}
+                  onSortChange={selectedOption => {
+                    console.log('Selected sorting option:', selectedOption);
+                  }}
                 />
                 <SortComponent
                   width={220}
                   height={48}
                   options={jobOptions}
+                  onSortChange={selectedOption => {
+                    console.log('Selected sorting option:', selectedOption);
+                  }}
                 />
               </div>
               <ul className={style.newmailing__checkboxGroup}>
@@ -176,7 +182,14 @@ const MailingPage = () => {
                     searchTerm={searchTerm}
                     handleChange={handleChange}
                   />
-                  <SortComponent width={220} height={48} options={sortingOptions} />
+                  <SortComponent
+                    width={220}
+                    height={48}
+                    options={sortingOptions}
+                    onSortChange={selectedOption => {
+                      console.log('Selected sorting option:', selectedOption);
+                    }}
+                  />
                 </div>
               </div>
               <MailingDataGrid rows={searchResults} />

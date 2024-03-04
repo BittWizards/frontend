@@ -9,21 +9,22 @@ import { PromocodeUserInfoCard } from 'src/widgets/PromocodeUserInfoCard';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { ButtonComponent } from 'src/entities/Button';
 import { InputAutoCompleteModal } from 'src/entities/Modals';
-
 import { FilterComponent } from 'src/entities/FilterComponent';
 import type { User } from 'src/utils/constants/types/types';
-
 import { SortComponent } from 'src/entities/SortComponent';
+import { promocodeSortingOptions } from '../model/const';
+
 import style from './PromocodePage.module.scss';
+
+import {
+  sortPromocodesByDate,
+  sortPromocodesBySurname,
+  sortPromocodesBySpecialty,
+  sortPromocodesByStatus,
+} from '../model/sortFunctions';
 
 const PromocodePage: FC = () => {
   const [openModal, setModalOpen] = useState(false);
-  const sortingOptions = [
-    'По фамилии',
-    'По статусу',
-    'По специальности',
-    'По дате',
-  ];
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
 
@@ -37,26 +38,50 @@ const PromocodePage: FC = () => {
 
   const handleOnConfirm = (idAmbasador?: string, promocode?: string) => {
     setModalOpen(false);
-    console.log('Promocode:', `${idAmbasador} ${promocode}`);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  useEffect(() => {
-    setSearchResults(mockCardsData);
-  }, [searchTerm]);
-
   const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    // eslint-disable-next-line max-len
     const results = mockCardsData.filter(
       ambassador =>
         ambassador.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         ambassador.surname.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
+  };
+
+  useEffect(() => {
+    setSearchResults(sortPromocodesByDate(mockCardsData).reverse());
+  }, []);
+
+  const handleSortChange = (selectedOption: string | null) => {
+    if (selectedOption !== null) {
+      let sortedResults = [...searchResults];
+      /* eslint-disable */
+      switch (selectedOption) {
+        case 'По дате':
+          sortedResults = sortPromocodesByDate(sortedResults).reverse();
+          break;
+        case 'По фамилии':
+          sortedResults = sortPromocodesBySurname(sortedResults);
+          break;
+        case 'По специальности':
+          sortedResults = sortPromocodesBySpecialty(sortedResults);
+          break;
+        case 'По статусу':
+          sortedResults = sortPromocodesByStatus(sortedResults);
+          break;
+        // Добавьте другие условия для других опций сортировки
+        default:
+          break;
+      }
+
+      setSearchResults(sortedResults);
+    }
   };
 
   return (
@@ -81,7 +106,12 @@ const PromocodePage: FC = () => {
                   searchTerm={searchTerm}
                   handleChange={handleChange}
                 />
-                <SortComponent width={220} height={48} options={sortingOptions} />
+                <SortComponent
+                  width={220}
+                  height={48}
+                  options={promocodeSortingOptions}
+                  onSortChange={handleSortChange}
+                />
               </div>
             </div>
           </div>

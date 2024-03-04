@@ -1,7 +1,8 @@
 interface SortProps {
-  width: number,
-  height: number,
-  options: string[],
+  width: number;
+  height: number;
+  options: string[];
+  onSortChange: (selectedOption: string | null) => void;
 }
 
-export type { SortProps }
+export type { SortProps };

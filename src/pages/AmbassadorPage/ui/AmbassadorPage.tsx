@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Navbar } from 'src/widgets/NavBar/index';
@@ -39,7 +39,6 @@ const AmbassadorPage = () => {
     dispatch(getAllAmbassadors());
   }, [dispatch]);
 
-
   useEffect(() => {
     setSearchResults(mockCardsData);
   }, [searchTerm]);
@@ -59,10 +58,6 @@ const AmbassadorPage = () => {
       setSearchResults(sortResults);
     }
   }; */
-
-
-
-
 
   const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -99,8 +94,16 @@ const AmbassadorPage = () => {
                 <FilterComponent
                   onSearch={onSearch}
                   searchTerm={searchTerm}
-                  handleChange={handleChange} />
-                <SortComponent width={220} height={48} options={sortingOptions} />
+                  handleChange={handleChange}
+                />
+                <SortComponent
+                  width={220}
+                  height={48}
+                  options={sortingOptions}
+                  onSortChange={selectedOption => {
+                    console.log('Selected sorting option:', selectedOption);
+                  }}
+                />
               </div>
             </div>
             <AmbassadorTable data={searchResults} />
@@ -120,7 +123,8 @@ const AmbassadorPage = () => {
               <FilterComponent
                 onSearch={onSearch}
                 searchTerm={searchTerm}
-                handleChange={handleChange} />
+                handleChange={handleChange}
+              />
             </div>
 
             <div className={style.cardsContainer}>

@@ -16,8 +16,10 @@ import style from './MerchPage.module.scss';
 const MerchPage = () => {
   const [selectedOption, setSelectedOption] = useState('Заявки на отправку');
   const tabs: string[] = ['Заявки на отправку', 'Учет мерча'];
-  const sortingOptions = selectedOption === 'Учет мерча' ? ['По фамилии', 'По дате'] : ['По фамилии',
-    'По статусу', 'По специальности', 'По дате'];
+  const sortingOptions =
+    selectedOption === 'Учет мерча'
+      ? ['По фамилии', 'По дате']
+      : ['По фамилии', 'По статусу', 'По специальности', 'По дате'];
 
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
@@ -51,7 +53,13 @@ const MerchPage = () => {
           onSelectTab={setSelectedOption}
         />
         <div className={style.headerTopWrapper}>
-          <div className={selectedOption === 'Учет мерча' ? `${style.leftWrapper_disabled}` : `${style.leftWrapper}`}>
+          <div
+            className={
+              selectedOption === 'Учет мерча'
+                ? `${style.leftWrapper_disabled}`
+                : `${style.leftWrapper}`
+            }
+          >
             <h2 className={style.pageTitle}>Заявки</h2>
             <ButtonComponent
               label="Создать заявку"
@@ -68,7 +76,14 @@ const MerchPage = () => {
               searchTerm={searchTerm}
               handleChange={handleChange}
             />
-            <SortComponent width={220} height={48} options={sortingOptions} />
+            <SortComponent
+              width={220}
+              height={48}
+              options={sortingOptions}
+              onSortChange={selectedOption => {
+                console.log('Selected sorting option:', selectedOption);
+              }}
+            />
           </div>
         </div>
         {selectedOption === 'Учет мерча' ? (
@@ -83,7 +98,7 @@ const MerchPage = () => {
           </div>
         )}
       </div>
-    </div >
+    </div>
   );
 };
 
