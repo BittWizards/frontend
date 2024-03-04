@@ -109,3 +109,20 @@
   flex-direction: column;
   gap: 16px;
 }
+
+.filterWrapper {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.newDocuments {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-end;
+}

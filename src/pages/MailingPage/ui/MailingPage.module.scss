@@ -153,6 +153,15 @@
     padding: 0;
     display: flex;
     gap: 168px;
+    margin-bottom: 24px;
+  }
+
+  .rightWrapper {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-end;
   }
 
   

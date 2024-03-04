@@ -11,6 +11,7 @@ import { ButtonComponent } from 'src/entities/Button';
 import type { User } from 'src/utils/constants/types/types';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import style from './MerchPage.module.scss';
+import { SortComponent } from 'src/entities/SortComponent';
 
 const MerchPage = () => {
   const [selectedOption, setSelectedOption] = useState('Заявки на отправку');
@@ -61,12 +62,14 @@ const MerchPage = () => {
               }}
             />
           </div>
-          <FilterComponent
-            onSearch={onSearch}
-            sortingOptions={sortingOptions}
-            searchTerm={searchTerm}
-            handleChange={handleChange}
-          />
+          <div className={style.rightWrapper}>
+            <FilterComponent
+              onSearch={onSearch}
+              searchTerm={searchTerm}
+              handleChange={handleChange}
+            />
+            <SortComponent width={220} height={48} options={sortingOptions} />
+          </div>
         </div>
         {selectedOption === 'Учет мерча' ? (
           <div className={style.tableWrapper}>

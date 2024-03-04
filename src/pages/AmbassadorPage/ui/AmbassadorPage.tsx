@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
 
@@ -15,6 +15,7 @@ import type { User } from 'src/utils/constants/types/types';
 import { getAllAmbassadors } from 'src/shared/api/ambassadors';
 
 import style from './AmbassadorPage.module.scss';
+import { SortComponent } from 'src/entities/SortComponent';
 
 const AmbassadorPage = () => {
   const dispatch = useAppDispatch();
@@ -94,11 +95,13 @@ const AmbassadorPage = () => {
                   onClick={() => navigate('new-ambassador', { replace: true })}
                 />
               </div>
-              <FilterComponent
-                onSearch={onSearch}
-                sortingOptions={sortingOptions}
-                searchTerm={searchTerm}
-                handleChange={handleChange} />
+              <div className={style.filterWrapper}>
+                <FilterComponent
+                  onSearch={onSearch}
+                  searchTerm={searchTerm}
+                  handleChange={handleChange} />
+                <SortComponent width={220} height={48} options={sortingOptions} />
+              </div>
             </div>
             <AmbassadorTable data={searchResults} />
           </>
@@ -114,10 +117,14 @@ const AmbassadorPage = () => {
                   onClick={() => navigate('new-ambassador')}
                 />
               </div>
+              <FilterComponent
+                onSearch={onSearch}
+                searchTerm={searchTerm}
+                handleChange={handleChange} />
             </div>
 
             <div className={style.cardsContainer}>
-              {mockCardsData.map(cardData => (
+              {searchResults.map(cardData => (
                 <AmbassadorCard key={cardData.id} data={cardData} />
               ))}
             </div>

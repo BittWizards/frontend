@@ -13,6 +13,7 @@
 .headerWrapper {
   display: flex;
   flex-direction: column;
+  margin-bottom: 24px;
 }
 
 .headerTopWrapper {
@@ -43,4 +44,13 @@
   padding: 0;
   display: flex;
   gap: 32px;
+}
+
+.rightWrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-end;
 }

@@ -23,6 +23,7 @@
   display: flex;
   gap: 194px;
   justify-content: flex-end;
+  margin-bottom: 32px;
 }
 
 .pageTitle {
@@ -45,4 +46,13 @@
 .leftWrapper_disabled {
   display: none;
   visibility: hidden;
+}
+
+.rightWrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-end;
 }
