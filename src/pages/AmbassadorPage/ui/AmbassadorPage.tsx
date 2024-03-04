@@ -1,5 +1,12 @@
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import type { User } from 'src/utils/constants/types/types';
+
+import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
+import { getAllAmbassadors } from 'src/shared/api/ambassadors';
+import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
+
+import style from './AmbassadorPage.module.scss';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
@@ -8,17 +15,12 @@ import { ButtonComponent } from 'src/entities/Button';
 import { AmbassadorTable } from 'src/widgets/AmbassadorTable';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
-
 import { FilterComponent } from 'src/entities/FilterComponent';
-import type { User } from 'src/utils/constants/types/types';
-import { getAllAmbassadors } from 'src/shared/api/ambassadors';
-
 import { SortComponent } from 'src/entities/SortComponent';
-import { useAppDispatch, useAppSelector } from '../../../app/store/hooks';
-import style from './AmbassadorPage.module.scss';
+
+
 
 const AmbassadorPage = () => {
-  const dispatch = useAppDispatch();
   const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
   const sortingOptions = [
     'По фамилии',
@@ -31,22 +33,22 @@ const AmbassadorPage = () => {
 
   const tabs: string[] = ['Новые запросы', 'Все амбассадоры'];
   const navigate = useNavigate();
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  useEffect(() => {
-    dispatch(getAllAmbassadors());
-  }, [dispatch]);
+  const dispatch = useAppDispatch();
+  const {ambassadors} = useAppSelector(selectAmbassadors);
 
+  console.log(ambassadors)
+
+  useEffect(() => {
+    dispatch(getAllAmbassadors())
+  }, [])
 
   useEffect(() => {
     setSearchResults(mockCardsData);
   }, [searchTerm]);
-
-  const ambassadors = useAppSelector(state => state.ambassadors);
-
-  console.log('Ambassadors:', ambassadors);
 
   /* const onSort = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
@@ -64,7 +66,7 @@ const AmbassadorPage = () => {
 
 
 
-  const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onSearch = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     // eslint-disable-next-line max-len
     const results = mockCardsData.filter(
