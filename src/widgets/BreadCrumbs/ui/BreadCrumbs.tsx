@@ -48,20 +48,32 @@ const BreadCrumbs: FC = () => {
       )}
       {pathname.startsWith('/ambassadors/1/promocode') && (
         <>
-          {renderNavLinkNext('/promocode', 'Промокоды')}
+          {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
           <NavLink to='/ambassadors/1/promocode' className={style.breadcrumbs__link}>Промокоды Амбассадора</NavLink>
         </>
       )}
       {pathname.startsWith('/ambassadors/1/content') && (
         <>
-          {renderNavLinkNext('/content', 'Контент')}
+          {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
           <NavLink to='/ambassadors/1/content' className={style.breadcrumbs__link}>Контент Амбассадора</NavLink>
         </>
       )}
       {pathname.startsWith('/ambassadors/1/merch') && (
         <>
-          {renderNavLinkNext('/merch', 'Мерч')}
+          {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
           <NavLink to='/ambassadors/1/merch' className={style.breadcrumbs__link}>Мерч Амбассадора</NavLink>
+        </>
+      )}
+      {pathname.startsWith('/ambassadors/candidate/1/detail') && (
+        <>
+          {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
+          <NavLink to='/ambassadors/candidate/1/detail' className={style.breadcrumbs__link}>Анкета кандидата</NavLink>
+        </>
+      )}
+      {pathname.startsWith('/ambassadors/new-ambassador') && (
+        <>
+          {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
+          <NavLink to='/ambassadors/new-ambassador' className={style.breadcrumbs__link}>Новый Амбассадор</NavLink>
         </>
       )}
     </nav>
