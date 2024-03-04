@@ -1,21 +1,28 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import type { IAmbassador, ResultWithErrors } from 'src/shared/api/ambassadors/dtos';
+import type {
+  IAmbassador,
+  ResultWithErrors,
+} from 'src/shared/api/ambassadors/dtos';
 import { getAllAmbassadors } from 'src/shared/api/ambassadors';
+
+type AppError = { message: string; code: number };
 
 interface AmbassadorsState {
   ambassadors: IAmbassador[];
-  loading: boolean;
-  error: {
-    message: string;
-    code: string;
-  } | null;
+  isLoading: boolean;
+  isError: boolean;
+  error: AppError;
 }
 
 const initialState: AmbassadorsState = {
   ambassadors: [],
-  loading: false,
-  error: null,
+  isLoading: false,
+  isError: false,
+  error: {
+    message: '',
+    code: 0,
+  },
 };
 
 const ambassadorsSlice = createSlice({
@@ -25,26 +32,25 @@ const ambassadorsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getAllAmbassadors.pending, state => {
-        state.loading = true;
-        state.error = null;
+        state.isLoading = true;
       })
       .addCase(
         getAllAmbassadors.fulfilled,
         (state, action: PayloadAction<ResultWithErrors<IAmbassador[]>>) => {
-          state.loading = false;
+          state.isLoading = false;
           state.ambassadors = action.payload.data || [];
-          state.error = null;
+          state.isError = false;
+          state.error = { message: '', code: 0 };
         }
       )
-      .addCase(getAllAmbassadors.rejected, (state, action) => {
-        const payload = action.payload as
-          | ResultWithErrors<IAmbassador[]>
-          | undefined;
-        state.loading = false;
-        state.error = payload
-          ? { ...(payload as any) }
-          : { message: 'Unknown error', code: 'UNKNOWN' };
-      });
+      .addCase(
+        getAllAmbassadors.rejected,
+        (state, action: PayloadAction<any>) => {
+          state.error = action.payload.message;
+          state.isLoading = false;
+          state.isError = true;
+        }
+      );
   },
 });
 
