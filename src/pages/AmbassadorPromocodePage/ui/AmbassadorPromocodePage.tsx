@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
@@ -28,7 +29,7 @@ import { tabsData } from '../model/data';
 
 import style from './AmbassadorPromocodePage.module.scss';
 
-const AmbassadorPromocodePage = () => {
+const AmbassadorPromocodePage: FC = () => {
   const { id } = useParams();
   const [openInputModal, setInputModalOpen] = useState(false);
   const [openChoiceModal, setChoiceModalOpen] = useState(false);

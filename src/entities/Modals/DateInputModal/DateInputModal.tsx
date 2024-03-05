@@ -1,4 +1,4 @@
-import type { FC} from 'react';
+import type { FC } from 'react';
 import { useState } from 'react';
 import { Dialog, DialogActions, TextField } from '@mui/material';
 import { ButtonComponent } from 'src/entities/Button/';
@@ -49,15 +49,16 @@ const DateInputModal: FC<TInputModalModalProps> = ({
         fullWidth={false}
       >
         <div className={style.modalContainer}>
-          <button className={style.closeBtn} onClick={onClose}>
-            <img src={closeBtnIcon} />
+          <button type="button" className={style.closeBtn} onClick={onClose}>
+            <img src={closeBtnIcon} alt="closeBtn" />
           </button>
           <h2 className={style.title}>{title}</h2>
           <span className={style.text}>{content}</span>
-          <label className={style.textAreaWrapper}>
+          <label className={style.textAreaWrapper} htmlFor="modal-date-input">
             {tableSpan}
             <div className={style.textArea}>
               <TextField
+                id="modal-date-input"
                 fullWidth
                 variant="outlined"
                 type="date"

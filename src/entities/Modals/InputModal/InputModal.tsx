@@ -1,4 +1,4 @@
-import type { FC} from 'react';
+import type { FC } from 'react';
 import { useState } from 'react';
 import { Dialog, DialogActions, TextField } from '@mui/material';
 import { ButtonComponent } from 'src/entities/Button/';
@@ -51,12 +51,17 @@ const InputModal: FC<TInputModalModalProps> = ({
         fullWidth={false}
       >
         <div className={style.modalContainer}>
-          <button className={style.closeBtn} onClick={onClose}>
-            <img src={closeBtnIcon} />
+          <button
+            className={style.closeBtn}
+            onClick={onClose}
+            aria-label="Close"
+            type="button"
+          >
+            <img src={closeBtnIcon} alt="Close" />
           </button>
           <h2 className={style.title}>{title}</h2>
           <span className={style.text}>{content}</span>
-          <label className={style.textAreaWrapper}>
+          <label htmlFor="modal-textarea" className={style.textAreaWrapper}>
             {tableSpan}
             <div className={style.textArea}>
               <TextField

@@ -41,8 +41,8 @@ const ChoiceModal: FC<TChoiceModalModalProps> = ({
       fullWidth={false}
     >
       <div className={style.modalContainer}>
-        <button className={style.closeBtn} onClick={onClose}>
-          <img src={closeBtnIcon} />
+        <button type="button" className={style.closeBtn} onClick={onClose}>
+          <img src={closeBtnIcon} alt="closeBtn" />
         </button>
         <h2 className={style.title}>{title}</h2>
         <span className={style.text}>{content}</span>

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import avatar from 'src/shared/icons/userAvatar.png';
 
 type TColumn = {

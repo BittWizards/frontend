@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { BASE_URL } from 'src/utils/constants/api';
-import { INewContentCardData } from './dtos';
+import type { INewContentCardData } from './dtos';
 
 export const getNewContent = createAsyncThunk(
   'content/getNewContent',
