@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getNewContent } from 'src/shared/api/content';
-import { INewContentCardData } from 'src/shared/api/content/dtos';
+import type { INewContentCardData } from 'src/shared/api/content/dtos';
 
 interface IContentsState {
   newContent: INewContentCardData[];

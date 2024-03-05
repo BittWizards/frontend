@@ -1,20 +1,25 @@
 import type { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { ButtonComponent } from 'src/entities/Button';
 import type { IFormContainer } from '../types/types';
 import style from './FormContainer.module.scss';
 
-const FormContainer: FC<IFormContainer> = ({ title, children, defaultValues, onSubmit, submitButtonLabel, cancelButtonLabel }) => {
-
+const FormContainer: FC<IFormContainer> = ({
+  title,
+  children,
+  defaultValues,
+  onSubmit,
+  submitButtonLabel,
+  cancelButtonLabel,
+}) => {
   const submitForm = (data: Object) => {
-    onSubmit(data)
-  }
+    onSubmit(data);
+  };
 
   const methods = useForm({
-    defaultValues: defaultValues || {}
+    defaultValues: defaultValues || {},
   });
 
   return (

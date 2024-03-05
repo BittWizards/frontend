@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { IAmbassador } from './dtos';
 import { BASE_URL } from 'src/utils/constants/api';
+import type { IAmbassador } from './dtos';
 
 export const getAllAmbassadors = createAsyncThunk(
   'ambassadors/getAllAmbassadors',

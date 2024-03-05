@@ -1,4 +1,5 @@
-import { useParams } from 'react-router-dom';
+import type { FC } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Navbar } from 'src/widgets/NavBar/index';
@@ -30,8 +31,10 @@ import { tabsData } from '../model/data';
 
 import style from './AmbassadorContentPage.module.scss';
 
-const AmbassadorContentPage = () => {
+const AmbassadorContentPage: FC = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const selectedUser = mockCardsData.find(user => user.id === id);
 
   const commonCellStyle = {
@@ -52,6 +55,7 @@ const AmbassadorContentPage = () => {
   };
 
   const getPlatformIcon = (platform: string): JSX.Element => {
+    /* eslint-disable */
     switch (platform) {
       case 'habr':
         return <img src={habrIcon} alt="Habr" />;
@@ -71,7 +75,12 @@ const AmbassadorContentPage = () => {
   };
 
   const handleRowClick = (index: number) => {
-    console.log(`Row ${index + 1} clicked!`);
+    const data = selectedUser?.content[index];
+    if (data) {
+      navigate(
+        `/ambassadors/${selectedUser.id}/detail/${selectedUser.id}/report`
+      );
+    }
   };
 
   return selectedUser ? (

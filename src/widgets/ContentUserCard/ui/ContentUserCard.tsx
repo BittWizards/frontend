@@ -3,8 +3,8 @@ import calendarIcon from 'src/shared/icons/calendar.svg';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
-import { useNavigate, useParams } from 'react-router-dom';
-import { mockCardsData } from 'src/utils/constants/mockCardsData';
+import { useNavigate } from 'react-router-dom';
+
 import type { TCardProps } from '../types/types';
 
 import style from './ContentUserCard.module.scss';
@@ -17,10 +17,10 @@ const ContentUserCard: FC<TCardProps> = ({ data }) => {
 
   console.log('data', data);
 
-  const handleRowClick = () => {
+  const handleClick = () => {
     navigate(`/ambassadors/${data.id}/detail/${data.id}/report`);
-  }
-
+  };
+  // TODO должны прийти с бэка разные id
 
   return (
     <div className={style.cardContainer}>
@@ -41,7 +41,7 @@ const ContentUserCard: FC<TCardProps> = ({ data }) => {
           label="Посмотреть"
           width={296}
           height={48}
-          onClick={handleRowClick}
+          onClick={handleClick}
         />
       </div>
     </div>
