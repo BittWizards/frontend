@@ -39,6 +39,9 @@
   line-height: 120%;
   font-weight: 400;
   color: $baseColorInactive;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .date {
@@ -73,4 +76,5 @@
   gap: 5px;
   align-items: center;
   justify-content: center;
+  max-width: 230px;
 }

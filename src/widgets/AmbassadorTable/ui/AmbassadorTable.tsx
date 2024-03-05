@@ -92,7 +92,7 @@ const AmbassadorTable: FC<TCardProps> = ({ data }) => {
               <div className={style.cellWrapper}>
                 <span
                   className={style.cellText}
-                >{`@${ambassador.telegram}`}</span>
+                >{`@${ambassador.telegram.split('/')[1]}`}</span>
               </div>
             </TableCell>
             <TableCell style={commonCellStyle}>
