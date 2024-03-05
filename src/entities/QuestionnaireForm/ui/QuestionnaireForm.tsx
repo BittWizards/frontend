@@ -1,6 +1,5 @@
-import type { FC} from 'react';
+import type { FC } from 'react';
 import { useState } from 'react';
-
 
 import { PostalDetails } from 'src/entities/PostalDetails';
 import { Textarea } from 'src/shared/Textarea';
@@ -14,18 +13,20 @@ import style from './QuestionnaireForm.module.scss';
 const QuestionnaireForm: FC<IQuestionnaireForm> = ({ isEdit }) => (
   <div>
     <div className={style.container}>
-      <div className={`${style.column} ${style.left}`}>
+      <div className={style.row}>
         <PostalDetails isEdit={isEdit} />
-        <DataMerch isEdit={isEdit} />
-        <WorkAndEducation isEdit={isEdit} />
-      </div>
-      <div className={`${style.column} ${style.right}`}>
         <Contacts isEdit={isEdit} />
+      </div>
+      <div className={style.row}>
+        <DataMerch isEdit={isEdit} />
+      </div>
+      <div className={style.row}>
+        <WorkAndEducation isEdit={isEdit} />
         <Activity isEdit={isEdit} />
       </div>
     </div>
     <label className={`${style.label}`}>
-        Дополнительная информация
+      Дополнительная информация
       <fieldset className={`${style.fieldset}`}>
         <Textarea
           width={976}
