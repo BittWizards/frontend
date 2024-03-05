@@ -12,6 +12,11 @@ import type { User } from 'src/utils/constants/types/types';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { SortComponent } from 'src/entities/SortComponent';
 import style from './MerchPage.module.scss';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { getMerch } from 'src/shared/api/merch';
+import { selectMerch } from 'src/app/store/reducers/merch/model/merchSlice';
+
+import { getMerchById } from 'src/shared/api/merch';
 
 const MerchPage = () => {
   const [selectedOption, setSelectedOption] = useState('Заявки на отправку');
@@ -27,6 +32,13 @@ const MerchPage = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getMerchById(1))
+  }, [])
+  const {merch} = useAppSelector(selectMerch)
+  console.log(merch)
 
   useEffect(() => {
     setSearchResults(mockCardsData);

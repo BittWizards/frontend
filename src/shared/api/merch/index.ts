@@ -15,3 +15,15 @@ export const getMerch = createAsyncThunk(
     }
   }
 );
+
+export const getMerchById = createAsyncThunk(
+  'merch/getMerchById',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get<IMerch[]>(`${BASE_URL}/api/v1/merch/${id}`);
+      return data;
+    } catch (e: any) {
+      return rejectWithValue(e.message);
+    }
+  }
+);

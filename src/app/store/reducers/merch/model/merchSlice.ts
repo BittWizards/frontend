@@ -1,18 +1,20 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IMerch } from 'src/shared/api/merch/dtos';
 
-import { getMerch } from 'src/shared/api/merch';
+import { getMerch, getMerchById } from 'src/shared/api/merch';
 
 interface MerchState {
-  merch: IMerch[];
+  merchList: IMerch[];
+  merch: Object;
   isLoading: boolean;
-  error: string | unknown;
+  error: string | unknown | null;
 }
 
 const initialState: MerchState = {
-  merch: [],
+  merchList: [],
+  merch: {},
   isLoading: false,
-  error: '',
+  error: null,
 };
 
 const merchSlice = createSlice({
@@ -23,13 +25,26 @@ const merchSlice = createSlice({
     builder
       .addCase(getMerch.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = '';
-        state.merch = action.payload;
+        state.error = null;
+        state.merchList = action.payload;
       })
       .addCase(getMerch.pending, state => {
         state.isLoading = true;
       })
       .addCase(getMerch.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(getMerchById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.merch = action.payload;
+      })
+      .addCase(getMerchById.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getMerchById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
