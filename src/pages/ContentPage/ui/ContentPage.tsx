@@ -10,9 +10,8 @@ import { AllContentCard } from 'src/widgets/AllContentCard';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { SortComponent } from 'src/entities/SortComponent';
-import { getNewContent } from 'src/shared/api/contents';
-
-import { selectNewContents } from 'src/app/store/reducers/contents/model/contentsSlice';
+import { getNewContent } from 'src/shared/api/content';
+import { selectContent } from 'src/app/store/reducers/contents/model/contentsSlice';
 
 import style from './ContentPage.module.scss';
 
@@ -22,13 +21,12 @@ const ContentPage = () => {
   const [searchResults, setSearchResults] = useState<User[]>([]);
 
   const dispatch = useAppDispatch();
-  const { contents } = useAppSelector(selectNewContents);
+  const {newContent} = useAppSelector(selectContent)
+  console.log(newContent)
 
   useEffect(() => {
     dispatch(getNewContent());
   }, [dispatch]);
-
-  console.log(contents);
 
   const sortingOptions = [
     'По фамилии',

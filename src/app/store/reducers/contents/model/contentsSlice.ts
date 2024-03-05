@@ -1,58 +1,41 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import type { ResultWithErrors } from 'src/shared/api/ambassadors/dtos';
-import type { TNewContentCardData } from 'src/shared/api/contents/dtos';
-import { getNewContent } from 'src/shared/api/contents';
+import { getNewContent } from 'src/shared/api/content';
+import { INewContentCardData } from 'src/shared/api/content/dtos';
 
-type TContentsState = {
-  contents: TNewContentCardData[];
-  loading: boolean;
-  error: {
-    message: string;
-    code: string;
-  } | null;
-};
+interface IContentsState {
+  newContent: INewContentCardData[];
+  isLoading: boolean;
+  error: string | null | unknown;
+}
 
-const initialState: TContentsState = {
-  contents: [],
-  loading: false,
+const initialState: IContentsState = {
+  newContent: [],
+  isLoading: false,
   error: null,
 };
 
-const contentsSlice = createSlice({
-  name: 'contents',
+const contentSlice = createSlice({
+  name: 'content',
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder
       .addCase(getNewContent.pending, state => {
-        state.loading = true;
+        state.isLoading = true;
+      })
+      .addCase(getNewContent.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.newContent = action.payload;
         state.error = null;
       })
-      .addCase(
-        getNewContent.fulfilled.type,
-        (
-          state,
-          action: PayloadAction<ResultWithErrors<TNewContentCardData[]>>
-        ) => {
-          state.loading = false;
-          state.contents = action.payload.data || [];
-          state.error = null;
-        }
-      )
       .addCase(getNewContent.rejected, (state, action) => {
-        const payload = action.payload as
-          | ResultWithErrors<TContentsState[]>
-          | undefined;
-        state.loading = false;
-        state.error = payload
-          ? { ...(payload as any) }
-          : { message: 'Unknown error', code: 'UNKNOWN' };
+        state.error = action.payload;
+        state.isLoading = false;
       });
   },
 });
 
-export const selectNewContents = (state: { contents: TContentsState }) =>
-  state.contents;
+export const selectContent = (state: { content: IContentsState }) =>
+  state.content;
 
-export default contentsSlice.reducer;
+export default contentSlice.reducer;

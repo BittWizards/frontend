@@ -6,7 +6,7 @@ import { merchReducer } from './reducers/merch';
 export const store = configureStore({
   reducer: {
     ambassadors: ambassadorsReducer,
-    contents: contentsReducer,
+    content: contentsReducer,
     merch: merchReducer,
   },
 });

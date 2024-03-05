@@ -1,4 +1,4 @@
-export type IAmbassador = {
+export interface IAmbassador {
   id: number;
   first_name: string;
   last_name: string;
@@ -8,9 +8,4 @@ export type IAmbassador = {
     description: string;
   };
   created: string;
-};
-
-export type ResultWithErrors<T> = {
-  data?: T;
-  error?: string
-};
+}

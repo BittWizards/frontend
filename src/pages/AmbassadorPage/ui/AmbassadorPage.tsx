@@ -25,6 +25,7 @@ import {
 } from '../model/sortFunctions';
 
 import style from './AmbassadorPage.module.scss';
+import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 
 const AmbassadorPage = () => {
   const dispatch = useAppDispatch();
@@ -44,7 +45,7 @@ const AmbassadorPage = () => {
     dispatch(getAllAmbassadors());
   }, [dispatch]);
 
-  const ambassadors = useAppSelector(state => state.ambassadors);
+  const {ambassadors} = useAppSelector(selectAmbassadors);
 
   console.log('Ambassadors:', ambassadors);
 
