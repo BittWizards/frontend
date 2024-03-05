@@ -9,6 +9,7 @@ import { getAllAmbassadors } from 'src/shared/api/ambassadors';
 type AppError = { message: string; code: number };
 
 interface AmbassadorsState {
+  id: any;
   ambassadors: IAmbassador[];
   isLoading: boolean;
   isError: boolean;

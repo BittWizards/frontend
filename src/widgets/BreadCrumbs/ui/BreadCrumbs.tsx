@@ -1,13 +1,17 @@
-import type { FC } from 'react';
+import { useEffect, type FC } from 'react';
 
 import type { To } from 'react-router-dom';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
 import chevronRight from 'src/shared/icons/chevron-right.svg';
+import type { User } from 'src/utils/constants/types/types';
 import style from './BreadCrumbs.module.scss';
+import type { BreadCrumbsProps } from '../types/type';
 
 
-const BreadCrumbs: FC = () => {
+
+const BreadCrumbs: React.FC<BreadCrumbsProps> = () => {
   const { pathname } = useLocation();
+  const { id } = useParams();
 
   const renderNavLink = (to: To, text: string) => (
     <>
@@ -40,34 +44,34 @@ const BreadCrumbs: FC = () => {
       {pathname === '/merch' && renderNavLink('/merch', 'Мерч')}
       {pathname === '/mailing' && renderNavLink('/mailing', 'Рассылки')}
       {pathname === '/stats' && renderNavLink('/stats', 'Статистика и Аналитика')}
-      {pathname.startsWith('/ambassadors/1/detail') && (
+      {pathname.startsWith(`/ambassadors/${id}/detail`) && (
         <>
           {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
-          <NavLink to='/ambassadors/1/detail' className={style.breadcrumbs__link}>Анкета Амбассадора</NavLink>
+          <NavLink to={`/ambassadors/${id}/detail`} className={style.breadcrumbs__link}>Анкета Амбассадора</NavLink>
         </>
       )}
-      {pathname.startsWith('/ambassadors/1/promocode') && (
+      {pathname.startsWith(`/ambassadors/${id}/promocode`) && (
         <>
           {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
-          <NavLink to='/ambassadors/1/promocode' className={style.breadcrumbs__link}>Промокоды Амбассадора</NavLink>
+          <NavLink to={`/ambassadors/${id}/promocode`} className={style.breadcrumbs__link}>Промокоды Амбассадора</NavLink>
         </>
       )}
-      {pathname.startsWith('/ambassadors/1/content') && (
+      {pathname.startsWith(`/ambassadors/${id}/content`) && (
         <>
           {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
-          <NavLink to='/ambassadors/1/content' className={style.breadcrumbs__link}>Контент Амбассадора</NavLink>
+          <NavLink to={`/ambassadors/${id}/content`} className={style.breadcrumbs__link}>Контент Амбассадора</NavLink>
         </>
       )}
-      {pathname.startsWith('/ambassadors/1/merch') && (
+      {pathname.startsWith(`/ambassadors/${id}/merch`) && (
         <>
           {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
-          <NavLink to='/ambassadors/1/merch' className={style.breadcrumbs__link}>Мерч Амбассадора</NavLink>
+          <NavLink to={`/ambassadors/${id}/merch`} className={style.breadcrumbs__link}>Мерч Амбассадора</NavLink>
         </>
       )}
-      {pathname.startsWith('/ambassadors/candidate/1/detail') && (
+      {pathname.startsWith(`/ambassadors/candidate/${id}/detail`) && (
         <>
           {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
-          <NavLink to='/ambassadors/candidate/1/detail' className={style.breadcrumbs__link}>Анкета кандидата</NavLink>
+          <NavLink to={`/ambassadors/candidate/${id}/detail`} className={style.breadcrumbs__link}>Анкета кандидата</NavLink>
         </>
       )}
       {pathname.startsWith('/ambassadors/new-ambassador') && (
