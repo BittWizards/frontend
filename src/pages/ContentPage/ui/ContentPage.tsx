@@ -21,20 +21,14 @@ const ContentPage = () => {
   const [searchResults, setSearchResults] = useState<User[]>([]);
 
   const dispatch = useAppDispatch();
-  const {newContent} = useAppSelector(selectContent)
-  console.log(newContent)
+  const { newContent } = useAppSelector(selectContent);
+  console.log(newContent);
 
   useEffect(() => {
     dispatch(getNewContent());
   }, [dispatch]);
 
-  const sortingOptions = [
-    'По фамилии',
-    'По статусу',
-    'По специальности',
-    'По дате',
-    'По рейтингу',
-  ];
+  const sortingOptions = ['ФИО', 'Статус', 'Специальность', 'Дата', 'Рейтинг'];
 
   const tabs: string[] = ['Новые отчеты', 'Весь контент'];
 

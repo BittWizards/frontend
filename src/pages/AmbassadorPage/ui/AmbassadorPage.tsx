@@ -14,8 +14,9 @@ import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { getAllAmbassadors } from 'src/shared/api/ambassadors';
 import { SortComponent } from 'src/entities/SortComponent';
-
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
+
+import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 import { sortingOptions } from '../model/const';
 import {
   sortPromocodesByDate,
@@ -25,7 +26,6 @@ import {
 } from '../model/sortFunctions';
 
 import style from './AmbassadorPage.module.scss';
-import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 
 const AmbassadorPage = () => {
   const dispatch = useAppDispatch();
@@ -45,7 +45,7 @@ const AmbassadorPage = () => {
     dispatch(getAllAmbassadors());
   }, [dispatch]);
 
-  const {ambassadors} = useAppSelector(selectAmbassadors);
+  const { ambassadors } = useAppSelector(selectAmbassadors);
 
   console.log('Ambassadors:', ambassadors);
 
@@ -70,16 +70,16 @@ const AmbassadorPage = () => {
       let sortedResults = [...searchResults];
       /* eslint-disable */
       switch (selectedOption) {
-        case 'По дате':
+        case 'Дата':
           sortedResults = sortPromocodesByDate(sortedResults).reverse();
           break;
-        case 'По фамилии':
+        case 'ФИО':
           sortedResults = sortPromocodesBySurname(sortedResults);
           break;
-        case 'По специальности':
+        case 'Специальность':
           sortedResults = sortPromocodesBySpecialty(sortedResults);
           break;
-        case 'По статусу':
+        case 'Стутус':
           sortedResults = sortPromocodesByStatus(sortedResults);
           break;
 

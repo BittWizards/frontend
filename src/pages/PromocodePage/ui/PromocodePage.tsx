@@ -64,16 +64,16 @@ const PromocodePage: FC = () => {
       let sortedResults = [...searchResults];
       /* eslint-disable */
       switch (selectedOption) {
-        case 'По дате':
+        case 'Дата':
           sortedResults = sortPromocodesByDate(sortedResults).reverse();
           break;
-        case 'По фамилии':
+        case 'ФИО':
           sortedResults = sortPromocodesBySurname(sortedResults);
           break;
-        case 'По специальности':
+        case 'Специальность':
           sortedResults = sortPromocodesBySpecialty(sortedResults);
           break;
-        case 'По статусу':
+        case 'Статус':
           sortedResults = sortPromocodesByStatus(sortedResults);
           break;
 
