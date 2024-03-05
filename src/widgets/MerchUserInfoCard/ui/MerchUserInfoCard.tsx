@@ -39,10 +39,6 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
     handleOpenModal();
   };
 
-  if (data.userStatus !== 'Active') {
-    return null; // Если не активен, не рендерим карточку
-  }
-
   return (
     <>
       <NavLink to={`/ambassadors/${data.id}/merch`} className={style.navLink}>

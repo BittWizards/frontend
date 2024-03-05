@@ -17,13 +17,13 @@ import { SortComponent } from 'src/entities/SortComponent';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
-import { sortingOptions } from '../model/const';
 import {
-  sortAmbassadorsByDate,
-  sortAmbassadorsBySpecialty,
-  sortAmbassadorsByStatus,
-  sortAmbassadorsBySurname,
-} from '../model/sortFunctions';
+  sortByDate,
+  sortBySpecialty,
+  sortByStatus,
+  sortBySurname,
+} from 'src/utils/constants/sortFunctions';
+import { sortingOptions } from '../model/const';
 
 import style from './AmbassadorPage.module.scss';
 
@@ -70,17 +70,17 @@ const AmbassadorPage = () => {
       /* eslint-disable */
       switch (selectedOption) {
         case 'Дата':
-          sortedResults = sortAmbassadorsByDate(sortedResults).reverse();
+          sortedResults = sortByDate(sortedResults).reverse();
           break;
         case 'ФИО':
-          sortedResults = sortAmbassadorsBySurname(sortedResults);
+          sortedResults = sortBySurname(sortedResults);
           break;
         case 'Специальность':
-          sortedResults = sortAmbassadorsBySpecialty(sortedResults);
+          sortedResults = sortBySpecialty(sortedResults);
 
           break;
         case 'Статус':
-          sortedResults = sortAmbassadorsByStatus(sortedResults);
+          sortedResults = sortByStatus(sortedResults);
           console.log('статус sorted', sortedResults);
           break;
 
@@ -93,7 +93,7 @@ const AmbassadorPage = () => {
   };
 
   useEffect(() => {
-    setSearchResults(sortAmbassadorsByStatus(mockCardsData));
+    setSearchResults(sortByStatus(mockCardsData));
   }, []);
 
   return (
