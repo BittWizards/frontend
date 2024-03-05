@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { IMerch } from 'src/shared/api/merch/dtos';
 
 import { getMerch, getMerchById } from 'src/shared/api/merch';
