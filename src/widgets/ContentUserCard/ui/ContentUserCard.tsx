@@ -3,14 +3,24 @@ import calendarIcon from 'src/shared/icons/calendar.svg';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
+import { useNavigate, useParams } from 'react-router-dom';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import type { TCardProps } from '../types/types';
 
 import style from './ContentUserCard.module.scss';
 
 const ContentUserCard: FC<TCardProps> = ({ data }) => {
+  const navigate = useNavigate();
   const formattedDate = new Date(data.date)
     .toLocaleDateString('en-GB')
     .replace(/\//g, '.');
+
+  console.log('data', data);
+
+  const handleRowClick = () => {
+    navigate(`/ambassadors/${data.id}/detail/${data.id}/report`);
+  }
+
 
   return (
     <div className={style.cardContainer}>
@@ -31,7 +41,7 @@ const ContentUserCard: FC<TCardProps> = ({ data }) => {
           label="Посмотреть"
           width={296}
           height={48}
-          onClick={() => console.log(`Посмотреть отчет с id=${data.id}`)}
+          onClick={handleRowClick}
         />
       </div>
     </div>

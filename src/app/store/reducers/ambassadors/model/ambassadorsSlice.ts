@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IAmbassador } from 'src/shared/api/ambassadors/dtos';
+import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
 import { getAllAmbassadors } from 'src/shared/api/ambassadors';
 
 interface AmbassadorsState {

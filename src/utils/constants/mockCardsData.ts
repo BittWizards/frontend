@@ -85,7 +85,7 @@ const mockCardsData: TMockData[] = [
     content: [
       {
         id: '1',
-        date: '2023-10-14T13:45:00',
+        date: '2023-10-16T13:45:00',
         link: 'https://ссылка.com',
         platform: 'telegram',
         fileCounter: '12',

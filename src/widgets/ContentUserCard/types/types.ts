@@ -1,5 +1,6 @@
 type TCardProps = {
   data: {
+    [x: string]: any;
     id: string;
     avatar: string;
     telegram: string;
@@ -9,6 +10,13 @@ type TCardProps = {
     position: string;
     date: string;
     trackingNumber: string;
+    content: {
+      id: string;
+      date: string;
+      link: string;
+      platform: string;
+      fileCounter: string;
+    }[]
   };
 };
 
