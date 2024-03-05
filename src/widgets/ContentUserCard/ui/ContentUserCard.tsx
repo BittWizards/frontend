@@ -4,6 +4,7 @@ import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { useNavigate, useParams } from 'react-router-dom';
+import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import type { TCardProps } from '../types/types';
 
 import style from './ContentUserCard.module.scss';
@@ -15,12 +16,11 @@ const ContentUserCard: FC<TCardProps> = ({ data }) => {
     .replace(/\//g, '.');
 
   console.log('data', data);
-  const { id } = useParams();
-  const selectedContent = data.content.find(user => user.id === id);
 
   const handleRowClick = () => {
-    navigate(`/ambassadors/${data.id}/detail/${selectedContent?.id}/report`);
+    navigate(`/ambassadors/${data.id}/detail/${data.id}/report`);
   }
+
 
   return (
     <div className={style.cardContainer}>

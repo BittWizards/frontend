@@ -5,11 +5,8 @@ import { NavLink, useLocation, useParams } from 'react-router-dom';
 import chevronRight from 'src/shared/icons/chevron-right.svg';
 import type { User } from 'src/utils/constants/types/types';
 import style from './BreadCrumbs.module.scss';
-import type { BreadCrumbsProps } from '../types/type';
 
-
-
-const BreadCrumbs: React.FC<BreadCrumbsProps> = () => {
+const BreadCrumbs: FC = () => {
   const { pathname } = useLocation();
   const { id } = useParams();
 
@@ -44,7 +41,7 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = () => {
       {pathname === '/merch' && renderNavLink('/merch', 'Мерч')}
       {pathname === '/mailing' && renderNavLink('/mailing', 'Рассылки')}
       {pathname === '/stats' && renderNavLink('/stats', 'Статистика и Аналитика')}
-      {pathname.startsWith(`/ambassadors/${id}/detail`) && (
+      {pathname === (`/ambassadors/${id}/detail`) && (
         <>
           {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
           <NavLink to={`/ambassadors/${id}/detail`} className={style.breadcrumbs__link}>Анкета Амбассадора</NavLink>
@@ -78,6 +75,13 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = () => {
         <>
           {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
           <NavLink to='/ambassadors/new-ambassador' className={style.breadcrumbs__link}>Новый Амбассадор</NavLink>
+        </>
+      )}
+      {pathname.startsWith(`/ambassadors/${id}/detail/${id}/report`) && (
+        <>
+          {renderNavLinkNext('/content', 'Контент')}
+          <NavLink to={`/ambassadors/${id}/detail/${id}/report`}
+            className={style.breadcrumbs__link}>Просмотр нового отчета</NavLink>
         </>
       )}
     </nav>

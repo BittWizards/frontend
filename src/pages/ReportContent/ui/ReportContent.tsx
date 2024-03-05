@@ -23,9 +23,13 @@ import {
 } from '@mui/material';
 
 import { formatDateString } from 'src/utils/constants/formatDate';
-
+import vcIcon from 'src/shared/icons/vc.svg';
 import youtubeIcon from 'src/shared/icons/youTubeIcon.svg';
-
+import telegramIcon from 'src/shared/icons/telegramIcon.svg';
+import linkedinIcon from 'src/shared/icons/linkedinIcon.svg';
+import instagramIcon from 'src/shared/icons/instIcon.svg';
+import otherSocialIcon from 'src/shared/icons/question-mark-circle.svg';
+import habrIcon from 'src/shared/icons/habr.svg';
 import { tabsData } from '../types/type';
 
 import style from './ReportContent.module.scss';
@@ -57,8 +61,28 @@ const ReportContent = () => {
     },
   }));
 
+  const getPlatformIcon = (platform: string): JSX.Element => {
+    switch (platform) {
+      case 'habr':
+        return <img className={style.socialmedia__img} src={habrIcon} alt="Habr" />;
+      case 'vc':
+        return <img className={style.socialmedia__img} src={vcIcon} alt="VC" />;
+      case 'youtube':
+        return <img className={style.socialmedia__img} src={youtubeIcon} alt="YouTube" />;
+      case 'telegram':
+        return <img className={style.socialmedia__img} src={telegramIcon} alt="Telegram" />;
+      case 'linkedin':
+        return <img className={style.socialmedia__img} src={linkedinIcon} alt="LinkedIn" />;
+      case 'instagram':
+        return <img className={style.socialmedia__img} src={instagramIcon} alt="Instagram" />;
+      default:
+        return <img className={style.socialmedia__img} src={otherSocialIcon} alt="Other" />;
+    }
+  };
 
-  return (
+
+
+  return selectedContent ? (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
@@ -72,7 +96,7 @@ const ReportContent = () => {
         <div className={style.downWrapper}>
           <div className={style.social}>
             <div className={style.socialmedia}>
-              <img src={youtubeIcon} className={style.socialmedia__img} alt="You Tube" />
+              {getPlatformIcon(selectedContent?.platform)}
               <div className={style.social__container}>
                 <h3 className={style.social__title}>Ссылка</h3>
                 <p className={style.social__subtitle}>{selectedContent?.link}</p>
@@ -113,6 +137,8 @@ const ReportContent = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <div>Пользоваетель с id ${id} не найден</div>
   )
 };
 

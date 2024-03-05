@@ -1,5 +1,6 @@
 type TCardProps = {
   data: {
+    [x: string]: any;
     id: string;
     avatar: string;
     telegram: string;
