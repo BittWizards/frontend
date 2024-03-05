@@ -29,7 +29,11 @@ const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({ data }) => (
       </div>
       <div className={style.column}>
         <div className={style.contactInfo}>
-          <InfoLogoLink icon={tgIcon} text={data.telegram} linkType="website" />
+          <InfoLogoLink
+            icon={tgIcon}
+            text={`@${data.telegram.split('/')[1]}`}
+            linkType="website"
+          />
           <InfoLogoLink icon={mailIcon} text={data.email} linkType="email" />
           <InfoLogoLink icon={phoneIcon} text={data.phone} linkType="tel" />
         </div>
