@@ -1,29 +1,17 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import type {
-  IAmbassador,
-  ResultWithErrors,
-} from 'src/shared/api/ambassadors/dtos';
+import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
 import { getAllAmbassadors } from 'src/shared/api/ambassadors';
 
-type AppError = { message: string; code: number };
-
 interface AmbassadorsState {
-  id: any;
   ambassadors: IAmbassador[];
   isLoading: boolean;
-  isError: boolean;
-  error: AppError;
+  error: string | null | unknown;
 }
 
 const initialState: AmbassadorsState = {
   ambassadors: [],
   isLoading: false,
-  isError: false,
-  error: {
-    message: '',
-    code: 0,
-  },
+  error: null,
 };
 
 const ambassadorsSlice = createSlice({
@@ -35,23 +23,15 @@ const ambassadorsSlice = createSlice({
       .addCase(getAllAmbassadors.pending, state => {
         state.isLoading = true;
       })
-      .addCase(
-        getAllAmbassadors.fulfilled,
-        (state, action: PayloadAction<ResultWithErrors<IAmbassador[]>>) => {
-          state.isLoading = false;
-          state.ambassadors = action.payload.data || [];
-          state.isError = false;
-          state.error = { message: '', code: 0 };
-        }
-      )
-      .addCase(
-        getAllAmbassadors.rejected,
-        (state, action: PayloadAction<any>) => {
-          state.error = action.payload.message;
-          state.isLoading = false;
-          state.isError = true;
-        }
-      );
+      .addCase(getAllAmbassadors.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.ambassadors = action.payload;
+        state.error = null;
+      })
+      .addCase(getAllAmbassadors.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
   },
 });
 

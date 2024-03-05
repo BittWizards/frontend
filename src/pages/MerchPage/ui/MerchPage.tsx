@@ -11,15 +11,29 @@ import { ButtonComponent } from 'src/entities/Button';
 import type { User } from 'src/utils/constants/types/types';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { SortComponent } from 'src/entities/SortComponent';
+
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { selectMerch } from 'src/app/store/reducers/merch/model/merchSlice';
+import {
+  sortByDate,
+  sortBySpecialty,
+  sortByStatus,
+  sortBySurname,
+} from 'src/utils/constants/sortFunctions';
+
+import { getMerch, getMerchById } from 'src/shared/api/merch';
+
 import style from './MerchPage.module.scss';
 
 const MerchPage = () => {
+  const dispatch = useAppDispatch();
+
   const [selectedOption, setSelectedOption] = useState('Заявки на отправку');
   const tabs: string[] = ['Заявки на отправку', 'Учет мерча'];
   const sortingOptions =
     selectedOption === 'Учет мерча'
-      ? ['По фамилии', 'По дате']
-      : ['По фамилии', 'По статусу', 'По специальности', 'По дате'];
+      ? ['Дата', 'ФИО']
+      : ['Дата', 'ФИО', 'Статус', 'Специальность'];
 
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
@@ -27,6 +41,14 @@ const MerchPage = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
+
+  // useEffect(() => {
+  //   dispatch(getMerch());
+  //   //  dispatch(getMerchById(1));
+  // }, []);
+
+  // const { merch } = useAppSelector(selectMerch);
+  // console.log(merch);
 
   useEffect(() => {
     setSearchResults(mockCardsData);
@@ -41,6 +63,36 @@ const MerchPage = () => {
         ambassador.surname.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
+  };
+
+  useEffect(() => {
+    setSearchResults(sortByDate(mockCardsData).reverse());
+  }, []);
+
+  const handleSortChange = (selectedOption: string | null) => {
+    if (selectedOption !== null) {
+      let sortedResults = [...searchResults];
+      /* eslint-disable */
+      switch (selectedOption) {
+        case 'Дата':
+          sortedResults = sortByDate(sortedResults).reverse();
+          break;
+        case 'ФИО':
+          sortedResults = sortBySurname(sortedResults);
+          break;
+        case 'Специальность':
+          sortedResults = sortBySpecialty(sortedResults);
+          break;
+        case 'Статус':
+          sortedResults = sortByStatus(sortedResults);
+          break;
+
+        default:
+          break;
+      }
+
+      setSearchResults(sortedResults);
+    }
   };
 
   return (
@@ -80,9 +132,7 @@ const MerchPage = () => {
               width={220}
               height={48}
               options={sortingOptions}
-              onSortChange={selectedOption => {
-                console.log('Selected sorting option:', selectedOption);
-              }}
+              onSortChange={handleSortChange}
             />
           </div>
         </div>

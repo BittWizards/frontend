@@ -14,20 +14,22 @@ import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { getAllAmbassadors } from 'src/shared/api/ambassadors';
 import { SortComponent } from 'src/entities/SortComponent';
-
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
-import { sortingOptions } from '../model/const';
+
+import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 import {
-  sortPromocodesByDate,
-  sortPromocodesBySurname,
-  sortPromocodesBySpecialty,
-  sortPromocodesByStatus,
-} from '../model/sortFunctions';
+  sortByDate,
+  sortBySpecialty,
+  sortByStatus,
+  sortBySurname,
+} from 'src/utils/constants/sortFunctions';
+import { sortingOptions } from '../model/const';
 
 import style from './AmbassadorPage.module.scss';
 
 const AmbassadorPage = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
   const [searchTerm, setSearchTerm] = useState('');
@@ -35,7 +37,6 @@ const AmbassadorPage = () => {
 
   const tabs: string[] = ['Новые запросы', 'Все амбассадоры'];
 
-  const navigate = useNavigate();
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
@@ -44,9 +45,13 @@ const AmbassadorPage = () => {
     dispatch(getAllAmbassadors());
   }, [dispatch]);
 
-  const ambassadors = useAppSelector(state => state.ambassadors);
+  useEffect(() => {
+    setSearchResults(mockCardsData);
+  }, [searchTerm]);
 
-  console.log('Ambassadors:', ambassadors);
+  const { ambassadors } = useAppSelector(selectAmbassadors);
+
+  //  console.log('Ambassadors:', ambassadors);
 
   const onSearch = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -59,27 +64,24 @@ const AmbassadorPage = () => {
     setSearchResults(results);
   };
 
-  useEffect(() => {
-    setSearchResults(mockCardsData);
-  }, [searchTerm]);
-
   const handleSortChange = (selectedOption: string | null) => {
-    console.log(selectedOption);
     if (selectedOption !== null) {
       let sortedResults = [...searchResults];
       /* eslint-disable */
       switch (selectedOption) {
-        case 'По дате':
-          sortedResults = sortPromocodesByDate(sortedResults).reverse();
+        case 'Дата':
+          sortedResults = sortByDate(sortedResults).reverse();
           break;
-        case 'По фамилии':
-          sortedResults = sortPromocodesBySurname(sortedResults);
+        case 'ФИО':
+          sortedResults = sortBySurname(sortedResults);
           break;
-        case 'По специальности':
-          sortedResults = sortPromocodesBySpecialty(sortedResults);
+        case 'Специальность':
+          sortedResults = sortBySpecialty(sortedResults);
+
           break;
-        case 'По статусу':
-          sortedResults = sortPromocodesByStatus(sortedResults);
+        case 'Статус':
+          sortedResults = sortByStatus(sortedResults);
+          console.log('статус sorted', sortedResults);
           break;
 
         default:
@@ -89,6 +91,10 @@ const AmbassadorPage = () => {
       setSearchResults(sortedResults);
     }
   };
+
+  useEffect(() => {
+    setSearchResults(sortByStatus(mockCardsData));
+  }, []);
 
   return (
     <div className={style.main}>

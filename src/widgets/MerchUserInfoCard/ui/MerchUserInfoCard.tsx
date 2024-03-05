@@ -39,10 +39,6 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
     handleOpenModal();
   };
 
-  if (data.userStatus !== 'Active') {
-    return null; // Если не активен, не рендерим карточку
-  }
-
   return (
     <>
       <NavLink to={`/ambassadors/${data.id}/merch`} className={style.navLink}>
@@ -59,7 +55,9 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
           <div className={style.statusWrapper}>
             <div className={style.socialWrapper}>
               <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-              <span className={style.tg}>{`@${data.telegram}`}</span>
+              <span
+                className={style.tg}
+              >{`@${data.telegram.split('/')[1]}`}</span>
             </div>
             <StatusIcon data={data} />
           </div>

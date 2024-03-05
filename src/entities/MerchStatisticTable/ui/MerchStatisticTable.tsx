@@ -62,10 +62,10 @@ const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
     lineHeight: '1.2',
   };
 
-  const merchCellStyle = {
-    ...headerCellStyle,
-    transform: 'rotate(-90deg)',
-  };
+  // const merchCellStyle = {
+  //   ...headerCellStyle,
+  //   transform: 'rotate(-90deg)',
+  // };
 
   return merchArray ? (
     <Table style={{ width: '100%' }}>
@@ -75,8 +75,10 @@ const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
           {(
             Object.keys(referenceDictionary) as (keyof TReferenceDictionary)[]
           ).map(key => (
-            <TableCell key={key} style={merchCellStyle}>
-              {referenceDictionary[key]}
+            <TableCell key={key} style={{ padding: '0px' }}>
+              <div className={style.rotatedTitle}>
+                {referenceDictionary[key]}
+              </div>
             </TableCell>
           ))}
           <TableCell style={headerCellStyle}>Общая сумма</TableCell>
@@ -94,16 +96,18 @@ const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
                     className={style.name}
                   >{`${user.surname} ${user.name}`}</span>
                   <span className={`${style.name} ${style.tg}`}>
-                    @{user.telegram}
+                    {`@${user.telegram.split('/')[1]}`}
                   </span>
                 </div>
               </div>
             </TableCell>
             {merchTypes.map(merchType => (
               <TableCell key={merchType} style={commonCellStyle}>
-                {user.merch
-                  .filter(item => item.merchType === merchType)
-                  .map(item => item.quantity)}
+                <div className={style.countWrapper}>
+                  {user.merch
+                    .filter(item => item.merchType === merchType)
+                    .map(item => item.quantity)}
+                </div>
               </TableCell>
             ))}
             <TableCell style={commonCellStyle}>

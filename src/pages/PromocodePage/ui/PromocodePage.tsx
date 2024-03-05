@@ -13,14 +13,13 @@ import { ButtonComponent } from 'src/entities/Button';
 import { InputAutoCompleteModal } from 'src/entities/Modals';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { SortComponent } from 'src/entities/SortComponent';
-import { promocodeSortingOptions } from '../model/const';
-
 import {
-  sortPromocodesByDate,
-  sortPromocodesBySurname,
-  sortPromocodesBySpecialty,
-  sortPromocodesByStatus,
-} from '../model/sortFunctions';
+  sortByDate,
+  sortBySpecialty,
+  sortByStatus,
+  sortBySurname,
+} from 'src/utils/constants/sortFunctions';
+import { promocodeSortingOptions } from '../model/const';
 
 import style from './PromocodePage.module.scss';
 
@@ -56,7 +55,7 @@ const PromocodePage: FC = () => {
   };
 
   useEffect(() => {
-    setSearchResults(sortPromocodesByDate(mockCardsData).reverse());
+    setSearchResults(sortByDate(mockCardsData).reverse());
   }, []);
 
   const handleSortChange = (selectedOption: string | null) => {
@@ -64,17 +63,17 @@ const PromocodePage: FC = () => {
       let sortedResults = [...searchResults];
       /* eslint-disable */
       switch (selectedOption) {
-        case 'По дате':
-          sortedResults = sortPromocodesByDate(sortedResults).reverse();
+        case 'Дата':
+          sortedResults = sortByDate(sortedResults).reverse();
           break;
-        case 'По фамилии':
-          sortedResults = sortPromocodesBySurname(sortedResults);
+        case 'ФИО':
+          sortedResults = sortBySurname(sortedResults);
           break;
-        case 'По специальности':
-          sortedResults = sortPromocodesBySpecialty(sortedResults);
+        case 'Специальность':
+          sortedResults = sortBySpecialty(sortedResults);
           break;
-        case 'По статусу':
-          sortedResults = sortPromocodesByStatus(sortedResults);
+        case 'Статус':
+          sortedResults = sortByStatus(sortedResults);
           break;
 
         default:

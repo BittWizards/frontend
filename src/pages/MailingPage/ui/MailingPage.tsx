@@ -27,13 +27,7 @@ const MailingPage = () => {
   const tabs: string[] = ['Новая рассылка', 'Все рассылки'];
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<TRow[]>([]);
-  const sortingOptions = [
-    'По фамилия',
-    'По статусу',
-    'По специальности',
-    'По дате',
-    'По рейтингу',
-  ];
+  const sortingOptions = ['ФИО', 'Статус', 'Специальность', 'Дата', 'Рейтинг'];
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);

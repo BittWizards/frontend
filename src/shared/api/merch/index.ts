@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { IMerch } from './dtos';
 import { BASE_URL } from 'src/utils/constants/api';
+import type { IMerch } from './dtos';
 
-export const getMerch = createAsyncThunk(
+const getMerch = createAsyncThunk(
   'merch/getMerch',
   async (_, { fulfillWithValue, rejectWithValue }) => {
     try {
@@ -15,3 +15,19 @@ export const getMerch = createAsyncThunk(
     }
   }
 );
+
+const getMerchById = createAsyncThunk(
+  'merch/getMerchById',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get<IMerch[]>(
+        `${BASE_URL}/api/v1/merch/${id}`
+      );
+      return data;
+    } catch (e: any) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export { getMerch, getMerchById };
