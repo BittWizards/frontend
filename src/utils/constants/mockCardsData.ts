@@ -5,11 +5,12 @@ const mockCardsData: TMockData[] = [
   {
     id: '1',
     avatar,
-    telegram: 'ponomarevaangelina',
-    name: 'Екатерина',
+    telegram: '/ponomarevaangelinaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    name: 'Екатерина-Екатерина',
     surname: 'Константинопольская',
     secondname: 'Олеговна',
-    position: 'Продакт-менеджер для специалистов',
+    position:
+      'Продакт-менеджер для специалистов очень очень длинные текст в ячейку помещается',
     date: '2024-02-19T13:45:00',
     statusActive: true,
     promocode: 'Выдра',
@@ -136,7 +137,7 @@ const mockCardsData: TMockData[] = [
   {
     id: '2',
     avatar,
-    telegram: 'ponomarevaangelina',
+    telegram: '/ponomarevamarina',
     name: 'Марина',
     surname: 'Князева',
     secondname: 'Сергеевна',
@@ -268,7 +269,7 @@ const mockCardsData: TMockData[] = [
   {
     id: '3',
     avatar,
-    telegram: 'ponomarevaangelina',
+    telegram: '/ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Пономарева',
     secondname: 'Сергеевна',
@@ -396,7 +397,7 @@ const mockCardsData: TMockData[] = [
   {
     id: '4',
     avatar,
-    telegram: 'ponomarevaangelina',
+    telegram: '/ponomarevaangelina',
     name: 'Вера',
     surname: 'Пономарева',
     secondname: 'Сергеевна',
@@ -524,7 +525,7 @@ const mockCardsData: TMockData[] = [
   {
     id: '5',
     avatar,
-    telegram: 'ponomarevaangelina',
+    telegram: '/ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Абаева',
     secondname: 'Сергеевна',
@@ -652,7 +653,7 @@ const mockCardsData: TMockData[] = [
   {
     id: '6',
     avatar,
-    telegram: 'ponomarevaangelina',
+    telegram: '/ponomarevaangelina',
     name: 'Ангелина',
     surname: 'Русакова',
     secondname: 'Сергеевна',
@@ -780,7 +781,7 @@ const mockCardsData: TMockData[] = [
   {
     id: '7',
     avatar,
-    telegram: 'ponomarevaangelina',
+    telegram: '/ponomarevaangelina',
     name: 'Варвара',
     surname: 'Пономарева',
     secondname: 'Сергеевна',

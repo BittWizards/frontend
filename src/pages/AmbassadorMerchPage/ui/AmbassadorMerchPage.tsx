@@ -36,7 +36,7 @@ const AmbassadorMerchPage = () => {
       const sum = selectedUser.merch.reduce(
         (acc, row) =>
           acc +
-          parseInt(row.quantity) * parseFloat(row.price.replace(',', '.')),
+          parseInt(row.quantity, 10) * parseFloat(row.price.replace(',', '.')),
         0
       );
       setTotalSum(sum);
@@ -83,7 +83,7 @@ const AmbassadorMerchPage = () => {
               <TableRow className={style.tableRow}>
                 <TableCell style={headerCellStyle}>№</TableCell>
                 <TableCell style={headerCellStyle}>Дата</TableCell>
-                <TableCell style={headerCellStyle}>Вид мера</TableCell>
+                <TableCell style={headerCellStyle}>Вид мерча</TableCell>
                 <TableCell style={headerCellStyle}>Размер</TableCell>
                 <TableCell style={headerCellStyle}>Количество</TableCell>
                 <TableCell style={headerCellStyle}>Сумма</TableCell>
@@ -108,7 +108,7 @@ const AmbassadorMerchPage = () => {
                     </TableCell>
                     <TableCell style={commonCellStyle}>
                       {(
-                        parseInt(row.quantity) *
+                        parseInt(row.quantity, 10) *
                         parseFloat(row.price.replace(',', '.'))
                       ).toLocaleString('ru-RU', {
                         style: 'currency',

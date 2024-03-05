@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import type { User } from 'src/utils/constants/types/types';
 
-import style from './ContentPage.module.scss';
-
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
@@ -16,6 +14,7 @@ import { getNewContent } from 'src/shared/api/contents';
 
 import { selectNewContents } from 'src/app/store/reducers/contents/model/contentsSlice';
 
+import style from './ContentPage.module.scss';
 
 const ContentPage = () => {
   const [selectedOption, setSelectedOption] = useState('Новые отчеты');
@@ -23,7 +22,7 @@ const ContentPage = () => {
   const [searchResults, setSearchResults] = useState<User[]>([]);
 
   const dispatch = useAppDispatch();
-  const {contents} = useAppSelector(selectNewContents);
+  const { contents } = useAppSelector(selectNewContents);
 
   useEffect(() => {
     dispatch(getNewContent());

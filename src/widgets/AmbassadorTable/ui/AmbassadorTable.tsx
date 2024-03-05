@@ -1,73 +1,114 @@
 import type { FC } from 'react';
-import { NavLink } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 import { StatusIcon } from 'src/shared/StatusIcon';
 import { Avatar } from 'src/entities/Avatar';
 
 import avatar from 'src/shared/icons/userAvatar.png';
-import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { sortByStatus } from 'src/utils/constants/sortByStatus';
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@mui/material';
+
 import type { TCardProps } from '../types/type';
 
 import style from './AmbassadorTable.module.scss';
 
 const AmbassadorTable: FC<TCardProps> = ({ data }) => {
+  const navigate = useNavigate();
   const sortedData = sortByStatus(data);
 
-  const handleRowClick = (number: number) => {
-    console.log(`Row clicked: ${number}`);
+  const handleRowClick = (ambassador: TCardProps['data'][0]) => {
+    navigate(`/ambassadors/${ambassador.id}/detail`);
+  };
+
+  const commonCellStyle = {
+    color: '#ebeef4',
+    fontFamily: 'YSText',
+    fontWeight: '400',
+    fontSize: '14px',
+    lineHeight: '1.2',
+    borderBottom: '1px solid #47464699',
+  };
+
+  const headerCellStyle = {
+    color: '#ebeef4',
+    fontFamily: 'YSDisplay',
+    fontWeight: '500',
+    fontSize: '16px',
+    lineHeight: '1.2',
   };
 
   return (
-    <div className={style.table}>
-      <div className={style.tableHeader}>
-        <div className={style.idCell}>№</div>
-        <div className={style.nameCell}>Aмбассадор</div>
-        <div className={style.statusCell}>Статус</div>
-        <div className={style.positionCell}>Программа обучения</div>
-        <div className={style.contactCell}>Контакты</div>
-        <div className={style.dateCell}>Дата</div>
-      </div>
-      <div className={style.tableBody}>
+    <Table style={{ width: '100%' }}>
+      <TableHead>
+        <TableRow>
+          <TableCell style={headerCellStyle}>№</TableCell>
+          <TableCell style={headerCellStyle}>Aмбассадор</TableCell>
+          <TableCell style={headerCellStyle}>Статус</TableCell>
+          <TableCell style={headerCellStyle}>Программа обучения</TableCell>
+          <TableCell style={headerCellStyle}>Telegram</TableCell>
+          <TableCell style={headerCellStyle}>Дата</TableCell>
+        </TableRow>
+      </TableHead>
+
+      <TableBody>
         {sortedData.map((ambassador, index) => (
-          <NavLink
-            key={ambassador.id}
-            to={`/ambassadors/${ambassador.id}/detail`}
-            className={style.tableLink}
+          <TableRow
+            key={uuidv4()}
+            onClick={() => handleRowClick(ambassador)}
+            sx={{
+              cursor: 'pointer',
+              '&:hover': {
+                borderColor: 'red',
+              },
+            }}
           >
-            <div
-              className={style.tableRaw}
-              onClick={() => handleRowClick(Number(ambassador.id))}
-            >
-              <div className={style.idCell}>{index + 1}</div>
-              <div className={style.nameCell}>
-                <div className={style.userInfoWrapper}>
-                  <Avatar link={avatar} size="s" />
-                  <p className={style.textPosition}>
+            <TableCell style={commonCellStyle}>{index + 1}</TableCell>
+            <TableCell style={commonCellStyle}>
+              <div className={style.userInfoWrapper}>
+                <Avatar link={avatar} size="s" />
+                <div className={style.positionCellWrapper}>
+                  <span className={style.cellText}>
                     {ambassador.surname} {ambassador.name}
-                  </p>
+                  </span>
                 </div>
               </div>
+            </TableCell>
+            <TableCell style={commonCellStyle}>
               <StatusIcon data={ambassador} />
-              <div className={`${style.positionCell} `}>
-                <p className={style.textPosition}>{ambassador.position}</p>
+            </TableCell>
+            <TableCell style={commonCellStyle}>
+              <div className={style.positionCellWrapper}>
+                <span className={style.cellText}>{ambassador.position}</span>
               </div>
-              <div className={`${style.socialWrapper} ${style.contactCell}`}>
-                <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-                <span className={`${style.tg} ${style.textPosition}`}>
-                  {ambassador.telegram}
-                </span>
+            </TableCell>
+            <TableCell style={commonCellStyle}>
+              <div className={style.cellWrapper}>
+                <span
+                  className={style.cellText}
+                >{`@${ambassador.telegram}`}</span>
               </div>
+            </TableCell>
+            <TableCell style={commonCellStyle}>
               <div className={style.dateCell}>
                 {new Date(ambassador.date)
                   .toLocaleDateString('en-GB')
                   .replace(/\//g, '.')}
               </div>
-            </div>
-          </NavLink>
+            </TableCell>
+          </TableRow>
         ))}
-      </div>
-    </div>
+      </TableBody>
+    </Table>
   );
 };
 
 export default AmbassadorTable;
+
+// TODO бордер при ховере MUI

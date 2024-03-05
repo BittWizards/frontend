@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 import { Portal } from '@mui/material';
 
+import type { User } from 'src/utils/constants/types/types';
+
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { PromocodeUserInfoCard } from 'src/widgets/PromocodeUserInfoCard';
@@ -10,11 +12,8 @@ import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { ButtonComponent } from 'src/entities/Button';
 import { InputAutoCompleteModal } from 'src/entities/Modals';
 import { FilterComponent } from 'src/entities/FilterComponent';
-import type { User } from 'src/utils/constants/types/types';
 import { SortComponent } from 'src/entities/SortComponent';
 import { promocodeSortingOptions } from '../model/const';
-
-import style from './PromocodePage.module.scss';
 
 import {
   sortPromocodesByDate,
@@ -22,6 +21,8 @@ import {
   sortPromocodesBySpecialty,
   sortPromocodesByStatus,
 } from '../model/sortFunctions';
+
+import style from './PromocodePage.module.scss';
 
 const PromocodePage: FC = () => {
   const [openModal, setModalOpen] = useState(false);
@@ -75,7 +76,7 @@ const PromocodePage: FC = () => {
         case 'По статусу':
           sortedResults = sortPromocodesByStatus(sortedResults);
           break;
-        // Добавьте другие условия для других опций сортировки
+
         default:
           break;
       }
