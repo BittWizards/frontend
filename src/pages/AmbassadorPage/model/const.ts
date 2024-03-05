@@ -1,1 +1,1 @@
-export const sortingOptions = ['Статус', 'ФИО', 'Специлальность', 'Дата'];
+export const sortingOptions = ['Статус', 'ФИО', 'Специальность', 'Дата'];

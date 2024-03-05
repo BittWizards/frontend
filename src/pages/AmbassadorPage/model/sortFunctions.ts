@@ -1,35 +1,51 @@
 import type { TMockData } from 'src/utils/types/typeMockData';
 
-export const sortPromocodesByDate = (promocodes: TMockData[]) =>
-  [...promocodes].sort(
-    (a, b) =>
-      new Date(a.activationDate).getTime() -
-      new Date(b.activationDate).getTime()
-  );
+const sortAmbassadorsByDate = (users: TMockData[]) =>
+  [...users].sort((a, b) => {
+    const result = new Date(a.date).getTime() - new Date(b.date).getTime();
+    return result;
+  });
 
-export const sortPromocodesBySurname = (promocodes: TMockData[]) =>
-  [...promocodes].sort((a, b) => {
+const sortAmbassadorsBySurname = (users: TMockData[]) =>
+  [...users].sort((a, b) => {
     const surnameComparison = a.surname.localeCompare(b.surname, 'ru', {
       sensitivity: 'base',
     });
+
     if (surnameComparison === 0) {
-      return a.name.localeCompare(b.name, 'ru', { sensitivity: 'base' });
+      const nameComparison = a.name.localeCompare(b.name, 'ru', {
+        sensitivity: 'base',
+      });
+
+      return nameComparison;
     }
+
     return surnameComparison;
   });
 
-export const sortPromocodesBySpecialty = (promocodes: TMockData[]) =>
-  [...promocodes].sort((a, b) =>
-    a.position.localeCompare(b.position, 'ru', { sensitivity: 'base' })
-  );
+const sortAmbassadorsBySpecialty = (users: TMockData[]) =>
+  [...users].sort((a, b) => {
+    const specialtyComparison = a.position.localeCompare(b.position, 'ru', {
+      sensitivity: 'base',
+    });
+    return specialtyComparison;
+  });
 
-export const sortPromocodesByStatus = (promocodes: TMockData[]) => {
+const sortAmbassadorsByStatus = (users: TMockData[]) => {
   const statusOrder = ['Active', 'OnPause', 'PendingConfirmation', 'Inactive'];
 
-  return [...promocodes].sort((a, b) => {
+  return [...users].sort((a, b) => {
     const indexA = statusOrder.indexOf(a.userStatus || '');
     const indexB = statusOrder.indexOf(b.userStatus || '');
 
-    return indexA - indexB;
+    const statusComparison = indexA - indexB;
+    return statusComparison;
   });
+};
+
+export {
+  sortAmbassadorsByDate,
+  sortAmbassadorsByStatus,
+  sortAmbassadorsBySurname,
+  sortAmbassadorsBySpecialty,
 };

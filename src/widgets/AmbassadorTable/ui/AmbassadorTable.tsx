@@ -5,7 +5,6 @@ import { StatusIcon } from 'src/shared/StatusIcon';
 import { Avatar } from 'src/entities/Avatar';
 
 import avatar from 'src/shared/icons/userAvatar.png';
-import { sortByStatus } from 'src/utils/constants/sortByStatus';
 
 import {
   Table,
@@ -21,7 +20,6 @@ import style from './AmbassadorTable.module.scss';
 
 const AmbassadorTable: FC<TCardProps> = ({ data }) => {
   const navigate = useNavigate();
-  const sortedData = sortByStatus(data);
 
   const handleRowClick = (ambassador: TCardProps['data'][0]) => {
     navigate(`/ambassadors/${ambassador.id}/detail`);
@@ -58,7 +56,7 @@ const AmbassadorTable: FC<TCardProps> = ({ data }) => {
       </TableHead>
 
       <TableBody>
-        {sortedData.map((ambassador, index) => (
+        {data.map((ambassador, index) => (
           <TableRow
             key={uuidv4()}
             onClick={() => handleRowClick(ambassador)}

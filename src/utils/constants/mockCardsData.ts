@@ -141,7 +141,7 @@ const mockCardsData: TMockData[] = [
     name: 'Марина',
     surname: 'Князева',
     secondname: 'Сергеевна',
-    position: 'Продвинутый Go-разработчик',
+    position: 'АПродвинутый Go-разработчик',
     date: '2024-09-21T13:45:00',
     statusActive: true,
     promocode: 'Огурец',
