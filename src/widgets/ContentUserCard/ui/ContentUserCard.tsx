@@ -12,6 +12,8 @@ const ContentUserCard: FC<TCardProps> = ({ data }) => {
     .toLocaleDateString('en-GB')
     .replace(/\//g, '.');
 
+  console.log('data', data);
+
   return (
     <div className={style.cardContainer}>
       {data.avatar && <Avatar link={data.avatar} size="m" />}
