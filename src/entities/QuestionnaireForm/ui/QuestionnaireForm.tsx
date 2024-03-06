@@ -9,35 +9,42 @@ import { Contacts } from 'src/entities/Contacts';
 import { Activity } from 'src/entities/Activity';
 import type { IQuestionnaireForm } from '../types/types';
 import style from './QuestionnaireForm.module.scss';
+import { useAppSelector } from 'src/app/store/hooks';
+import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 
-const QuestionnaireForm: FC<IQuestionnaireForm> = ({ isEdit }) => (
-  <div>
-    <div className={style.container}>
-      <div className={style.row}>
-        <PostalDetails isEdit={isEdit} />
-        <Contacts isEdit={isEdit} />
+const QuestionnaireForm: FC<IQuestionnaireForm> = () => {
+
+  const {isEdit} = useAppSelector(selectQuestionnaire)
+
+  return (
+    <div>
+      <div className={style.container}>
+        <div className={style.row}>
+          <PostalDetails isEdit={isEdit} />
+          <Contacts isEdit={isEdit} />
+        </div>
+        <div className={style.row}>
+          <DataMerch isEdit={isEdit} />
+        </div>
+        <div className={style.row}>
+          <WorkAndEducation isEdit={isEdit} />
+          <Activity isEdit={isEdit} />
+        </div>
       </div>
-      <div className={style.row}>
-        <DataMerch isEdit={isEdit} />
-      </div>
-      <div className={style.row}>
-        <WorkAndEducation isEdit={isEdit} />
-        <Activity isEdit={isEdit} />
-      </div>
+      <label className={`${style.label}`}>
+        Дополнительная информация
+        <fieldset className={`${style.fieldset}`}>
+          <Textarea
+            width={976}
+            height={155}
+            placeholder="Дополнительная информация об Амбассадоре"
+            isEdit={isEdit}
+            name="info"
+          />
+        </fieldset>
+      </label>
     </div>
-    <label className={`${style.label}`}>
-      Дополнительная информация
-      <fieldset className={`${style.fieldset}`}>
-        <Textarea
-          width={976}
-          height={155}
-          placeholder="Дополнительная информация об Амбассадоре"
-          isEdit={isEdit}
-          name="info"
-        />
-      </fieldset>
-    </label>
-  </div>
-);
+  );
+};
 
 export default QuestionnaireForm;

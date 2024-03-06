@@ -7,12 +7,15 @@ import { Input } from 'src/shared/Input';
 import style from './QuestionnaireProfileInfo.module.scss';
 
 import type { IQuestionnaireProfileInfo } from '../types/types';
+import { useAppSelector } from 'src/app/store/hooks';
+import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 
 const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
   user,
-  isEdit,
 }) => {
   const { register } = useFormContext();
+
+  const {isEdit} = useAppSelector(selectQuestionnaire);
 
   return (
     <div className={style.profile}>
