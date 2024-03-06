@@ -6,7 +6,7 @@ const mockCardsData: TMockData[] = [
     id: '1',
     avatar,
     telegram: '/ponomarevaangelinaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-    name: 'Екатерина-Екатерина',
+    name: 'Екатерина-Екатеринаhhhhhhhhhhhhhhhhhhhggggg',
     surname: 'Константинопольская',
     secondname: 'Олеговна',
     position:

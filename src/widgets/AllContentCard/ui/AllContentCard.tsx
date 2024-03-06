@@ -27,20 +27,20 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
 
   const getPlatformIcon = (platform: string): JSX.Element => {
     switch (platform) {
-    case 'habr':
-      return <img src={hIcon} alt="Habr" />;
-    case 'vc':
-      return <img src={vc} alt="VC" />;
-    case 'youtube':
-      return <img src={youTube} alt="YouTube" />;
-    case 'telegram':
-      return <img src={telegram} alt="Telegram" />;
-    case 'linkedin':
-      return <img src={inIcon} alt="LinkedIn" />;
-    case 'instagram':
-      return <img src={instagram} alt="Instagram" />;
-    default:
-      return <img src={questionIcon} alt="Other" />;
+      case 'habr':
+        return <img src={hIcon} alt="Habr" />;
+      case 'vc':
+        return <img src={vc} alt="VC" />;
+      case 'youtube':
+        return <img src={youTube} alt="YouTube" />;
+      case 'telegram':
+        return <img src={telegram} alt="Telegram" />;
+      case 'linkedin':
+        return <img src={inIcon} alt="LinkedIn" />;
+      case 'instagram':
+        return <img src={instagram} alt="Instagram" />;
+      default:
+        return <img src={questionIcon} alt="Other" />;
     }
   };
 
@@ -60,7 +60,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                 {data.surname} {data.name}
               </h3>
               <p className={style.allContentCard__telegramAcc}>
-                @{data.telegram}
+                {`@${data.telegram.split('/')[1]}`}
               </p>
             </div>
           </div>

@@ -26,6 +26,7 @@
   flex-direction: column;
   gap: 7px;
   position: relative;
+  
 }
 
 .allContentCard__left:after {
@@ -61,6 +62,7 @@
   flex-direction: column;
   gap: 1px;
   align-self: center;
+  
 }
 
 .allContentCard__fio {
@@ -71,6 +73,10 @@
   font-size: 14px;
   line-height: 120%;
   color: $baseColorWhite;
+  max-width: 215px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .allContentCard__telegramAcc {
@@ -81,6 +87,10 @@
   font-size: 11px;
   line-height: 120%;
   color: #939393;
+  max-width: 147px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .allContentCard__statusGroup {
