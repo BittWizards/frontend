@@ -8,11 +8,10 @@ type TCardProps = {
     secondname: string;
     position: string;
     date: string;
-    statusActive: boolean;
+    userStatus: 'Active' | 'Pause' | 'Clarify' | 'Not active';
     promocode: string;
     activationDate: string;
     trackingNumber: string;
-    userStatus: string;
   };
 };
 
