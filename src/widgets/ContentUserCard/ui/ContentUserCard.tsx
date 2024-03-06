@@ -11,25 +11,27 @@ import style from './ContentUserCard.module.scss';
 
 const ContentUserCard: FC<TCardProps> = ({ data }) => {
   const navigate = useNavigate();
-  const formattedDate = new Date(data.date)
+
+  const formattedDate = new Date(data.created_at)
     .toLocaleDateString('en-GB')
     .replace(/\//g, '.');
 
-  console.log('data', data);
-
   const handleClick = () => {
-    navigate(`/ambassadors/${data.id}/detail/${data.id}/report`);
+    navigate(`/ambassadors/${data.ambassador.id}/detail/${data.id}/report`);
   };
-  // TODO должны прийти с бэка разные id
 
   return (
     <div className={style.cardContainer}>
-      {data.avatar && <Avatar link={data.avatar} size="m" />}
-      <p className={style.name}>{data.surname}</p>
-      <p className={style.name}>{data.name}</p>
+      {data.ambassador.image && (
+        <Avatar link={data.ambassador.image} size="m" />
+      )}
+      <p className={style.name}>{data.ambassador.last_name}</p>
+      <p className={style.name}>{data.ambassador.first_name}</p>
       <div className={style.socialWrapper}>
         <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-        <span className={style.tg}>{`@${data.telegram.split('/')[1]}`}</span>
+        <span
+          className={style.tg}
+        >{`@${data.ambassador.tg_acc.split('/')[1]}`}</span>
       </div>
       <div className={style.dateContainer}>
         <img src={calendarIcon} alt="Calendar" className={style.calendarIcon} />

@@ -14,4 +14,22 @@ interface INewContentCardData {
   created_at: string;
 }
 
-export type { IBriefAmbassadorData, INewContentCardData };
+interface IAllContent {
+  id: number;
+  image: string;
+  last_name: string;
+  first_name: string;
+  tg_acc: string;
+  rating: number | null;
+  review_count: number | null;
+  habr_count: number | null;
+  vc_count: number | null;
+  youtube_count: number | null;
+  tg_count: number | null;
+  instagram_count: number | null;
+  linkedin_count: number | null;
+  other_count: number | null;
+  last_date: string;
+}
+
+export type { IBriefAmbassadorData, INewContentCardData, IAllContent };

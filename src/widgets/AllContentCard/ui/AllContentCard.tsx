@@ -1,5 +1,9 @@
 import type { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
+import { Avatar } from 'src/entities/Avatar';
+import { StatusIcon } from 'src/shared/StatusIcon';
 
 import calendarIcon from 'src/shared/icons/calendar.svg';
 import arrowUp from 'src/shared/icons/arrow-up.svg';
@@ -11,68 +15,55 @@ import telegram from 'src/shared/icons/telegramIcon.svg';
 import inIcon from 'src/shared/icons/inIcon.svg';
 import instagram from 'src/shared/icons/instIcon.svg';
 import questionIcon from 'src/shared/icons/questionIcon.svg';
-import { NavLink } from 'react-router-dom';
+
 import type { TAllContentCardProps } from '../types/types';
 
 import style from './AllContentCard.module.scss';
 
 const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
-  const formattedDate = new Date(data.date)
+  const formattedDate = new Date(data.last_date)
     .toLocaleDateString('en-GB')
     .replace(/\//g, '.');
 
-  if (!data.statusActive) {
-    return null; // Если не активен, не рендерим карточку
-  }
-
   const getPlatformIcon = (platform: string): JSX.Element => {
+    /* eslint-disable */
     switch (platform) {
-    case 'habr':
-      return <img src={hIcon} alt="Habr" />;
-    case 'vc':
-      return <img src={vc} alt="VC" />;
-    case 'youtube':
-      return <img src={youTube} alt="YouTube" />;
-    case 'telegram':
-      return <img src={telegram} alt="Telegram" />;
-    case 'linkedin':
-      return <img src={inIcon} alt="LinkedIn" />;
-    case 'instagram':
-      return <img src={instagram} alt="Instagram" />;
-    default:
-      return <img src={questionIcon} alt="Other" />;
+      case 'habr':
+        return <img src={hIcon} alt="Habr" />;
+      case 'vc':
+        return <img src={vc} alt="VC" />;
+      case 'youtube':
+        return <img src={youTube} alt="YouTube" />;
+      case 'telegram':
+        return <img src={telegram} alt="Telegram" />;
+      case 'linkedin':
+        return <img src={inIcon} alt="LinkedIn" />;
+      case 'instagram':
+        return <img src={instagram} alt="Instagram" />;
+      default:
+        return <img src={questionIcon} alt="Other" />;
     }
   };
-
+  /* eslint-enable */
   return (
     <NavLink to={`/ambassadors/${data.id}/content`} className={style.navLink}>
       <div className={style.allContentCard}>
         <div className={style.allContentCard__left}>
           {/* левая */}
           <div className={style.allContentCard__ambassador}>
-            <img
-              src={data.avatar}
-              className={style.allContentCard__avatar}
-              alt="Аватар"
-            />
+            <Avatar link={data.image} size="s" />
             <div className={style.allContentCard__person}>
               <h3 className={style.allContentCard__fio}>
-                {data.surname} {data.name}
+                {data.last_name} {data.first_name}
               </h3>
               <p className={style.allContentCard__telegramAcc}>
-                @{data.telegram}
+                @{data.tg_acc}
               </p>
             </div>
           </div>
 
           <div className={style.allContentCard__statusGroup}>
-            <div className={style.allContentCard__status}>
-              {data.statusActive ? (
-                <span>Активен</span>
-              ) : (
-                <span>Не активен</span>
-              )}
-            </div>
+            {/* <StatusIcon status={data.} /> */}
             <div className={style.allContentCard__reitingGroup}>
               <img
                 src={arrowUp}
@@ -80,7 +71,9 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                 className={style.allContentCard__arrow}
               />
               <p className={style.allContentCard__textReiting}>Рейтинг</p>
-              <span className={style.allContentCard__countReiting}>36</span>
+              <span className={style.allContentCard__countReiting}>
+                {data.rating}
+              </span>
             </div>
           </div>
         </div>
@@ -94,7 +87,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
             alt="Отзывы"
           />
           <span className={style.allContentCard__reviewsCount}>
-            {data.reviews}
+            {data.review_count}
           </span>
         </div>
 
@@ -105,7 +98,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
               Опубликовано контента
             </h3>
             <div className={style.allContentCard__contentGroup}>
-              {data.content.map((row, index) => (
+              {/* {data.content.map((row, index) => (
                 <div key={uuidv4()} className={style.allContentCard__social}>
                   <div className={style.allContentCard__icon}>
                     {getPlatformIcon(row.platform)}
@@ -114,7 +107,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                     {row.fileCounter}
                   </span>
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
 
