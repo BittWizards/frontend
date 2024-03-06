@@ -1,7 +1,7 @@
-import type { User } from "src/utils/constants/types/types";
+import type { TAmbassadorMerchHistory } from 'src/shared/api/merch/dtos';
 
 type TMerchStatisticProps = {
-    merchArray: User[];
-}
+  merchArray: TAmbassadorMerchHistory[];
+};
 
 export type { TMerchStatisticProps };
