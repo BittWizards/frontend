@@ -1,15 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getNewContent } from 'src/shared/api/content';
-import type { INewContentCardData } from 'src/shared/api/content/dtos';
+import { getAllContent, getNewContent } from 'src/shared/api/content';
+import type {
+  IAllContent,
+  INewContentCardData,
+} from 'src/shared/api/content/dtos';
 
 interface IContentsState {
   newContent: INewContentCardData[];
+  allContent: IAllContent[];
   isLoading: boolean;
   error: string | null | unknown;
 }
 
 const initialState: IContentsState = {
   newContent: [],
+  allContent: [],
   isLoading: false,
   error: null,
 };
@@ -29,6 +34,18 @@ const contentSlice = createSlice({
         state.error = null;
       })
       .addCase(getNewContent.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getAllContent.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getAllContent.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.allContent = action.payload;
+        state.error = null;
+      })
+      .addCase(getAllContent.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       });

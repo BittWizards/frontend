@@ -4,30 +4,30 @@ import type { StatusIconProps } from '../types/type';
 
 import style from './StatusIcon.module.scss';
 
-const StatusIcon: FC<StatusIconProps> = ({ data }) => {
+const StatusIcon: FC<StatusIconProps> = ({ status }) => {
   // Функция для определения класса цвета в зависимости от статуса
-  const getStatusColorClass = (userStatus: string) => {
+  type TUserStatus = 'Active' | 'Pause' | 'Clarify' | 'Not active';
+  /* eslint-disable */
+  const getStatusColorClass = (userStatus: TUserStatus) => {
     switch (userStatus) {
-    case 'Active':
-      return style.statusActive;
-    case 'OnPause':
-      return style.statusOnPause;
-    case 'PendingConfirmation':
-      return style.statusPendingConfirmation;
-    case 'Inactive':
-      return style.statusInactive;
-    default:
-      return '';
+      case 'Active':
+        return style.statusActive;
+      case 'Pause':
+        return style.statusOnPause;
+      case 'Clarify':
+        return style.statusPendingConfirmation;
+      case 'Not active':
+        return style.statusInactive;
+      default:
+        return '';
     }
   };
 
   return (
     <div className={style.statusCell}>
-      {data.userStatus ? (
-        <span
-          className={`${style.status}  ${getStatusColorClass(data.userStatus)}`}
-        >
-          {statusMappings[data.userStatus]}
+      {status ? (
+        <span className={`${style.status}  ${getStatusColorClass(status)}`}>
+          {statusMappings[status]}
         </span>
       ) : (
         ''

@@ -12,7 +12,7 @@ type TAmbassadorHeaderCardProps = {
     promocode: string;
     activationDate: string;
     trackingNumber: string;
-    userStatus: string;
+    userStatus: 'Active' | 'Pause' | 'Clarify' | 'Not active';
     phone: string;
     email: string;
     city: string;
