@@ -24,7 +24,7 @@ const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({ data }) => (
           <p className={style.nameText}>{data.surname || ''}</p>
           <p className={style.nameText}>{data.name || ''}</p>
           <p className={style.nameText}>{data.secondname || ''}</p>
-          <StatusIcon data={data} />
+          <StatusIcon status={data.userStatus} />
         </div>
       </div>
       <div className={style.column}>
