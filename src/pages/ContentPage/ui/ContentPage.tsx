@@ -11,7 +11,7 @@ import { FilterComponent } from 'src/entities/FilterComponent';
 import { SortComponent } from 'src/entities/SortComponent';
 import { getAllContent, getNewContent } from 'src/shared/api/content';
 import { selectContent } from 'src/app/store/reducers/contents/model/contentsSlice';
-
+import downloadImg from 'src/shared/icons/document-download.svg';
 import style from './ContentPage.module.scss';
 import { Loader } from '../../../shared/Loader';
 
@@ -68,14 +68,18 @@ const ContentPage = () => {
                 searchTerm={searchTerm}
                 handleChange={handleChange}
               />
-              <SortComponent
-                width={220}
-                height={48}
-                options={sortingOptions}
-                onSortChange={selectedOption => {
-                  console.log('Selected sorting option:', selectedOption);
-                }}
-              />
+              <div className={style.sortWrapper}>
+                <img src={downloadImg} className={style.downloadImg} alt="Иконка скачивания" />
+                <SortComponent
+                  width={220}
+                  height={48}
+                  options={sortingOptions}
+                  onSortChange={selectedOption => {
+                    console.log('Selected sorting option:', selectedOption);
+                  }}
+                />
+              </div>
+
             </div>
             {contents.isLoading ? (
               <Loader />

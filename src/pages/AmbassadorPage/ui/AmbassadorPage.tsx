@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
-
+import downloadImg from 'src/shared/icons/document-download.svg';
 import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
 
 import type { ChangeEvent, MouseEvent } from 'react';
@@ -157,12 +157,15 @@ const AmbassadorPage = () => {
                   searchTerm={searchTerm}
                   handleChange={handleChange}
                 />
-                <SortComponent
-                  width={220}
-                  height={48}
-                  options={sortingOptions}
-                  onSortChange={handleSortChange}
-                />
+                <div className={style.sortWrapper}>
+                  <img src={downloadImg} className={style.downloadImg} alt="Иконка скачивания" />
+                  <SortComponent
+                    width={220}
+                    height={48}
+                    options={sortingOptions}
+                    onSortChange={handleSortChange}
+                  />
+                </div>
               </div>
             </div>
             {ambassadors.isLoading ? (

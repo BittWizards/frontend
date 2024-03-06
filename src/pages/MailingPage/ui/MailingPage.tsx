@@ -11,6 +11,7 @@ import { MailingDataGrid } from 'src/widgets/MailingDataGrid';
 import type { TRow } from 'src/utils/constants/allMailingData';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { rows } from 'src/utils/constants/allMailingData';
+import trashimg from 'src/shared/icons/trash.svg';
 import style from './MailingPage.module.scss';
 
 const MailingPage = () => {
@@ -176,14 +177,17 @@ const MailingPage = () => {
                     searchTerm={searchTerm}
                     handleChange={handleChange}
                   />
-                  <SortComponent
-                    width={220}
-                    height={48}
-                    options={sortingOptions}
-                    onSortChange={selectedOption => {
-                      console.log('Selected sorting option:', selectedOption);
-                    }}
-                  />
+                  <div className={style.sortWrapper}>
+                    <img src={trashimg} className={style.trashImg} alt="Иконка удаления" />
+                    <SortComponent
+                      width={220}
+                      height={48}
+                      options={sortingOptions}
+                      onSortChange={selectedOption => {
+                        console.log('Selected sorting option:', selectedOption);
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
               <MailingDataGrid rows={searchResults} />

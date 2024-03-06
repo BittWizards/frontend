@@ -11,7 +11,7 @@ import { ButtonComponent } from 'src/entities/Button';
 import type { User } from 'src/utils/constants/types/types';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { SortComponent } from 'src/entities/SortComponent';
-
+import downloadImg from 'src/shared/icons/document-download.svg';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectMerch } from 'src/app/store/reducers/merch/model/merchSlice';
 import {
@@ -128,12 +128,15 @@ const MerchPage = () => {
               searchTerm={searchTerm}
               handleChange={handleChange}
             />
-            <SortComponent
-              width={220}
-              height={48}
-              options={sortingOptions}
-              onSortChange={handleSortChange}
-            />
+            <div className={style.sortWrapper}>
+              <img src={downloadImg} className={style.downloadImg} alt="Иконка скачивания" />
+              <SortComponent
+                width={220}
+                height={48}
+                options={sortingOptions}
+                onSortChange={handleSortChange}
+              />
+            </div>
           </div>
         </div>
         {selectedOption === 'Учет мерча' ? (
