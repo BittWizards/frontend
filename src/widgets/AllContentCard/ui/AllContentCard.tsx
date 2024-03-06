@@ -57,7 +57,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                 {data.last_name} {data.first_name}
               </h3>
               <p className={style.allContentCard__telegramAcc}>
-                @{data.tg_acc}
+                {`@${data.tg_acc.split('/')[1]}`}
               </p>
             </div>
           </div>
