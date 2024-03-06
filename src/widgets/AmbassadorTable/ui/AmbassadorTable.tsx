@@ -73,29 +73,31 @@ const AmbassadorTable: FC<TCardProps> = ({ data }) => {
                 <Avatar link={avatar} size="s" />
                 <div className={style.positionCellWrapper}>
                   <span className={style.cellText}>
-                    {ambassador.surname} {ambassador.name}
+                    {ambassador.last_name} {ambassador.first_name}
                   </span>
                 </div>
               </div>
             </TableCell>
             <TableCell style={commonCellStyle}>
-              <StatusIcon data={ambassador} />
+              <StatusIcon status={ambassador.status} />
             </TableCell>
             <TableCell style={commonCellStyle}>
               <div className={style.positionCellWrapper}>
-                <span className={style.cellText}>{ambassador.position}</span>
+                <span className={style.cellText}>
+                  {ambassador.ya_programm.title}
+                </span>
               </div>
             </TableCell>
             <TableCell style={commonCellStyle}>
               <div className={style.cellWrapper}>
                 <span
                   className={style.cellText}
-                >{`@${ambassador.telegram.split('/')[1]}`}</span>
+                >{`@${ambassador.tg_acc.split('/')[1]}`}</span>
               </div>
             </TableCell>
             <TableCell style={commonCellStyle}>
               <div className={style.dateCell}>
-                {new Date(ambassador.date)
+                {new Date(ambassador.created)
                   .toLocaleDateString('en-GB')
                   .replace(/\//g, '.')}
               </div>

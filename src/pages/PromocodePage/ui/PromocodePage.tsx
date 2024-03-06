@@ -18,7 +18,7 @@ import {
   sortBySpecialty,
   sortByStatus,
   sortBySurname,
-} from 'src/utils/constants/sortFunctions';
+} from 'src/utils/constants/sortFunctionsMock';
 import { promocodeSortingOptions } from '../model/const';
 
 import style from './PromocodePage.module.scss';
