@@ -1,18 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { IMerch } from 'src/shared/api/merch/dtos';
+import type {
+  TAmbassadorMerchHistory,
+  TMerchItem,
+} from 'src/shared/api/merch/dtos';
 
-import { getMerch, getMerchById } from 'src/shared/api/merch';
+import {
+  getMerchAmbassadorsHistory,
+  getMerchTypes,
+} from 'src/shared/api/merch';
 
-interface MerchState {
-  merchList: IMerch[];
+interface IMerchState {
+  merchHistory: TAmbassadorMerchHistory[];
   merch: Object;
+  merchType: TMerchItem[];
   isLoading: boolean;
   error: string | unknown | null;
 }
 
-const initialState: MerchState = {
-  merchList: [],
+const initialState: IMerchState = {
+  merchHistory: [],
   merch: {},
+  merchType: [],
   isLoading: false,
   error: null,
 };
@@ -23,33 +31,33 @@ const merchSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(getMerch.fulfilled, (state, action) => {
+      .addCase(getMerchAmbassadorsHistory.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.merchList = action.payload;
+        state.merchHistory = action.payload;
       })
-      .addCase(getMerch.pending, state => {
+      .addCase(getMerchAmbassadorsHistory.pending, state => {
         state.isLoading = true;
       })
-      .addCase(getMerch.rejected, (state, action) => {
+      .addCase(getMerchAmbassadorsHistory.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
-
-      .addCase(getMerchById.fulfilled, (state, action) => {
+      .addCase(getMerchTypes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.merch = action.payload;
+        state.merchType = action.payload;
       })
-      .addCase(getMerchById.pending, state => {
+      .addCase(getMerchTypes.pending, state => {
         state.isLoading = true;
       })
-      .addCase(getMerchById.rejected, (state, action) => {
+      .addCase(getMerchTypes.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
   },
 });
 
-export const selectMerch = (state: { merch: MerchState }) => state.merch;
+export const selectMerch = (state: { merch: IMerchState }) => state.merch;
+
 export default merchSlice.reducer;

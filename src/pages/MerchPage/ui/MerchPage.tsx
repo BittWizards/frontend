@@ -1,32 +1,56 @@
 import { useEffect, useState } from 'react';
 
-import { Navbar } from 'src/widgets/NavBar/index';
-import { navbarLinks } from 'src/utils/constants/navLinks';
-import { mockCardsData } from 'src/utils/constants/mockCardsData';
-import { MerchUserInfoCard } from 'src/widgets/MerchUserInfoCard';
-import { MerchStatisticTable } from 'src/entities/MerchStatisticTable';
-import { MainTabsNav } from 'src/entities/MainTabsNav';
-
-import { ButtonComponent } from 'src/entities/Button';
 import type { User } from 'src/utils/constants/types/types';
-import { FilterComponent } from 'src/entities/FilterComponent';
-import { SortComponent } from 'src/entities/SortComponent';
 
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectMerch } from 'src/app/store/reducers/merch/model/merchSlice';
+import { selectOrders } from 'src/app/store/reducers/orders/model/ordersSlice';
+import { getOrders } from 'src/shared/api/orders';
 import {
-  sortByDate,
-  sortBySpecialty,
-  sortByStatus,
-  sortBySurname,
-} from 'src/utils/constants/sortFunctionsMock';
+  getMerchAmbassadorsHistory,
+  getMerchTypes,
+} from 'src/shared/api/merch';
 
-import { getMerch, getMerchById } from 'src/shared/api/merch';
+import type { TAmbassadorMerchHistory } from 'src/shared/api/merch/dtos';
+import type { TOrder } from 'src/shared/api/orders/dtos';
+
+import { Navbar } from 'src/widgets/NavBar/index';
+import { navbarLinks } from 'src/utils/constants/navLinks';
+import { MerchUserInfoCard } from 'src/widgets/MerchUserInfoCard';
+import { MerchStatisticTable } from 'src/entities/MerchStatisticTable';
+import { MainTabsNav } from 'src/entities/MainTabsNav';
+import { ButtonComponent } from 'src/entities/Button';
+import { FilterComponent } from 'src/entities/FilterComponent';
+import { SortComponent } from 'src/entities/SortComponent';
+import { Loader } from 'src/shared/Loader';
+
+import {
+  sortOrderByDate,
+  sortOrderBySpecialty,
+  sortOrderByStatus,
+  sortOrderBySurname,
+  sortMerchByDate,
+  sortMerchBySurname,
+} from 'src/pages/MerchPage/model/sortFunctions';
 
 import style from './MerchPage.module.scss';
 
+type TSearchableData = (TAmbassadorMerchHistory | TOrder)[];
+
 const MerchPage = () => {
   const dispatch = useAppDispatch();
+  const merch = useAppSelector(selectMerch);
+  const orders = useAppSelector(selectOrders);
+
+  useEffect(() => {
+    dispatch(getMerchAmbassadorsHistory());
+    dispatch(getOrders());
+    dispatch(getMerchTypes());
+  }, []);
+
+  console.log('Merch History', merch.merchHistory);
+  console.log('Orders', orders.orders);
+  console.log('Merch Types', merch.merchType);
 
   const [selectedOption, setSelectedOption] = useState('Заявки на отправку');
   const tabs: string[] = ['Заявки на отправку', 'Учет мерча'];
@@ -35,65 +59,88 @@ const MerchPage = () => {
       ? ['Дата', 'ФИО']
       : ['Дата', 'ФИО', 'Статус', 'Специальность'];
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<User[]>([]);
+  const [searchOrdersTerm, setSearchOrdersTerm] = useState('');
+  const [searchOrdersResults, setSearchOrdersResults] = useState<TOrder[]>([]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+  const [searchMerchTerm, setSearchMerchTerm] = useState('');
+  const [searchMerchResults, setSearchMerchResults] = useState<
+    TAmbassadorMerchHistory[]
+  >([]);
+
+  const handleOrdersChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchOrdersTerm(event.target.value);
   };
 
-  // useEffect(() => {
-  //   dispatch(getMerch());
-  //   //  dispatch(getMerchById(1));
-  // }, []);
-
-  // const { merch } = useAppSelector(selectMerch);
-  // console.log(merch);
+  const handleMerchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchMerchTerm(event.target.value);
+  };
 
   useEffect(() => {
-    setSearchResults(mockCardsData);
-  }, [searchTerm]);
+    setSearchOrdersResults(orders.orders);
+    setSearchMerchResults(merch.merchHistory);
+  }, [searchOrdersTerm, searchMerchTerm]);
 
-  const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onOrdersSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     // eslint-disable-next-line max-len
-    const results = mockCardsData.filter(
-      ambassador =>
-        ambassador.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        ambassador.surname.toLowerCase().includes(searchTerm.toLowerCase())
+    const results = orders.orders.filter(
+      orders =>
+        orders.ambassador.first_name
+          .toLowerCase()
+          .includes(searchOrdersTerm.toLowerCase()) ||
+        orders.ambassador.last_name
+          .toLowerCase()
+          .includes(searchOrdersTerm.toLowerCase())
     );
-    setSearchResults(results);
+    setSearchOrdersResults(results);
+  };
+
+  const onMerchSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    // eslint-disable-next-line max-len
+    const results = merch.merchHistory.filter(
+      ambassador =>
+        ambassador.first_name
+          .toLowerCase()
+          .includes(searchMerchTerm.toLowerCase()) ||
+        ambassador.last_name
+          .toLowerCase()
+          .includes(searchMerchTerm.toLowerCase())
+    );
+    setSearchMerchResults(results);
   };
 
   useEffect(() => {
-    setSearchResults(sortByDate(mockCardsData).reverse());
+    setSearchOrdersResults(sortOrderByDate(orders.orders).reverse());
+    setSearchMerchResults(sortMerchByDate(merch.merchHistory).reverse());
   }, []);
 
-  const handleSortChange = (selectedOption: string | null) => {
+  const handleOrdersSortChange = (selectedOption: string | null) => {
     if (selectedOption !== null) {
-      let sortedResults = [...searchResults];
+      let sortedResults = [...searchOrdersResults];
       /* eslint-disable */
       switch (selectedOption) {
         case 'Дата':
-          sortedResults = sortByDate(sortedResults).reverse();
+          sortedResults = sortOrderByDate(sortedResults).reverse();
           break;
         case 'ФИО':
-          sortedResults = sortBySurname(sortedResults);
+          sortedResults = sortOrderBySurname(sortedResults);
           break;
         case 'Специальность':
-          sortedResults = sortBySpecialty(sortedResults);
+          sortedResults = sortOrderBySpecialty(sortedResults);
           break;
         case 'Статус':
-          sortedResults = sortByStatus(sortedResults);
+          sortedResults = sortOrderByStatus(sortedResults);
           break;
 
         default:
           break;
       }
 
-      setSearchResults(sortedResults);
+      setSearchOrdersResults(sortedResults);
     }
   };
+  /* eslint-enable */
 
   return (
     <div className={style.main}>
@@ -124,25 +171,31 @@ const MerchPage = () => {
           </div>
           <div className={style.rightWrapper}>
             <FilterComponent
-              onSearch={onSearch}
-              searchTerm={searchTerm}
-              handleChange={handleChange}
+              onSearch={onOrdersSearch}
+              searchTerm={searchOrdersTerm}
+              handleChange={handleOrdersChange}
             />
             <SortComponent
               width={220}
               height={48}
               options={sortingOptions}
-              onSortChange={handleSortChange}
+              onSortChange={handleOrdersSortChange}
             />
           </div>
         </div>
         {selectedOption === 'Учет мерча' ? (
-          <div className={style.tableWrapper}>
-            <MerchStatisticTable merchArray={searchResults} />
-          </div>
+          merch.isLoading ? (
+            <Loader />
+          ) : (
+            <div className={style.tableWrapper}>
+              <MerchStatisticTable merchArray={searchMerchResults} />
+            </div>
+          )
+        ) : orders.isLoading ? (
+          <Loader />
         ) : (
           <div className={style.cardsContainer}>
-            {searchResults.map(cardData => (
+            {searchOrdersResults.map(cardData => (
               <MerchUserInfoCard key={cardData.id} data={cardData} />
             ))}
           </div>
