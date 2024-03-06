@@ -8,7 +8,7 @@ export const getAllAmbassadors = createAsyncThunk(
   'ambassadors/getAllAmbassadors',
   async (_, { fulfillWithValue, rejectWithValue }) => {
     try {
-      const {data} = await axios.get<IAmbassador[]>(
+      const { data } = await axios.get<IAmbassador[]>(
         `${BASE_URL}/api/v1/ambassadors/`
       );
 

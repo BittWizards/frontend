@@ -4,9 +4,9 @@ type StatusMappings = {
 
 const statusMappings: StatusMappings = {
   Active: 'Активен',
-  OnPause: 'На паузе',
-  PendingConfirmation: 'Уточняется',
-  Inactive: 'Неактивен',
+  Pause: 'На паузе',
+  Clarify: 'Уточняется',
+  'Not active': 'Неактивен',
 };
 
 export { statusMappings };

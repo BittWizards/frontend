@@ -1,7 +1,7 @@
-import type { TMockData } from 'src/utils/types/typeMockData';
+import type { IPromocode } from 'src/shared/api/promocodes/dtos';
 
 type TCardProps = {
-  data: TMockData;
+  data: IPromocode;
 };
 
 export type { TCardProps };

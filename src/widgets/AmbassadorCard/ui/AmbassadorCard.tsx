@@ -12,37 +12,41 @@ import style from './AmbassadorCard.module.scss';
 const AmbassadorCard: FC<TAmbassadorCardProps> = ({ data }) => {
   const navigate = useNavigate();
 
-  return (
-    <div className={style.cardContainer}>
-      {data.avatar && <Avatar link={data.avatar} />}
-      <span className={style.name}>{data.surname}</span>
-      <span className={style.name}>
-        {data.name} {data.secondname}
-      </span>
-      <span className={style.position}>{data.position}</span>
-      <div className={style.cardBottomWrapper}>
-        <div className={style.dateContainer}>
-          <img
-            src={calendarIcon}
-            alt="Calendar"
-            style={{ marginRight: '5px' }}
+  if (data.status === 'Clarify') {
+    return (
+      <div className={style.cardContainer}>
+        {data.image && <Avatar link={data.image} />}
+        <span className={style.name}>{data.last_name}</span>
+        <span className={style.name}>
+          {data.first_name} {data.last_name}
+        </span>
+        <span className={style.position}>{data.ya_programm.title}</span>
+        <div className={style.cardBottomWrapper}>
+          <div className={style.dateContainer}>
+            <img
+              src={calendarIcon}
+              alt="Calendar"
+              style={{ marginRight: '5px' }}
+            />
+            <span className={style.date}>{formatDateString(data.created)}</span>
+          </div>
+          <div className={style.line} />
+          <ButtonSecondaryComponent
+            label="Посмотреть"
+            width={296}
+            height={48}
+            onClick={() =>
+              navigate(`candidate/${data.id}/detail`, {
+                replace: true,
+              })
+            }
           />
-          <span className={style.date}>{formatDateString(data.date)}</span>
         </div>
-        <div className={style.line} />
-        <ButtonSecondaryComponent
-          label="Посмотреть"
-          width={296}
-          height={48}
-          onClick={() =>
-            navigate(`candidate/${data.id}/detail`, {
-              replace: true,
-            })
-          }
-        />
       </div>
-    </div>
-  );
+    );
+  }
+
+  return null;
 };
 
 export default AmbassadorCard;

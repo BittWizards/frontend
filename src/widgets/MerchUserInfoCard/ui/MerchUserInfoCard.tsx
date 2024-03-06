@@ -59,7 +59,7 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
                 className={style.tg}
               >{`@${data.telegram.split('/')[1]}`}</span>
             </div>
-            <StatusIcon data={data} />
+            <StatusIcon status={data.userStatus} />
           </div>
           <div className={style.line} />
           <div className={style.promocodeWrapper}>

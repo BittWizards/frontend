@@ -19,7 +19,7 @@ import {
   sortBySpecialty,
   sortByStatus,
   sortBySurname,
-} from 'src/utils/constants/sortFunctions';
+} from 'src/utils/constants/sortFunctionsMock';
 
 import { getMerch, getMerchById } from 'src/shared/api/merch';
 
