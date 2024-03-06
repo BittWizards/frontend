@@ -78,6 +78,8 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
           </div>
         </div>
 
+        <span className={style.line} />
+
         <div className={style.allContentCard__middle}>
           {/* середина */}
           <h3 className={style.allContentCard__reviews}>Отзывы</h3>
@@ -90,6 +92,8 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
             {data.review_count}
           </span>
         </div>
+
+        <span className={style.line} />
 
         <div className={style.allContentCard__right}>
           {/* правая */}

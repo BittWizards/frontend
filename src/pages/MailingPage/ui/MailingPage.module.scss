@@ -164,4 +164,18 @@
     align-items: flex-end;
   }
 
+  .sortWrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 36px;
+  }
+
+  .trashImg {
+    margin: 0;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    align-self: center;
+  }
   

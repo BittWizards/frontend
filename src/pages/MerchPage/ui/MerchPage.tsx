@@ -23,7 +23,7 @@ import { ButtonComponent } from 'src/entities/Button';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { SortComponent } from 'src/entities/SortComponent';
 import { Loader } from 'src/shared/Loader';
-
+import downloadImg from 'src/shared/icons/document-download.svg';
 import {
   sortOrderByDate,
   sortOrderBySpecialty,
@@ -175,12 +175,16 @@ const MerchPage = () => {
               searchTerm={searchOrdersTerm}
               handleChange={handleOrdersChange}
             />
-            <SortComponent
-              width={220}
-              height={48}
-              options={sortingOptions}
-              onSortChange={handleOrdersSortChange}
-            />
+            <div className={style.sortWrapper}>
+              <img src={downloadImg} className={style.downloadImg} alt="Иконка скачивания" />
+              <SortComponent
+                width={220}
+                height={48}
+                options={sortingOptions}
+                onSortChange={handleOrdersSortChange}
+              />
+            </div>
+
           </div>
         </div>
         {selectedOption === 'Учет мерча' ? (
