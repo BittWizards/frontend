@@ -1,32 +1,42 @@
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { selectPromocodes } from 'src/app/store/reducers/promocodes/model/promocodesSlice';
+import type { IPromocode } from 'src/shared/api/promocodes/dtos';
 
 import { Portal } from '@mui/material';
-
-import type { User } from 'src/utils/constants/types/types';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { PromocodeUserInfoCard } from 'src/widgets/PromocodeUserInfoCard';
-import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { ButtonComponent } from 'src/entities/Button';
 import { InputAutoCompleteModal } from 'src/entities/Modals';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { SortComponent } from 'src/entities/SortComponent';
+import { Loader } from 'src/shared/Loader';
+import { getAllPromocodes } from 'src/shared/api/promocodes';
 import {
   sortByDate,
   sortBySpecialty,
   sortByStatus,
   sortBySurname,
-} from 'src/utils/constants/sortFunctionsMock';
+} from '../model/sortFunctions';
 import { promocodeSortingOptions } from '../model/const';
 
 import style from './PromocodePage.module.scss';
 
 const PromocodePage: FC = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getAllPromocodes());
+  }, [dispatch]);
+
+  const promocodes = useAppSelector(selectPromocodes);
+
   const [openModal, setModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<User[]>([]);
+  const [searchResults, setSearchResults] = useState<IPromocode[]>([]);
 
   const handleOpen = () => {
     setModalOpen(true);
@@ -46,17 +56,22 @@ const PromocodePage: FC = () => {
 
   const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const results = mockCardsData.filter(
+    const results = promocodes.promocodes.filter(
       ambassador =>
-        ambassador.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        ambassador.surname.toLowerCase().includes(searchTerm.toLowerCase())
+        ambassador.ambassador.first_name
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        ambassador.ambassador.last_name
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
   };
-
+  /* eslint-disable */
   useEffect(() => {
-    setSearchResults(sortByDate(mockCardsData).reverse());
+    setSearchResults(sortByDate(promocodes.promocodes).reverse());
   }, []);
+  /* eslint-enable */
 
   const handleSortChange = (selectedOption: string | null) => {
     if (selectedOption !== null) {
@@ -115,11 +130,15 @@ const PromocodePage: FC = () => {
               </div>
             </div>
           </div>
-          <div className={style.cardsContainer}>
-            {searchResults.map(cardData => (
-              <PromocodeUserInfoCard key={cardData.id} data={cardData} />
-            ))}
-          </div>
+          {promocodes.isLoading ? (
+            <Loader />
+          ) : (
+            <div className={style.cardsContainer}>
+              {searchResults.map(cardData => (
+                <PromocodeUserInfoCard key={cardData.id} data={cardData} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
       {openModal ? (

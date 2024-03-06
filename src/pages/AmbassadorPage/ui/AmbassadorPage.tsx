@@ -30,9 +30,14 @@ import style from './AmbassadorPage.module.scss';
 
 const AmbassadorPage = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getAllAmbassadors());
+  }, [dispatch]);
 
   const ambassadors = useAppSelector(selectAmbassadors);
+
+  const navigate = useNavigate();
 
   const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
   const [searchTerm, setSearchTerm] = useState('');
@@ -84,10 +89,6 @@ const AmbassadorPage = () => {
       setSearchResults(sortedResults);
     }
   };
-
-  useEffect(() => {
-    dispatch(getAllAmbassadors());
-  }, [dispatch]);
 
   /* eslint-disable */
   useEffect(() => {
