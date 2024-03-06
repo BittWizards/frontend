@@ -3,6 +3,7 @@ import { ambassadorsReducer } from './reducers/ambassadors';
 import { contentsReducer } from './reducers/contents';
 import { merchReducer } from './reducers/merch';
 import { promocodesReducer } from './reducers/promocodes';
+import { ordersReducer } from './reducers/orders/imdex';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     content: contentsReducer,
     merch: merchReducer,
     promocodes: promocodesReducer,
+    orders: ordersReducer,
   },
 });
 
