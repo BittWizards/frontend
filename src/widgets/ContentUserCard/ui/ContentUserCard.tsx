@@ -25,8 +25,10 @@ const ContentUserCard: FC<TCardProps> = ({ data }) => {
       {data.ambassador.image && (
         <Avatar link={data.ambassador.image} size="m" />
       )}
-      <p className={style.name}>{data.ambassador.last_name}</p>
-      <p className={style.name}>{data.ambassador.first_name}</p>
+      <div className={style.nameGroup}>
+        <p className={style.name}>{data.ambassador.last_name}</p>
+        <p className={style.name}>{data.ambassador.first_name}</p>
+      </div>
       <div className={style.socialWrapper}>
         <img src={tgIcon} alt="telegram" className={style.socialIcon} />
         <span className={style.tg}>{`@${data.ambassador.tg_acc}`}</span>

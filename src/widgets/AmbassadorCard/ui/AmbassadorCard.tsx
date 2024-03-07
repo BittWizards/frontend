@@ -16,9 +16,13 @@ const AmbassadorCard: FC<TAmbassadorCardProps> = ({ data }) => {
     return (
       <div className={style.cardContainer}>
         {data.image && <Avatar link={data.image} />}
-        <span className={style.name}>{data.last_name}</span>
-        <span className={style.name}>{data.first_name}</span>
-        <span className={style.position}>{data.ya_programm}</span>
+        <div className={style.nameGroup}>
+          <span className={style.name}>{data.last_name}</span>
+          <span className={style.name}>
+            {data.first_name} {data.last_name}
+          </span>
+        </div>
+        <span className={style.position}>{data.ya_programm.title}</span>
         <div className={style.cardBottomWrapper}>
           <div className={style.dateContainer}>
             <img
