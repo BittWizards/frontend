@@ -1,10 +1,7 @@
+import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
+
 type TAmbassadorsInfoCardProps = {
-  avatar?: string;
-  name?: string;
-  surname?: string;
-  position?: string;
-  statusActive?: string;
-  achievment?: string;
+  data: IAmbassador;
 };
 
 export type { TAmbassadorsInfoCardProps };

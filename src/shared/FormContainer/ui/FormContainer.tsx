@@ -5,12 +5,12 @@ import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { ButtonComponent } from 'src/entities/Button';
 import editIcon from 'src/shared/icons/pencil.svg';
 import removeBtn from 'src/shared/icons/remove-btn.svg';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { selectQuestionnaire , setIsEdit } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 import type { IFormContainer } from '../types/types';
 import style from './FormContainer.module.scss';
-import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 
-import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
-import { setIsEdit } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+
 
 const FormContainer: FC<IFormContainer> = ({
   title,
@@ -38,7 +38,7 @@ const FormContainer: FC<IFormContainer> = ({
           <h2 className={style.title}>{title}</h2>
           {isEditable && (
             <div className={style.editable}>
-              <span className={style.line}></span>
+              <span className={style.line} />
               <div className={style.editableButtons}>
                 <button type="button" className={style.editBtn} onClick={() => dispatch(setIsEdit(!isEdit))}>
                   <img src={editIcon} alt="editIcon" />

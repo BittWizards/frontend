@@ -55,9 +55,7 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
           <div className={style.statusWrapper}>
             <div className={style.socialWrapper}>
               <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-              <span
-                className={style.tg}
-              >{`@${data.ambassador.tg_acc.split('/')[1]}`}</span>
+              <span className={style.tg}>{`@${data.ambassador.tg_acc}`}</span>
             </div>
             <StatusIcon status={data.ambassador.status} />
           </div>

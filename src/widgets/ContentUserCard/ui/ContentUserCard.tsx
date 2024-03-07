@@ -29,9 +29,7 @@ const ContentUserCard: FC<TCardProps> = ({ data }) => {
       <p className={style.name}>{data.ambassador.first_name}</p>
       <div className={style.socialWrapper}>
         <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-        <span
-          className={style.tg}
-        >{`@${data.ambassador.tg_acc.split('/')[1]}`}</span>
+        <span className={style.tg}>{`@${data.ambassador.tg_acc}`}</span>
       </div>
       <div className={style.dateContainer}>
         <img src={calendarIcon} alt="Calendar" className={style.calendarIcon} />

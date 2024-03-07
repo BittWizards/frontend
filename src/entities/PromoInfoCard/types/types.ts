@@ -1,7 +1,7 @@
+import type { IPromocode } from 'src/shared/api/promocodes/dtos';
+
 type TPromoInfoCardProps = {
-  promoCode?: string;
-  ambassador?: string;
-  date?: string;
+  data: IPromocode;
 };
 
 export type { TPromoInfoCardProps };
