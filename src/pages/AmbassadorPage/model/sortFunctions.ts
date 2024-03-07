@@ -24,7 +24,7 @@ const sortBySurname = (users: IAmbassador[]) =>
 
 const sortBySpecialty = (users: IAmbassador[]) =>
   [...users].sort((a, b) =>
-    a.ya_programm.title.localeCompare(b.ya_programm.title, 'ru', {
+    a.ya_programm.localeCompare(b.ya_programm, 'ru', {
       sensitivity: 'base',
     })
   );

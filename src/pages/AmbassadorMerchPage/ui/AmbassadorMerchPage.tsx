@@ -12,6 +12,7 @@ import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { ButtonComponent } from 'src/entities/Button';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
+import { Loader } from 'src/shared/Loader';
 
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
@@ -27,7 +28,6 @@ import { formatDateString } from 'src/utils/constants/formatDate';
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorMerchPage.module.scss';
-import { Loader } from '../../../shared/Loader';
 
 const AmbassadorMerchPage = () => {
   const { id } = useParams();

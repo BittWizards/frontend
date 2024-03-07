@@ -19,5 +19,4 @@ const CardsColumnList: FC<TPromoColumnListProps> = ({
     ))}
   </div>
 );
-
 export default CardsColumnList;

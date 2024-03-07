@@ -10,3 +10,16 @@
   gap: 32px;
   color: $baseColorWhite;
 }
+
+.cardColumnList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardList {
+  width: 527px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
