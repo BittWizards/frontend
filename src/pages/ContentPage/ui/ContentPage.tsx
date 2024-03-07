@@ -69,7 +69,11 @@ const ContentPage = () => {
                 handleChange={handleChange}
               />
               <div className={style.sortWrapper}>
-                <img src={downloadImg} className={style.downloadImg} alt="Иконка скачивания" />
+                <img
+                  src={downloadImg}
+                  className={style.downloadImg}
+                  alt="Иконка скачивания"
+                />
                 <SortComponent
                   width={220}
                   height={48}
@@ -79,7 +83,6 @@ const ContentPage = () => {
                   }}
                 />
               </div>
-
             </div>
             {contents.isLoading ? (
               <Loader />

@@ -1,16 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { TOrder } from 'src/shared/api/orders/dtos';
+import type { TAmbassadorsOrders, TOrder } from 'src/shared/api/orders/dtos';
 
-import { getOrders } from 'src/shared/api/orders';
+import { getAmbassadorsOrdersById, getOrders } from 'src/shared/api/orders';
+import { initialAmbassadorOrders } from './const';
 
 interface IOrdersState {
   orders: TOrder[];
+  ambassadorOrders: TAmbassadorsOrders;
   isLoading: boolean;
   error: string | unknown | null;
 }
 
 const initialState: IOrdersState = {
   orders: [],
+  ambassadorOrders: initialAmbassadorOrders,
   isLoading: false,
   error: null,
 };
@@ -30,6 +33,19 @@ const ordersSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getOrders.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(getAmbassadorsOrdersById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.ambassadorOrders = action.payload;
+      })
+      .addCase(getAmbassadorsOrdersById.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getAmbassadorsOrdersById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

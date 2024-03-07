@@ -31,7 +31,7 @@ const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({ data }) => (
         <div className={style.contactInfo}>
           <InfoLogoLink
             icon={tgIcon}
-            text={`@${data.tg_acc.split('/')[1]}`}
+            text={`@${data.tg_acc?.split('/')[1]}`}
             linkType="website"
           />
           <InfoLogoLink icon={mailIcon} text={data.email} linkType="email" />

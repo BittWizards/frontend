@@ -84,9 +84,10 @@ const AmbassadorContentPage: FC = () => {
     }
   };
 
-  const handleRowClick = (index: number) => {
+  const handleRowClick = (contentId: number) => {
+    console.log('contentId Row Click', contentId);
     navigate(
-      `/ambassadors/${contentList.ambassadorContent.id}/detail/${index}/report`
+      `/ambassadors/${contentList.ambassadorContent.id}/detail/${contentId}/report`
     );
   };
 

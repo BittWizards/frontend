@@ -3,18 +3,24 @@ import {
   getAllContent,
   getNewContent,
   getAmbassadorsContentById,
+  getContentDetailById,
 } from 'src/shared/api/content';
 import type {
   IAllContent,
   INewContentCardData,
   TAmbassadorContentData,
+  TContentDetail,
 } from 'src/shared/api/content/dtos';
-import { initialAmbassadorContentData } from './const';
+import {
+  initialAmbassadorContentData,
+  initialAmbassadorContentDetail,
+} from './const';
 
 interface IContentsState {
   newContent: INewContentCardData[];
   allContent: IAllContent[];
   ambassadorContent: TAmbassadorContentData;
+  contentDetail: TContentDetail;
   isLoading: boolean;
   error: string | null | unknown;
 }
@@ -23,6 +29,7 @@ const initialState: IContentsState = {
   newContent: [],
   allContent: [],
   ambassadorContent: initialAmbassadorContentData,
+  contentDetail: initialAmbassadorContentDetail,
   isLoading: false,
   error: null,
 };
@@ -68,6 +75,19 @@ const contentSlice = createSlice({
         state.error = null;
       })
       .addCase(getAmbassadorsContentById.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+
+      .addCase(getContentDetailById.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getContentDetailById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.contentDetail = action.payload;
+        state.error = null;
+      })
+      .addCase(getContentDetailById.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       });

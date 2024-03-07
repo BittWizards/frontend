@@ -5,8 +5,8 @@ type TAmbassadorHeaderCardProps = {
     last_name: string;
     first_name: string;
     middle_name: string;
-    status: 'Active' | 'Pause' | 'Clarify' | 'Not active';
-    tg_acc: string;
+    status: 'Active' | 'Pause' | 'Clarify' | 'Not active' | '';
+    tg_acc?: string;
     email: string;
     phone: string;
     ya_programm: string;
