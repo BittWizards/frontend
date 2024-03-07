@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import type { FC } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { selectPromocodes } from 'src/app/store/reducers/promocodes/model/promocodesSlice';
+import { getAmbassadorsPromocodesById } from 'src/shared/api/promocodes';
+
+import { Loader } from 'src/shared/Loader';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
-import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 import { ButtonComponent } from 'src/entities/Button';
 import { ChoiceModal, InputModal } from 'src/entities/Modals';
@@ -28,12 +33,21 @@ import { tabsData } from '../model/data';
 
 import style from './AmbassadorPromocodePage.module.scss';
 
-const AmbassadorPromocodePage = () => {
+const AmbassadorPromocodePage: FC = () => {
   const { id } = useParams();
+  const dispatch = useAppDispatch();
+  const promocodesList = useAppSelector(selectPromocodes);
+  console.log('promocodesList', promocodesList);
+
+  useEffect(() => {
+    if (id) {
+      const numericId = parseInt(id, 10);
+      dispatch(getAmbassadorsPromocodesById(numericId));
+    }
+  }, []);
+
   const [openInputModal, setInputModalOpen] = useState(false);
   const [openChoiceModal, setChoiceModalOpen] = useState(false);
-
-  const selectedUser = mockCardsData.find(user => user.id === id);
 
   const handleChoiceOpen = () => {
     setChoiceModalOpen(true);
@@ -64,23 +78,35 @@ const AmbassadorPromocodePage = () => {
     lineHeight: '1.2',
   };
 
-  return selectedUser ? (
+  const activePromocode = promocodesList.ambassadorPromocode.my_promocode.find(
+    promo => promo.is_active
+  );
+
+  return promocodesList.isLoading ? (
+    <Loader />
+  ) : (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <AmbassadorHeaderCard data={selectedUser} />
+        <AmbassadorHeaderCard data={promocodesList.ambassadorPromocode} />
         <SubtitleWithEditBtn title="Промокоды Амбассадора" />
         <div className={style.promoContainer}>
           <div className={style.promoContentWrapper}>
             <div className={style.contentColumn}>
               <span className={style.promoTitle}>Промокод</span>
-              <span className={style.promoText}>{selectedUser.promocode}</span>
+              <span className={style.promoText}>
+                {activePromocode
+                  ? activePromocode.promocode
+                  : 'Активного промокода нет'}
+              </span>
             </div>
             <div className={style.contentColumn}>
               <span className={style.promoTitle}>Активация</span>
               <span className={style.promoText}>
-                {formatDateString(selectedUser.activationDate)}
+                {activePromocode
+                  ? formatDateString(activePromocode.created_at)
+                  : ''}
               </span>
             </div>
           </div>
@@ -110,20 +136,22 @@ const AmbassadorPromocodePage = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {selectedUser.promocodes.map((row, index) => (
-              <TableRow key={uuidv4()}>
-                <TableCell style={commonCellStyle}>{index + 1}</TableCell>
-                <TableCell style={commonCellStyle}>{row.promocode}</TableCell>
-                <TableCell style={commonCellStyle}>
-                  {formatDateString(row.date)}
-                </TableCell>
-                <TableCell style={commonCellStyle}>
-                  <IconButton aria-label="delete" onClick={handleChoiceOpen}>
-                    <img src={trashIcon} alt="trashBtn" />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
+            {promocodesList.ambassadorPromocode.my_promocode.map(
+              (row, index) => (
+                <TableRow key={uuidv4()}>
+                  <TableCell style={commonCellStyle}>{index + 1}</TableCell>
+                  <TableCell style={commonCellStyle}>{row.promocode}</TableCell>
+                  <TableCell style={commonCellStyle}>
+                    {formatDateString(row.created_at)}
+                  </TableCell>
+                  <TableCell style={commonCellStyle}>
+                    <IconButton aria-label="delete" onClick={handleChoiceOpen}>
+                      <img src={trashIcon} alt="trashBtn" />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              )
+            )}
           </TableBody>
         </Table>
       </div>
@@ -159,8 +187,6 @@ const AmbassadorPromocodePage = () => {
         ''
       )}
     </div>
-  ) : (
-    <div>Пользоваетель с id ${id} не найден</div>
   );
 };
 

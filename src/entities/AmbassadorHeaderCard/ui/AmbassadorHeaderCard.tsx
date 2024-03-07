@@ -19,19 +19,19 @@ const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({ data }) => (
   <div className={style.ambassadorHeaderCard}>
     <div className={style.infoContainer}>
       <div className={style.column}>
-        <Avatar link={data.avatar} size="l" />
+        <Avatar link={data.image} size="l" />
         <div className={style.nameStatus}>
-          <p className={style.nameText}>{data.surname || ''}</p>
-          <p className={style.nameText}>{data.name || ''}</p>
-          <p className={style.nameText}>{data.secondname || ''}</p>
-          <StatusIcon data={data} />
+          <p className={style.nameText}>{data.last_name || ''}</p>
+          <p className={style.nameText}>{data.first_name || ''}</p>
+          <p className={style.nameText}>{data.middle_name || ''}</p>
+          <StatusIcon status={data.status} />
         </div>
       </div>
       <div className={style.column}>
         <div className={style.contactInfo}>
           <InfoLogoLink
             icon={tgIcon}
-            text={`@${data.telegram.split('/')[1]}`}
+            text={`@${data.tg_acc.split('/')[1]}`}
             linkType="website"
           />
           <InfoLogoLink icon={mailIcon} text={data.email} linkType="email" />
@@ -40,7 +40,7 @@ const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({ data }) => (
       </div>
     </div>
     <div className={style.additionalInfo}>
-      <InfoLogoText icon={professionIcon} text={data.position} />
+      <InfoLogoText icon={professionIcon} text={data.ya_programm} />
       <InfoLogoText icon={locationIcon} text={data.city} />
     </div>
   </div>

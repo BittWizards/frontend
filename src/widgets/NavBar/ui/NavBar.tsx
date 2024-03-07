@@ -22,8 +22,12 @@ const Navbar: FC<INavbarProps> = ({ links }) => (
         ))}
       </ul>
     </nav>
-    <button className={style.button}>
-      <Avatar link={avatar} size='m' />
+    <button
+      type="button"
+      className={style.button}
+      aria-label="Открыть меню пользователя"
+    >
+      <Avatar link={avatar} size="m" />
     </button>
   </aside>
 );

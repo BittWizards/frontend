@@ -11,3 +11,14 @@ const FieldsetContainer: FC<IFieldsetContainer> = ({ children, title }) => (
 );
 
 export default FieldsetContainer;
+
+// const FieldsetContainer: FC<IFieldsetContainer> = ({ children, title, controlId }) => (
+//   <label className={style.label} htmlFor={controlId}>
+//     {title}
+//     <fieldset className={style.fieldset}>{children}</fieldset>
+//   </label>
+// );
+
+// export default FieldsetContainer;
+
+// TODO убрать ошибку линтера htmlFor={controlId}

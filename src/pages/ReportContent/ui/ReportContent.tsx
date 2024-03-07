@@ -1,5 +1,7 @@
+import type { FC } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
+
 import photo1 from 'src/shared/icons/photoamb1.svg';
 import photo2 from 'src/shared/icons/photoamb2.svg';
 import photo3 from 'src/shared/icons/photoamb3.svg';
@@ -9,18 +11,13 @@ import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
+import { ButtonComponent } from 'src/entities/Button';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
+import { ChoiceModal, InputModal } from 'src/entities/Modals';
 
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
-import {
-  Checkbox,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  styled,
-} from '@mui/material';
+import { Checkbox, styled } from '@mui/material';
 
 import { formatDateString } from 'src/utils/constants/formatDate';
 import vcIcon from 'src/shared/icons/vc.svg';
@@ -34,8 +31,11 @@ import { tabsData } from '../types/type';
 
 import style from './ReportContent.module.scss';
 
-const ReportContent = () => {
+const ReportContent: FC = () => {
   const { id } = useParams();
+  const [openChoiceModal, setChoiceModalOpen] = useState(false);
+  const [openInputModal, setInputModalOpen] = useState(false);
+
   const selectedUser = mockCardsData.find(user => user.id === id);
   const selectedContent = selectedUser?.content.find(user => user.id === id);
 
@@ -61,33 +61,81 @@ const ReportContent = () => {
     },
   }));
 
+  const handleChoiceModalOpen = () => {
+    setChoiceModalOpen(true);
+  };
+
+  const handleInputModalOpen = () => {
+    setInputModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setChoiceModalOpen(false);
+    setInputModalOpen(false);
+  };
+
   const getPlatformIcon = (platform: string): JSX.Element => {
+    /* eslint-disable */
     switch (platform) {
       case 'habr':
-        return <img className={style.socialmedia__img} src={habrIcon} alt="Habr" />;
+        return (
+          <img className={style.socialmedia__img} src={habrIcon} alt="Habr" />
+        );
       case 'vc':
         return <img className={style.socialmedia__img} src={vcIcon} alt="VC" />;
       case 'youtube':
-        return <img className={style.socialmedia__img} src={youtubeIcon} alt="YouTube" />;
+        return (
+          <img
+            className={style.socialmedia__img}
+            src={youtubeIcon}
+            alt="YouTube"
+          />
+        );
       case 'telegram':
-        return <img className={style.socialmedia__img} src={telegramIcon} alt="Telegram" />;
+        return (
+          <img
+            className={style.socialmedia__img}
+            src={telegramIcon}
+            alt="Telegram"
+          />
+        );
       case 'linkedin':
-        return <img className={style.socialmedia__img} src={linkedinIcon} alt="LinkedIn" />;
+        return (
+          <img
+            className={style.socialmedia__img}
+            src={linkedinIcon}
+            alt="LinkedIn"
+          />
+        );
       case 'instagram':
-        return <img className={style.socialmedia__img} src={instagramIcon} alt="Instagram" />;
+        return (
+          <img
+            className={style.socialmedia__img}
+            src={instagramIcon}
+            alt="Instagram"
+          />
+        );
       default:
-        return <img className={style.socialmedia__img} src={otherSocialIcon} alt="Other" />;
+        return (
+          <img
+            className={style.socialmedia__img}
+            src={otherSocialIcon}
+            alt="Other"
+          />
+        );
     }
   };
-
-
 
   return selectedContent ? (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        {selectedUser ? <AmbassadorHeaderCard data={selectedUser} /> : <div>Пользоваетель с id ${id} не найден</div>}
+        {selectedUser ? (
+          <AmbassadorHeaderCard data={selectedUser} />
+        ) : (
+          <div>Пользоваетель с id ${id} не найден</div>
+        )}
         <div className={style.raitingWrapper}>
           <span className={style.raitingText}>Рейтинг Амбассадора</span>
           <span className={style.raitingText}>46</span>
@@ -99,22 +147,22 @@ const ReportContent = () => {
               {getPlatformIcon(selectedContent?.platform)}
               <div className={style.social__container}>
                 <h3 className={style.social__title}>Ссылка</h3>
-                <p className={style.social__subtitle}>{selectedContent?.link}</p>
-                <span className={style.social__data}>{formatDateString(selectedContent?.date)}</span>
+                <p className={style.social__subtitle}>
+                  {selectedContent?.link}
+                </p>
+                <span className={style.social__data}>
+                  {formatDateString(selectedContent?.date)}
+                </span>
               </div>
             </div>
             <ul className={style.social__checkboxGroup}>
               <li className={style.social__checkboxElement}>
                 <StyledCheckbox />
-                <p className={style.social__checkboxText}>
-                  В рамках гайда
-                </p>
+                <p className={style.social__checkboxText}>В рамках гайда</p>
               </li>
               <li className={style.social__checkboxElement}>
                 <StyledCheckbox />
-                <p className={style.social__checkboxText}>
-                  Не в рамках гайда
-                </p>
+                <p className={style.social__checkboxText}>Не в рамках гайда</p>
               </li>
             </ul>
           </div>
@@ -122,9 +170,21 @@ const ReportContent = () => {
           <div className={style.dopDocuments}>
             <p className={style.dopDocuments__text}>Дополнительные материалы</p>
             <div className={style.dopDocuments__imgContainer}>
-              <img src={photo1} className={style.dopDocuments__img} alt="Фото амбассадора" />
-              <img src={photo2} className={style.dopDocuments__img} alt="Фото амбассадора" />
-              <img src={photo3} className={style.dopDocuments__img} alt="Фото амбассадора" />
+              <img
+                src={photo1}
+                className={style.dopDocuments__img}
+                alt="Фото амбассадора"
+              />
+              <img
+                src={photo2}
+                className={style.dopDocuments__img}
+                alt="Фото амбассадора"
+              />
+              <img
+                src={photo3}
+                className={style.dopDocuments__img}
+                alt="Фото амбассадора"
+              />
             </div>
           </div>
 
@@ -133,13 +193,60 @@ const ReportContent = () => {
             type="text"
             placeholder="Text area"
           />
-
+        </div>
+        <div className={style.btnsWrapper}>
+          <ButtonComponent
+            label="Принять"
+            width={244}
+            height={48}
+            onClick={handleChoiceModalOpen}
+          />
+          <ButtonSecondaryComponent
+            label="Отклонить"
+            width={244}
+            height={48}
+            onClick={handleInputModalOpen}
+          />
         </div>
       </div>
+      {openChoiceModal ? (
+        <ChoiceModal
+          open={openChoiceModal}
+          onClose={handleModalClose}
+          title="Принять контент"
+          content="Вы подтверждаете принятие контента?"
+          onCancelLabel="Отменить"
+          onConfirmLabel="Подтвердить"
+          onCancel={handleModalClose}
+          onConfirm={handleModalClose}
+        />
+      ) : (
+        ''
+      )}
+      {openInputModal ? (
+        <InputModal
+          open={openInputModal}
+          onClose={handleModalClose}
+          title="Отклонить контент"
+          content="Вы хотите отклонить контент, если вы уверены, укажите причину в сообщении"
+          placeholderTextArea="Введите сообщение"
+          heightTextArea={83}
+          onCancelLabel="Отменить"
+          onConfirmLabel="Подтвердить"
+          onCancel={handleModalClose}
+          onConfirm={handleModalClose}
+        />
+      ) : (
+        ''
+      )}
     </div>
   ) : (
     <div>Пользоваетель с id ${id} не найден</div>
-  )
+  );
 };
 
 export default ReportContent;
+
+// TODO логика открывается с кнопками или без - новый контент или принятый.
+// TODO Редактирование
+// TODO просмотр фото

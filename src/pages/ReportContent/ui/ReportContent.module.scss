@@ -70,14 +70,12 @@
   align-items: flex-end;
 }
 
-
 .raitingWrapper {
   display: flex;
   gap: 100px;
   margin-bottom: 40px;
   margin-top: 24px;
 }
-
 
 .raitingText {
   font-family: 'YSText';
@@ -87,7 +85,7 @@
   color: $baseColorWhite;
 }
 
-.downWrapper  {
+.downWrapper {
   margin: 0;
   padding: 0;
   display: flex;
@@ -110,7 +108,6 @@
   display: flex;
   gap: 16px;
   align-items: center;
-  
 }
 
 .socialmedia__img {
@@ -118,7 +115,6 @@
   padding: 0;
   width: 74px;
   height: 74px;
-  
 }
 
 .social__container {
@@ -137,7 +133,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 120%;
-  color: #EBEEF4;
+  color: #ebeef4;
 }
 
 .social__subtitle {
@@ -147,7 +143,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
-  color: #EBEEF4;
+  color: #ebeef4;
 }
 
 .social__data {
@@ -157,7 +153,7 @@
   font-weight: 400;
   font-size: 11px;
   line-height: 120%;
-  color: #EBEEF4;
+  color: #ebeef4;
 }
 
 .social__checkboxGroup {
@@ -184,7 +180,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 120%;
-  color: #EBEEF4;
+  color: #ebeef4;
 }
 
 .dopDocuments {
@@ -202,7 +198,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  color: #EBEEF4;
+  color: #ebeef4;
 }
 
 .dopDocuments__imgContainer {
@@ -232,4 +228,10 @@
   font-size: 16px;
   line-height: 120%;
   color: #939393;
+}
+
+.btnsWrapper {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
 }

@@ -1,4 +1,8 @@
 import type { FC } from 'react';
+import { useAppSelector } from 'src/app/store/hooks';
+import { selectMerch } from 'src/app/store/reducers/merch/model/merchSlice';
+
+import { Avatar } from 'src/entities/Avatar';
 
 import {
   Table,
@@ -46,6 +50,8 @@ const referenceDictionary: TReferenceDictionary = {
 const merchTypes = Object.values(referenceDictionary);
 
 const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
+  const merch = useAppSelector(selectMerch);
+
   const commonCellStyle = {
     color: '#ebeef4',
     fontFamily: 'YSText',
@@ -61,11 +67,6 @@ const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
     fontSize: '16px',
     lineHeight: '1.2',
   };
-
-  // const merchCellStyle = {
-  //   ...headerCellStyle,
-  //   transform: 'rotate(-90deg)',
-  // };
 
   return merchArray ? (
     <Table style={{ width: '100%' }}>
@@ -90,18 +91,19 @@ const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
           <TableRow key={user.id}>
             <TableCell style={commonCellStyle}>
               <div className={style.userInfoWrapper}>
-                <img src={user.avatar} alt="Avatar" width={40} height={40} />
+                <Avatar link={user.image} size="s" />
                 <div className={style.userInfo}>
                   <span
                     className={style.name}
-                  >{`${user.surname} ${user.name}`}</span>
+                  >{`${user.last_name} ${user.first_name}`}</span>
                   <span className={`${style.name} ${style.tg}`}>
-                    {`@${user.telegram.split('/')[1]}`}
+                    {`@${user.tg_acc.split('/')[1]}`}
                   </span>
                 </div>
               </div>
             </TableCell>
-            {merchTypes.map(merchType => (
+
+            {/* {merchTypes.map(merchType => (
               <TableCell key={merchType} style={commonCellStyle}>
                 <div className={style.countWrapper}>
                   {user.merch
@@ -118,7 +120,7 @@ const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
                   style: 'currency',
                   currency: 'RUB',
                 })}
-            </TableCell>
+            </TableCell> */}
           </TableRow>
         ))}
       </TableBody>

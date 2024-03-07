@@ -2,9 +2,9 @@ import { useRouteError } from 'react-router-dom';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
+import Header from 'src/widgets/Header';
 
 import style from './ErrorPage.module.scss';
-import Header from '../../../widgets/Header';
 
 export function ErrorPage() {
   const error = useRouteError();

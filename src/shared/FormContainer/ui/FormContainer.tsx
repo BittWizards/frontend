@@ -23,8 +23,11 @@ const FormContainer: FC<IFormContainer> = ({
   const submitForm = (data: Object) => {
     onSubmit(data);
   };
+    onSubmit(data);
+  };
 
   const methods = useForm({
+    defaultValues: defaultValues || {},
     defaultValues: defaultValues || {},
   });
 

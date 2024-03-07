@@ -22,15 +22,13 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
 
   const handleCloseModal = () => {
     setOpenModal(false);
-    console.log('Close clicked');
   };
 
   const handleOnConfirm = (date: string) => {
     setOpenModal(false);
-    console.log('Selected Date:', date);
   };
 
-  const formattedDate = new Date(data.activationDate)
+  const formattedDate = new Date(data.created_date)
     .toLocaleDateString('en-GB')
     .replace(/\//g, '.');
 
@@ -44,12 +42,14 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
       <NavLink to={`/ambassadors/${data.id}/merch`} className={style.navLink}>
         <div className={style.cardContainer}>
           <div className={style.userInfoWrapper}>
-            {data.avatar && <Avatar link={data.avatar} size="m" />}
+            {data.ambassador.image && (
+              <Avatar link={data.ambassador.image} size="m" />
+            )}
             <div className={style.userInfo}>
               <p className={style.name}>
-                {data.surname} {data.name}
+                {data.ambassador.last_name} {data.ambassador.last_name}
               </p>
-              <p className={style.position}>{data.position}</p>
+              <p className={style.position}>{data.ambassador.ya_programm}</p>
             </div>
           </div>
           <div className={style.statusWrapper}>
@@ -57,15 +57,17 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
               <img src={tgIcon} alt="telegram" className={style.socialIcon} />
               <span
                 className={style.tg}
-              >{`@${data.telegram.split('/')[1]}`}</span>
+              >{`@${data.ambassador.tg_acc.split('/')[1]}`}</span>
             </div>
-            <StatusIcon data={data} />
+            <StatusIcon status={data.ambassador.status} />
           </div>
           <div className={style.line} />
           <div className={style.promocodeWrapper}>
             <div className={style.promocodeColumn}>
               <span className={style.title}>Трек-номер</span>
-              <span className={style.text}>{data.trackingNumber}</span>
+              <span className={style.text}>
+                {data.track_number || 'Отсутствует'}
+              </span>
             </div>
             <div className={style.promocodeColumn}>
               <span className={style.title}>Дата заявки</span>

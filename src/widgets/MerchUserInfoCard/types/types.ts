@@ -1,19 +1,7 @@
+import type { TOrder } from 'src/shared/api/orders/dtos';
+
 type TCardProps = {
-  data: {
-    id: string;
-    avatar: string;
-    telegram: string;
-    name: string;
-    surname: string;
-    secondname: string;
-    position: string;
-    date: string;
-    statusActive: boolean;
-    promocode: string;
-    activationDate: string;
-    trackingNumber: string;
-    userStatus: string;
-  };
+  data: TOrder;
 };
 
 export type { TCardProps };

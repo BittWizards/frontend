@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { IAmbassador } from './dtos';
 import { BASE_URL } from 'src/utils/constants/api';
+import type { IAmbassador } from './dtos';
 
 export const getAllAmbassadors = createAsyncThunk(
   'ambassadors/getAllAmbassadors',
   async (_, { fulfillWithValue, rejectWithValue }) => {
     try {
-      const {data} = await axios.get<IAmbassador[]>(
+      const { data } = await axios.get<IAmbassador[]>(
         `${BASE_URL}/api/v1/ambassadors/`
       );
 

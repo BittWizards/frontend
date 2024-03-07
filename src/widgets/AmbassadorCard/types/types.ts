@@ -1,14 +1,7 @@
+import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
+
 type TAmbassadorCardProps = {
-  data: {
-    id: string;
-    avatar: string;
-    telegram: string;
-    name: string;
-    surname: string;
-    secondname: string;
-    position: string;
-    date: string;
-  };
+  data: IAmbassador;
 };
 
 export type { TAmbassadorCardProps };

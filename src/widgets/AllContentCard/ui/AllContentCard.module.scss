@@ -10,10 +10,11 @@
   display: flex;
   align-items: center;
   width: 1047px;
-  border: 1px solid $borderColorDark;
+  height: 102px;
+  border: 1px solid #939393;
   border-radius: 20px;
   transition: border-color 0.3s;
-
+  box-sizing: border-box;
   &:hover {
     border-color: $statusColorSpecifyingHover;
   }
@@ -24,10 +25,17 @@
   padding: 9px 12px 14px 13px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  position: relative;
+  gap: 11px;
+  // position: relative;
+  width: 322px;
 }
 
+.line {
+  width: 1px;
+  height: 75px;
+  background-color: #939393;
+}
+/*
 .allContentCard__left:after {
   content: '';
   background-color: #939393;
@@ -37,7 +45,7 @@
   top: 13.5px;
   left: 322px;
   display: block;
-}
+} */
 
 .allContentCard__ambassador {
   margin: 0;
@@ -61,6 +69,7 @@
   flex-direction: column;
   gap: 1px;
   align-self: center;
+  
 }
 
 .allContentCard__fio {
@@ -71,6 +80,10 @@
   font-size: 14px;
   line-height: 120%;
   color: $baseColorWhite;
+  max-width: 215px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .allContentCard__telegramAcc {
@@ -81,6 +94,10 @@
   font-size: 11px;
   line-height: 120%;
   color: #939393;
+  max-width: 147px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .allContentCard__statusGroup {
@@ -145,9 +162,9 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  position: relative;
+  // position: relative;
 }
-
+/*
 .allContentCard__middle:after {
   content: '';
   background-color: #939393;
@@ -157,7 +174,7 @@
   top: 13.5px;
   left: 180px;
   display: block;
-}
+} */
 
 .allContentCard__reviews {
   margin: 0;
@@ -188,9 +205,11 @@
 
 .allContentCard__right {
   margin: 0;
-  padding: 8px 60px 8px 37.89px;
+  padding: 8px 0px 8px 37.89px;
+  box-sizing: content-box;
   display: flex;
   gap: 45px;
+  align-items: center;
 }
 
 .allContentCard__contentContainer {
@@ -199,6 +218,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 269px;
+  margin-top: -4px;
+  height: 86px;
 }
 
 .allContentCard__contentTitle {
@@ -245,12 +267,14 @@
 
 .allContentCard__dataGroup {
   margin: 0;
-  margin-top: 12px;
+  
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  
+
 }
 
 .allContentCard__dataTitle {
@@ -261,6 +285,7 @@
   font-size: 16px;
   line-height: 120%;
   color: $baseColorWhite;
+  
 }
 
 .allContentCard__data {

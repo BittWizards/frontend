@@ -1,7 +1,6 @@
-import type { FC} from 'react';
+import type { FC } from 'react';
 import { useState } from 'react';
-import type {
-  SelectChangeEvent} from '@mui/material';
+import type { SelectChangeEvent } from '@mui/material';
 import {
   Dialog,
   DialogActions,
@@ -62,12 +61,13 @@ const InputAutoCompleteModal: FC<TInputModalModalProps> = ({
         fullWidth={false}
       >
         <div className={style.modalContainer}>
-          <button className={style.closeBtn} onClick={onClose}>
-            <img src={closeBtnIcon} />
+          <button type="button" className={style.closeBtn} onClick={onClose}>
+            <img src={closeBtnIcon} alt="closeBtn" />
           </button>
           <h2 className={style.title}>{title}</h2>
           <label className={style.textAreaWrapper}>
             <FormControl
+              id="modal-input-auto"
               fullWidth
               sx={{
                 color: '#939393',
@@ -129,10 +129,11 @@ const InputAutoCompleteModal: FC<TInputModalModalProps> = ({
               </Select>
             </FormControl>
           </label>
-          <label className={style.textAreaWrapper}>
+          <label className={style.textAreaWrapper} htmlFor="modal-input-text">
             {tableSpan}
             <div className={style.textArea}>
               <TextField
+                id="modal-input-text"
                 fullWidth
                 label="Промокод"
                 variant="outlined"

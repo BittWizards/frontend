@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import downloadImg from 'src/shared/icons/document-download.svg';
+import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
 
 import type { ChangeEvent, MouseEvent } from 'react';
-import type { User } from 'src/utils/constants/types/types';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
@@ -14,7 +15,7 @@ import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { FilterComponent } from 'src/entities/FilterComponent';
 import { getAllAmbassadors } from 'src/shared/api/ambassadors';
 import { SortComponent } from 'src/entities/SortComponent';
-import { mockCardsData } from 'src/utils/constants/mockCardsData';
+import { Loader } from 'src/shared/Loader';
 
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 import {
@@ -22,18 +23,25 @@ import {
   sortBySpecialty,
   sortByStatus,
   sortBySurname,
-} from 'src/utils/constants/sortFunctions';
+} from '../model/sortFunctions';
 import { sortingOptions } from '../model/const';
 
 import style from './AmbassadorPage.module.scss';
 
 const AmbassadorPage = () => {
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getAllAmbassadors());
+  }, [dispatch]);
+
+  const ambassadors = useAppSelector(selectAmbassadors);
+
   const navigate = useNavigate();
 
   const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<User[]>([]);
+  const [searchResults, setSearchResults] = useState<IAmbassador[]>([]);
 
   const tabs: string[] = ['Новые запросы', 'Все амбассадоры'];
 
@@ -41,25 +49,15 @@ const AmbassadorPage = () => {
     setSearchTerm(event.target.value);
   };
 
-  useEffect(() => {
-    dispatch(getAllAmbassadors());
-  }, [dispatch]);
-
-  useEffect(() => {
-    setSearchResults(mockCardsData);
-  }, [searchTerm]);
-
-  const { ambassadors } = useAppSelector(selectAmbassadors);
-
-  //  console.log('Ambassadors:', ambassadors);
-
   const onSearch = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     // eslint-disable-next-line max-len
-    const results = mockCardsData.filter(
+    const results = ambassadors.ambassadors.filter(
       ambassador =>
-        ambassador.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        ambassador.surname.toLowerCase().includes(searchTerm.toLowerCase())
+        ambassador.first_name
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        ambassador.last_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
   };
@@ -87,14 +85,22 @@ const AmbassadorPage = () => {
         default:
           break;
       }
-
+      /* eslint-enable */
       setSearchResults(sortedResults);
     }
   };
 
+  /* eslint-disable */
   useEffect(() => {
-    setSearchResults(sortByStatus(mockCardsData));
+    setSearchResults(ambassadors.ambassadors);
+  }, [searchTerm]);
+  /* eslint-enable */
+
+  /* eslint-disable */
+  useEffect(() => {
+    setSearchResults(sortByStatus(ambassadors.ambassadors));
   }, []);
+  /* eslint-enable */
 
   return (
     <div className={style.main}>
@@ -105,35 +111,7 @@ const AmbassadorPage = () => {
           selectedTab={selectedOption}
           onSelectTab={setSelectedOption}
         />
-        {selectedOption === 'Все амбассадоры' ? (
-          <>
-            <div className={style.navList}>
-              <div className={style.titleBtnWrapper}>
-                <h2 className={style.pageTitle}>Амбассадоры</h2>
-                <ButtonComponent
-                  label="Добавить амбассадора"
-                  width={244}
-                  height={48}
-                  onClick={() => navigate('new-ambassador', { replace: true })}
-                />
-              </div>
-              <div className={style.filterWrapper}>
-                <FilterComponent
-                  onSearch={onSearch}
-                  searchTerm={searchTerm}
-                  handleChange={handleChange}
-                />
-                <SortComponent
-                  width={220}
-                  height={48}
-                  options={sortingOptions}
-                  onSortChange={handleSortChange}
-                />
-              </div>
-            </div>
-            <AmbassadorTable data={searchResults} />
-          </>
-        ) : (
+        {selectedOption === 'Новые запросы' ? (
           <>
             <div className={style.pageHeader}>
               <div className={style.titleBtnWrapper}>
@@ -151,12 +129,50 @@ const AmbassadorPage = () => {
                 handleChange={handleChange}
               />
             </div>
-            s
-            <div className={style.cardsContainer}>
-              {searchResults.map(cardData => (
-                <AmbassadorCard key={cardData.id} data={cardData} />
-              ))}
+            {ambassadors.isLoading ? (
+              <Loader />
+            ) : (
+              <div className={style.cardsContainer}>
+                {searchResults.map(cardData => (
+                  <AmbassadorCard key={cardData.id} data={cardData} />
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <>
+            <div className={style.navList}>
+              <div className={style.titleBtnWrapper}>
+                <h2 className={style.pageTitle}>Амбассадоры</h2>
+                <ButtonComponent
+                  label="Добавить амбассадора"
+                  width={244}
+                  height={48}
+                  onClick={() => navigate('new-ambassador', { replace: true })}
+                />
+              </div>
+              <div className={style.filterWrapper}>
+                <FilterComponent
+                  onSearch={onSearch}
+                  searchTerm={searchTerm}
+                  handleChange={handleChange}
+                />
+                <div className={style.sortWrapper}>
+                  <img src={downloadImg} className={style.downloadImg} alt="Иконка скачивания" />
+                  <SortComponent
+                    width={220}
+                    height={48}
+                    options={sortingOptions}
+                    onSortChange={handleSortChange}
+                  />
+                </div>
+              </div>
             </div>
+            {ambassadors.isLoading ? (
+              <Loader />
+            ) : (
+              <AmbassadorTable data={searchResults} />
+            )}
           </>
         )}
       </div>

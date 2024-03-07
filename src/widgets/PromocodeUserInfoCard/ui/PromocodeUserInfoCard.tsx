@@ -9,7 +9,7 @@ import type { TCardProps } from '../types/types';
 import style from './PromocodeUserInfoCard.module.scss';
 
 const PromocodeUserInfoCard: FC<TCardProps> = ({ data }) => {
-  const formattedDate = new Date(data.activationDate)
+  const formattedDate = new Date(data.created_at)
     .toLocaleDateString('en-GB')
     .replace(/\//g, '.');
 
@@ -17,12 +17,14 @@ const PromocodeUserInfoCard: FC<TCardProps> = ({ data }) => {
     <NavLink to={`/ambassadors/${data.id}/promocode`} className={style.navLink}>
       <div className={`${style.cardContainer} `}>
         <div className={style.userInfoWrapper}>
-          {data.avatar && <Avatar link={data.avatar} size="m" />}
+          {data.ambassador.image && (
+            <Avatar link={data.ambassador.image} size="m" />
+          )}
           <div className={style.userInfo}>
             <p className={`${style.name}`}>
-              {data.surname} {data.name}
+              {data.ambassador.last_name} {data.ambassador.first_name}
             </p>
-            <p className={style.position}>{data.position}</p>
+            <p className={style.position}>{data.ambassador.ya_programm}</p>
           </div>
         </div>
         <div className={style.statusWrapper}>
@@ -30,9 +32,9 @@ const PromocodeUserInfoCard: FC<TCardProps> = ({ data }) => {
             <img src={tgIcon} alt="telegram" className={style.socialIcon} />
             <span
               className={style.tg}
-            >{`@${data.telegram.split('/')[1]}`}</span>
+            >{`@${data.ambassador.tg_acc.split('/')[1]}`}</span>
           </div>
-          <StatusIcon data={data} />
+          <StatusIcon status={data.ambassador.status} />
         </div>
         <div className={style.line} />
         <div className={style.promocodeWrapper}>

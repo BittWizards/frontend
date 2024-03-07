@@ -1,5 +1,5 @@
 interface User {
-  id: string,
+  id: string;
   avatar: string;
   telegram: string;
   name: string;
@@ -11,7 +11,7 @@ interface User {
   promocode: string;
   activationDate: string;
   trackingNumber: string;
-  userStatus: string;
+  userStatus: 'Active' | 'Pause' | 'Clarify' | 'Not active';
   phone: string;
   email: string;
   city: string;
@@ -34,20 +34,20 @@ interface User {
     date: string;
     quantity: string;
     price: string;
-  }[],
+  }[];
   reviews: number;
   promocodes: {
     id: string;
     promocode: string;
     date: string;
-  }[],
+  }[];
   content: {
     id: string;
     date: string;
     link: string;
     platform: string;
     fileCounter: string;
-  }[],
+  }[];
 }
 
 export type { User };
