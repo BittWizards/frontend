@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import type { FC } from 'react';
 import { Avatar } from 'src/entities/Avatar';
 import avatar from 'src/shared/icons/userAvatar.png';
@@ -7,38 +7,41 @@ import type { INavbarProps } from '../types/types';
 import { NavbarLink } from '..';
 
 import style from './NavBar.module.scss';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { RootState } from 'src/app/store/store';
+import { getNewAmbassadors } from 'src/shared/api/ambassadors';
+import { getNewContent } from 'src/shared/api/content';
 
 const Navbar: FC<INavbarProps> = ({ links }) => {
-  const [notification, setNotification] = useState<any>(null);
+  const count = useAppSelector((state: RootState) => state.notifications);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // Подключение к вебсокету здесь
-    const socket = new WebSocket('wss://ambas-1.ddns.net/ws/notification/');
+    const socket = new WebSocket('wss://ambassadors.sytes.net/ws/notification/');
     socket.onopen = () => {
       console.log('Connected to WebSocket');
     };
-    // Обработка данных из вебсокета
     socket.onmessage = (event) => {
       console.log('Received message from WebSocket:', event.data);
-      const message = JSON.parse(event.data).message
-      const fetchData = async () => {
-        try {
-          const response = await fetch('https://ambas-1.ddns.net/api/v1/' + message)
-          const jsonData: any[] = await response.json()
-          console.log(jsonData.length)
-          setNotification(jsonData.length)
-        } catch (error) {
-          console.error('Ошибка при получении данных:', error)
-        }
-      }
-      fetchData()
+      const message: string = JSON.parse(event.data).message;
+      switch(message) {
+        case "ambassador":
+          dispatch(getNewAmbassadors());
+        case "content":
+          dispatch(getNewContent());
+      };
     };
-    // Закрытие вебсокета при размонтировании компонента
     return () => {
       console.log('Closed connection to WebSocket');
       socket.close();
     };
-  }, []);
+  }, [dispatch]);
+
+  const dict: { [key: string]: number } = {
+    "/ambassadors": count.ambassadorsNewCount,
+    "/content": count.contentNewCount,
+    "/merch": count.merchNewCount,
+  }
 
 
   return (
@@ -51,7 +54,7 @@ const Navbar: FC<INavbarProps> = ({ links }) => {
               text={link.text}
               to={link.to}
               icon={link.icon}
-              notification={notification}
+              notification={dict[link.to]}
             />
           ))}
         </ul>

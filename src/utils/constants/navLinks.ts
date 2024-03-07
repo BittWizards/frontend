@@ -7,13 +7,13 @@ import mail from 'src/shared/icons/mail.svg';
 import stat from 'src/shared/icons/chart-bar.svg';
 
 const navbarLinks = [
-  { text: 'Главная', to: '/', icon: main },
-  { text: 'Амбассадоры', to: '/ambassadors', icon: ambossadors },
-  { text: 'Промокоды', to: '/promocode', icon: promo },
-  { text: 'Контент', to: '/content', icon: star },
-  { text: 'Мерч', to: '/merch', icon: merch },
-  { text: 'Рассылки', to: '/mailing', icon: mail },
-  { text: 'Статистика и аналитика', to: '/stats', icon: stat },
+  { text: 'Главная', to: '/', icon: main, notification: 0 },
+  { text: 'Амбассадоры', to: '/ambassadors', icon: ambossadors, notification: 0 },
+  { text: 'Промокоды', to: '/promocode', icon: promo, notification: 0 },
+  { text: 'Контент', to: '/content', icon: star, notification: 0 },
+  { text: 'Мерч', to: '/merch', icon: merch, notification: 0 },
+  { text: 'Рассылки', to: '/mailing', icon: mail, notification: 0 },
+  { text: 'Статистика и аналитика', to: '/stats', icon: stat, notification: 0 },
 ];
 
 export { navbarLinks };

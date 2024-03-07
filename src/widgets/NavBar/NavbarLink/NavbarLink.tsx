@@ -8,8 +8,6 @@ const NavbarLink: FC<INavbarLinkProps> = ({ text, to, icon, notification }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
 
-  console.log(notification)
-
   return (
     <li className={`${style.listItem} ${isActive ? style.active : ''}`}>
       <NavLink

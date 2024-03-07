@@ -2,7 +2,7 @@ interface INavbarLinkProps {
   text: string;
   to: string;
   icon?: string;
-  notification?: number;
+  notification: number;
 }
 
 interface INavbarProps {
