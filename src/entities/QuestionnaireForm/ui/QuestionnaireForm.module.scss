@@ -2,8 +2,17 @@
 
 .container {
   display: flex;
-  gap: 216px;
+  flex-direction: column;
+  gap: 24px;
   margin-bottom: 32px;
+  max-width: 976px;
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  gap: 216px;
 }
 
 .column {

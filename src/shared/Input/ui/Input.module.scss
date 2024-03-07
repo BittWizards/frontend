@@ -33,6 +33,7 @@
   background-color: inherit;
   border: none;
   cursor: auto;
+  text-overflow: ellipsis;
 
   &:focus {
     outline: none;
