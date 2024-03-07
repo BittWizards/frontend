@@ -6,7 +6,7 @@ export const emptyAmbassadorPromocode: TAmbassadorPromocodesData = {
   last_name: '',
   first_name: '',
   middle_name: '',
-  status: 'Clarify',
+  status: '',
   tg_acc: '',
   email: '',
   phone: '',

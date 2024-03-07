@@ -8,7 +8,7 @@ interface IPromocode {
     image: string;
     first_name: string;
     last_name: string;
-    status: 'Active' | 'Pause' | 'Clarify' | 'Not active';
+    status: 'Active' | 'Pause' | 'Clarify' | 'Not active' | '';
     tg_acc: string;
     ya_programm: string;
   };
@@ -27,7 +27,7 @@ type TAmbassadorPromocodesData = {
   last_name: string;
   first_name: string;
   middle_name: string;
-  status: 'Active' | 'Pause' | 'Clarify' | 'Not active';
+  status: 'Active' | 'Pause' | 'Clarify' | 'Not active' | '';
   tg_acc: string;
   email: string;
   phone: string;

@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
         element: <AmbassadorDetailPage />,
       },
       {
-        path: 'ambassadors/:id/detail/:id/report',
+        path: 'ambassadors/:id/detail/:detailId/report',
         element: <ReportContent />,
       },
       {

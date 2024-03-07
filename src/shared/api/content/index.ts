@@ -6,6 +6,7 @@ import type {
   IAllContent,
   INewContentCardData,
   TAmbassadorContentData,
+  TContentDetail,
 } from './dtos';
 
 const getNewContent = createAsyncThunk(
@@ -54,4 +55,25 @@ const getAmbassadorsContentById = createAsyncThunk(
   }
 );
 
-export { getNewContent, getAllContent, getAmbassadorsContentById };
+const getContentDetailById = createAsyncThunk(
+  'content/getContentDetailById',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get<TContentDetail>(
+        `${BASE_URL}/api/v1/content/${id}/`
+      );
+
+      return data;
+    } catch (e: any) {
+      console.error(`Другая ошибка при запросе getContentDetailById: ${e}`);
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export {
+  getNewContent,
+  getAllContent,
+  getAmbassadorsContentById,
+  getContentDetailById,
+};

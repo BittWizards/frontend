@@ -1,6 +1,10 @@
 import type { FC } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { selectContent } from 'src/app/store/reducers/contents/model/contentsSlice';
+import { getContentDetailById } from 'src/shared/api/content';
 
 import photo1 from 'src/shared/icons/photoamb1.svg';
 import photo2 from 'src/shared/icons/photoamb2.svg';
@@ -14,6 +18,7 @@ import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
 import { ButtonComponent } from 'src/entities/Button';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { ChoiceModal, InputModal } from 'src/entities/Modals';
+import { Loader } from 'src/shared/Loader';
 
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 
@@ -32,7 +37,20 @@ import { tabsData } from '../types/type';
 import style from './ReportContent.module.scss';
 
 const ReportContent: FC = () => {
-  const { id } = useParams();
+  const { id, detailId } = useParams();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (detailId) {
+      const numericId = parseInt(detailId, 10);
+      dispatch(getContentDetailById(numericId));
+    }
+  }, [dispatch]);
+
+  const content = useAppSelector(selectContent);
+  console.log('content Detail', content.contentDetail);
+
   const [openChoiceModal, setChoiceModalOpen] = useState(false);
   const [openInputModal, setInputModalOpen] = useState(false);
 
@@ -126,32 +144,26 @@ const ReportContent: FC = () => {
     }
   };
 
-  return selectedContent ? (
+  return content.isLoading ? (
+    <Loader />
+  ) : (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        {selectedUser ? (
-          <AmbassadorHeaderCard data={selectedUser} />
-        ) : (
-          <div>Пользоваетель с id ${id} не найден</div>
-        )}
-        <div className={style.raitingWrapper}>
-          <span className={style.raitingText}>Рейтинг Амбассадора</span>
-          <span className={style.raitingText}>46</span>
-        </div>
+        <AmbassadorHeaderCard data={content.contentDetail.ambassador} />
         <SubtitleWithEditBtn title="Контент Амбассадора" />
         <div className={style.downWrapper}>
           <div className={style.social}>
             <div className={style.socialmedia}>
-              {getPlatformIcon(selectedContent?.platform)}
+              {getPlatformIcon(content.contentDetail.platform)}
               <div className={style.social__container}>
                 <h3 className={style.social__title}>Ссылка</h3>
                 <p className={style.social__subtitle}>
-                  {selectedContent?.link}
+                  {content.contentDetail.link}
                 </p>
                 <span className={style.social__data}>
-                  {formatDateString(selectedContent?.date)}
+                  {formatDateString(content.contentDetail.created_at)}
                 </span>
               </div>
             </div>
@@ -240,8 +252,6 @@ const ReportContent: FC = () => {
         ''
       )}
     </div>
-  ) : (
-    <div>Пользоваетель с id ${id} не найден</div>
   );
 };
 
