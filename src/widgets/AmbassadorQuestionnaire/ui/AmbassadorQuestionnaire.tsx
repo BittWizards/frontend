@@ -1,12 +1,12 @@
 import { useEffect, type FC } from 'react';
-import type { IAmbassadorQuestionnaire } from '../types/types';
+import { useAppDispatch } from 'src/app/store/hooks';
+import { setIsEditable } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
 import { FormContainer } from 'src/shared/FormContainer';
 
-import { useAppDispatch } from 'src/app/store/hooks';
-import { setIsEditable } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+import type { IAmbassadorQuestionnaire } from '../types/types';
 
 const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
   const defaultValues = {
@@ -42,11 +42,11 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
     console.log(data);
   };
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setIsEditable(true))
-  }, [])
+    dispatch(setIsEditable(true));
+  }, []);
 
   return (
     <FormContainer
@@ -56,8 +56,8 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
       submitButtonLabel="Сохранить"
       cancelButtonLabel="Отменить"
     >
-      <QuestionnaireProfileInfo user={user} />
-      <QuestionnaireForm />
+      <QuestionnaireProfileInfo isEdit={false} user={user} />
+      <QuestionnaireForm isEdit={false} />
     </FormContainer>
   );
 };
