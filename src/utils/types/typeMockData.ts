@@ -11,7 +11,7 @@ type TMockData = {
   promocode: string;
   activationDate: string;
   trackingNumber: string;
-  userStatus: 'Active' | 'Pause' | 'Clarify' | 'Not active';
+  userStatus: 'Active' | 'Pause' | 'Clarify' | 'Not active' | '';
   phone: string;
   email: string;
   city: string;

@@ -4,6 +4,7 @@ import { contentsReducer } from './reducers/contents';
 import { merchReducer } from './reducers/merch';
 import { promocodesReducer } from './reducers/promocodes';
 import { ordersReducer } from './reducers/orders/imdex';
+import { questionnaireReducer } from './reducers/questionnaire';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     merch: merchReducer,
     promocodes: promocodesReducer,
     orders: ordersReducer,
+    questionnaire: questionnaireReducer,
   },
 });
 
