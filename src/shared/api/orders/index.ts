@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { BASE_URL } from 'src/utils/constants/api';
-import type { TOrder } from './dtos';
+import type { TAmbassadorsOrders, TOrder } from './dtos';
 
 const getOrders = createAsyncThunk(
   'order/getOrders',
@@ -16,4 +16,20 @@ const getOrders = createAsyncThunk(
   }
 );
 
-export { getOrders };
+const getAmbassadorsOrdersById = createAsyncThunk(
+  'order/getAmbassadorsOrdersById',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get<TAmbassadorsOrders>(
+        `${BASE_URL}/api/v1/ambassadors/${id}/orders/`
+      );
+
+      return data;
+    } catch (e: any) {
+      console.error(`Другая ошибка при запросе getAmbassadorsOrdersById: ${e}`);
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export { getOrders, getAmbassadorsOrdersById };

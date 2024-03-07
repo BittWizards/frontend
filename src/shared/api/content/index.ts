@@ -2,7 +2,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { BASE_URL } from 'src/utils/constants/api';
-import type { IAllContent, INewContentCardData } from './dtos';
+import type {
+  IAllContent,
+  INewContentCardData,
+  TAmbassadorContentData,
+  TContentDetail,
+} from './dtos';
 
 const getNewContent = createAsyncThunk(
   'content/getNewContent',
@@ -32,4 +37,43 @@ const getAllContent = createAsyncThunk(
   }
 );
 
-export { getNewContent, getAllContent };
+const getAmbassadorsContentById = createAsyncThunk(
+  'content/getAmbassadorsContentById',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get<TAmbassadorContentData>(
+        `${BASE_URL}/api/v1/ambassadors/${id}/content/`
+      );
+
+      return data;
+    } catch (e: any) {
+      console.error(
+        `Другая ошибка при запросе getAmbassadorsContentById: ${e}`
+      );
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+const getContentDetailById = createAsyncThunk(
+  'content/getContentDetailById',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get<TContentDetail>(
+        `${BASE_URL}/api/v1/content/${id}/`
+      );
+
+      return data;
+    } catch (e: any) {
+      console.error(`Другая ошибка при запросе getContentDetailById: ${e}`);
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export {
+  getNewContent,
+  getAllContent,
+  getAmbassadorsContentById,
+  getContentDetailById,
+};

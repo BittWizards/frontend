@@ -1,4 +1,3 @@
-
 interface IQuestionnaireProfileInfo {
   user?: {
     name: string;

@@ -23,24 +23,7 @@ const Contacts: FC<IContacts> = ({ isEdit }) => (
         isEdit={isEdit}
       />
     </div>
-    <div className={style.inputIcons}>
-      <img src={whatsapp} className={style.icon} alt="whatsapp" />
-      <Input
-        type="url"
-        placeholder="https://wa.me/"
-        name="wa"
-        isEdit={isEdit}
-      />
-    </div>
-    <div className={style.inputIcons}>
-      <img src={habr} className={style.icon} alt="habr" />
-      <Input
-        type="url"
-        placeholder="https://habr.com/ru/users"
-        name="habr"
-        isEdit={isEdit}
-      />
-    </div>
+    
     <div className={style.inputIcons}>
       <img src={email} className={style.icon} alt="email" />
       <Input

@@ -1,8 +1,11 @@
-import type { FC } from 'react';
+import { useEffect, type FC } from 'react';
+import { useAppDispatch } from 'src/app/store/hooks';
+import { setIsEditable } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
 import { FormContainer } from 'src/shared/FormContainer';
+
 import type { IAmbassadorQuestionnaire } from '../types/types';
 
 const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
@@ -38,6 +41,12 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
   const submitForm = (data: Object) => {
     console.log(data);
   };
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setIsEditable(true));
+  }, []);
 
   return (
     <FormContainer

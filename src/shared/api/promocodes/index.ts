@@ -2,9 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { BASE_URL } from 'src/utils/constants/api';
-import type { IPromocode } from './dtos';
+import type { IPromocode, TAmbassadorPromocodesData } from './dtos';
 
-export const getAllPromocodes = createAsyncThunk(
+const getAllPromocodes = createAsyncThunk(
   'promocodes/getAllPromocodes',
   async (_, { fulfillWithValue, rejectWithValue }) => {
     try {
@@ -19,3 +19,23 @@ export const getAllPromocodes = createAsyncThunk(
     }
   }
 );
+
+const getAmbassadorsPromocodesById = createAsyncThunk(
+  'promocodes/getAmbassadorsPromocodesById',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get<TAmbassadorPromocodesData>(
+        `${BASE_URL}/api/v1/ambassadors/${id}/promocodes/`
+      );
+
+      return data;
+    } catch (e: any) {
+      console.error(
+        `Другая ошибка при запросе getAmbassadorsPromocodesById: ${e}`
+      );
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export { getAllPromocodes, getAmbassadorsPromocodesById };
