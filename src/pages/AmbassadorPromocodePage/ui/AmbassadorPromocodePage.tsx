@@ -81,63 +81,72 @@ const AmbassadorPromocodePage: FC = () => {
   const activePromocode = promocodesList.ambassadorPromocode.my_promocode.find(
     promo => promo.is_active
   );
+  const nonActivePromocodes =
+    promocodesList.ambassadorPromocode.my_promocode.filter(
+      promo => !promo.is_active
+    );
+
+  console.log('nonActivePromocodes', nonActivePromocodes);
 
   return promocodesList.isLoading ? (
     <Loader />
   ) : (
-    <div className={style.main}>
-      <Navbar links={navbarLinks} />
-      <div className={style.content}>
-        <TabsNavBar tabs={tabsData} />
-        <AmbassadorHeaderCard data={promocodesList.ambassadorPromocode} />
-        <SubtitleWithEditBtn title="Промокоды Амбассадора" />
-        <div className={style.promoContainer}>
-          <div className={style.promoContentWrapper}>
-            <div className={style.contentColumn}>
-              <span className={style.promoTitle}>Промокод</span>
-              <span className={style.promoText}>
-                {activePromocode
-                  ? activePromocode.promocode
-                  : 'Активного промокода нет'}
-              </span>
-            </div>
-            <div className={style.contentColumn}>
-              <span className={style.promoTitle}>Активация</span>
-              <span className={style.promoText}>
-                {activePromocode
-                  ? formatDateString(activePromocode.created_at)
-                  : ''}
-              </span>
+    <>
+      <div className={style.main}>
+        <Navbar links={navbarLinks} />
+        <div className={style.content}>
+          <TabsNavBar tabs={tabsData} />
+          <AmbassadorHeaderCard data={promocodesList.ambassadorPromocode} />
+          <SubtitleWithEditBtn
+            title="Промокоды Амбассадора"
+            isWithBtn={false}
+          />
+          <div className={style.promoContainer}>
+            <div className={style.promoContentWrapper}>
+              <div className={style.contentColumn}>
+                <span className={style.promoTitle}>Промокод</span>
+                <span className={style.promoText}>
+                  {activePromocode
+                    ? activePromocode.promocode
+                    : 'Активного промокода нет'}
+                </span>
+              </div>
+              <div className={style.contentColumn}>
+                <span className={style.promoTitle}>Активация</span>
+                <span className={style.promoDate}>
+                  {activePromocode
+                    ? formatDateString(activePromocode.created_at)
+                    : ''}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={style.btnWrapper}>
-          <ButtonComponent
-            label="Изменить промокод"
-            width={244}
-            height={48}
-            onClick={handleInputOpen}
-          />
-          <ButtonSecondaryComponent
-            label="Удалить"
-            width={244}
-            height={48}
-            onClick={handleChoiceOpen}
-          />
-        </div>
-        <h3 className={style.tableTitle}>История промокодов</h3>
-        <Table className={style.table}>
-          <TableHead className={style.tableHead}>
-            <TableRow className={style.tableRow}>
-              <TableCell style={headerCellStyle}>№</TableCell>
-              <TableCell style={headerCellStyle}>Промокод</TableCell>
-              <TableCell style={headerCellStyle}>Дата</TableCell>
-              <TableCell /> {/* Пустой столбец для иконки удаления */}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {promocodesList.ambassadorPromocode.my_promocode.map(
-              (row, index) => (
+          <div className={style.btnWrapper}>
+            <ButtonComponent
+              label="Изменить промокод"
+              width={244}
+              height={48}
+              onClick={handleInputOpen}
+            />
+            <ButtonSecondaryComponent
+              label="Удалить"
+              width={244}
+              height={48}
+              onClick={handleChoiceOpen}
+            />
+          </div>
+          <h3 className={style.tableTitle}>История промокодов</h3>
+          <Table className={style.table}>
+            <TableHead className={style.tableHead}>
+              <TableRow className={style.tableRow}>
+                <TableCell style={headerCellStyle}>№</TableCell>
+                <TableCell style={headerCellStyle}>Промокод</TableCell>
+                <TableCell style={headerCellStyle}>Дата</TableCell>
+                <TableCell /> {/* Пустой столбец для иконки удаления */}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {nonActivePromocodes.map((row, index) => (
                 <TableRow key={uuidv4()}>
                   <TableCell style={commonCellStyle}>{index + 1}</TableCell>
                   <TableCell style={commonCellStyle}>{row.promocode}</TableCell>
@@ -150,11 +159,12 @@ const AmbassadorPromocodePage: FC = () => {
                     </IconButton>
                   </TableCell>
                 </TableRow>
-              )
-            )}
-          </TableBody>
-        </Table>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
+
       {openChoiceModal ? (
         <ChoiceModal
           open={openChoiceModal}
@@ -186,7 +196,7 @@ const AmbassadorPromocodePage: FC = () => {
       ) : (
         ''
       )}
-    </div>
+    </>
   );
 };
 
