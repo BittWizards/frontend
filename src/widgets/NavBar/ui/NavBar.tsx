@@ -20,6 +20,8 @@ const Navbar: FC<INavbarProps> = ({ links }) => {
     const socket = new WebSocket('wss://ambassadors.sytes.net/ws/notification/');
     socket.onopen = () => {
       console.log('Connected to WebSocket');
+      dispatch(getNewAmbassadors());
+      dispatch(getNewContent());
     };
     socket.onmessage = (event) => {
       console.log('Received message from WebSocket:', event.data);
