@@ -46,11 +46,11 @@ const MerchPage = () => {
     dispatch(getMerchAmbassadorsHistory());
     dispatch(getOrders());
     dispatch(getMerchTypes());
-  }, []);
+  }, [dispatch]);
 
-  console.log('Merch History', merch.merchHistory);
-  console.log('Orders', orders.orders);
-  console.log('Merch Types', merch.merchType);
+  // console.log('Merch History', merch.merchHistory);
+  // console.log('Orders', orders.orders);
+  // console.log('Merch Types', merch.merchType);
 
   const [selectedOption, setSelectedOption] = useState('Заявки на отправку');
   const tabs: string[] = ['Заявки на отправку', 'Учет мерча'];
@@ -176,7 +176,11 @@ const MerchPage = () => {
               handleChange={handleOrdersChange}
             />
             <div className={style.sortWrapper}>
-              <img src={downloadImg} className={style.downloadImg} alt="Иконка скачивания" />
+              <img
+                src={downloadImg}
+                className={style.downloadImg}
+                alt="Иконка скачивания"
+              />
               <SortComponent
                 width={220}
                 height={48}
@@ -184,7 +188,6 @@ const MerchPage = () => {
                 onSortChange={handleOrdersSortChange}
               />
             </div>
-
           </div>
         </div>
         {selectedOption === 'Учет мерча' ? (
