@@ -22,7 +22,7 @@ const AmbassadorCard: FC<TAmbassadorCardProps> = ({ data }) => {
             {data.first_name} {data.last_name}
           </span>
         </div>
-        <span className={style.position}>{data.ya_programm.title}</span>
+        <span className={style.position}>{data.ya_programm}</span>
         <div className={style.cardBottomWrapper}>
           <div className={style.dateContainer}>
             <img

@@ -1,7 +1,7 @@
-import type { TPromoInfoCardProps } from 'src/entities/PromoInfoCard/types/types';
+import type { IPromocode } from 'src/shared/api/promocodes/dtos';
 
 type TPromoColumnListProps = {
-  promoData: TPromoInfoCardProps[];
+  promoData: IPromocode[];
   children: React.ReactElement[];
 };
 

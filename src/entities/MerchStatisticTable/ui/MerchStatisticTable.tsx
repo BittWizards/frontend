@@ -97,7 +97,7 @@ const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
                     className={style.name}
                   >{`${user.last_name} ${user.first_name}`}</span>
                   <span className={`${style.name} ${style.tg}`}>
-                    {`@${user.tg_acc.split('/')[1]}`}
+                    {`@${user.tg_acc}`}
                   </span>
                 </div>
               </div>

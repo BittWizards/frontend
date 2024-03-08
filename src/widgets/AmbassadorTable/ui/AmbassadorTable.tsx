@@ -83,16 +83,14 @@ const AmbassadorTable: FC<TCardProps> = ({ data }) => {
             </TableCell>
             <TableCell style={commonCellStyle}>
               <div className={style.positionCellWrapper}>
-                <span className={style.cellText}>
-                  {ambassador.ya_programm.title}
-                </span>
+                <span className={style.cellText}>{ambassador.ya_programm}</span>
               </div>
             </TableCell>
             <TableCell style={commonCellStyle}>
               <div className={style.cellWrapper}>
                 <span
                   className={style.cellText}
-                >{`@${ambassador.tg_acc.split('/')[1]}`}</span>
+                >{`@${ambassador.tg_acc}`}</span>
               </div>
             </TableCell>
             <TableCell style={commonCellStyle}>
