@@ -36,7 +36,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = ({ user }) => {
   };
 
   const submitForm = (data: Object) => {
-    console.log(data);
+    // console.log(data);
   };
 
   return (

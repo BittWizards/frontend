@@ -65,7 +65,7 @@ const AmbassadorPage = () => {
   const handleSortChange = (selectedOption: string | null) => {
     if (selectedOption !== null) {
       let sortedResults = [...searchResults];
-      /* eslint-disable */
+
       switch (selectedOption) {
         case 'Дата':
           sortedResults = sortByDate(sortedResults).reverse();
@@ -79,13 +79,12 @@ const AmbassadorPage = () => {
           break;
         case 'Статус':
           sortedResults = sortByStatus(sortedResults);
-          console.log('статус sorted', sortedResults);
           break;
 
         default:
           break;
       }
-      /* eslint-enable */
+
       setSearchResults(sortedResults);
     }
   };
@@ -158,7 +157,11 @@ const AmbassadorPage = () => {
                   handleChange={handleChange}
                 />
                 <div className={style.sortWrapper}>
-                  <img src={downloadImg} className={style.downloadImg} alt="Иконка скачивания" />
+                  <img
+                    src={downloadImg}
+                    className={style.downloadImg}
+                    alt="Иконка скачивания"
+                  />
                   <SortComponent
                     width={220}
                     height={48}

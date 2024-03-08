@@ -4,7 +4,7 @@ import type { INavbarLinkProps } from '../types/types';
 
 import style from './NavbarLink.module.scss';
 
-const NavbarLink: FC<INavbarLinkProps> = ({ text, to, icon }) => {
+const NavbarLink: FC<INavbarLinkProps> = ({ text, to, icon, notification }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
 
@@ -19,6 +19,7 @@ const NavbarLink: FC<INavbarLinkProps> = ({ text, to, icon }) => {
       >
         {icon && <img src={icon} className={style.logo} alt={`${text} icon`} />}
         <span>{text}</span>
+        {notification > 0 && <span className={style.notification}>{notification}</span>}
       </NavLink>
     </li>
   );

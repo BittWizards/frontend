@@ -31,8 +31,13 @@ const SuccessModal: FC<TSuccessModalProps> = ({
       }}
     >
       <div className={style.modalContainer}>
-        <button className={style.closeBtn} onClick={onClose}>
-          <img src={closeBtnIcon} />
+        <button
+          aria-label="закрыть"
+          type="button"
+          className={style.closeBtn}
+          onClick={onClose}
+        >
+          <img src={closeBtnIcon} alt="закрыть" />
         </button>
         <h2 className={style.title}>{title}</h2>
         <span className={style.text}>{content}</span>
