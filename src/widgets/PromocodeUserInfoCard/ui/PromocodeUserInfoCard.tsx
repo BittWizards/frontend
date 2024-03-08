@@ -14,7 +14,10 @@ const PromocodeUserInfoCard: FC<TCardProps> = ({ data }) => {
     .replace(/\//g, '.');
 
   return (
-    <NavLink to={`/ambassadors/${data.id}/promocode`} className={style.navLink}>
+    <NavLink
+      to={`/ambassadors/${data.ambassador.id}/promocode`}
+      className={style.navLink}
+    >
       <div className={`${style.cardContainer} `}>
         <div className={style.userInfoWrapper}>
           {data.ambassador.image && (

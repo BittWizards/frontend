@@ -39,7 +39,10 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
 
   return (
     <>
-      <NavLink to={`/ambassadors/${data.id}/merch`} className={style.navLink}>
+      <NavLink
+        to={`/ambassadors/${data.ambassador.id}/merch`}
+        className={style.navLink}
+      >
         <div className={style.cardContainer}>
           <div className={style.userInfoWrapper}>
             {data.ambassador.image && (
