@@ -10,10 +10,10 @@ interface NotificationsState {
 
 
 const initialState: NotificationsState = {
-    ambassadorsNewCount: 0,
-    contentNewCount: 0,
-    merchNewCount: 0,
-  };
+  ambassadorsNewCount: 0,
+  contentNewCount: 0,
+  merchNewCount: 0,
+};
 
 const notificationsSlice = createSlice({
   name: 'notifications',

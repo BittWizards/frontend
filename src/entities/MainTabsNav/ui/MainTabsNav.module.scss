@@ -25,3 +25,13 @@
     transition: border-bottom 0.3s ease;
   }
 }
+
+.navLink {
+  text-decoration: none;
+  color: $baseColorWhite;
+  &.active {
+    color: $statusColorActive;
+    transition: color 0.3s ease;
+    transition: border-bottom 0.3s ease;
+  }
+}

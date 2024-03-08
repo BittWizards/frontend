@@ -18,9 +18,14 @@ const MainTabsNav: FC<TMainTabsNavProps> = ({
         <li
           key={tab}
           className={`${style.navItem} ${selectedTab === tab ? style.active : ''}`}
-          onClick={() => onSelectTab(tab)}
         >
-          {tab}
+          <a
+            href="#"
+            onClick={() => onSelectTab(tab)}
+            className={`${style.navLink} ${selectedTab === tab ? style.active : ''}`}
+          >
+            {tab}
+          </a>
         </li>
       ))}
     </ul>

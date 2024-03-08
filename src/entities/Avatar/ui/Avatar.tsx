@@ -9,31 +9,31 @@ const Avatar: FC<TAvatarProps> = ({ link, size, status }) => {
     let borderColor;
 
     switch (size) {
-    case 's':
-      avatarSize = 32;
-      break;
-    case 'm':
-      avatarSize = 48;
-      break;
-    case 'l':
-      avatarSize = 120;
-      break;
-    default:
-      avatarSize = 48;
+      case 's':
+        avatarSize = 32;
+        break;
+      case 'm':
+        avatarSize = 48;
+        break;
+      case 'l':
+        avatarSize = 120;
+        break;
+      default:
+        avatarSize = 48;
     }
 
     switch (status) {
-    case 'new':
-      borderColor = '#939393';
-      break;
-    case 'friend':
-      borderColor = '#189251';
-      break;
-    case 'master':
-      borderColor = '#512da8';
-      break;
-    default:
-      borderColor = '#808080';
+      case 'new':
+        borderColor = '#939393';
+        break;
+      case 'friend':
+        borderColor = '#189251';
+        break;
+      case 'master':
+        borderColor = '#512da8';
+        break;
+      default:
+        borderColor = '#808080';
     }
 
     return { avatarSize, borderColor };

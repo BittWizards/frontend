@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import type { User } from 'src/utils/constants/types/types';
-
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectMerch } from 'src/app/store/reducers/merch/model/merchSlice';
 import { selectOrders } from 'src/app/store/reducers/orders/model/ordersSlice';
@@ -30,12 +28,9 @@ import {
   sortOrderByStatus,
   sortOrderBySurname,
   sortMerchByDate,
-  sortMerchBySurname,
 } from 'src/pages/MerchPage/model/sortFunctions';
 
 import style from './MerchPage.module.scss';
-
-type TSearchableData = (TAmbassadorMerchHistory | TOrder)[];
 
 const MerchPage = () => {
   const dispatch = useAppDispatch();
@@ -118,7 +113,6 @@ const MerchPage = () => {
   const handleOrdersSortChange = (selectedOption: string | null) => {
     if (selectedOption !== null) {
       let sortedResults = [...searchOrdersResults];
-      /* eslint-disable */
       switch (selectedOption) {
         case 'Дата':
           sortedResults = sortOrderByDate(sortedResults).reverse();
@@ -140,7 +134,6 @@ const MerchPage = () => {
       setSearchOrdersResults(sortedResults);
     }
   };
-  /* eslint-enable */
 
   return (
     <div className={style.main}>

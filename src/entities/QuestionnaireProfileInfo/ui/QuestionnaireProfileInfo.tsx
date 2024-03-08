@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { useAppSelector } from 'src/app/store/hooks';

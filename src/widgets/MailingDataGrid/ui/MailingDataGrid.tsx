@@ -35,7 +35,7 @@ const MailingDataGrid: FC<TMailingProps> = ({ rows }) => {
 
   const handleOnConfirm = () => {
     setModalOpen(false);
-    console.log('Удаление');
+    // console.log('Удаление');
   };
 
   const commonCellStyle = {
@@ -102,7 +102,7 @@ const MailingDataGrid: FC<TMailingProps> = ({ rows }) => {
 
   const handleDeleteButtonClick = () => {
     handleOpen();
-    console.log('Удалить выбранные строки:', selectedRows);
+    // console.log('Удалить выбранные строки:', selectedRows);
   };
 
   return (
