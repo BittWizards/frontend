@@ -39,7 +39,10 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
 
   return (
     <>
-      <NavLink to={`/ambassadors/${data.id}/merch`} className={style.navLink}>
+      <NavLink
+        to={`/ambassadors/${data.ambassador.id}/merch`}
+        className={style.navLink}
+      >
         <div className={style.cardContainer}>
           <div className={style.userInfoWrapper}>
             {data.ambassador.image && (
@@ -55,9 +58,7 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
           <div className={style.statusWrapper}>
             <div className={style.socialWrapper}>
               <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-              <span
-                className={style.tg}
-              >{`@${data.ambassador.tg_acc.split('/')[1]}`}</span>
+              <span className={style.tg}>{`@${data.ambassador.tg_acc}`}</span>
             </div>
             <StatusIcon status={data.ambassador.status} />
           </div>
