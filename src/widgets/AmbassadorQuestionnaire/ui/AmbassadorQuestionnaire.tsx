@@ -46,7 +46,7 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
 
   useEffect(() => {
     dispatch(setIsEditable(true));
-  }, []);
+  }, [dispatch]);
 
   return (
     <FormContainer

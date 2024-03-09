@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { useState } from 'react';
 import { useAppSelector } from 'src/app/store/hooks';
 import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 

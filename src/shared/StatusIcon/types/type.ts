@@ -1,5 +1,5 @@
 type StatusIconProps = {
-  status: 'Active' | 'Pause' | 'Clarify' | 'Not active' | '';
+  status: 'Active' | 'Pause' | 'Clarify' | 'Not active';
 };
 
 export type { StatusIconProps };
