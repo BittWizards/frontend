@@ -34,8 +34,8 @@ import style from './MerchPage.module.scss';
 
 const MerchPage = () => {
   const dispatch = useAppDispatch();
-  const {merchHistory} = useAppSelector(selectMerch);
-  const {orders, isLoading} = useAppSelector(selectOrders);
+  const { merchHistory } = useAppSelector(selectMerch);
+  const { orders, isLoading } = useAppSelector(selectOrders);
 
   useEffect(() => {
     dispatch(getMerchAmbassadorsHistory());
@@ -73,7 +73,6 @@ const MerchPage = () => {
 
   const onOrdersSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    // eslint-disable-next-line max-len
     const results = orders.filter(
       orders =>
         orders.ambassador.first_name
@@ -88,7 +87,6 @@ const MerchPage = () => {
 
   const onMerchSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    // eslint-disable-next-line max-len
     const results = merchHistory.filter(
       ambassador =>
         ambassador.first_name
@@ -104,7 +102,7 @@ const MerchPage = () => {
   useEffect(() => {
     setSearchOrdersResults(sortOrderByDate(orders).reverse());
     setSearchMerchResults(sortMerchByDate(merchHistory).reverse());
-  }, []);
+  }, [orders, merchHistory]);
 
   const handleOrdersSortChange = (selectedOption: string | null) => {
     if (selectedOption !== null) {
