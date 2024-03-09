@@ -52,7 +52,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
   const counts: { [key: string]: number | null } = {
     habr_count: data.habr_count,
     vc_count: data.vc_count,
-    youTube_count: data.youtube_count,
+    youtube_count: data.youtube_count,
     tg_count: data.tg_count,
     linkedin_count: data.linkedin_count,
     instagram_count: data.instagram_count,
@@ -117,7 +117,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                     fontSize={15}
                     marginInlineStart={2}
                   >
-                    {data.rating}
+                    {data.rating ? data.rating : 0}
                   </Typography>
                 </Grid>
               </Grid>
@@ -152,7 +152,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                 <img src={chat} alt="Отзывы" />
               </Grid>
               <Grid className={style.allContentCard__text}>
-                {data.review_count}
+                {data.review_count ? data.review_count : '-'}
               </Grid>
             </Grid>
           </Grid>
@@ -177,25 +177,29 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                 className={style.allContentCard__contentGroup}
                 direction="row"
               >
-                {Object.keys(data).map((row, index) =>
-                  counts[row] ? (
-                    <Grid
-                      container
-                      direction="column"
-                      display="flex"
-                      justifyContent="center"
-                      alignItems="center"
-                    >
-                      <Grid>{getPlatformIcon(row)}</Grid>
+                {Object.keys(data)
+                  .filter(row => row in counts)
+                  .map((row, index) =>
+                    counts[row] ? (
                       <Grid
-                        className={style.allContentCard__text}
-                        key={uuidv4()}
+                        container
+                        direction="column"
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
                       >
-                        {counts[row]}
+                        <Grid>{getPlatformIcon(row)}</Grid>
+                        <Grid
+                          className={style.allContentCard__text}
+                          key={uuidv4()}
+                        >
+                          {counts[row]}
+                        </Grid>
                       </Grid>
-                    </Grid>
-                  ) : null
-                )}
+                    ) : (
+                      <Grid></Grid>
+                    )
+                  )}
               </Grid>
             </Grid>
 
