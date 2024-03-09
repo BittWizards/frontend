@@ -54,7 +54,6 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
   const submitForm = (data: Object) => {
     console.log(data);
   };
-
   return (
     <FormContainer
       title="Анкета Амбассадора"
