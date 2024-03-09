@@ -62,13 +62,13 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
     <NavLink to={`/ambassadors/${data.id}/content`} className={style.navLink}>
       <Card
         className={style.allContentCard}
-        sx={{ backgroundColor: 'rgba(255, 255, 255, 0)' }}
+        sx={{ backgroundColor: 'rgba(255, 255, 255, 0)', borderRadius: '20px' }}
       >
         <Grid
           container
           direction="row"
           columns={24}
-          sx={{ paddingTop: '8px', paddingLeft: '8px' }}
+          sx={{ paddingTop: '8px', paddingLeft: '20px' }}
         >
           <Grid
             container
@@ -79,10 +79,10 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
             rowSpacing={2}
           >
             <Grid container direction="row">
-              <Grid md={3}>
-                <Avatar link={data.image} size="s" />
+              <Grid md={4}>
+                <Avatar link={data.image} size="m" />
               </Grid>
-              <Grid className={style.allContentCard__text}>
+              <Grid className={style.allContentCard__text} marginTop={0.5}>
                 <Typography className={style.allContentCard__fio}>
                   {data.last_name} {data.first_name}
                 </Typography>
