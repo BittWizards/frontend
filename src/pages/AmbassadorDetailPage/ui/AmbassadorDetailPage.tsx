@@ -8,10 +8,23 @@ import { AmbassadorQuestionnaire } from 'src/widgets/AmbassadorQuestionnaire';
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorDetailPage.module.scss';
+import { useAppDispatch } from 'src/app/store/hooks';
+import {
+  setIsEdit,
+  setIsEditable,
+} from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+import { useEffect } from 'react';
 
 const AmbassadorDetailPage = () => {
   const { id } = useParams();
   const selectedUser = mockCardsData.find(user => user.id === id);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setIsEdit(false));
+    dispatch(setIsEditable(true));
+  }, []);
 
   return selectedUser ? (
     <div className={style.main}>
