@@ -1,10 +1,9 @@
+import { IAmbassador } from 'src/shared/api/ambassadors/dtos';
+
 interface IQuestionnaireProfileInfo {
-  user?: {
-    name: string;
-    surname: string;
-    secondname: string;
-    avatar: string;
-  };
+  user?: IAmbassador;
+  showGender?: boolean;
+  showImage?: boolean;
 }
 
 export type { IQuestionnaireProfileInfo };

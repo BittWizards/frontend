@@ -23,7 +23,7 @@ const NewAmbassadorPage = () => {
   useEffect(() => {
     dispatch(setIsEdit(true));
     dispatch(setIsEditable(false));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={style.main}>

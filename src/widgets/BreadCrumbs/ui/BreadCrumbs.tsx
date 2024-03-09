@@ -62,6 +62,14 @@ const BreadCrumbs: FC = () => {
       {pathname === '/mailing' && renderNavLink('/mailing', 'Рассылки')}
       {pathname === '/stats' &&
         renderNavLink('/stats', 'Статистика и Аналитика')}
+      {pathname.startsWith('/merch/new-order') && (
+        <>
+          {renderNavLink('/merch', 'Мерч')}
+          <NavLink to={`/merch/new-order`} className={style.breadcrumbs__link}>
+            Создание заявки на отправку мерча
+          </NavLink>
+        </>
+      )}
       {pathname === `/ambassadors/${id}/detail` && (
         <>
           {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
