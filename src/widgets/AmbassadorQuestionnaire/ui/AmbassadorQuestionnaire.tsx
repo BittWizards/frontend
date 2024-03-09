@@ -1,12 +1,27 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import type { IAmbassadorQuestionnaire } from '../types/types';
 
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
 import { FormContainer } from 'src/shared/FormContainer';
 
-import type { IAmbassadorQuestionnaire } from '../types/types';
+import { useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { getAmbassadorById } from 'src/shared/api/ambassadors';
+import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 
 const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
+  const { id } = useParams();
+  const {ambassador} = useAppSelector(selectAmbassadors)
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getAmbassadorById(Number(id)));
+  }, []);
+
+  console.log(ambassador)
+
   const defaultValues = {
     gender: 'female',
     surname: user.surname,

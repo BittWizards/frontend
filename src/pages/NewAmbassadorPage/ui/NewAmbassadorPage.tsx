@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { useAppDispatch } from 'src/app/store/hooks';
 import {
-  selectQuestionnaire,
   setIsEdit,
   setIsEditable,
 } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
@@ -19,8 +18,6 @@ const NewAmbassadorPage = () => {
   const submitForm = (data: Object) => {
     console.log(data);
   };
-
-  const { isEdit } = useAppSelector(selectQuestionnaire);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

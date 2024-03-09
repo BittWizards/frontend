@@ -34,18 +34,14 @@ import style from './MerchPage.module.scss';
 
 const MerchPage = () => {
   const dispatch = useAppDispatch();
-  const merch = useAppSelector(selectMerch);
-  const orders = useAppSelector(selectOrders);
+  const {merchHistory} = useAppSelector(selectMerch);
+  const {orders, isLoading} = useAppSelector(selectOrders);
 
   useEffect(() => {
     dispatch(getMerchAmbassadorsHistory());
     dispatch(getOrders());
     dispatch(getMerchTypes());
   }, [dispatch]);
-
-  // console.log('Merch History', merch.merchHistory);
-  // console.log('Orders', orders.orders);
-  // console.log('Merch Types', merch.merchType);
 
   const [selectedOption, setSelectedOption] = useState('Заявки на отправку');
   const tabs: string[] = ['Заявки на отправку', 'Учет мерча'];
@@ -71,14 +67,14 @@ const MerchPage = () => {
   };
 
   useEffect(() => {
-    setSearchOrdersResults(orders.orders);
-    setSearchMerchResults(merch.merchHistory);
+    setSearchOrdersResults(orders);
+    setSearchMerchResults(merchHistory);
   }, [searchOrdersTerm, searchMerchTerm]);
 
   const onOrdersSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     // eslint-disable-next-line max-len
-    const results = orders.orders.filter(
+    const results = orders.filter(
       orders =>
         orders.ambassador.first_name
           .toLowerCase()
@@ -93,7 +89,7 @@ const MerchPage = () => {
   const onMerchSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     // eslint-disable-next-line max-len
-    const results = merch.merchHistory.filter(
+    const results = merchHistory.filter(
       ambassador =>
         ambassador.first_name
           .toLowerCase()
@@ -106,8 +102,8 @@ const MerchPage = () => {
   };
 
   useEffect(() => {
-    setSearchOrdersResults(sortOrderByDate(orders.orders).reverse());
-    setSearchMerchResults(sortMerchByDate(merch.merchHistory).reverse());
+    setSearchOrdersResults(sortOrderByDate(orders).reverse());
+    setSearchMerchResults(sortMerchByDate(merchHistory).reverse());
   }, []);
 
   const handleOrdersSortChange = (selectedOption: string | null) => {
@@ -184,14 +180,14 @@ const MerchPage = () => {
           </div>
         </div>
         {selectedOption === 'Учет мерча' ? (
-          merch.isLoading ? (
+          isLoading ? (
             <Loader />
           ) : (
             <div className={style.tableWrapper}>
               <MerchStatisticTable merchArray={searchMerchResults} />
             </div>
           )
-        ) : orders.isLoading ? (
+        ) : isLoading ? (
           <Loader />
         ) : (
           <div className={style.cardsContainer}>
