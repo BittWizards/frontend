@@ -1,6 +1,4 @@
 import type { FC } from 'react';
-import { useAppSelector } from 'src/app/store/hooks';
-import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 
 import { PostalDetails } from 'src/entities/PostalDetails';
 import { Textarea } from 'src/shared/Textarea';
@@ -13,21 +11,19 @@ import type { IQuestionnaireForm } from '../types/types';
 import style from './QuestionnaireForm.module.scss';
 
 const QuestionnaireForm: FC<IQuestionnaireForm> = () => {
-  const { isEdit } = useAppSelector(selectQuestionnaire);
-
   return (
     <div>
       <div className={style.container}>
         <div className={style.row}>
-          <PostalDetails isEdit={isEdit} />
-          <Contacts isEdit={isEdit} />
+          <PostalDetails />
+          <Contacts />
         </div>
         <div className={style.row}>
-          <DataMerch isEdit={isEdit} />
+          <DataMerch />
         </div>
         <div className={style.row}>
-          <WorkAndEducation isEdit={isEdit} />
-          <Activity isEdit={isEdit} />
+          <WorkAndEducation />
+          <Activity />
         </div>
       </div>
       <label className={`${style.label}`}>
@@ -37,7 +33,6 @@ const QuestionnaireForm: FC<IQuestionnaireForm> = () => {
             width={976}
             height={155}
             placeholder="Дополнительная информация об Амбассадоре"
-            isEdit={isEdit}
             name="info"
           />
         </fieldset>

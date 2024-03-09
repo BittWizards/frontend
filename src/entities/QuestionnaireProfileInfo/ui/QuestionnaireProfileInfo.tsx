@@ -1,14 +1,16 @@
 import type { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { useAppSelector } from 'src/app/store/hooks';
-import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+import type { IQuestionnaireProfileInfo } from '../types/types';
 
-import { Avatar } from 'src/entities/Avatar';
-import { Input } from 'src/shared/Input';
 import style from './QuestionnaireProfileInfo.module.scss';
 
-import type { IQuestionnaireProfileInfo } from '../types/types';
+import { useAppSelector } from 'src/app/store/hooks';
+import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+import { Avatar } from 'src/entities/Avatar';
+import { Input } from 'src/shared/Input';
+
+
 
 const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
   const { register } = useFormContext();
@@ -32,19 +34,9 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
       <div className={style.infoContainer}>
         {isEdit ? (
           <div className={style.info}>
-            <Input
-              type="text"
-              isEdit={isEdit}
-              name="surname"
-              placeholder="Фамилия"
-            />
-            <Input type="text" isEdit={isEdit} name="name" placeholder="Имя" />
-            <Input
-              type="text"
-              isEdit={isEdit}
-              name="secondname"
-              placeholder="Отчество"
-            />
+            <Input type="text" name="surname" placeholder="Фамилия" />
+            <Input type="text" name="name" placeholder="Имя" />
+            <Input type="text" name="secondname" placeholder="Отчество" />
           </div>
         ) : (
           <div className={style.info}>

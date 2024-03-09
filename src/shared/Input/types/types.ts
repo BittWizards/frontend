@@ -3,7 +3,6 @@ interface IInput {
   type: string;
   disabled?: boolean;
   name: string;
-  isEdit: boolean;
 }
 
 export type { IInput };
