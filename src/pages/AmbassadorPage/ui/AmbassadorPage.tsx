@@ -35,7 +35,7 @@ const AmbassadorPage = () => {
     dispatch(getAllAmbassadors());
   }, [dispatch]);
 
-  const {ambassadors, isLoading} = useAppSelector(selectAmbassadors);
+  const { ambassadors, isLoading } = useAppSelector(selectAmbassadors);
 
   const navigate = useNavigate();
 
@@ -167,11 +167,7 @@ const AmbassadorPage = () => {
                 </div>
               </div>
             </div>
-            {isLoading ? (
-              <Loader />
-            ) : (
-              <AmbassadorTable data={searchResults} />
-            )}
+            {isLoading ? <Loader /> : <AmbassadorTable data={searchResults} />}
           </>
         )}
       </div>
