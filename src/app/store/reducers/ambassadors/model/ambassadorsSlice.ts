@@ -1,17 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
-import { getAllAmbassadors, getAmbassadorById } from 'src/shared/api/ambassadors';
+import type { IAmbassador, IAmbassadorById } from 'src/shared/api/ambassadors/dtos';
+import {
+  getAllAmbassadors,
+  getAmbassadorById,
+} from 'src/shared/api/ambassadors';
+import { initialAmbassador } from './constants';
 
 interface AmbassadorsState {
   ambassadors: IAmbassador[];
-  ambassador: Object;
+  ambassador: IAmbassadorById;
   isLoading: boolean;
   error: string | null | unknown;
 }
 
 const initialState: AmbassadorsState = {
   ambassadors: [],
-  ambassador: {},
+  ambassador: initialAmbassador,
   isLoading: false,
   error: null,
 };
@@ -46,7 +50,7 @@ const ambassadorsSlice = createSlice({
       .addCase(getAmbassadorById.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
-      })
+      });
   },
 });
 

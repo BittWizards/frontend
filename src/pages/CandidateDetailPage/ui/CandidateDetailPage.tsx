@@ -2,34 +2,38 @@ import { useParams } from 'react-router-dom';
 
 import { Navbar } from 'src/widgets/NavBar';
 import { CandidateQuestionnaire } from 'src/widgets/CandidateQuestionnaire';
-
 import { navbarLinks } from 'src/utils/constants/navLinks';
-import { mockCardsData } from 'src/utils/constants/mockCardsData';
-import { useAppDispatch } from 'src/app/store/hooks';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { useEffect } from 'react';
+import { getAmbassadorById } from 'src/shared/api/ambassadors';
+import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
+import { Loader } from 'src/shared/Loader';
 import {
-  selectQuestionnaire,
   setIsEdit,
   setIsEditable,
 } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
-import { useEffect } from 'react';
+
 import style from './CandidateDetailPage.module.scss';
 
 const CandidateDetailPage = () => {
   const { id } = useParams();
-  const selectedUser = mockCardsData.find(user => user.id === id);
 
   const dispatch = useAppDispatch();
+  const { ambassador, isLoading } = useAppSelector(selectAmbassadors);
 
   useEffect(() => {
     dispatch(setIsEdit(false));
     dispatch(setIsEditable(false));
-  });
+    dispatch(getAmbassadorById(Number(id)));
+  }, []);
 
-  return selectedUser ? (
+  return isLoading ? (
+    <Loader />
+  ) : ambassador ? (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
-        <CandidateQuestionnaire user={selectedUser} />
+        <CandidateQuestionnaire />
       </div>
     </div>
   ) : (

@@ -1,44 +1,40 @@
-import type { FC } from 'react';
+import { type FC } from 'react';
+import type { ICandidateQuestionnaire } from '../types/types';
 
 import { FormContainer } from 'src/shared/FormContainer';
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
-import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
-import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
-import type { ICandidateQuestionnaire } from '../types/types';
+import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
+import { useAppSelector } from 'src/app/store/hooks';
 
-const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = ({ user }) => {
-
-  const dispatch = useAppDispatch();
-  const {isEdit, isEditable} = useAppSelector(selectQuestionnaire)
+const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
+  const { ambassador } = useAppSelector(selectAmbassadors);
 
   const defaultValues = {
-    gender: 'female',
-    surname: user.surname,
-    name: user.name,
-    secondname: user.secondname,
-    country: user.country,
-    city: user.city,
-    adress: user.adress,
-    index: user.index,
-    clothingSize: user.clothingSize,
-    shoeSize: user.shoeSize,
-    position: user.position,
-    purpose: user.purpose,
-    education: user.education,
-    workPlace: user.workPlace,
-    telegram: user.telegram,
-    wa: user.wa,
-    habr: user.habr,
-    email: user.email,
-    phone: user.phone,
-    blog: true,
-    community: false,
-    article: true,
-    video: false,
-    advice: true,
-    speaking: false,
-    info: '',
+    gender: ambassador.gender,
+    surname: ambassador.middle_name,
+    name: ambassador.first_name,
+    secondname: ambassador.last_name,
+    country: ambassador.address.country,
+    city: ambassador.address.city,
+    adress: ambassador.address.street_home,
+    index: ambassador.address.post_index,
+    clothingSize: ambassador.size.clothes_size,
+    shoeSize: ambassador.size.foot_size,
+    position: ambassador.ya_programm,
+    purpose: ambassador.purpose,
+    education: ambassador.education,
+    workPlace: ambassador.work,
+    telegram: ambassador.tg_acc,
+    email: ambassador.email,
+    phone: ambassador.phone,
+    blog: true, //
+    community: false, //
+    article: true, //
+    video: false, //
+    advice: true, //
+    speaking: false, //
+    info: '', //
   };
 
   const submitForm = (data: Object) => {
@@ -53,7 +49,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = ({ user }) => {
       submitButtonLabel="Принять"
       cancelButtonLabel="Отклонить"
     >
-      <QuestionnaireProfileInfo user={user} />
+      <QuestionnaireProfileInfo />
       <QuestionnaireForm />
     </FormContainer>
   );
