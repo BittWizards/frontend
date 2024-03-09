@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import type { ICheckbox } from '../types/types';
-import style from './Checkbox.module.scss';
 import { useAppSelector } from 'src/app/store/hooks';
 import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+import type { ICheckbox } from '../types/types';
+import style from './Checkbox.module.scss';
 
 const Checkbox: FC<ICheckbox> = ({ label, disabled, name }) => {
   const { register } = useFormContext();

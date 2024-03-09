@@ -1,14 +1,14 @@
 import type { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import type { IQuestionnaireProfileInfo } from '../types/types';
 
-import style from './QuestionnaireProfileInfo.module.scss';
 
 import { useAppSelector } from 'src/app/store/hooks';
 import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 import { Avatar } from 'src/entities/Avatar';
 import { Input } from 'src/shared/Input';
+import style from './QuestionnaireProfileInfo.module.scss';
+import type { IQuestionnaireProfileInfo } from '../types/types';
 
 
 

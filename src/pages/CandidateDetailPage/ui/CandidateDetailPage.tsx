@@ -5,7 +5,6 @@ import { CandidateQuestionnaire } from 'src/widgets/CandidateQuestionnaire';
 
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
-import style from './CandidateDetailPage.module.scss';
 import { useAppDispatch } from 'src/app/store/hooks';
 import {
   selectQuestionnaire,
@@ -13,6 +12,7 @@ import {
   setIsEditable,
 } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 import { useEffect } from 'react';
+import style from './CandidateDetailPage.module.scss';
 
 const CandidateDetailPage = () => {
   const { id } = useParams();

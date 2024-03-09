@@ -5,15 +5,15 @@ import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { mockCardsData } from 'src/utils/constants/mockCardsData';
 import { AmbassadorQuestionnaire } from 'src/widgets/AmbassadorQuestionnaire';
-import { tabsData } from '../model/data';
 
-import style from './AmbassadorDetailPage.module.scss';
 import { useAppDispatch } from 'src/app/store/hooks';
 import {
   setIsEdit,
   setIsEditable,
 } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 import { useEffect } from 'react';
+import { tabsData } from '../model/data';
+import style from './AmbassadorDetailPage.module.scss';
 
 const AmbassadorDetailPage = () => {
   const { id } = useParams();

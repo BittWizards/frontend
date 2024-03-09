@@ -3,9 +3,9 @@ import type { FC } from 'react';
 import { FormContainer } from 'src/shared/FormContainer';
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
-import type { ICandidateQuestionnaire } from '../types/types';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+import type { ICandidateQuestionnaire } from '../types/types';
 
 const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = ({ user }) => {
 

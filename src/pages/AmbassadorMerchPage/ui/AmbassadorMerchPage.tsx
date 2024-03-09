@@ -14,8 +14,6 @@ import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
 import { Loader } from 'src/shared/Loader';
 
-import { mockCardsData } from 'src/utils/constants/mockCardsData';
-
 import {
   Table,
   TableBody,
@@ -34,34 +32,28 @@ const AmbassadorMerchPage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (id) {
-      const numericId = parseInt(id, 10);
-      dispatch(getAmbassadorsOrdersById(numericId));
-    }
+    dispatch(getAmbassadorsOrdersById(Number(id)));
   }, [id]);
 
-  const order = useAppSelector(selectOrders);
-
-  console.log(order);
-
-  const selectedUser = mockCardsData.find(user => user.id === id);
+  const { ambassadorOrders, isLoading } = useAppSelector(selectOrders);
 
   const [totalSum, setTotalSum] = useState(0);
 
-  // useEffect(() => {
-  //   // При изменении данных мерча пересчитываем общую сумму
-  //   if (selectedUser && selectedUser.merch) {
-  //     const sum = selectedUser.merch.reduce(
-  //       (acc, row) =>
-  //         acc +
-  //         parseInt(row.quantity, 10) * parseFloat(row.price.replace(',', '.')),
-  //       0
-  //     );
-  //     setTotalSum(sum);
-  //   } else {
-  //     setTotalSum(0);
-  //   }
-  // }, [selectedUser]);
+  useEffect(() => {
+    // При изменении данных мерча пересчитываем общую сумму
+    if (ambassadorOrders && ambassadorOrders.merch.length > 0) {
+      const sum = ambassadorOrders.merch.reduce(
+        (acc, row) =>
+          acc +
+          parseInt(String(row.amount), 10) *
+            parseFloat(String(row.total_cost).replace(',', '.')),
+        0
+      );
+      setTotalSum(sum);
+    } else {
+      setTotalSum(0);
+    }
+  }, [ambassadorOrders]);
 
   const commonCellStyle = {
     color: '#ebeef4',
@@ -86,14 +78,14 @@ const AmbassadorMerchPage = () => {
 
   const combinedStyle = { ...commonCellStyle, ...additionalCellStyle };
 
-  return order.isLoading ? (
+  return isLoading ? (
     <Loader />
   ) : (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <AmbassadorHeaderCard data={order.ambassadorOrders} />
+        <AmbassadorHeaderCard data={ambassadorOrders} />
         <div className={style.subtitleWrapper}>
           <SubtitleWithEditBtn title="Мерч Амбассадора" />
         </div>
@@ -109,41 +101,21 @@ const AmbassadorMerchPage = () => {
                 <TableCell style={headerCellStyle}>Сумма</TableCell>
               </TableRow>
             </TableHead>
-            {order.ambassadorOrders.orders &&
-            order.ambassadorOrders.orders.length > 0 ? (
-                <TableBody>
-                  {order.ambassadorOrders.orders.map((row, index) => (
-                    <TableRow key={uuidv4()}>
-                      <TableCell style={commonCellStyle}>{index + 1}</TableCell>
-                      {/* <TableCell style={commonCellStyle}>
+            {ambassadorOrders.merch && ambassadorOrders.merch.length > 0 ? (
+              <TableBody>
+                {ambassadorOrders.merch.map((row, index) => (
+                  <TableRow key={uuidv4()}>
+                    <TableCell style={commonCellStyle}>{index + 1}</TableCell>
+                    <TableCell style={commonCellStyle}>
                       {formatDateString(row.created_date)}
                     </TableCell>
+                    <TableCell style={commonCellStyle}>{row.name}</TableCell>
                     <TableCell style={commonCellStyle}>
-                      {row.merch.}
+                      {!row.size ? '-' : row.size}
                     </TableCell>
+                    <TableCell style={commonCellStyle}>{row.amount}</TableCell>
                     <TableCell style={commonCellStyle}>
-                      {!row. ? '-' : row.merchSize}
-                    </TableCell>
-                    <TableCell style={commonCellStyle}>
-                      {row.quantity}
-                    </TableCell>
-                    <TableCell style={commonCellStyle}>
-                      {parseFloat(row.price).toLocaleString('ru-RU', {
-                        style: 'currency',
-                        currency: 'RUB',
-                        minimumFractionDigits: 0,
-                      })}
-                    </TableCell> */}
-                    </TableRow>
-                  ))}
-                  <TableRow>
-                    <TableCell style={{ borderBottom: '1px solid #47464699' }} />
-                    <TableCell style={{ borderBottom: '1px solid #47464699' }} />
-                    <TableCell style={{ borderBottom: '1px solid #47464699' }} />
-                    <TableCell style={{ borderBottom: '1px solid #47464699' }} />
-                    <TableCell style={{ borderBottom: '1px solid #47464699' }} />
-                    <TableCell style={combinedStyle}>
-                      {order.ambassadorOrders.total_orders_cost.toLocaleString(
+                      {parseFloat(String(row.total_cost)).toLocaleString(
                         'ru-RU',
                         {
                           style: 'currency',
@@ -153,18 +125,33 @@ const AmbassadorMerchPage = () => {
                       )}
                     </TableCell>
                   </TableRow>
-                </TableBody>
-              ) : (
+                ))}
                 <TableRow>
-                  <TableCell colSpan={6} style={commonCellStyle}>
-                    <p className={style.subtitle}>Заявок нет</p>
-                    <p className={style.text}>
-                    Создайте заявку на отправку мерча и данные отобразятся в
-                    таблице
-                    </p>
+                  <TableCell style={{ borderBottom: '1px solid #47464699' }} />
+                  <TableCell style={{ borderBottom: '1px solid #47464699' }} />
+                  <TableCell style={{ borderBottom: '1px solid #47464699' }} />
+                  <TableCell style={{ borderBottom: '1px solid #47464699' }} />
+                  <TableCell style={{ borderBottom: '1px solid #47464699' }} />
+                  <TableCell style={combinedStyle}>
+                    {totalSum.toLocaleString('ru-RU', {
+                      style: 'currency',
+                      currency: 'RUB',
+                      minimumFractionDigits: 0,
+                    })}
                   </TableCell>
                 </TableRow>
-              )}
+              </TableBody>
+            ) : (
+              <TableRow>
+                <TableCell colSpan={6} style={commonCellStyle}>
+                  <p className={style.subtitle}>Заявок нет</p>
+                  <p className={style.text}>
+                    Создайте заявку на отправку мерча и данные отобразятся в
+                    таблице
+                  </p>
+                </TableCell>
+              </TableRow>
+            )}
           </Table>
         </div>
         <div className={style.btnWrapper}>
