@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import {
   selectQuestionnaire,
   setIsEdit,
+  setIsEditable,
 } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 
 import { Navbar } from 'src/widgets/NavBar';
@@ -24,6 +25,7 @@ const NewAmbassadorPage = () => {
 
   useEffect(() => {
     dispatch(setIsEdit(true));
+    dispatch(setIsEditable(false));
   }, []);
 
   return (
@@ -36,8 +38,8 @@ const NewAmbassadorPage = () => {
           submitButtonLabel="Сохранить"
           cancelButtonLabel="Отменить"
         >
-          <QuestionnaireProfileInfo isEdit={false} />
-          <QuestionnaireForm isEdit={false} />
+          <QuestionnaireProfileInfo />
+          <QuestionnaireForm />
         </FormContainer>
       </div>
     </div>

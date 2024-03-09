@@ -4,8 +4,14 @@ import { FormContainer } from 'src/shared/FormContainer';
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
 import type { ICandidateQuestionnaire } from '../types/types';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 
 const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = ({ user }) => {
+
+  const dispatch = useAppDispatch();
+  const {isEdit, isEditable} = useAppSelector(selectQuestionnaire)
+
   const defaultValues = {
     gender: 'female',
     surname: user.surname,
@@ -36,7 +42,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = ({ user }) => {
   };
 
   const submitForm = (data: Object) => {
-    // console.log(data);
+    console.log(data);
   };
 
   return (
@@ -47,8 +53,8 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = ({ user }) => {
       submitButtonLabel="Принять"
       cancelButtonLabel="Отклонить"
     >
-      <QuestionnaireProfileInfo isEdit={false} user={user} />
-      <QuestionnaireForm isEdit={false} />
+      <QuestionnaireProfileInfo user={user} />
+      <QuestionnaireForm />
     </FormContainer>
   );
 };

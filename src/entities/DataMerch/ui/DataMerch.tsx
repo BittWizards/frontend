@@ -4,20 +4,10 @@ import { Input } from 'src/shared/Input';
 import { FieldsetContainer } from 'src/shared/FieldsetContainer';
 import type { IDataMerch } from '../types/types';
 
-const DataMerch: FC<IDataMerch> = ({ isEdit }) => (
+const DataMerch: FC<IDataMerch> = () => (
   <FieldsetContainer title="Данные для мерча">
-    <Input
-      type="text"
-      placeholder="Размер одежды"
-      name="clothingSize"
-      isEdit={isEdit}
-    />
-    <Input
-      type="text"
-      placeholder="Размер обуви"
-      name="shoeSize"
-      isEdit={isEdit}
-    />
+    <Input type="text" placeholder="Размер одежды" name="clothingSize" />
+    <Input type="text" placeholder="Размер обуви" name="shoeSize" />
   </FieldsetContainer>
 );
 

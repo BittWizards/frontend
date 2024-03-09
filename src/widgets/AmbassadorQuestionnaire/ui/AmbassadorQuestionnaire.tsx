@@ -1,6 +1,4 @@
-import { useEffect, type FC } from 'react';
-import { useAppDispatch } from 'src/app/store/hooks';
-import { setIsEditable } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+import { FC } from 'react';
 
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
@@ -42,12 +40,6 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
     console.log(data);
   };
 
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(setIsEditable(true));
-  }, []);
-
   return (
     <FormContainer
       title="Анкета Амбассадора"
@@ -56,8 +48,8 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
       submitButtonLabel="Сохранить"
       cancelButtonLabel="Отменить"
     >
-      <QuestionnaireProfileInfo isEdit={false} user={user} />
-      <QuestionnaireForm isEdit={false} />
+      <QuestionnaireProfileInfo user={user} />
+      <QuestionnaireForm />
     </FormContainer>
   );
 };
