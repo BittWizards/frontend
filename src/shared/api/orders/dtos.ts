@@ -23,16 +23,16 @@ type TAmbassadorsOrders = {
   status: 'Active' | 'Pause' | 'Clarify' | 'Not active' | '';
   city: string;
   ya_programm: string;
+  tg_acc: string;
   email: string;
   phone: string;
-  orders: {
+  merch: {
     id: number;
-    created_date: string;
-    merch: {
-      name: string;
-      size?: string | null;
-    }[];
+    name: string;
+    size: string | null;
+    amount: number;
     total_cost: number;
+    created_date: string;
   }[];
   total_orders_cost: number;
 };

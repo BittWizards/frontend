@@ -1,5 +1,5 @@
-import { FC, useEffect } from 'react';
-import type { IAmbassadorQuestionnaire } from '../types/types';
+import type { FC} from 'react';
+import { useEffect } from 'react';
 
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { getAmbassadorById } from 'src/shared/api/ambassadors';
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
+import type { IAmbassadorQuestionnaire } from '../types/types';
 
 const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = ({ user }) => {
   const { id } = useParams();

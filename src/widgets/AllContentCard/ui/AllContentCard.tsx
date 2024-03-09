@@ -75,7 +75,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
             direction="column"
             md={8}
             borderRight={1}
-            borderColor={'#939393'}
+            borderColor="#939393"
             rowSpacing={2}
           >
             <Grid container direction="row">
@@ -93,7 +93,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
             </Grid>
             <Grid container direction="row" columns={5}>
               <Grid md={3}>
-                <StatusIcon status={data.status}></StatusIcon>
+                <StatusIcon status={data.status} />
               </Grid>
               <Grid container md={2} direction="row">
                 <Grid>
@@ -128,7 +128,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
             md={3}
             direction="column"
             borderRight={1}
-            borderColor={'#939393'}
+            borderColor="#939393"
             rowSpacing={1}
           >
             {/* середина */}
@@ -197,7 +197,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                         </Grid>
                       </Grid>
                     ) : (
-                      <Grid></Grid>
+                      <Grid />
                     )
                   )}
               </Grid>
@@ -243,75 +243,75 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
     //         </div>
     //       </div>
 
-    //       <div className={style.allContentCard__statusGroup}>
-    //         {/* <StatusIcon status={data.} /> */}
-    //         <div className={style.allContentCard__reitingGroup}>
-    //           <img
-    //             src={arrowUp}
-    //             alt="Стрелка"
-    //             className={style.allContentCard__arrow}
-    //           />
-    //           <p className={style.allContentCard__textReiting}>Рейтинг</p>
-    //           <span className={style.allContentCard__countReiting}>
-    //             {data.rating}
-    //           </span>
-    //         </div>
-    //       </div>
-    //     </div>
+  //       <div className={style.allContentCard__statusGroup}>
+  //         {/* <StatusIcon status={data.} /> */}
+  //         <div className={style.allContentCard__reitingGroup}>
+  //           <img
+  //             src={arrowUp}
+  //             alt="Стрелка"
+  //             className={style.allContentCard__arrow}
+  //           />
+  //           <p className={style.allContentCard__textReiting}>Рейтинг</p>
+  //           <span className={style.allContentCard__countReiting}>
+  //             {data.rating}
+  //           </span>
+  //         </div>
+  //       </div>
+  //     </div>
 
-    //     <span className={style.line} />
+  //     <span className={style.line} />
 
-    //     <div className={style.allContentCard__middle}>
-    //       {/* середина */}
-    //       <h3 className={style.allContentCard__reviews}>Отзывы</h3>
-    //       <img
-    //         src={chat}
-    //         className={style.allContentCard__reviewsImg}
-    //         alt="Отзывы"
-    //       />
-    //       <span className={style.allContentCard__reviewsCount}>
-    //         {data.review_count}
-    //       </span>
-    //     </div>
+  //     <div className={style.allContentCard__middle}>
+  //       {/* середина */}
+  //       <h3 className={style.allContentCard__reviews}>Отзывы</h3>
+  //       <img
+  //         src={chat}
+  //         className={style.allContentCard__reviewsImg}
+  //         alt="Отзывы"
+  //       />
+  //       <span className={style.allContentCard__reviewsCount}>
+  //         {data.review_count}
+  //       </span>
+  //     </div>
 
-    //     <span className={style.line} />
+  //     <span className={style.line} />
 
-    //     <div className={style.allContentCard__right}>
-    //       {/* правая */}
-    //       <div className={style.allContentCard__contentContainer}>
-    //         <h3 className={style.allContentCard__contentTitle}>
-    //           Опубликовано контента
-    //         </h3>
-    //         <div className={style.allContentCard__contentGroup}>
-    //           {/* {data.content.map((row, index) => (
-    //             <div key={uuidv4()} className={style.allContentCard__social}>
-    //               <div className={style.allContentCard__icon}>
-    //                 {getPlatformIcon(row.platform)}
-    //               </div>
-    //               <span className={style.allContentCard__iconCount}>
-    //                 {row.fileCounter}
-    //               </span>
-    //             </div>
-    //           ))} */}
-    //         </div>
-    //       </div>
+  //     <div className={style.allContentCard__right}>
+  //       {/* правая */}
+  //       <div className={style.allContentCard__contentContainer}>
+  //         <h3 className={style.allContentCard__contentTitle}>
+  //           Опубликовано контента
+  //         </h3>
+  //         <div className={style.allContentCard__contentGroup}>
+  //           {/* {data.content.map((row, index) => (
+  //             <div key={uuidv4()} className={style.allContentCard__social}>
+  //               <div className={style.allContentCard__icon}>
+  //                 {getPlatformIcon(row.platform)}
+  //               </div>
+  //               <span className={style.allContentCard__iconCount}>
+  //                 {row.fileCounter}
+  //               </span>
+  //             </div>
+  //           ))} */}
+  //         </div>
+  //       </div>
 
-    //       <div className={style.allContentCard__dataGroup}>
-    //         <h3 className={style.allContentCard__dataTitle}>Дата обновления</h3>
-    //         <div className={style.allContentCard__data}>
-    //           <img
-    //             src={calendarIcon}
-    //             className={style.allContentCard__calendar}
-    //             alt="Календарь"
-    //           />
-    //           <span className={style.allContentCard__dataNumber}>
-    //             {formattedDate}
-    //           </span>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </NavLink>
+  //       <div className={style.allContentCard__dataGroup}>
+  //         <h3 className={style.allContentCard__dataTitle}>Дата обновления</h3>
+  //         <div className={style.allContentCard__data}>
+  //           <img
+  //             src={calendarIcon}
+  //             className={style.allContentCard__calendar}
+  //             alt="Календарь"
+  //           />
+  //           <span className={style.allContentCard__dataNumber}>
+  //             {formattedDate}
+  //           </span>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // </NavLink>
   );
 };
 
