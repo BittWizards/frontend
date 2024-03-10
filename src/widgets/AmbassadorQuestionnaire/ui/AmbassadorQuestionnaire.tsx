@@ -1,15 +1,34 @@
 import type { FC } from 'react';
+import type { IAmbassadorQuestionnaire } from '../types/types';
 
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
 import { FormContainer } from 'src/shared/FormContainer';
 
-import { useAppSelector } from 'src/app/store/hooks';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
-import type { IAmbassadorQuestionnaire } from '../types/types';
+import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
+import { ButtonComponent } from 'src/entities/Button';
+import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
+import { FormProvider, useForm } from 'react-hook-form';
+
+import style from './AmbassadorQuestionnaire.module.scss';
+import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+import {
+  selectModal,
+  onConfirm,
+  onCancelChanges,
+  onConfirmChanges,
+  onCloseSecondaryModal,
+  setRequestData,
+} from 'src/app/store/reducers/modal/model/modalSlice';
 
 const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = () => {
   const { ambassador } = useAppSelector(selectAmbassadors);
+  const { isEdit } = useAppSelector(selectQuestionnaire);
+  const { isOpen, isSecondaryOpen, requestData } = useAppSelector(selectModal);
+
+  const dispatch = useAppDispatch();
 
   const defaultValues = {
     gender: ambassador.gender,
@@ -38,20 +57,57 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = () => {
     info: '', //
   };
 
-  const submitForm = (data: Object) => {
-    console.log(data);
+  const methods = useForm({
+    defaultValues: defaultValues,
+  });
+
+  const onSubmit = (data: Object) => {
+    dispatch(onConfirm());
+    dispatch(setRequestData(data));
   };
+
+  console.log({avatar: ambassador.image, ...requestData})
+
   return (
-    <FormContainer
-      title="Анкета Амбассадора"
-      defaultValues={defaultValues}
-      onSubmit={submitForm}
-      submitButtonLabel="Сохранить"
-      cancelButtonLabel="Отменить"
-    >
-      <QuestionnaireProfileInfo />
-      <QuestionnaireForm />
-    </FormContainer>
+    <FormProvider {...methods}>
+      <FormContainer title="Анкета Амбассадора">
+        <QuestionnaireProfileInfo />
+        <QuestionnaireForm />
+
+        <div className={style.buttons}>
+          {isEdit && (
+            <ButtonComponent
+              label={'Сохранить'}
+              width={244}
+              height={48}
+              onClick={methods.handleSubmit(onSubmit)}
+            />
+          )}
+          <ButtonSecondaryComponent
+            label={isEdit ? 'Отменить' : 'Закрыть'}
+            width={244}
+            height={48}
+            onClick={() => {}}
+          />
+        </div>
+        </FormContainer>
+        <ChoiceModal
+          open={isOpen}
+          title={'Сохранить изменения'}
+          content={`Данные были изменены. Сохранить изменения?`}
+          onCancelLabel={'Отменить'}
+          onConfirmLabel={'Подтвердить'}
+          onCancel={() => dispatch(onCancelChanges())}
+          onConfirm={() => dispatch(onConfirmChanges())}
+          onClose={() => dispatch(onCancelChanges())}
+        />
+        <SuccessModal
+          open={isSecondaryOpen}
+          onClose={() => dispatch(onCloseSecondaryModal())}
+          title={'Успех'}
+          content={'Все данные были успешно сохранены!'}
+        />
+    </FormProvider>
   );
 };
 
