@@ -13,8 +13,6 @@ import { getAllPromocodes } from 'src/shared/api/promocodes';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorsInfoCard } from 'src/entities/AmbassadorsInfoCard';
-import { ContentColumnList } from 'src/widgets/ContentColumnList';
-import { contentData } from 'src/utils/constants/contentInfoCard';
 import { PromoInfoCard } from 'src/entities/PromoInfoCard';
 import { ContentInfoCard } from 'src/entities/ContentInfoCard';
 import { ContentContainer } from 'src/widgets/ContentContainer';
@@ -60,6 +58,8 @@ const MainPage = () => {
     latestAmbassadors = sortedAmbassadors.slice(0, 6);
   }
 
+
+
   return (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
@@ -90,19 +90,11 @@ const MainPage = () => {
             </div>
           </ContentContainer>
           <ContentContainer title="Контент" link="/content">
-            <ContentColumnList contentData={contentData}>
-              {[
-                <ContentInfoCard
-                  ambassador=""
-                  content={{
-                    youTube: 0,
-                    hIcon: 0,
-                    telegram: 0,
-                    instagram: 0,
-                  }}
-                />,
-              ]}
-            </ContentColumnList>
+            <div className={style.cardColumnList}>
+              {content.allContent.map((content, index) => (
+                <ContentInfoCard key={uuidv4()} data={content} />
+              )).slice(0, 3)}
+            </div>
           </ContentContainer>
         </div>
       )}
