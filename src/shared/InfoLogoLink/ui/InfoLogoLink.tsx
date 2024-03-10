@@ -18,7 +18,7 @@ const generateWebsiteLinkProps = (text: string) => ({
 
 const InfoLogoLink: FC<TInfoLogoLinkProps> = ({ icon, text, linkType }) => {
   let linkProps = {};
-  /* eslint-disable */
+
   switch (linkType) {
     case 'email':
       linkProps = generateEmailLinkProps(text);

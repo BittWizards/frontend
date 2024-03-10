@@ -19,7 +19,7 @@ const AmbassadorCard: FC<TAmbassadorCardProps> = ({ data }) => {
         <div className={style.nameGroup}>
           <span className={style.name}>{data.last_name}</span>
           <span className={style.name}>
-            {data.first_name} {data.last_name}
+            {data.first_name} {data.middle_name}
           </span>
         </div>
         <span className={style.position}>{data.ya_programm}</span>
