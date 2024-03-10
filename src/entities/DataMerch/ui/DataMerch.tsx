@@ -6,8 +6,8 @@ import type { IDataMerch } from '../types/types';
 
 const DataMerch: FC<IDataMerch> = () => (
   <FieldsetContainer title="Данные для мерча">
-    <Input type="text" placeholder="Размер одежды" name="clothingSize" />
-    <Input type="text" placeholder="Размер обуви" name="shoeSize" />
+    <Input type="text" placeholder="Размер одежды" name="clothes_size" />
+    <Input type="text" placeholder="Размер обуви" name="foot_size" />
   </FieldsetContainer>
 );
 

@@ -9,7 +9,7 @@ const WorkAndEducation: FC<IWorkAndEducation> = () => (
     <Input
       type="text"
       placeholder="Программа обучения в Практикуме"
-      name="position"
+      name="ya_programm"
     />
     <Input
       type="text"
@@ -17,7 +17,7 @@ const WorkAndEducation: FC<IWorkAndEducation> = () => (
       name="purpose"
     />
     <Input type="text" placeholder="Образование" name="education" />
-    <Input type="text" placeholder="Место работы" name="workPlace" />
+    <Input type="text" placeholder="Место работы" name="work" />
   </FieldsetContainer>
 );
 

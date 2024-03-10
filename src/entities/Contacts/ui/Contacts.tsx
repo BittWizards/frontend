@@ -15,7 +15,7 @@ const Contacts: FC<IContacts> = () => (
   <FieldsetContainer title="Контактная информация">
     <div className={style.inputIcons}>
       <img src={telegram} className={style.icon} alt="telegram" />
-      <Input type="url" placeholder="https://t.me/" name="telegram" />
+      <Input type="url" placeholder="https://t.me/" name="tg_acc" />
     </div>
 
     <div className={style.inputIcons}>
