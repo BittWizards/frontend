@@ -62,8 +62,6 @@ const AmbassadorQuestionnaire = () => {
     info: '', //
   };
 
-  console.log(ambassador)
-
   const methods = useForm({
     defaultValues: defaultValues,
   });
@@ -71,13 +69,12 @@ const AmbassadorQuestionnaire = () => {
   const onSubmit = (data: any) => {
     dispatch(setIsOpen(true));
     dispatch(setRequestData(data));
-    dispatch(patchChangeAmbassador({id: Number(id), body: data}));
   };
-
+  
   const onConfirm = () => {
     dispatch(setIsOpen(false));
     dispatch(setIsSecondaryOpen(true));
-    console.log(requestData);
+    dispatch(patchChangeAmbassador({ id: Number(id), body: requestData }));
   };
 
   const onConfirmReject = () => {
@@ -125,8 +122,9 @@ const AmbassadorQuestionnaire = () => {
       />
       <ChoiceModal
         open={isCancelOpen}
-        title={'Сохранить изменения'}
-        content={`Данные были изменены. Сохранить изменения?`}
+        title={'Отменить редактирование '}
+        content={`Внесённые изменения не будут сохранены.
+        Выйти без сохранения данных?`}
         onCancelLabel={'Отменить'}
         onConfirmLabel={'Подтвердить'}
         onCancel={() => dispatch(setIsCancelOpen(false))}

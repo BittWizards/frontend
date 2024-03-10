@@ -74,7 +74,6 @@ export const patchConfirmCandidate = createAsyncThunk(
 export const patchChangeAmbassador = createAsyncThunk(
   'ambassadors/patchChangeAmbassador',
   async ({ id, body }: { id: number; body: IAmbassadorChange }, { rejectWithValue }) => {
-    console.log(body.gender)
     try {
       const { data } = await axios.patch<IAmbassador[]>(
         `${BASE_URL}/api/v1/ambassadors/${id}/`,
