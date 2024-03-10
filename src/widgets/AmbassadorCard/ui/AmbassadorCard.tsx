@@ -34,7 +34,7 @@ const AmbassadorCard: FC<TAmbassadorCardProps> = ({ data }) => {
           </div>
           <div className={style.line} />
           <ButtonSecondaryComponent
-            label="Посмотреть"
+            label="Просмотреть"
             width={296}
             height={48}
             onClick={() =>

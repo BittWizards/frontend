@@ -42,7 +42,7 @@ const ContentUserCard: FC<TCardProps> = ({ data }) => {
       <div className={style.line} />
       <div className={style.btnWrapper}>
         <ButtonSecondaryComponent
-          label="Посмотреть"
+          label="Просмотреть"
           width={296}
           height={48}
           onClick={handleClick}
