@@ -13,8 +13,6 @@ import { getAllPromocodes } from 'src/shared/api/promocodes';
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { AmbassadorsInfoCard } from 'src/entities/AmbassadorsInfoCard';
-import { ContentColumnList } from 'src/widgets/ContentColumnList';
-import { contentData } from 'src/utils/constants/contentInfoCard';
 import { PromoInfoCard } from 'src/entities/PromoInfoCard';
 import { ContentInfoCard } from 'src/entities/ContentInfoCard';
 import { ContentContainer } from 'src/widgets/ContentContainer';
