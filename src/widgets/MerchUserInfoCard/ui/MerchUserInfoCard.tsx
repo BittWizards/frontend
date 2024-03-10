@@ -50,7 +50,7 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
             )}
             <div className={style.userInfo}>
               <p className={style.name}>
-                {data.ambassador.last_name} {data.ambassador.last_name}
+                {data.ambassador.last_name} {data.ambassador.first_name}
               </p>
               <p className={style.position}>{data.ambassador.ya_programm}</p>
             </div>

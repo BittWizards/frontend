@@ -14,7 +14,7 @@ type TAmbassadorMerchs = {
 type TAmbassadorMerchHistory = TUserBase & {
   merch: TAmbassadorMerchs[];
   last_delivery_date: string;
-  total: number;
+  total: number | null;
 };
 
 type TMerchItem = {
