@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import type { ICandidateQuestionnaire } from '../types/types';
 
 import { FormContainer } from 'src/shared/FormContainer';
@@ -21,9 +21,11 @@ import {
 } from 'src/app/store/reducers/modal/model/modalSlice';
 
 import style from './CandidateQuestionnaire.module.scss';
+import { patchConfirmCandidate } from 'src/shared/api/ambassadors';
 
 const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { ambassador } = useAppSelector(selectAmbassadors);
   const { isOpen, isSecondaryOpen, isCancelOpen } = useAppSelector(selectModal);
@@ -43,7 +45,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
     purpose: ambassador.purpose,
     education: ambassador.education,
     work: ambassador.work,
-    tg_acc: ambassador.tg_acc,
+    tg_acc: `@${ambassador.tg_acc.toLowerCase()}`,
     email: ambassador.email,
     phone: ambassador.phone,
     blog: true, //
@@ -62,17 +64,26 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
   const onConfirm = () => {
     dispatch(setIsOpen(false));
     dispatch(setIsSecondaryOpen(true));
-    console.log(id);
+    dispatch(
+      patchConfirmCandidate({
+        id: Number(id),
+        status: 'Active',
+      })
+    );
   };
 
   const onConfirmReject = (data: string) => {
-    dispatch(setIsCancelOpen(false))
-    console.log({id, data})
-  }
+    dispatch(setIsCancelOpen(false));
+    console.log({ id, data });
+  };
 
   const onSubmit = (data: Object) => {
-    console.log(data)
     dispatch(setIsOpen(true));
+  };
+
+  const onSuccessClose = () => {
+    dispatch(setIsSecondaryOpen(false))
+    navigate(-1);
   };
 
   return (
@@ -107,7 +118,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
       />
       <SuccessModal
         open={isSecondaryOpen}
-        onClose={() => dispatch(setIsSecondaryOpen(false))}
+        onClose={onSuccessClose}
         title={'Успех'}
         content={'Новый Амбассадор был добавлен в базу!'}
       />

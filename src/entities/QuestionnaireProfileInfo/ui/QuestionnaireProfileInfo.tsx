@@ -23,11 +23,13 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = () => {
         ) : (
           <Avatar size="l" />
         )}
-        <input
-          type="button"
-          value="+ Загрузить фото"
-          className={style.downloadLink}
-        />
+        {isEdit && (
+          <input
+            type="button"
+            value="+ Загрузить фото"
+            className={style.downloadLink}
+          />
+        )}
       </div>
       <div className={style.infoContainer}>
         {isEdit ? (
