@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import type { IAmbassadorQuestionnaire } from '../types/types';
+import { useNavigate } from 'react-router-dom';
 
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
@@ -13,39 +14,43 @@ import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import style from './AmbassadorQuestionnaire.module.scss';
-import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+import {
+  selectQuestionnaire,
+  setIsEdit,
+} from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 import {
   selectModal,
-  onConfirm,
-  onCancelChanges,
-  onConfirmChanges,
-  onCloseSecondaryModal,
   setRequestData,
+  setIsOpen,
+  setIsSecondaryOpen,
+  setIsCancelOpen,
 } from 'src/app/store/reducers/modal/model/modalSlice';
 
 const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = () => {
   const { ambassador } = useAppSelector(selectAmbassadors);
   const { isEdit } = useAppSelector(selectQuestionnaire);
-  const { isOpen, isSecondaryOpen, requestData } = useAppSelector(selectModal);
+  const { isOpen, isSecondaryOpen, requestData, isCancelOpen } =
+    useAppSelector(selectModal);
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const defaultValues = {
     gender: ambassador.gender,
-    surname: ambassador.middle_name,
-    name: ambassador.first_name,
-    secondname: ambassador.last_name,
+    middle_name: ambassador.middle_name,
+    first_name: ambassador.first_name,
+    last_name: ambassador.last_name,
     country: ambassador.address.country,
     city: ambassador.address.city,
-    adress: ambassador.address.street_home,
-    index: ambassador.address.post_index,
-    clothingSize: ambassador.size.clothes_size,
-    shoeSize: ambassador.size.foot_size,
-    position: ambassador.ya_programm,
+    street_home: ambassador.address.street_home,
+    post_index: ambassador.address.post_index,
+    clothes_size: ambassador.size.clothes_size,
+    foot_size: ambassador.size.foot_size,
+    ya_programm: ambassador.ya_programm,
     purpose: ambassador.purpose,
     education: ambassador.education,
-    workPlace: ambassador.work,
-    telegram: ambassador.tg_acc,
+    work: ambassador.work,
+    tg_acc: ambassador.tg_acc,
     email: ambassador.email,
     phone: ambassador.phone,
     blog: true, //
@@ -62,11 +67,25 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = () => {
   });
 
   const onSubmit = (data: Object) => {
-    dispatch(onConfirm());
+    dispatch(setIsOpen(true));
     dispatch(setRequestData(data));
   };
 
-  console.log({avatar: ambassador.image, ...requestData})
+  const onConfirm = () => {
+    dispatch(setIsOpen(false));
+    dispatch(setIsSecondaryOpen(true));
+    console.log(requestData);
+  };
+
+  const onConfirmReject = () => {
+    methods.reset(defaultValues);
+    dispatch(setIsCancelOpen(false));
+    dispatch(setIsEdit(false));
+  };
+
+  const onCancelChanges = () => {
+    isEdit ? dispatch(setIsCancelOpen(true)) : navigate(-1);
+  };
 
   return (
     <FormProvider {...methods}>
@@ -87,26 +106,36 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = () => {
             label={isEdit ? 'Отменить' : 'Закрыть'}
             width={244}
             height={48}
-            onClick={() => {}}
+            onClick={onCancelChanges}
           />
         </div>
-        </FormContainer>
-        <ChoiceModal
-          open={isOpen}
-          title={'Сохранить изменения'}
-          content={`Данные были изменены. Сохранить изменения?`}
-          onCancelLabel={'Отменить'}
-          onConfirmLabel={'Подтвердить'}
-          onCancel={() => dispatch(onCancelChanges())}
-          onConfirm={() => dispatch(onConfirmChanges())}
-          onClose={() => dispatch(onCancelChanges())}
-        />
-        <SuccessModal
-          open={isSecondaryOpen}
-          onClose={() => dispatch(onCloseSecondaryModal())}
-          title={'Успех'}
-          content={'Все данные были успешно сохранены!'}
-        />
+      </FormContainer>
+      <ChoiceModal
+        open={isOpen}
+        title={'Сохранить изменения'}
+        content={`Данные были изменены. Сохранить изменения?`}
+        onCancelLabel={'Отменить'}
+        onConfirmLabel={'Подтвердить'}
+        onCancel={() => {}}
+        onConfirm={onConfirm}
+        onClose={() => {}}
+      />
+      <ChoiceModal
+        open={isCancelOpen}
+        title={'Сохранить изменения'}
+        content={`Данные были изменены. Сохранить изменения?`}
+        onCancelLabel={'Отменить'}
+        onConfirmLabel={'Подтвердить'}
+        onCancel={() => dispatch(setIsCancelOpen(false))}
+        onConfirm={onConfirmReject}
+        onClose={() => dispatch(setIsCancelOpen(false))}
+      />
+      <SuccessModal
+        open={isSecondaryOpen}
+        onClose={() => dispatch(setIsSecondaryOpen(false))}
+        title={'Успех'}
+        content={'Все данные были успешно сохранены!'}
+      />
     </FormProvider>
   );
 };

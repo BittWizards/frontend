@@ -32,9 +32,9 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = () => {
       <div className={style.infoContainer}>
         {isEdit ? (
           <div className={style.info}>
-            <Input type="text" name="surname" placeholder="Фамилия" />
-            <Input type="text" name="name" placeholder="Имя" />
-            <Input type="text" name="secondname" placeholder="Отчество" />
+            <Input type="text" name="middle_name" placeholder="Фамилия" />
+            <Input type="text" name="first_name" placeholder="Имя" />
+            <Input type="text" name="last_name" placeholder="Отчество" />
           </div>
         ) : (
           <div className={style.info}>

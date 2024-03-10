@@ -109,10 +109,12 @@ const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
               </TableCell>
             ))}
             <TableCell style={commonCellStyle}>
-              {user.total.toLocaleString('ru-RU', {
-                style: 'currency',
-                currency: 'RUB',
-              })}
+              {user.total !== null
+                ? user.total.toLocaleString('ru-RU', {
+                    style: 'currency',
+                    currency: 'RUB',
+                  })
+                : 'Нет данных'}
             </TableCell>
           </TableRow>
         ))}

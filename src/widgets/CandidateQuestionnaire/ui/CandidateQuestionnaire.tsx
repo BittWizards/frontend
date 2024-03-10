@@ -1,4 +1,5 @@
 import { type FC } from 'react';
+import { useParams } from 'react-router-dom';
 import type { ICandidateQuestionnaire } from '../types/types';
 
 import { FormContainer } from 'src/shared/FormContainer';
@@ -12,37 +13,37 @@ import { ChoiceModal, InputModal, SuccessModal } from 'src/entities/Modals';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
 import {
-  onCancelChanges,
-  onConfirmChanges,
   selectModal,
-  onConfirm,
-  onCloseSecondaryModal,
+  setIsOpen,
+  setIsSecondaryOpen,
   setIsCancelOpen,
+  setIsCancelSecondaryOpen,
 } from 'src/app/store/reducers/modal/model/modalSlice';
 
 import style from './CandidateQuestionnaire.module.scss';
 
 const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
+  const { id } = useParams();
   const dispatch = useAppDispatch();
   const { ambassador } = useAppSelector(selectAmbassadors);
   const { isOpen, isSecondaryOpen, isCancelOpen } = useAppSelector(selectModal);
 
   const defaultValues = {
     gender: ambassador.gender,
-    surname: ambassador.middle_name,
-    name: ambassador.first_name,
-    secondname: ambassador.last_name,
+    middle_name: ambassador.middle_name,
+    first_name: ambassador.first_name,
+    last_name: ambassador.last_name,
     country: ambassador.address.country,
     city: ambassador.address.city,
-    adress: ambassador.address.street_home,
-    index: ambassador.address.post_index,
-    clothingSize: ambassador.size.clothes_size,
-    shoeSize: ambassador.size.foot_size,
-    position: ambassador.ya_programm,
+    street_home: ambassador.address.street_home,
+    post_index: ambassador.address.post_index,
+    clothes_size: ambassador.size.clothes_size,
+    foot_size: ambassador.size.foot_size,
+    ya_programm: ambassador.ya_programm,
     purpose: ambassador.purpose,
     education: ambassador.education,
-    workPlace: ambassador.work,
-    telegram: ambassador.tg_acc,
+    work: ambassador.work,
+    tg_acc: ambassador.tg_acc,
     email: ambassador.email,
     phone: ambassador.phone,
     blog: true, //
@@ -58,14 +59,21 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
     defaultValues: defaultValues,
   });
 
-  const onSubmit = (data: Object) => {
-    dispatch(onConfirm());
-    console.log(data);
+  const onConfirm = () => {
+    dispatch(setIsOpen(false));
+    dispatch(setIsSecondaryOpen(true));
+    console.log(id);
   };
 
-  const onCancel = () => {
-    dispatch(setIsCancelOpen(true))
+  const onConfirmReject = (data: string) => {
+    dispatch(setIsCancelOpen(false))
+    console.log({id, data})
   }
+
+  const onSubmit = (data: Object) => {
+    console.log(data)
+    dispatch(setIsOpen(true));
+  };
 
   return (
     <FormProvider {...methods}>
@@ -83,7 +91,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
             label={'Отклонить'}
             width={244}
             height={48}
-            onClick={onCancel}
+            onClick={() => dispatch(setIsCancelOpen(true))}
           />
         </div>
       </FormContainer>
@@ -93,13 +101,13 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
         content={`Вы подтверждаете принятие кандидата в базу амбассадоров?`}
         onCancelLabel={'Отменить'}
         onConfirmLabel={'Подтвердить'}
-        onCancel={() => dispatch(onCancelChanges())}
-        onConfirm={() => dispatch(onConfirmChanges())}
-        onClose={() => dispatch(onCancelChanges())}
+        onConfirm={onConfirm}
+        onCancel={() => dispatch(setIsOpen(false))}
+        onClose={() => dispatch(setIsOpen(false))}
       />
       <SuccessModal
         open={isSecondaryOpen}
-        onClose={() => dispatch(onCloseSecondaryModal())}
+        onClose={() => dispatch(setIsSecondaryOpen(false))}
         title={'Успех'}
         content={'Новый Амбассадор был добавлен в базу!'}
       />
@@ -111,9 +119,9 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
         }
         onCancelLabel={'Отменить'}
         onConfirmLabel={'Подтвердить'}
+        onConfirm={onConfirmReject}
         onClose={() => dispatch(setIsCancelOpen(false))}
         onCancel={() => dispatch(setIsCancelOpen(false))}
-        onConfirm={() => {}}
       />
     </FormProvider>
   );

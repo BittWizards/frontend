@@ -39,13 +39,10 @@ const AmbassadorContentPage: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (id) {
-      const numericId = parseInt(id, 10);
-      dispatch(getAmbassadorsContentById(numericId));
-    }
+    dispatch(getAmbassadorsContentById(Number(id)));
   }, [id]);
 
-  const contentList = useAppSelector(selectContent);
+  const { ambassadorContent, isLoading } = useAppSelector(selectContent);
 
   const commonCellStyle = {
     color: '#fff',
@@ -65,7 +62,6 @@ const AmbassadorContentPage: FC = () => {
   };
 
   const getPlatformIcon = (platform: string): JSX.Element => {
-    /* eslint-disable */
     switch (platform) {
       case 'habr':
         return <img src={habrIcon} alt="Habr" />;
@@ -85,24 +81,21 @@ const AmbassadorContentPage: FC = () => {
   };
 
   const handleRowClick = (contentId: number) => {
-    console.log('contentId Row Click', contentId);
-    navigate(
-      `/ambassadors/${contentList.ambassadorContent.id}/detail/${contentId}/report`
-    );
+    navigate(`/ambassadors/${ambassadorContent.id}/detail/${contentId}/report`);
   };
 
-  return contentList.isLoading ? (
+  return isLoading ? (
     <Loader />
   ) : (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
       <div className={style.content}>
         <TabsNavBar tabs={tabsData} />
-        <AmbassadorHeaderCard data={contentList.ambassadorContent} />
+        <AmbassadorHeaderCard data={ambassadorContent} />
         <div className={style.raitingWrapper}>
           <span className={style.raitingText}>Рейтинг Амбассадора</span>
           <span className={style.raitingText}>
-            {contentList.ambassadorContent.my_content.length}
+            {ambassadorContent.my_content.length}
           </span>
         </div>
         <SubtitleWithEditBtn title="Контент Амбассадора" isWithBtn={false} />
@@ -117,7 +110,7 @@ const AmbassadorContentPage: FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {contentList.ambassadorContent.my_content.map((row, index) => (
+              {ambassadorContent.my_content.map((row, index) => (
                 <TableRow
                   sx={{ cursor: 'pointer' }}
                   key={uuidv4()}
