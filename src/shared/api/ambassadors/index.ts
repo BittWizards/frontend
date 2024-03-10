@@ -108,3 +108,42 @@ export const patchChangeAmbassador = createAsyncThunk(
     }
   }
 );
+
+export const postNewAmbassador = createAsyncThunk(
+  'ambassadors/postNewAmbassador',
+  async ({body}: { body: IAmbassadorChange }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post<IAmbassador[]>(
+        `${BASE_URL}/api/v1/ambassadors/`,
+        {
+          gender: body.gender,
+          middle_name: body.middle_name,
+          first_name: body.first_name,
+          last_name: body.last_name,
+          address: {
+            country: body.country,
+            city: body.city,
+            street_home: body.street_home,
+            post_index: body.post_index,
+          },
+          size: {
+            clothes_size: body.clothes_size,
+            foot_size: body.foot_size,
+          },
+          ya_programm: body.ya_programm,
+          purpose: body.purpose,
+          education: body.education,
+          work: body.work,
+          tg_acc: body.tg_acc,
+          email: body.email,
+          phone: body.phone,
+          actions: []
+        }
+      );
+      return data;
+    } catch (e: any) {
+      console.error(`Другая ошибка при запросе postNewAmbassador: ${e}`);
+      return rejectWithValue(e.message);
+    }
+  }
+);

@@ -9,14 +9,14 @@ import { FormContainer } from 'src/shared/FormContainer';
 import { ButtonComponent } from 'src/entities/Button';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
+
+import { postNewAmbassador } from 'src/shared/api/ambassadors';
+import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import {
   setIsEdit,
   setIsEditable,
 } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
-
-import style from './NewAmbassadorPage.module.scss';
-import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
 import {
   onCancelChanges,
   onCloseSecondaryModal,
@@ -26,13 +26,15 @@ import {
   setIsOpen,
 } from 'src/app/store/reducers/modal/model/modalSlice';
 
+import style from './NewAmbassadorPage.module.scss';
+
 const NewAmbassadorPage = () => {
   const methods = useForm();
   const { isOpen, isSecondaryOpen, isCancelOpen } = useAppSelector(selectModal);
 
   const onSubmit = (data: Object) => {
     dispatch(setIsOpen(true));
-    console.log(data);
+    dispatch(postNewAmbassador({body: data}))
   };
 
   const onCancel = () => {
