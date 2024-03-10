@@ -35,7 +35,7 @@ const AmbassadorPage = () => {
     dispatch(getAllAmbassadors());
   }, [dispatch]);
 
-  const ambassadors = useAppSelector(selectAmbassadors);
+  const { ambassadors, isLoading } = useAppSelector(selectAmbassadors);
 
   const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ const AmbassadorPage = () => {
   const onSearch = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     // eslint-disable-next-line max-len
-    const results = ambassadors.ambassadors.filter(
+    const results = ambassadors.filter(
       ambassador =>
         ambassador.first_name
           .toLowerCase()
@@ -65,7 +65,7 @@ const AmbassadorPage = () => {
   const handleSortChange = (selectedOption: string | null) => {
     if (selectedOption !== null) {
       let sortedResults = [...searchResults];
-      /* eslint-disable */
+
       switch (selectedOption) {
         case 'Дата':
           sortedResults = sortByDate(sortedResults).reverse();
@@ -79,28 +79,23 @@ const AmbassadorPage = () => {
           break;
         case 'Статус':
           sortedResults = sortByStatus(sortedResults);
-          console.log('статус sorted', sortedResults);
           break;
 
         default:
           break;
       }
-      /* eslint-enable */
+
       setSearchResults(sortedResults);
     }
   };
 
-  /* eslint-disable */
   useEffect(() => {
-    setSearchResults(ambassadors.ambassadors);
+    setSearchResults(ambassadors);
   }, [searchTerm]);
-  /* eslint-enable */
 
-  /* eslint-disable */
   useEffect(() => {
-    setSearchResults(sortByStatus(ambassadors.ambassadors));
-  }, []);
-  /* eslint-enable */
+    setSearchResults(sortByStatus(ambassadors));
+  }, [ambassadors]);
 
   return (
     <div className={style.main}>
@@ -129,7 +124,7 @@ const AmbassadorPage = () => {
                 handleChange={handleChange}
               />
             </div>
-            {ambassadors.isLoading ? (
+            {isLoading ? (
               <Loader />
             ) : (
               <div className={style.cardsContainer}>
@@ -158,7 +153,11 @@ const AmbassadorPage = () => {
                   handleChange={handleChange}
                 />
                 <div className={style.sortWrapper}>
-                  <img src={downloadImg} className={style.downloadImg} alt="Иконка скачивания" />
+                  <img
+                    src={downloadImg}
+                    className={style.downloadImg}
+                    alt="Иконка скачивания"
+                  />
                   <SortComponent
                     width={220}
                     height={48}
@@ -168,11 +167,7 @@ const AmbassadorPage = () => {
                 </div>
               </div>
             </div>
-            {ambassadors.isLoading ? (
-              <Loader />
-            ) : (
-              <AmbassadorTable data={searchResults} />
-            )}
+            {isLoading ? <Loader /> : <AmbassadorTable data={searchResults} />}
           </>
         )}
       </div>

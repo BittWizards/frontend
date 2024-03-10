@@ -32,7 +32,7 @@ const PromocodePage: FC = () => {
     dispatch(getAllPromocodes());
   }, [dispatch]);
 
-  const promocodes = useAppSelector(selectPromocodes);
+  const {promocodes, isLoading} = useAppSelector(selectPromocodes);
 
   const [openModal, setModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -56,7 +56,7 @@ const PromocodePage: FC = () => {
 
   const onSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    const results = promocodes.promocodes.filter(
+    const results = promocodes.filter(
       ambassador =>
         ambassador.ambassador.first_name
           .toLowerCase()
@@ -67,16 +67,13 @@ const PromocodePage: FC = () => {
     );
     setSearchResults(results);
   };
-  /* eslint-disable */
   useEffect(() => {
-    setSearchResults(sortByDate(promocodes.promocodes).reverse());
-  }, []);
-  /* eslint-enable */
+    setSearchResults(sortByDate(promocodes).reverse());
+  }, [promocodes]);
 
   const handleSortChange = (selectedOption: string | null) => {
     if (selectedOption !== null) {
       let sortedResults = [...searchResults];
-      /* eslint-disable */
       switch (selectedOption) {
         case 'Дата':
           sortedResults = sortByDate(sortedResults).reverse();
@@ -130,7 +127,7 @@ const PromocodePage: FC = () => {
               </div>
             </div>
           </div>
-          {promocodes.isLoading ? (
+          {isLoading ? (
             <Loader />
           ) : (
             <div className={style.cardsContainer}>

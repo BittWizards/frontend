@@ -1,5 +1,7 @@
 import type { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useAppSelector } from 'src/app/store/hooks';
+import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 import type { ITextarea } from '../types/types';
 
 import style from './Textarea.module.scss';
@@ -8,10 +10,10 @@ const Textarea: FC<ITextarea> = ({
   width,
   height,
   placeholder,
-  isEdit,
   name
 }) => {
   const { register } = useFormContext();
+  const {isEdit} = useAppSelector(selectQuestionnaire)
   return (
     <textarea
       placeholder={placeholder}

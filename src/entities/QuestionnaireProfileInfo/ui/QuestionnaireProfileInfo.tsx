@@ -1,26 +1,25 @@
 import type { FC } from 'react';
-import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { useAppSelector } from 'src/app/store/hooks';
 import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
-
 import { Avatar } from 'src/entities/Avatar';
 import { Input } from 'src/shared/Input';
 import style from './QuestionnaireProfileInfo.module.scss';
-
 import type { IQuestionnaireProfileInfo } from '../types/types';
+import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 
-const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
+const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = () => {
   const { register } = useFormContext();
 
   const { isEdit } = useAppSelector(selectQuestionnaire);
+  const { ambassador } = useAppSelector(selectAmbassadors);
 
   return (
     <div className={style.profile}>
       <div className={style.photoContainer}>
-        {user?.avatar ? (
-          <Avatar link={user.avatar} size="l" />
+        {ambassador.image ? (
+          <Avatar link={ambassador.image} size="l" />
         ) : (
           <Avatar size="l" />
         )}
@@ -33,32 +32,22 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
       <div className={style.infoContainer}>
         {isEdit ? (
           <div className={style.info}>
-            <Input
-              type="text"
-              isEdit={isEdit}
-              name="surname"
-              placeholder="Фамилия"
-            />
-            <Input type="text" isEdit={isEdit} name="name" placeholder="Имя" />
-            <Input
-              type="text"
-              isEdit={isEdit}
-              name="secondname"
-              placeholder="Отчество"
-            />
+            <Input type="text" name="surname" placeholder="Фамилия" />
+            <Input type="text" name="name" placeholder="Имя" />
+            <Input type="text" name="secondname" placeholder="Отчество" />
           </div>
         ) : (
           <div className={style.info}>
-            <p className={style.name}>{user?.surname} </p>
-            <p className={style.name}>{user?.name} </p>
-            <p className={style.name}>{user?.secondname}</p>
+            <p className={style.name}>{ambassador.last_name} </p>
+            <p className={style.name}>{ambassador.first_name} </p>
+            <p className={style.name}>{ambassador.middle_name}</p>
           </div>
         )}
         <fieldset className={style.fieldset}>
           <label className={style.label}>
             <input
               type="radio"
-              value="male"
+              value="Male"
               disabled={!isEdit}
               className={style.radio}
               {...register('gender')}
@@ -68,7 +57,7 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({ user }) => {
           <label className={style.label}>
             <input
               type="radio"
-              value="female"
+              value="Female"
               disabled={!isEdit}
               className={style.radio}
               {...register('gender')}

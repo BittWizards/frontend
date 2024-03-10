@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { StatusIcon } from 'src/shared/StatusIcon';
 import { Avatar } from 'src/entities/Avatar';
 
-import avatar from 'src/shared/icons/userAvatar.png';
-
 import {
   Table,
   TableBody,
@@ -70,7 +68,7 @@ const AmbassadorTable: FC<TCardProps> = ({ data }) => {
             <TableCell style={commonCellStyle}>{index + 1}</TableCell>
             <TableCell style={commonCellStyle}>
               <div className={style.userInfoWrapper}>
-                <Avatar link={avatar} size="s" />
+                <Avatar link={ambassador.image} size="s" />
                 <div className={style.positionCellWrapper}>
                   <span className={style.cellText}>
                     {ambassador.last_name} {ambassador.first_name}
@@ -83,16 +81,14 @@ const AmbassadorTable: FC<TCardProps> = ({ data }) => {
             </TableCell>
             <TableCell style={commonCellStyle}>
               <div className={style.positionCellWrapper}>
-                <span className={style.cellText}>
-                  {ambassador.ya_programm.title}
-                </span>
+                <span className={style.cellText}>{ambassador.ya_programm}</span>
               </div>
             </TableCell>
             <TableCell style={commonCellStyle}>
               <div className={style.cellWrapper}>
                 <span
                   className={style.cellText}
-                >{`@${ambassador.tg_acc.split('/')[1]}`}</span>
+                >{`@${ambassador.tg_acc.toLowerCase()}`}</span>
               </div>
             </TableCell>
             <TableCell style={commonCellStyle}>

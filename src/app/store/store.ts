@@ -5,15 +5,19 @@ import { merchReducer } from './reducers/merch';
 import { promocodesReducer } from './reducers/promocodes';
 import { ordersReducer } from './reducers/orders/imdex';
 import { questionnaireReducer } from './reducers/questionnaire';
+import { notificationsReducer } from './reducers/notifications';
+import { modalReducer } from './reducers/modal';
 
 export const store = configureStore({
   reducer: {
+    notifications: notificationsReducer,
     ambassadors: ambassadorsReducer,
     content: contentsReducer,
     merch: merchReducer,
     promocodes: promocodesReducer,
     orders: ordersReducer,
     questionnaire: questionnaireReducer,
+    modal: modalReducer,
   },
 });
 

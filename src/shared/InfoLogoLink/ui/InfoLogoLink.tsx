@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-
+import { formatPhoneNumber } from '../model/formatTel';
 import style from './InfoLogoLink.module.scss';
 
 type TInfoLogoLinkProps = {
@@ -18,7 +18,7 @@ const generateWebsiteLinkProps = (text: string) => ({
 
 const InfoLogoLink: FC<TInfoLogoLinkProps> = ({ icon, text, linkType }) => {
   let linkProps = {};
-  /* eslint-disable */
+
   switch (linkType) {
     case 'email':
       linkProps = generateEmailLinkProps(text);
@@ -35,7 +35,7 @@ const InfoLogoLink: FC<TInfoLogoLinkProps> = ({ icon, text, linkType }) => {
 
   const renderLink = () => (
     <a className={style.link} {...linkProps}>
-      {text}
+      {linkType === 'tel' ? formatPhoneNumber(text) : text}
     </a>
   );
 

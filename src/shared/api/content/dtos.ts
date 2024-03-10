@@ -19,6 +19,7 @@ interface IAllContent {
   image: string;
   last_name: string;
   first_name: string;
+  status: 'Active' | 'Pause' | 'Clarify' | 'Not active' | '';
   tg_acc: string;
   rating: number | null;
   review_count: number | null;

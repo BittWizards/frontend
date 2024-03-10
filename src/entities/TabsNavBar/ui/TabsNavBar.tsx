@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation, useParams, NavLink } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
 import type { TTabsNavBarProps } from '../types/type';
 import style from './TabsNavBar.module.scss';
@@ -35,9 +35,15 @@ const TabsNavBar: FC<TTabsNavBarProps> = ({ tabs }) => {
           <li
             key={key}
             className={`${style.navItem} ${selectedOption === key ? style.active : ''}`}
-            onClick={() => handleTabClickInternal(key)}
           >
-            {value}
+            <a
+              href="#"
+              onClick={() => handleTabClickInternal(key)}
+              onKeyUp={() => handleTabClickInternal(key)}
+              className={`${style.navLink} ${selectedOption === key ? style.active : ''}`}
+            >
+              {value}
+            </a>
           </li>
         ))}
       </ul>

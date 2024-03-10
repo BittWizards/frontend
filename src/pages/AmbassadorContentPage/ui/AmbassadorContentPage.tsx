@@ -101,9 +101,11 @@ const AmbassadorContentPage: FC = () => {
         <AmbassadorHeaderCard data={contentList.ambassadorContent} />
         <div className={style.raitingWrapper}>
           <span className={style.raitingText}>Рейтинг Амбассадора</span>
-          <span className={style.raitingText}>46</span>
+          <span className={style.raitingText}>
+            {contentList.ambassadorContent.my_content.length}
+          </span>
         </div>
-        <SubtitleWithEditBtn title="Контент Амбассадора" />
+        <SubtitleWithEditBtn title="Контент Амбассадора" isWithBtn={false} />
         <div className={style.tableWrapper}>
           <Table style={{ width: '100%' }}>
             <TableHead className={style.tableHead}>
