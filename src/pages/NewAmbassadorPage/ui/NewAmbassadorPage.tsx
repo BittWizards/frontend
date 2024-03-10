@@ -9,7 +9,6 @@ import { FormContainer } from 'src/shared/FormContainer';
 import { ButtonComponent } from 'src/entities/Button';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
-
 import { postNewAmbassador } from 'src/shared/api/ambassadors';
 import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
@@ -18,30 +17,40 @@ import {
   setIsEditable,
 } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 import {
-  onCancelChanges,
-  onCloseSecondaryModal,
-  onConfirmChanges,
   selectModal,
   setIsCancelOpen,
   setIsOpen,
+  setIsSecondaryOpen,
+  setRequestData,
 } from 'src/app/store/reducers/modal/model/modalSlice';
 
 import style from './NewAmbassadorPage.module.scss';
 
 const NewAmbassadorPage = () => {
   const methods = useForm();
-  const { isOpen, isSecondaryOpen, isCancelOpen } = useAppSelector(selectModal);
+  const { isOpen, isSecondaryOpen, isCancelOpen, requestData } =
+    useAppSelector(selectModal);
+  const dispatch = useAppDispatch();
 
   const onSubmit = (data: Object) => {
     dispatch(setIsOpen(true));
-    dispatch(postNewAmbassador({body: data}))
+    dispatch(setRequestData(data));
+  };
+
+  const onConfirm = () => {
+    dispatch(postNewAmbassador({ body: requestData }));
+    dispatch(setIsOpen(false));
+    dispatch(setIsSecondaryOpen(true));
+  };
+
+  const onConfirmReject = () => {
+    methods.reset();
+    dispatch(setIsCancelOpen(false));
   };
 
   const onCancel = () => {
     dispatch(setIsCancelOpen(true));
   };
-
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(setIsEdit(true));
@@ -77,9 +86,9 @@ const NewAmbassadorPage = () => {
             content={`Данные были изменены. Сохранить изменения?`}
             onCancelLabel={'Отменить'}
             onConfirmLabel={'Подтвердить'}
-            onCancel={() => dispatch(onCancelChanges())}
-            onConfirm={() => dispatch(onConfirmChanges())}
-            onClose={() => dispatch(onCancelChanges())}
+            onCancel={() => dispatch(setIsOpen(false))}
+            onConfirm={onConfirm}
+            onClose={() => dispatch(setIsOpen(false))}
           />
           <ChoiceModal
             open={isCancelOpen}
@@ -89,12 +98,12 @@ const NewAmbassadorPage = () => {
             onCancelLabel={'Отменить'}
             onConfirmLabel={'Подтвердить'}
             onCancel={() => dispatch(setIsCancelOpen(false))}
-            onConfirm={() => {}}
+            onConfirm={onConfirmReject}
             onClose={() => dispatch(setIsCancelOpen(false))}
           />
           <SuccessModal
             open={isSecondaryOpen}
-            onClose={() => dispatch(onCloseSecondaryModal())}
+            onClose={() => dispatch(setIsSecondaryOpen(false))}
             title={'Успех'}
             content={'Все данные были успешно сохранены!'}
           />
