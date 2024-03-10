@@ -4,6 +4,7 @@ interface IQuestionnaireProfileInfo {
   user?: IAmbassador;
   showGender?: boolean;
   showImage?: boolean;
+  prefix?: string;
 }
 
 export type { IQuestionnaireProfileInfo };

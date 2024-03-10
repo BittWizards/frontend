@@ -1,7 +1,7 @@
-import { IAmbassador } from 'src/shared/api/ambassadors/dtos';
+import { IAmbassadorById } from 'src/shared/api/ambassadors/dtos';
 
 interface IOrderForm {
-  ambassador?: IAmbassador;
+  ambassador?: IAmbassadorById;
 }
 
 export type { IOrderForm };

@@ -14,6 +14,8 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
   user,
   showImage = true,
   showGender = true,
+  // эти префиксы для подсасывания из моего селекта нужны
+  prefix,
 }) => {
   const { register } = useFormContext();
 
@@ -38,9 +40,21 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
       <div className={style.infoContainer}>
         {isEdit ? (
           <div className={style.info}>
-            <Input type="text" name="surname" placeholder="Фамилия" />
-            <Input type="text" name="name" placeholder="Имя" />
-            <Input type="text" name="secondname" placeholder="Отчество" />
+            <Input
+              type="text"
+              placeholder="Фамилия"
+              {...register(prefix ? `${prefix}.last_name` : 'last_name')}
+            />
+            <Input
+              type="text"
+              placeholder="Имя"
+              {...register(prefix ? `${prefix}.first_name` : 'first_name')}
+            />
+            <Input
+              type="text"
+              placeholder="Отчество"
+              {...register(prefix ? `${prefix}.middle_name` : 'middle_name')}
+            />
           </div>
         ) : (
           <div className={style.info}>

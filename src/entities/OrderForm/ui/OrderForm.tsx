@@ -13,8 +13,10 @@ import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { getMerchTypes } from 'src/shared/api/merch';
 import { RootState } from 'src/app/store/store';
 import { TMerchItem } from 'src/shared/api/merch/dtos';
+import { useFormContext } from 'react-hook-form';
 
 const OrderForm: FC<IOrderForm> = ({ ambassador }) => {
+  const { register } = useFormContext();
   const [merch1, setMerch1]: [TMerchItem | null, Function] =
     useState<any>(null);
   const [merch2, setMerch2]: [TMerchItem | null, Function] =
@@ -46,11 +48,27 @@ const OrderForm: FC<IOrderForm> = ({ ambassador }) => {
     <div>
       <div className={style.container}>
         <div className={style.row}>
-          <PostalDetails />
+          <PostalDetails prefix="ambassador" />
           <FieldsetContainer title="Контактная информация">
             <div className={style.inputIcons}>
               <img src={phone} className={style.icon} alt="phone" />
-              <Input type="phone" placeholder="+7 " name="phone" />
+              <Input
+                type="phone"
+                placeholder="+7 "
+                {...register('ambassador.phone')}
+              />
+            </div>
+          </FieldsetContainer>
+        </div>
+        <div className={style.row}>
+          <FieldsetContainer title="Данные для мерча">
+            <div className={style.info}>
+              <p className={style.name}>
+                Размер одежды: {ambassador?.size.clothes_size}{' '}
+              </p>
+              <p className={style.name}>
+                Размер ноги: {ambassador?.size.foot_size}{' '}
+              </p>
             </div>
           </FieldsetContainer>
         </div>
