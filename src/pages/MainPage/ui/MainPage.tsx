@@ -19,9 +19,10 @@ import { ContentContainer } from 'src/widgets/ContentContainer';
 import { StaticsAnaliticsContainer } from 'src/widgets/StatisticsAnalyticsContainer';
 import { Loader } from 'src/shared/Loader';
 import diagramMain from 'src/shared/icons/diagramMain.svg';
+import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
+import type { IAllContent } from 'src/shared/api/content/dtos';
 
 import style from './MainPage.module.scss';
-import type { IAmbassador } from '../../../shared/api/ambassadors/dtos';
 
 const MainPage = () => {
   const dispatch = useAppDispatch();
@@ -58,7 +59,20 @@ const MainPage = () => {
     latestAmbassadors = sortedAmbassadors.slice(0, 6);
   }
 
+  let topRating: IAllContent[] = [];
 
+  if (content && content.allContent && content.allContent.length > 0) {
+    const sortedContent = content.allContent.slice().sort((a, b) => {
+      const ratingA = a.rating || 0;
+      const ratingB = b.rating || 0;
+
+      return ratingB - ratingA;
+    });
+
+    topRating = sortedContent.slice(0, 3);
+  } else {
+    topRating = [];
+  }
 
   return (
     <div className={style.main}>
@@ -91,9 +105,9 @@ const MainPage = () => {
           </ContentContainer>
           <ContentContainer title="Контент" link="/content">
             <div className={style.cardColumnList}>
-              {content.allContent.map((content, index) => (
-                <ContentInfoCard key={uuidv4()} data={content} />
-              )).slice(0, 3)}
+              {topRating.map((content, index) => (
+                <ContentInfoCard key={uuidv4()} data={content} index={index} />
+              ))}
             </div>
           </ContentContainer>
         </div>
