@@ -3,7 +3,6 @@ import type { IAmbassador, IAmbassadorById } from 'src/shared/api/ambassadors/dt
 import {
   getAllAmbassadors,
   getAmbassadorById,
-  patchChangeAmbassador,
 } from 'src/shared/api/ambassadors';
 import { initialAmbassador } from './constants';
 

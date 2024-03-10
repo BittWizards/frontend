@@ -21,7 +21,7 @@ import {
 } from 'src/app/store/reducers/modal/model/modalSlice';
 
 import style from './CandidateQuestionnaire.module.scss';
-import { patchChangeAmbassador } from 'src/shared/api/ambassadors';
+import { patchConfirmCandidate } from 'src/shared/api/ambassadors';
 
 const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
   const { id } = useParams();
@@ -65,7 +65,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
     dispatch(setIsOpen(false));
     dispatch(setIsSecondaryOpen(true));
     dispatch(
-      patchChangeAmbassador({
+      patchConfirmCandidate({
         id: Number(id),
         status: 'Active',
       })

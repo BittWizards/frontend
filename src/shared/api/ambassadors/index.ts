@@ -54,8 +54,8 @@ export const getNewAmbassadors = createAsyncThunk(
 
 const body = { status: 'Active' };
 
-export const patchChangeAmbassador = createAsyncThunk(
-  'ambassadors/patchChangeAmbassador',
+export const patchConfirmCandidate = createAsyncThunk(
+  'ambassadors/patchConfirmCandidate',
   async (
     { id, status }: { id: number; status: string },
     { fulfillWithValue, rejectWithValue }
@@ -67,7 +67,7 @@ export const patchChangeAmbassador = createAsyncThunk(
       );
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе patchChangeAmbassador: ${e}`);
+      console.error(`Другая ошибка при запросе patchConfirmCandidate: ${e}`);
       return rejectWithValue(e.message);
     }
   }
