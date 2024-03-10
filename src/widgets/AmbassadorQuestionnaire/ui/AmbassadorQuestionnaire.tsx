@@ -1,19 +1,16 @@
-import type { FC } from 'react';
-import type { IAmbassadorQuestionnaire } from '../types/types';
-import { useNavigate } from 'react-router-dom';
+import { FormProvider, useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
 import { FormContainer } from 'src/shared/FormContainer';
-
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
 import { ButtonComponent } from 'src/entities/Button';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
-import { FormProvider, useForm } from 'react-hook-form';
 
-import style from './AmbassadorQuestionnaire.module.scss';
+import { patchChangeAmbassador } from 'src/shared/api/ambassadors';
 import {
   selectQuestionnaire,
   setIsEdit,
@@ -26,7 +23,10 @@ import {
   setIsCancelOpen,
 } from 'src/app/store/reducers/modal/model/modalSlice';
 
-const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = () => {
+import style from './AmbassadorQuestionnaire.module.scss';
+
+const AmbassadorQuestionnaire = () => {
+  const { id } = useParams();
   const { ambassador } = useAppSelector(selectAmbassadors);
   const { isEdit } = useAppSelector(selectQuestionnaire);
   const { isOpen, isSecondaryOpen, requestData, isCancelOpen } =
@@ -62,13 +62,16 @@ const AmbassadorQuestionnaire: FC<IAmbassadorQuestionnaire> = () => {
     info: '', //
   };
 
+  console.log(ambassador)
+
   const methods = useForm({
     defaultValues: defaultValues,
   });
 
-  const onSubmit = (data: Object) => {
+  const onSubmit = (data: any) => {
     dispatch(setIsOpen(true));
     dispatch(setRequestData(data));
+    dispatch(patchChangeAmbassador({id: Number(id), body: data}));
   };
 
   const onConfirm = () => {
