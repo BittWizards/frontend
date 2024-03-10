@@ -13,6 +13,10 @@ interface IPromocode {
     ya_programm: string;
   };
 }
+// type TChangePromocode {
+//   promocode: string;
+//   ambassador: number
+// }
 
 type TAmbassadorPromocode = {
   id: number;

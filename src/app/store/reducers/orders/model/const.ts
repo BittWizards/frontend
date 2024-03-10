@@ -9,8 +9,9 @@ export const initialAmbassadorOrders: TAmbassadorsOrders = {
   status: '',
   city: '',
   ya_programm: '',
+  tg_acc: '',
   email: '',
   phone: '',
-  orders: [],
+  merch: [],
   total_orders_cost: 0,
 };
