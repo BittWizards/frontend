@@ -50,7 +50,7 @@ const AmbassadorQuestionnaire = () => {
     purpose: ambassador.purpose,
     education: ambassador.education,
     work: ambassador.work,
-    tg_acc: ambassador.tg_acc,
+    tg_acc: `@${ambassador.tg_acc.toLowerCase()}`,
     email: ambassador.email,
     phone: ambassador.phone,
     blog: true, //
@@ -116,9 +116,9 @@ const AmbassadorQuestionnaire = () => {
         content={`Данные были изменены. Сохранить изменения?`}
         onCancelLabel={'Отменить'}
         onConfirmLabel={'Подтвердить'}
-        onCancel={() => {}}
+        onCancel={() => dispatch(setIsOpen(false))}
         onConfirm={onConfirm}
-        onClose={() => {}}
+        onClose={() => dispatch(setIsOpen(false))}
       />
       <ChoiceModal
         open={isCancelOpen}

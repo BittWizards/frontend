@@ -45,7 +45,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
     purpose: ambassador.purpose,
     education: ambassador.education,
     work: ambassador.work,
-    tg_acc: ambassador.tg_acc,
+    tg_acc: `@${ambassador.tg_acc.toLowerCase()}`,
     email: ambassador.email,
     phone: ambassador.phone,
     blog: true, //
