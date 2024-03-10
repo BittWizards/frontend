@@ -18,39 +18,22 @@ const Navbar: FC<INavbarProps> = ({ links }) => {
   const count = useAppSelector((state: RootState) => state.notifications);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const socket = new WebSocket(
-      'wss://ambassadors.sytes.net/ws/notification/'
-    );
-    socket.onopen = () => {
-      console.log('Connected to WebSocket');
-    };
-    socket.onmessage = event => {
-      console.log('Received message from WebSocket:', event.data);
-      const { message }: { message: string } = JSON.parse(event.data);
-      switch (message) {
-        case 'ambassador':
-          dispatch(getNewAmbassadors());
-          break;
-        case 'content':
-          dispatch(getNewContent());
-          break;
-        default:
-          console.warn(`message: ${message} is not implemented yet.`);
-      }
-    };
-
-    return () => {
-      console.log('Closed connection to WebSocket');
-      socket.close();
-    };
-  }, [dispatch]);
-
   const dict: { [key: string]: number } = {
     '/ambassadors': count.ambassadorsNewCount,
     '/content': count.contentNewCount,
     '/merch': count.merchNewCount,
   };
+
+  useEffect(() => {
+    dispatch(getNewAmbassadors());
+    dispatch(getNewContent());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dict['/ambassadors'] = count.ambassadorsNewCount;
+    dict['/content'] = count.contentNewCount;
+    dict['/merch'] = count.merchNewCount;
+  }, [count]);
 
   return (
     <aside className={style.aside}>
