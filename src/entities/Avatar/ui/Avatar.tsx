@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import defAvatar from 'src/shared/icons/defaultAvatar.webp';
 import type { TAvatarProps } from '../types/types';
 
 import style from './Avatar.module.scss';
@@ -41,6 +42,10 @@ const Avatar: FC<TAvatarProps> = ({ link, size, status }) => {
 
   const { avatarSize, borderColor } = getSizeAndBorderColor();
 
+  const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    event.currentTarget.src = defAvatar;
+  };
+
   return (
     <div
       className={style.avatarContainer}
@@ -49,7 +54,17 @@ const Avatar: FC<TAvatarProps> = ({ link, size, status }) => {
         height: avatarSize,
       }}
     >
-      <img src={link} className={style.avatarImage} alt="Avatar" />
+      {link ? (
+        <img
+          src={link}
+          className={style.avatarImage}
+          alt="Avatar"
+          onError={handleImageError}
+        />
+      ) : (
+        <img src={defAvatar} className={style.avatarImage} alt="Avatar" />
+      )}
+
       <span
         className={style.borderOverlay}
         style={{
