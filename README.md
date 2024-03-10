@@ -1,10 +1,9 @@
 # О проекте
 
-Проект представляет собой ...
-
+Проект представляет собой MVP-версию CRM системы для управления сообществом Яндекс Практикума
 # О команде
 
-- Наташа - [@UltraNata](https://t.me/UltraNata)
+- Тим лид: Наташа - [@UltraNata](https://t.me/UltraNata)
 - Роман - [@tici_tac](https://t.me/tici_tac)
 - Софья - [@sofia_frikina](https://t.me/sofia_frikina)
 
