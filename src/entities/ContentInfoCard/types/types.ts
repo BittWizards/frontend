@@ -1,11 +1,7 @@
-type TContentInfoCardProps = {
-  ambassador: string;
-  content: {
-    youTube: number;
-    hIcon: number;
-    telegram: number;
-    instagram: number;
-  }
+import type { IAllContent } from "src/shared/api/content/dtos";
+
+type TAllContentCardProps = {
+  data: IAllContent;
 };
 
-export type { TContentInfoCardProps };
+export type { TAllContentCardProps };

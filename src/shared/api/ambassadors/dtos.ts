@@ -1,4 +1,5 @@
 export interface IAmbassador {
+  date: string | number | Date;
   id: number;
   image: string;
   first_name: string;
