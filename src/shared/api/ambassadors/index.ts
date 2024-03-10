@@ -36,7 +36,6 @@ export const getAmbassadorById = createAsyncThunk(
   }
 );
 
-
 export const getNewAmbassadors = createAsyncThunk(
   'ambassadors/getNewAmbassadors',
   async (_, { fulfillWithValue, rejectWithValue }) => {
@@ -47,8 +46,29 @@ export const getNewAmbassadors = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе getNewAmbassadors: ${e}`)
-      return rejectWithValue(e.message)
+      console.error(`Другая ошибка при запросе getNewAmbassadors: ${e}`);
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+const body = { status: 'Active' };
+
+export const patchChangeAmbassador = createAsyncThunk(
+  'ambassadors/patchChangeAmbassador',
+  async (
+    { id, status }: { id: number; status: string },
+    { fulfillWithValue, rejectWithValue }
+  ) => {
+    try {
+      const { data } = await axios.patch<IAmbassador[]>(
+        `${BASE_URL}/api/v1/ambassadors/${id}/`,
+        { status }
+      );
+      return data;
+    } catch (e: any) {
+      console.error(`Другая ошибка при запросе patchChangeAmbassador: ${e}`);
+      return rejectWithValue(e.message);
     }
   }
 );
