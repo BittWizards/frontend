@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import type { User } from 'src/utils/constants/types/types';
-
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectMerch } from 'src/app/store/reducers/merch/model/merchSlice';
 import { selectOrders } from 'src/app/store/reducers/orders/model/ordersSlice';
@@ -30,27 +28,20 @@ import {
   sortOrderByStatus,
   sortOrderBySurname,
   sortMerchByDate,
-  sortMerchBySurname,
 } from 'src/pages/MerchPage/model/sortFunctions';
 
 import style from './MerchPage.module.scss';
 
-type TSearchableData = (TAmbassadorMerchHistory | TOrder)[];
-
 const MerchPage = () => {
   const dispatch = useAppDispatch();
-  const merch = useAppSelector(selectMerch);
-  const orders = useAppSelector(selectOrders);
+  const { merchHistory } = useAppSelector(selectMerch);
+  const { orders, isLoading } = useAppSelector(selectOrders);
 
   useEffect(() => {
     dispatch(getMerchAmbassadorsHistory());
     dispatch(getOrders());
     dispatch(getMerchTypes());
-  }, []);
-
-  console.log('Merch History', merch.merchHistory);
-  console.log('Orders', orders.orders);
-  console.log('Merch Types', merch.merchType);
+  }, [dispatch]);
 
   const [selectedOption, setSelectedOption] = useState('Заявки на отправку');
   const tabs: string[] = ['Заявки на отправку', 'Учет мерча'];
@@ -76,14 +67,13 @@ const MerchPage = () => {
   };
 
   useEffect(() => {
-    setSearchOrdersResults(orders.orders);
-    setSearchMerchResults(merch.merchHistory);
+    setSearchOrdersResults(orders);
+    setSearchMerchResults(merchHistory);
   }, [searchOrdersTerm, searchMerchTerm]);
 
   const onOrdersSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    // eslint-disable-next-line max-len
-    const results = orders.orders.filter(
+    const results = orders.filter(
       orders =>
         orders.ambassador.first_name
           .toLowerCase()
@@ -97,8 +87,7 @@ const MerchPage = () => {
 
   const onMerchSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    // eslint-disable-next-line max-len
-    const results = merch.merchHistory.filter(
+    const results = merchHistory.filter(
       ambassador =>
         ambassador.first_name
           .toLowerCase()
@@ -111,14 +100,13 @@ const MerchPage = () => {
   };
 
   useEffect(() => {
-    setSearchOrdersResults(sortOrderByDate(orders.orders).reverse());
-    setSearchMerchResults(sortMerchByDate(merch.merchHistory).reverse());
-  }, []);
+    setSearchOrdersResults(sortOrderByDate(orders).reverse());
+    setSearchMerchResults(sortMerchByDate(merchHistory).reverse());
+  }, [orders, merchHistory]);
 
   const handleOrdersSortChange = (selectedOption: string | null) => {
     if (selectedOption !== null) {
       let sortedResults = [...searchOrdersResults];
-      /* eslint-disable */
       switch (selectedOption) {
         case 'Дата':
           sortedResults = sortOrderByDate(sortedResults).reverse();
@@ -140,7 +128,6 @@ const MerchPage = () => {
       setSearchOrdersResults(sortedResults);
     }
   };
-  /* eslint-enable */
 
   return (
     <div className={style.main}>
@@ -176,7 +163,11 @@ const MerchPage = () => {
               handleChange={handleOrdersChange}
             />
             <div className={style.sortWrapper}>
-              <img src={downloadImg} className={style.downloadImg} alt="Иконка скачивания" />
+              <img
+                src={downloadImg}
+                className={style.downloadImg}
+                alt="Иконка скачивания"
+              />
               <SortComponent
                 width={220}
                 height={48}
@@ -184,18 +175,17 @@ const MerchPage = () => {
                 onSortChange={handleOrdersSortChange}
               />
             </div>
-
           </div>
         </div>
         {selectedOption === 'Учет мерча' ? (
-          merch.isLoading ? (
+          isLoading ? (
             <Loader />
           ) : (
             <div className={style.tableWrapper}>
               <MerchStatisticTable merchArray={searchMerchResults} />
             </div>
           )
-        ) : orders.isLoading ? (
+        ) : isLoading ? (
           <Loader />
         ) : (
           <div className={style.cardsContainer}>
