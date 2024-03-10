@@ -33,7 +33,9 @@ const PromocodeUserInfoCard: FC<TCardProps> = ({ data }) => {
         <div className={style.statusWrapper}>
           <div className={style.socialWrapper}>
             <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-            <span className={style.tg}>{`@${data.ambassador.tg_acc}`}</span>
+            <span
+              className={style.tg}
+            >{`@${data.ambassador.tg_acc.toLocaleLowerCase()}`}</span>
           </div>
           <StatusIcon status={data.ambassador.status} />
         </div>

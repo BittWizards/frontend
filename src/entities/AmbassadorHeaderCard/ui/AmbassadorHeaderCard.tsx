@@ -2,9 +2,9 @@ import type { FC } from 'react';
 
 import locationIcon from 'src/shared/icons/location-marker.svg';
 import professionIcon from 'src/shared/icons/academic-cap.svg';
-import phoneIcon from 'src/shared/icons/phone.svg';
+import phoneIcon from 'src/shared/icons/phone_white.svg';
 import tgIcon from 'src/shared/icons/telegramIcon.svg';
-import mailIcon from 'src/shared/icons/mail.svg';
+import mailIcon from 'src/shared/icons/mail-white.svg';
 
 import { InfoLogoText } from 'src/shared/InfoLogoText';
 import { InfoLogoLink } from 'src/shared/InfoLogoLink';
@@ -31,7 +31,7 @@ const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({ data }) => (
         <div className={style.contactInfo}>
           <InfoLogoLink
             icon={tgIcon}
-            text={`@${data.tg_acc}`}
+            text={`@${data.tg_acc?.toLowerCase()}`}
             linkType="website"
           />
           <InfoLogoLink icon={mailIcon} text={data.email} linkType="email" />
