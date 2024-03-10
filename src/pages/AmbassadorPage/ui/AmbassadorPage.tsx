@@ -30,18 +30,21 @@ import style from './AmbassadorPage.module.scss';
 
 const AmbassadorPage = () => {
   const dispatch = useAppDispatch();
-
+  const [searchResults, setSearchResults] = useState<IAmbassador[]>([]);
+  const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
   useEffect(() => {
     dispatch(getAllAmbassadors());
   }, [dispatch]);
+
+
 
   const { ambassadors, isLoading } = useAppSelector(selectAmbassadors);
 
   const navigate = useNavigate();
 
-  const [selectedOption, setSelectedOption] = useState<string>('Новые запросы');
+
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<IAmbassador[]>([]);
+
 
   const tabs: string[] = ['Новые запросы', 'Все амбассадоры'];
 
@@ -61,6 +64,9 @@ const AmbassadorPage = () => {
     );
     setSearchResults(results);
   };
+
+
+
 
   const handleSortChange = (selectedOption: string | null) => {
     if (selectedOption !== null) {
@@ -93,9 +99,16 @@ const AmbassadorPage = () => {
     setSearchResults(ambassadors);
   }, [searchTerm]);
 
+
+
   useEffect(() => {
-    setSearchResults(sortByStatus(ambassadors));
-  }, [ambassadors]);
+    if (selectedOption === 'Новые запросы') {
+      setSearchResults(sortByDate(ambassadors).reverse());
+    } else {
+      setSearchResults(sortByStatus(ambassadors));
+    }
+
+  }, [ambassadors, selectedOption]);
 
   return (
     <div className={style.main}>
