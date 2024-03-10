@@ -71,7 +71,6 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
   }
 
   const onSubmit = (data: Object) => {
-    console.log(data)
     dispatch(setIsOpen(true));
   };
 
