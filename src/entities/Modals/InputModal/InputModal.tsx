@@ -19,7 +19,7 @@ type TInputModalModalProps = {
   placeholderTextArea?: string;
   onClose: () => void;
   onCancel: () => void;
-  onConfirm: () => void;
+  onConfirm: (inputValue: string) => void;
 };
 
 const InputModal: FC<TInputModalModalProps> = ({
@@ -117,7 +117,7 @@ const InputModal: FC<TInputModalModalProps> = ({
                 label={onConfirmLabel}
                 width={124}
                 height={48}
-                onClick={onConfirm}
+                onClick={() => onConfirm(textInputValue)}
               />
             </DialogActions>
           </div>
