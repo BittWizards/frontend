@@ -38,4 +38,49 @@ const getAmbassadorsPromocodesById = createAsyncThunk(
   }
 );
 
-export { getAllPromocodes, getAmbassadorsPromocodesById };
+const deleteAmbassadorsPromocodeById = createAsyncThunk(
+  'promocodes/deleteAmbassadorsPromocodeById',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.delete<TAmbassadorPromocodesData>(
+        `${BASE_URL}/api/v1/promocodes/${id}`
+      );
+
+      return data;
+    } catch (e: any) {
+      console.error(
+        `Другая ошибка при запросе deleteAmbassadorsPromocodeById: ${e}`
+      );
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+const createAmbassadorsPromocode = createAsyncThunk(
+  'promocodes/createAmbassadorsPromocode',
+  async (
+    { ambassador, promocode }: { ambassador: number; promocode: string },
+    { rejectWithValue }
+  ) => {
+    try {
+      const { data } = await axios.post<IPromocode>(
+        `${BASE_URL}/api/v1/promocodes/`,
+        { promocode, ambassador }
+      );
+
+      return data;
+    } catch (e: any) {
+      console.error(
+        `Другая ошибка при запросе createAmbassadorsPromocode: ${e}`
+      );
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export {
+  getAllPromocodes,
+  getAmbassadorsPromocodesById,
+  deleteAmbassadorsPromocodeById,
+  createAmbassadorsPromocode,
+};
