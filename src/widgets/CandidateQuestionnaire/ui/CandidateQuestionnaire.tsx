@@ -1,6 +1,5 @@
 import { type FC } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import type { ICandidateQuestionnaire } from '../types/types';
 
 import { FormContainer } from 'src/shared/FormContainer';
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
@@ -17,11 +16,11 @@ import {
   setIsOpen,
   setIsSecondaryOpen,
   setIsCancelOpen,
-  setIsCancelSecondaryOpen,
 } from 'src/app/store/reducers/modal/model/modalSlice';
 
-import style from './CandidateQuestionnaire.module.scss';
 import { patchConfirmCandidate } from 'src/shared/api/ambassadors';
+import type { ICandidateQuestionnaire } from '../types/types';
+import style from './CandidateQuestionnaire.module.scss';
 
 const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
   const { id } = useParams();
@@ -58,7 +57,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
   };
 
   const methods = useForm({
-    defaultValues: defaultValues,
+    defaultValues,
   });
 
   const onConfirm = () => {
@@ -81,7 +80,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
   };
 
   const onSuccessClose = () => {
-    dispatch(setIsSecondaryOpen(false))
+    dispatch(setIsSecondaryOpen(false));
     navigate(-1);
   };
 
@@ -92,13 +91,13 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
         <QuestionnaireForm />
         <div className={style.buttons}>
           <ButtonComponent
-            label={'Принять'}
+            label="Принять"
             width={244}
             height={48}
             onClick={methods.handleSubmit(onSubmit)}
           />
           <ButtonSecondaryComponent
-            label={'Отклонить'}
+            label="Отклонить"
             width={244}
             height={48}
             onClick={() => dispatch(setIsCancelOpen(true))}
@@ -107,10 +106,10 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
       </FormContainer>
       <ChoiceModal
         open={isOpen}
-        title={'Принять кандидата'}
-        content={`Вы подтверждаете принятие кандидата в базу амбассадоров?`}
-        onCancelLabel={'Отменить'}
-        onConfirmLabel={'Подтвердить'}
+        title="Принять кандидата"
+        content="Вы подтверждаете принятие кандидата в базу амбассадоров?"
+        onCancelLabel="Отменить"
+        onConfirmLabel="Подтвердить"
         onConfirm={onConfirm}
         onCancel={() => dispatch(setIsOpen(false))}
         onClose={() => dispatch(setIsOpen(false))}
@@ -118,17 +117,15 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
       <SuccessModal
         open={isSecondaryOpen}
         onClose={onSuccessClose}
-        title={'Успех'}
-        content={'Новый Амбассадор был добавлен в базу!'}
+        title="Успех"
+        content="Новый Амбассадор был добавлен в базу!"
       />
       <InputModal
         open={isCancelOpen}
-        title={'Отклонить кандидата'}
-        content={
-          'Вы хотите отклонить анкету кандидата, если вы уверены, укажите причину в сообщении'
-        }
-        onCancelLabel={'Отменить'}
-        onConfirmLabel={'Подтвердить'}
+        title="Отклонить кандидата"
+        content="Вы хотите отклонить анкету кандидата, если вы уверены, укажите причину в сообщении"
+        onCancelLabel="Отменить"
+        onConfirmLabel="Подтвердить"
         onConfirm={onConfirmReject}
         onClose={() => dispatch(setIsCancelOpen(false))}
         onCancel={() => dispatch(setIsCancelOpen(false))}

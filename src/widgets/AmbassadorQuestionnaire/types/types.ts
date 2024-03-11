@@ -1,5 +1,3 @@
-import type { TMockData } from 'src/utils/types/typeMockData';
-
 interface IAmbassadorQuestionnaire {
   first_name: string;
   last_name: string;

@@ -62,9 +62,9 @@ const MerchPage = () => {
     setSearchOrdersTerm(event.target.value);
   };
 
-  const handleMerchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchMerchTerm(event.target.value);
-  };
+  // const handleMerchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchMerchTerm(event.target.value);
+  // };
 
   useEffect(() => {
     setSearchOrdersResults(orders);
@@ -85,19 +85,19 @@ const MerchPage = () => {
     setSearchOrdersResults(results);
   };
 
-  const onMerchSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const results = merchHistory.filter(
-      ambassador =>
-        ambassador.first_name
-          .toLowerCase()
-          .includes(searchMerchTerm.toLowerCase()) ||
-        ambassador.last_name
-          .toLowerCase()
-          .includes(searchMerchTerm.toLowerCase())
-    );
-    setSearchMerchResults(results);
-  };
+  // const onMerchSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //   event.preventDefault();
+  //   const results = merchHistory.filter(
+  //     ambassador =>
+  //       ambassador.first_name
+  //         .toLowerCase()
+  //         .includes(searchMerchTerm.toLowerCase()) ||
+  //       ambassador.last_name
+  //         .toLowerCase()
+  //         .includes(searchMerchTerm.toLowerCase())
+  //   );
+  //   setSearchMerchResults(results);
+  // };
 
   useEffect(() => {
     setSearchOrdersResults(sortOrderByDate(orders).reverse());
@@ -151,9 +151,7 @@ const MerchPage = () => {
               label="Создать заявку"
               width={244}
               height={48}
-              onClick={e => {
-                console.log(e);
-              }}
+              onClick={e => {}}
             />
           </div>
           <div className={style.rightWrapper}>

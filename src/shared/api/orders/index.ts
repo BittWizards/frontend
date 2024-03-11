@@ -26,7 +26,6 @@ const getAmbassadorsOrdersById = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе getAmbassadorsOrdersById: ${e}`);
       return rejectWithValue(e.message);
     }
   }
