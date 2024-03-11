@@ -68,16 +68,13 @@ const ContentInfoCard: FC<TAllContentCardProps> = ({ data, index }) => {
         <h2 className={style.contentList__titleContent}>
           Опубликовано контента
         </h2>
-        <Grid
-          container
-          className={style.allContentCard__contentGroup}
-          direction="row"
-        >
+        <Grid className={style.contentGroup} direction="row">
           {Object.keys(data)
             .filter(row => row in counts)
             .map((row, index) =>
               counts[row] ? (
                 <Grid
+                  item
                   container
                   direction="column"
                   display="flex"
@@ -85,8 +82,8 @@ const ContentInfoCard: FC<TAllContentCardProps> = ({ data, index }) => {
                   alignItems="center"
                   key={uuidv4()}
                 >
-                  <Grid>{getPlatformIcon(row)}</Grid>
-                  <Grid className={style.allContentCard__text}>
+                  <Grid item>{getPlatformIcon(row)}</Grid>
+                  <Grid item className={style.allContentCard__text}>
                     {counts[row]}
                   </Grid>
                 </Grid>

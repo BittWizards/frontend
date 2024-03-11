@@ -7,52 +7,15 @@
 .allContentCard {
   margin: 0;
   padding: 0;
-  // display: flex;
-  // align-items: center;
   width: 1047px;
   height: 102px;
   border: 1px solid #939393;
-  // border-radius: 20px;
   transition: border-color 0.3s;
   box-sizing: border-box;
   &:hover {
     border-color: $statusColorSpecifyingHover;
   }
 }
-
-// .allContentCard__left {
-//   margin: 0;
-//   padding: 9px 12px 14px 13px;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 11px;
-//   // position: relative;
-//   width: 322px;
-// }
-
-// .line {
-//   width: 1px;
-//   height: 75px;
-//   background-color: #939393;
-// }
-/*
-.allContentCard__left:after {
-  content: '';
-  background-color: #939393;
-  position: absolute;
-  width: 1px;
-  height: 75px;
-  top: 13.5px;
-  left: 322px;
-  display: block;
-} */
-
-// .allContentCard__ambassador {
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   gap: 10px;
-// }
 
 .allContentCard__avatar {
   margin: 0;
@@ -61,29 +24,6 @@
   width: 48px;
   height: 48px;
 }
-
-// .allContentCard__person {
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 1px;
-//   align-self: center;
-// }
-
-// .allContentCard__fio {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'YSText';
-//   font-weight: 400;
-//   font-size: 14px;
-//   line-height: 120%;
-//   color: $baseColorWhite;
-//   max-width: 215px;
-//   overflow: hidden;
-//   text-overflow: ellipsis;
-//   white-space: nowrap;
-// }
 
 .allContentCard__telegramAcc {
   margin: 0;
@@ -99,33 +39,6 @@
   white-space: nowrap;
 }
 
-// .allContentCard__statusGroup {
-//   margin: auto;
-//   padding: 0;
-//   margin-right: 20px;
-//   display: flex;
-//   gap: 120px;
-// }
-
-// .allContentCard__status {
-//   margin: 0;
-//   padding: 5px 12.5px;
-//   border: 1px solid #14ae5c;
-//   border-radius: 16px;
-//   color: #14ae5c;
-//   font-family: 'YSText';
-//   font-weight: 400;
-//   font-size: 11px;
-//   line-height: 120%;
-// }
-
-// .allContentCard__reitingGroup {
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   align-items: center;
-// }
-
 .allContentCard__arrow {
   margin: 0;
   padding: 0;
@@ -134,158 +47,12 @@
   margin-right: 11px;
 }
 
-// .allContentCard__textReiting {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'YSText';
-//   font-weight: 400;
-//   font-size: 11px;
-//   line-height: 120%;
-//   color: $baseColorWhite;
-//   margin-right: 19px;
-// }
-
-// .allContentCard__countReiting {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'YSText';
-//   font-weight: 400;
-//   font-size: 14px;
-//   line-height: 120%;
-//   color: $baseColorWhite;
-// }
-
-// .allContentCard__middle {
-//   margin: 0;
-//   padding: 6px 59.56px 10px 60.44px;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 15px;
-//   // position: relative;
-// }
-/*
-.allContentCard__middle:after {
-  content: '';
-  background-color: #939393;
-  position: absolute;
-  width: 1px;
-  height: 75px;
-  top: 13.5px;
-  left: 180px;
-  display: block;
-} */
-
-// .allContentCard__reviews {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'YSText';
-//   font-weight: 500;
-//   font-size: 16px;
-//   line-height: 120%;
-//   color: $baseColorWhite;
-// }
-
-// .allContentCard__reviewsImg {
-//   margin: 0;
-//   padding: 0;
-//   width: 20px;
-//   height: 20px;
-// }
-
-// .allContentCard__reviewsCount {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'YSText';
-//   font-weight: 500;
-//   font-size: 14px;
-//   line-height: 120%;
-//   color: $baseColorWhite;
-// }
-
-// .allContentCard__right {
-//   margin: 0;
-//   padding: 8px 0px 8px 37.89px;
-//   box-sizing: content-box;
-//   display: flex;
-//   gap: 45px;
-//   align-items: center;
-// }
-
-// .allContentCard__contentContainer {
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 20px;
-//   width: 269px;
-//   margin-top: -4px;
-//   height: 86px;
-// }
-
-// .allContentCard__contentTitle {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'YSText';
-//   font-weight: 500;
-//   font-size: 16px;
-//   line-height: 120%;
-//   color: $baseColorWhite;
-// }
-
 .allContentCard__contentGroup {
   margin: 0;
   padding: 0;
   display: flex;
   gap: 21px;
 }
-
-// .allContentCard__social {
-//   margin: 0;
-//   padding: 0;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 10px;
-//   align-items: center;
-// }
-
-// .allContentCard__icon {
-//   margin: 0;
-//   padding: 0;
-//   height: 20px;
-// }
-
-// .allContentCard__iconCount {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'YSText';
-//   font-weight: 500;
-//   font-size: 14px;
-//   line-height: 120%;
-//   color: $baseColorWhite;
-// }
-
-// .allContentCard__dataGroup {
-//   margin: 0;
-
-//   padding: 0;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 20px;
-
-// }
-
-// .allContentCard__dataTitle {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'YSText';
-//   font-weight: 500;
-//   font-size: 16px;
-//   line-height: 120%;
-//   color: $baseColorWhite;
-
-// }
 
 .allContentCard__data {
   margin: 0;
