@@ -16,7 +16,10 @@ const App = () => {
     const socket = new WebSocket(
       'wss://ambassadors.sytes.net/ws/notification/'
     );
-    socket.onopen = () => {};
+    socket.onopen = () => {
+      dispatch(getNewAmbassadors());
+      dispatch(getNewContent());
+    };
     socket.onmessage = event => {
       console.log('Received message from WebSocket:', event.data);
       const { message }: { message: string } = JSON.parse(event.data);

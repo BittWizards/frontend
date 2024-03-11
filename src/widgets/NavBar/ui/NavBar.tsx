@@ -24,9 +24,9 @@ const Navbar: FC<INavbarProps> = ({ links }) => {
     '/merch': count.merchNewCount,
   };
 
-  useEffect(() => {
-    dispatch(getNewAmbassadors());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getNewAmbassadors());
+  // }, [dispatch]);
 
   useEffect(() => {
     dict['/ambassadors'] = count.ambassadorsNewCount;
