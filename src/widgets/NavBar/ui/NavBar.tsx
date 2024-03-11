@@ -26,7 +26,6 @@ const Navbar: FC<INavbarProps> = ({ links }) => {
 
   useEffect(() => {
     dispatch(getNewAmbassadors());
-    dispatch(getNewContent());
   }, [dispatch]);
 
   useEffect(() => {

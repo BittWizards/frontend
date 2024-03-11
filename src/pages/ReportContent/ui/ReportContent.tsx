@@ -40,10 +40,9 @@ const ReportContent: FC = () => {
 
   useEffect(() => {
     dispatch(getContentDetailById(Number(detailId)));
-  }, [dispatch]);
+  }, [dispatch, detailId]);
 
   const { contentDetail, isLoading } = useAppSelector(selectContent);
-  console.log('content Detail', contentDetail);
 
   const [openChoiceModal, setChoiceModalOpen] = useState(false);
   const [openInputModal, setInputModalOpen] = useState(false);
@@ -138,8 +137,6 @@ const ReportContent: FC = () => {
     contentDetail.documents && contentDetail.documents.length > 0
       ? contentDetail.documents
       : [];
-
-  console.log('LINKS', photoLinks);
 
   const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.src = contentPrev;
