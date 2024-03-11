@@ -11,6 +11,7 @@ type TAmbassadorHeaderCardProps = {
     phone: string;
     ya_programm: string;
     city: string;
+    achievement?: string;
   };
 };
 

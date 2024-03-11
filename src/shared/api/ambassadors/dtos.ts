@@ -9,11 +9,13 @@ export interface IAmbassador {
   tg_acc: string;
   status: 'Active' | 'Pause' | 'Clarify' | 'Not active';
   created: string;
+  achievement: string;
 }
 
 export interface IAmbassadorById {
   id: number;
   image: string;
+  achievement: string;
   first_name: string;
   last_name: string;
   middle_name: string;

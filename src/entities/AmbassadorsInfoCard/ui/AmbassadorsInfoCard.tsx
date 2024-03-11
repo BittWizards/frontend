@@ -8,7 +8,7 @@ import style from './AmbassadorsInfoCard.module.scss';
 const AmbassadorsInfoCard: FC<TAmbassadorsInfoCardProps> = ({ data }) => (
   <div className={style.card}>
     <div className={style.avatarContainer}>
-      <Avatar link={data.image} size="m" status={data.status} />
+      <Avatar link={data.image} size="m" status={data.achievement} />
     </div>
     <div className={style.container}>
       <p className={style.name}>

@@ -19,7 +19,11 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = () => {
     <div className={style.profile}>
       <div className={style.photoContainer}>
         {ambassador.image ? (
-          <Avatar link={ambassador.image} size="l" />
+          <Avatar
+            link={ambassador.image}
+            size="l"
+            status={ambassador.achievement}
+          />
         ) : (
           <Avatar size="l" />
         )}

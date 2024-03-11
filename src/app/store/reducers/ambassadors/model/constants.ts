@@ -16,6 +16,7 @@ const initialAmbassador: IAmbassadorById = {
   purpose: '',
   education: '',
   work: '',
+  achievement: '',
   address: {
     country: '',
     city: '',
