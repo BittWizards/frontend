@@ -4,6 +4,7 @@ type TUserBase = {
   last_name: string;
   image: string;
   tg_acc: string;
+  achievement: string;
 };
 
 type TAmbassadorMerchs = {

@@ -46,7 +46,11 @@ const MerchUserInfoCard: FC<TCardProps> = ({ data }) => {
         <div className={style.cardContainer}>
           <div className={style.userInfoWrapper}>
             {data.ambassador.image && (
-              <Avatar link={data.ambassador.image} size="m" />
+              <Avatar
+                link={data.ambassador.image}
+                size="m"
+                status={data.ambassador.achievement}
+              />
             )}
             <div className={style.userInfo}>
               <p className={style.name}>

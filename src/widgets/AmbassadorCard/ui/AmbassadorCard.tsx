@@ -15,7 +15,7 @@ const AmbassadorCard: FC<TAmbassadorCardProps> = ({ data }) => {
   if (data.status === 'Clarify') {
     return (
       <div className={style.cardContainer}>
-        {data.image && <Avatar link={data.image} />}
+        {data.image && <Avatar link={data.image} status={data.achievement} />}
         <div className={style.nameGroup}>
           <span className={style.name}>{data.last_name}</span>
           <span className={style.name}>

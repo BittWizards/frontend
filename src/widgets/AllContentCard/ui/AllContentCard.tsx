@@ -30,7 +30,6 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
     .replace(/\//g, '.');
 
   const getPlatformIcon = (platform: string): JSX.Element => {
-    /* eslint-disable */
     switch (platform) {
       case 'habr_count':
         return <img src={hIcon} alt="Habr" />;
@@ -57,7 +56,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
     linkedin_count: data.linkedin_count,
     instagram_count: data.instagram_count,
   };
-  /* eslint-enable */
+
   return (
     <NavLink to={`/ambassadors/${data.id}/content`} className={style.navLink}>
       <Card
@@ -80,7 +79,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
           >
             <Grid container direction="row">
               <Grid md={4}>
-                <Avatar link={data.image} size="m" />
+                <Avatar link={data.image} size="m" status={data.achievement} />
               </Grid>
               <Grid className={style.allContentCard__text} marginTop={0.5}>
                 <Typography className={style.allContentCard__fio}>

@@ -87,7 +87,7 @@ const MerchStatisticTable: FC<TMerchStatisticProps> = ({ merchArray }) => {
           <TableRow key={user.id}>
             <TableCell style={commonCellStyle}>
               <div className={style.userInfoWrapper}>
-                <Avatar link={user.image} size="s" />
+                <Avatar link={user.image} size="s" status={user.achievement} />
                 <div className={style.userInfo}>
                   <span
                     className={style.name}

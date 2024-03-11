@@ -23,7 +23,11 @@ const ContentUserCard: FC<TCardProps> = ({ data }) => {
   return (
     <div className={style.cardContainer}>
       {data.ambassador.image && (
-        <Avatar link={data.ambassador.image} size="m" />
+        <Avatar
+          link={data.ambassador.image}
+          size="m"
+          status={data.ambassador.achievement}
+        />
       )}
       <div className={style.nameGroup}>
         <p className={style.name}>{data.ambassador.last_name}</p>

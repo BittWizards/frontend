@@ -19,7 +19,7 @@ const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({ data }) => (
   <div className={style.ambassadorHeaderCard}>
     <div className={style.infoContainer}>
       <div className={style.column}>
-        <Avatar link={data.image} size="l" />
+        <Avatar link={data.image} size="l" status={data.achievement} />
         <div className={style.nameStatus}>
           <p className={style.nameText}>{data.last_name || ''}</p>
           <p className={style.nameText}>{data.first_name || ''}</p>

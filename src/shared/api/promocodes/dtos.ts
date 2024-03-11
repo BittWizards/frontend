@@ -8,6 +8,7 @@ interface IPromocode {
     image: string;
     first_name: string;
     last_name: string;
+    achievement: string;
     status: 'Active' | 'Pause' | 'Clarify' | 'Not active' | '';
     tg_acc: string;
     ya_programm: string;
