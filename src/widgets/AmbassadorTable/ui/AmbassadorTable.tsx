@@ -68,7 +68,11 @@ const AmbassadorTable: FC<TCardProps> = ({ data }) => {
             <TableCell style={commonCellStyle}>{index + 1}</TableCell>
             <TableCell style={commonCellStyle}>
               <div className={style.userInfoWrapper}>
-                <Avatar link={ambassador.image} size="s" />
+                <Avatar
+                  link={ambassador.image}
+                  size="s"
+                  status={ambassador.achievement}
+                />
                 <div className={style.positionCellWrapper}>
                   <span className={style.cellText}>
                     {ambassador.last_name} {ambassador.first_name}

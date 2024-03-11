@@ -8,6 +8,7 @@ type TOrder = {
     status: 'Active' | 'Pause' | 'Clarify' | 'Not active' | '';
     tg_acc: string;
     ya_programm: string;
+    achievement: string;
   };
   track_number: string | null;
   created_date: string;

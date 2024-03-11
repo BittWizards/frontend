@@ -6,6 +6,7 @@ interface IBriefAmbassadorData {
   status: string;
   tg_acc: string;
   ya_programm: string;
+  achievement: string;
 }
 
 interface INewContentCardData {
@@ -31,6 +32,7 @@ interface IAllContent {
   linkedin_count: number | null;
   other_count: number | null;
   last_date: string;
+  achievement: string;
 }
 
 type TAmbassadorContentData = {

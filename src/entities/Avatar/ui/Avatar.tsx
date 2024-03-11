@@ -30,7 +30,7 @@ const Avatar: FC<TAvatarProps> = ({ link, size, status }) => {
       case 'friend':
         borderColor = '#189251';
         break;
-      case 'master':
+      case 'profi_friend':
         borderColor = '#512da8';
         break;
       default:
