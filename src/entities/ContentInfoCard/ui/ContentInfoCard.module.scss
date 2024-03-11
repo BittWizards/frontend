@@ -2,7 +2,7 @@
 
 .contentList__element {
   margin: 0;
-  border: 1px solid #FEFEFE;
+  border: 1px solid #fefefe;
   border-radius: 24px;
   padding: 16px;
   box-sizing: border-box;
@@ -19,7 +19,7 @@
   flex-direction: column;
   width: 246px;
   gap: 16px;
-  border-right: 1px solid #FEFEFE;
+  border-right: 1px solid #fefefe;
   padding-right: 70px;
 }
 
@@ -39,17 +39,17 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 120%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
-.contentList__fio{
+.contentList__fio {
   margin: 0;
   padding: 0;
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .contentList__rating {
@@ -66,7 +66,7 @@
   font-weight: 400;
   font-size: 11px;
   line-height: 120%;
-  color: #FFFFFF;
+  color: #ffffff;
   align-self: center;
 }
 
@@ -91,13 +91,12 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 120%;
-  color: #14AE5C;
+  color: #14ae5c;
   align-self: center;
 }
 
 .contentList__raitingcountYellow {
-  color: #DAA700;
-  
+  color: #daa700;
 }
 
 .contentList__right {
@@ -116,7 +115,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 120%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .contentList__icons {
@@ -149,5 +148,12 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 120%;
-  color: #FFFFFF;
+  color: #ffffff;
+}
+
+.contentGroup {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 21px;
 }
