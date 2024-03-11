@@ -40,7 +40,7 @@ const AmbassadorContentPage: FC = () => {
 
   useEffect(() => {
     dispatch(getAmbassadorsContentById(Number(id)));
-  }, [id]);
+  }, [dispatch, id]);
 
   const { ambassadorContent, isLoading } = useAppSelector(selectContent);
 
