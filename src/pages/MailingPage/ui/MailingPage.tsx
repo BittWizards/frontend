@@ -95,7 +95,7 @@ const MailingPage = () => {
             <input
               className={`${style.newmailing__textfield} ${style.newmailing__textfield_small}`}
               type="text"
-              placeholder="Текст рассылки"
+              placeholder="Тема рассылки"
             />
             <input
               className={`${style.newmailing__textfield} ${style.newmailing__textfield_big}`}
