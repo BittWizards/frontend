@@ -46,7 +46,7 @@
       }
     ],
     "jsx-a11y/anchor-is-valid": "off",
-    "no-console": "off",
+    // "no-console": "off",
     "indent": [2, 2, { "SwitchCase": 1 }],
     "linebreak-style": ["error", "unix"],
     "import/extensions": "off",

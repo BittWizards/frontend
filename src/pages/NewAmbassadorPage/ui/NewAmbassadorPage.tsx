@@ -67,13 +67,13 @@ const NewAmbassadorPage = () => {
             <QuestionnaireForm />
             <div className={style.buttons}>
               <ButtonComponent
-                label={'Добавить'}
+                label="Добавить"
                 width={244}
                 height={48}
                 onClick={methods.handleSubmit(onSubmit)}
               />
               <ButtonSecondaryComponent
-                label={'Отменить'}
+                label="Отменить"
                 width={244}
                 height={48}
                 onClick={onCancel}
@@ -82,21 +82,21 @@ const NewAmbassadorPage = () => {
           </FormContainer>
           <ChoiceModal
             open={isOpen}
-            title={'Сохранить изменения'}
-            content={`Данные были изменены. Сохранить изменения?`}
-            onCancelLabel={'Отменить'}
-            onConfirmLabel={'Подтвердить'}
+            title="Сохранить изменения"
+            content="Данные были изменены. Сохранить изменения?"
+            onCancelLabel="Отменить"
+            onConfirmLabel="Подтвердить"
             onCancel={() => dispatch(setIsOpen(false))}
             onConfirm={onConfirm}
             onClose={() => dispatch(setIsOpen(false))}
           />
           <ChoiceModal
             open={isCancelOpen}
-            title={'Отменить действие'}
+            title="Отменить действие"
             content={`Внесённые изменения не будут сохранены.
             Выйти без сохранения данных?`}
-            onCancelLabel={'Отменить'}
-            onConfirmLabel={'Подтвердить'}
+            onCancelLabel="Отменить"
+            onConfirmLabel="Подтвердить"
             onCancel={() => dispatch(setIsCancelOpen(false))}
             onConfirm={onConfirmReject}
             onClose={() => dispatch(setIsCancelOpen(false))}
@@ -104,8 +104,8 @@ const NewAmbassadorPage = () => {
           <SuccessModal
             open={isSecondaryOpen}
             onClose={() => dispatch(setIsSecondaryOpen(false))}
-            title={'Успех'}
-            content={'Все данные были успешно сохранены!'}
+            title="Успех"
+            content="Все данные были успешно сохранены!"
           />
         </FormProvider>
       </div>

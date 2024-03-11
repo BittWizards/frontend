@@ -14,7 +14,6 @@ export const getAllAmbassadors = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе getAllAmbassadors: ${e}`);
       return rejectWithValue(e.message);
     }
   }
@@ -30,7 +29,6 @@ export const getAmbassadorById = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе getAmbassadorById: ${e}`);
       return rejectWithValue(e.message);
     }
   }
@@ -46,7 +44,6 @@ export const getNewAmbassadors = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе getNewAmbassadors: ${e}`);
       return rejectWithValue(e.message);
     }
   }
@@ -65,7 +62,6 @@ export const patchConfirmCandidate = createAsyncThunk(
       );
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе patchConfirmCandidate: ${e}`);
       return rejectWithValue(e.message);
     }
   }
@@ -73,7 +69,10 @@ export const patchConfirmCandidate = createAsyncThunk(
 
 export const patchChangeAmbassador = createAsyncThunk(
   'ambassadors/patchChangeAmbassador',
-  async ({ id, body }: { id: number; body: IAmbassadorChange }, { rejectWithValue }) => {
+  async (
+    { id, body }: { id: number; body: IAmbassadorChange },
+    { rejectWithValue }
+  ) => {
     try {
       const { data } = await axios.patch<IAmbassador[]>(
         `${BASE_URL}/api/v1/ambassadors/${id}/`,
@@ -103,7 +102,6 @@ export const patchChangeAmbassador = createAsyncThunk(
       );
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе patchChangeAmbassador: ${e}`);
       return rejectWithValue(e.message);
     }
   }
@@ -111,7 +109,7 @@ export const patchChangeAmbassador = createAsyncThunk(
 
 export const postNewAmbassador = createAsyncThunk(
   'ambassadors/postNewAmbassador',
-  async ({body}: { body: IAmbassadorChange }, { rejectWithValue }) => {
+  async ({ body }: { body: IAmbassadorChange }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post<IAmbassador[]>(
         `${BASE_URL}/api/v1/ambassadors/`,
@@ -137,12 +135,11 @@ export const postNewAmbassador = createAsyncThunk(
           tg_acc: body.tg_acc,
           email: body.email,
           phone: body.phone,
-          actions: []
+          actions: [],
         }
       );
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе postNewAmbassador: ${e}`);
       return rejectWithValue(e.message);
     }
   }
@@ -158,7 +155,6 @@ export const deleteAmbassador = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе deleteAmbassador: ${e}`);
       return rejectWithValue(e.message);
     }
   }

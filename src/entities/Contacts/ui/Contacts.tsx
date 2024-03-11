@@ -1,14 +1,14 @@
 import type { FC } from 'react';
 import { Input } from 'src/shared/Input';
 import { FieldsetContainer } from 'src/shared/FieldsetContainer';
+import { useAppSelector } from 'src/app/store/hooks';
+import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 import type { IContacts } from '../types/types';
 
 
 import telegram from '../../../shared/icons/telegramIcon.svg';
 import email from '../../../shared/icons/mail.svg';
 import phone from '../../../shared/icons/phone.svg';
-import { useAppSelector } from 'src/app/store/hooks';
-import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 
 import style from './Contacts.module.scss';
 

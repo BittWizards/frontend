@@ -73,6 +73,9 @@ const MailingPage = () => {
       },
     },
   }));
+
+  const logMessage = () => {};
+
   return (
     <div className={style.main}>
       <Navbar links={navbarLinks} />
@@ -110,17 +113,13 @@ const MailingPage = () => {
                   width={220}
                   height={48}
                   options={genderOptions}
-                  onSortChange={selectedOption => {
-                    console.log('Selected sorting option:', selectedOption);
-                  }}
+                  onSortChange={selectedOption => {}}
                 />
                 <SortComponent
                   width={220}
                   height={48}
                   options={jobOptions}
-                  onSortChange={selectedOption => {
-                    console.log('Selected sorting option:', selectedOption);
-                  }}
+                  onSortChange={selectedOption => {}}
                 />
               </div>
               <ul className={style.newmailing__checkboxGroup}>
@@ -148,13 +147,13 @@ const MailingPage = () => {
                 label="Отправить"
                 width={244}
                 height={48}
-                onClick={() => console.log(`Отправить рассылку`)}
+                onClick={() => logMessage()}
               />
               <ButtonSecondaryComponent
                 label="Удалить"
                 width={244}
                 height={48}
-                onClick={() => console.log(`Удалить рассылку`)}
+                onClick={() => logMessage()}
               />
             </div>
           </form>
@@ -178,7 +177,11 @@ const MailingPage = () => {
                     handleChange={handleChange}
                   />
                   <div className={style.sortWrapper}>
-                    <img src={trashimg} className={style.trashImg} alt="Иконка удаления" />
+                    <img
+                      src={trashimg}
+                      className={style.trashImg}
+                      alt="Иконка удаления"
+                    />
                     <SortComponent
                       width={220}
                       height={48}

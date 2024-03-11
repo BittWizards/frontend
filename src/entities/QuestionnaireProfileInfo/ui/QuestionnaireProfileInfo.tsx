@@ -5,9 +5,9 @@ import { useAppSelector } from 'src/app/store/hooks';
 import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 import { Avatar } from 'src/entities/Avatar';
 import { Input } from 'src/shared/Input';
+import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 import style from './QuestionnaireProfileInfo.module.scss';
 import type { IQuestionnaireProfileInfo } from '../types/types';
-import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 
 const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = () => {
   const { register } = useFormContext();

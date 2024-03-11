@@ -47,9 +47,6 @@ const getAmbassadorsContentById = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(
-        `Другая ошибка при запросе getAmbassadorsContentById: ${e}`
-      );
       return rejectWithValue(e.message);
     }
   }
@@ -65,7 +62,6 @@ const getContentDetailById = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе getContentDetailById: ${e}`);
       return rejectWithValue(e.message);
     }
   }

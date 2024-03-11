@@ -1,4 +1,4 @@
-import { IAmbassadorById } from 'src/shared/api/ambassadors/dtos';
+import type { IAmbassadorById } from 'src/shared/api/ambassadors/dtos';
 
 const initialAmbassador: IAmbassadorById = {
   id: 0,

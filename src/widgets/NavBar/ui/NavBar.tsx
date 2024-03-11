@@ -2,10 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 import type { FC } from 'react';
 import { useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import type { RootState } from 'src/app/store/store';
-import { getNewContent } from 'src/shared/api/content';
-import { getNewAmbassadors } from 'src/shared/api/ambassadors';
+import { useAppSelector } from 'src/app/store/hooks';
 
 import { Avatar } from 'src/entities/Avatar';
 import avatar from 'src/shared/icons/userAvatar.png';
@@ -16,17 +14,12 @@ import style from './NavBar.module.scss';
 
 const Navbar: FC<INavbarProps> = ({ links }) => {
   const count = useAppSelector((state: RootState) => state.notifications);
-  const dispatch = useAppDispatch();
 
   const dict: { [key: string]: number } = {
     '/ambassadors': count.ambassadorsNewCount,
     '/content': count.contentNewCount,
     '/merch': count.merchNewCount,
   };
-
-  // useEffect(() => {
-  //   dispatch(getNewAmbassadors());
-  // }, [dispatch]);
 
   useEffect(() => {
     dict['/ambassadors'] = count.ambassadorsNewCount;

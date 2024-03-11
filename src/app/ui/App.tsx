@@ -21,7 +21,7 @@ const App = () => {
       dispatch(getNewContent());
     };
     socket.onmessage = event => {
-      console.log('Received message from WebSocket:', event.data);
+      // console.log('Received message from WebSocket:', event.data);
       const { message }: { message: string } = JSON.parse(event.data);
       switch (message) {
         case 'ambassador':
@@ -31,7 +31,7 @@ const App = () => {
           dispatch(getNewContent());
           break;
         default:
-          console.warn(`message: ${message} is not implemented yet.`);
+        // console.warn(`message: ${message} is not implemented yet.`);
       }
     };
 

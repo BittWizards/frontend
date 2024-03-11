@@ -14,7 +14,6 @@ const getAllPromocodes = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(`Другая ошибка при запросе getAllPromocodes: ${e}`);
       return rejectWithValue(e.message);
     }
   }
@@ -30,9 +29,6 @@ const getAmbassadorsPromocodesById = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(
-        `Другая ошибка при запросе getAmbassadorsPromocodesById: ${e}`
-      );
       return rejectWithValue(e.message);
     }
   }
@@ -48,9 +44,6 @@ const deleteAmbassadorsPromocodeById = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(
-        `Другая ошибка при запросе deleteAmbassadorsPromocodeById: ${e}`
-      );
       return rejectWithValue(e.message);
     }
   }
@@ -70,9 +63,6 @@ const createAmbassadorsPromocode = createAsyncThunk(
 
       return data;
     } catch (e: any) {
-      console.error(
-        `Другая ошибка при запросе createAmbassadorsPromocode: ${e}`
-      );
       return rejectWithValue(e.message);
     }
   }

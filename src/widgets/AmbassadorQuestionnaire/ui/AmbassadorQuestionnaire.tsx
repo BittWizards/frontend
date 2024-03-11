@@ -63,7 +63,7 @@ const AmbassadorQuestionnaire = () => {
   };
 
   const methods = useForm({
-    defaultValues: defaultValues,
+    defaultValues,
   });
 
   const onSubmit = (data: any) => {
@@ -97,7 +97,7 @@ const AmbassadorQuestionnaire = () => {
         <div className={style.buttons}>
           {isEdit && (
             <ButtonComponent
-              label={'Сохранить'}
+              label="Сохранить"
               width={244}
               height={48}
               onClick={methods.handleSubmit(onSubmit)}
@@ -113,21 +113,21 @@ const AmbassadorQuestionnaire = () => {
       </FormContainer>
       <ChoiceModal
         open={isOpen}
-        title={'Сохранить изменения'}
-        content={`Данные были изменены. Сохранить изменения?`}
-        onCancelLabel={'Отменить'}
-        onConfirmLabel={'Подтвердить'}
+        title="Сохранить изменения"
+        content="Данные были изменены. Сохранить изменения?"
+        onCancelLabel="Отменить"
+        onConfirmLabel="Подтвердить"
         onCancel={() => dispatch(setIsOpen(false))}
         onConfirm={onConfirm}
         onClose={() => dispatch(setIsOpen(false))}
       />
       <ChoiceModal
         open={isCancelOpen}
-        title={'Отменить редактирование '}
+        title="Отменить редактирование "
         content={`Внесённые изменения не будут сохранены.
         Выйти без сохранения данных?`}
-        onCancelLabel={'Отменить'}
-        onConfirmLabel={'Подтвердить'}
+        onCancelLabel="Отменить"
+        onConfirmLabel="Подтвердить"
         onCancel={() => dispatch(setIsCancelOpen(false))}
         onConfirm={onConfirmReject}
         onClose={() => dispatch(setIsCancelOpen(false))}
@@ -135,8 +135,8 @@ const AmbassadorQuestionnaire = () => {
       <SuccessModal
         open={isSecondaryOpen}
         onClose={() => dispatch(setIsSecondaryOpen(false))}
-        title={'Успех'}
-        content={'Все данные были успешно сохранены!'}
+        title="Успех"
+        content="Все данные были успешно сохранены!"
       />
     </FormProvider>
   );

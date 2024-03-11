@@ -159,9 +159,7 @@ const AmbassadorMerchPage = () => {
             label="Создать заявку"
             width={244}
             height={48}
-            onClick={e => {
-              console.log(e);
-            }}
+            onClick={e => {}}
           />
         </div>
       </div>
