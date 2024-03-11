@@ -11,9 +11,9 @@ const Checkbox: FC<ICheckbox> = ({ label, disabled, name }) => {
   const {isEdit} = useAppSelector(selectQuestionnaire)
 
   return (
-    <label className={style.label} htmlFor="inputId">
+    <label className={style.label} htmlFor={name}>
       <input
-        id="inputId"
+        id={name}
         type="checkbox"
         className={`${isEdit ? style.checkbox : style.read}`}
         disabled={!isEdit || disabled}
