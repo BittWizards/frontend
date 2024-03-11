@@ -52,7 +52,7 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = () => {
               value="Male"
               disabled={!isEdit}
               className={style.radio}
-              {...register('gender')}
+              {...register('gender', { required: true })}
             />
             <span />М
           </label>
@@ -62,7 +62,7 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = () => {
               value="Female"
               disabled={!isEdit}
               className={style.radio}
-              {...register('gender')}
+              {...register('gender', { required: true })}
             />
             <span />Ж
           </label>

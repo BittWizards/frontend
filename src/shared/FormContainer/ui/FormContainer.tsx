@@ -1,25 +1,36 @@
 import type { FC } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import type { IFormContainer } from '../types/types';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
-import { ButtonComponent } from 'src/entities/Button';
 import editIcon from 'src/shared/icons/pencil.svg';
 import removeBtn from 'src/shared/icons/remove-btn.svg';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
+import {
+  selectModal,
+  setIsRemoveSecondaryOpen,
+  setIsRemoveOpen,
+} from 'src/app/store/reducers/modal/model/modalSlice';
+import { deleteAmbassador } from 'src/shared/api/ambassadors';
 import {
   selectQuestionnaire,
   setIsEdit,
 } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
-import type { IFormContainer } from '../types/types';
+
 import style from './FormContainer.module.scss';
 
-const FormContainer: FC<IFormContainer> = ({
-  title,
-  children,
-}) => {
-
+const FormContainer: FC<IFormContainer> = ({ title, children }) => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const { isEditable, isEdit } = useAppSelector(selectQuestionnaire);
+  const { isRemoveOpen, isRemoveSecondaryOpen } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
+
+  const onConfirm = () => {
+    dispatch(setIsRemoveOpen(false));
+    dispatch(deleteAmbassador(Number(id)));
+    navigate('/ambassadors');
+  };
 
   return (
     <form className={style.questionnaire}>
@@ -36,7 +47,11 @@ const FormContainer: FC<IFormContainer> = ({
               >
                 <img src={editIcon} alt="editIcon" />
               </button>
-              <button type="button" className={style.editBtn}>
+              <button
+                type="button"
+                className={style.editBtn}
+                onClick={() => dispatch(setIsRemoveOpen(true))}
+              >
                 <img src={removeBtn} alt="removeBtn" />
               </button>
             </div>
@@ -44,6 +59,16 @@ const FormContainer: FC<IFormContainer> = ({
         )}
       </div>
       {children}
+      <ChoiceModal
+        open={isRemoveOpen}
+        title={'Удалить амбассадора'}
+        content={`Это изменение необратимо. Удалить амбассадора?`}
+        onCancelLabel={'Отменить'}
+        onConfirmLabel={'Подтвердить'}
+        onCancel={() => dispatch(setIsRemoveOpen(false))}
+        onConfirm={onConfirm}
+        onClose={() => dispatch(setIsRemoveOpen(false))}
+      />
     </form>
   );
 };

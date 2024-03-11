@@ -147,3 +147,19 @@ export const postNewAmbassador = createAsyncThunk(
     }
   }
 );
+
+export const deleteAmbassador = createAsyncThunk(
+  'ambassadors/deleteAmbassador',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.delete<IAmbassadorById>(
+        `${BASE_URL}/api/v1/ambassadors/${id}`
+      );
+
+      return data;
+    } catch (e: any) {
+      console.error(`Другая ошибка при запросе deleteAmbassador: ${e}`);
+      return rejectWithValue(e.message);
+    }
+  }
+);

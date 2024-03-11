@@ -5,6 +5,8 @@ interface IModalState {
   isSecondaryOpen: boolean;
   isCancelOpen: boolean;
   isCancelSecondaryOpen: boolean;
+  isRemoveOpen: boolean;
+  isRemoveSecondaryOpen: boolean;
   requestData: Object;
 }
 
@@ -13,6 +15,8 @@ const initialState: IModalState = {
   isSecondaryOpen: false,
   isCancelOpen: false,
   isCancelSecondaryOpen: false,
+  isRemoveOpen: false,
+  isRemoveSecondaryOpen: false,
   requestData: {},
 };
 
@@ -26,26 +30,17 @@ export const modalSlice = createSlice({
     setIsSecondaryOpen: (state, action) => {
       state.isSecondaryOpen = action.payload;
     },
-    setIsCancelOpen : (state, action) => {
-      state.isCancelOpen = action.payload
+    setIsCancelOpen: (state, action) => {
+      state.isCancelOpen = action.payload;
     },
-    setIsCancelSecondaryOpen : (state, action) => {
-      state.isCancelSecondaryOpen = action.payload
+    setIsCancelSecondaryOpen: (state, action) => {
+      state.isCancelSecondaryOpen = action.payload;
     },
-    onConfirm: state => {
-      state.isOpen = true;
+    setIsRemoveOpen: (state, action) => {
+      state.isRemoveOpen = action.payload;
     },
-    onConfirmChanges: state => {
-      state.isOpen = false;
-      state.isSecondaryOpen = true;
-    },
-    onCancelChanges: state => {
-      state.isOpen = false;
-      state.requestData = {};
-    },
-    onCloseSecondaryModal: state => {
-      state.isSecondaryOpen = false;
-      state.requestData = {};
+    setIsRemoveSecondaryOpen: (state, action) => {
+      state.isRemoveSecondaryOpen = action.payload;
     },
     setRequestData: (state, action) => {
       state.requestData = action.payload;
@@ -57,12 +52,10 @@ export const selectModal = (state: { modal: IModalState }) => state.modal;
 export const {
   setIsOpen,
   setIsSecondaryOpen,
-  onConfirm,
-  onConfirmChanges,
-  onCancelChanges,
-  onCloseSecondaryModal,
   setIsCancelOpen,
   setIsCancelSecondaryOpen,
+  setIsRemoveOpen,
+  setIsRemoveSecondaryOpen,
   setRequestData,
 } = modalSlice.actions;
 export default modalSlice.reducer;

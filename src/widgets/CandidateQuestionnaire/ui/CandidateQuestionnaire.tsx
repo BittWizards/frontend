@@ -74,7 +74,6 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
 
   const onConfirmReject = (data: string) => {
     dispatch(setIsCancelOpen(false));
-    console.log({ id, data });
   };
 
   const onSubmit = (data: Object) => {

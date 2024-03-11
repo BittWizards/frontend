@@ -17,7 +17,7 @@ const Innput: FC<IInput> = ({ placeholder, type, name }) => {
       className={`${style.input} ${!isEdit && style.read}`}
       placeholder={placeholder}
       readOnly={!isEdit}
-      {...register(name)}
+      {...register(name, { required: true })}
     />
   );
 };
