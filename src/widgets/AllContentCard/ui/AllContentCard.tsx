@@ -55,6 +55,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
     tg_count: data.tg_count,
     linkedin_count: data.linkedin_count,
     instagram_count: data.instagram_count,
+    other_count: data.other_count,
   };
 
   return (
@@ -175,6 +176,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
               <Grid
                 className={style.allContentCard__contentGroup}
                 direction="row"
+                container
               >
                 {Object.keys(data)
                   .filter(row => row in counts)
@@ -186,6 +188,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                         display="flex"
                         justifyContent="center"
                         alignItems="center"
+                        sx={{ width: '20px' }}
                       >
                         <Grid>{getPlatformIcon(row)}</Grid>
                         <Grid
@@ -196,7 +199,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                         </Grid>
                       </Grid>
                     ) : (
-                      <Grid />
+                      <Grid sx={{ width: '20px' }}></Grid>
                     )
                   )}
               </Grid>
@@ -226,91 +229,6 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
         </Grid>
       </Card>
     </NavLink>
-    // <NavLink to={`/ambassadors/${data.id}/content`} className={style.navLink}>
-    //   <div className={style.allContentCard}>
-    //     <div className={style.allContentCard__left}>
-    //       {/* левая */}
-    //       <div className={style.allContentCard__ambassador}>
-    //         <Avatar link={data.image} size="s" />
-    //         <div className={style.allContentCard__person}>
-    //           <h3 className={style.allContentCard__fio}>
-    //             {data.last_name} {data.first_name}
-    //           </h3>
-    //           <p className={style.allContentCard__telegramAcc}>
-    //             {`@${data.tg_acc.split('/')[1]}`}
-    //           </p>
-    //         </div>
-    //       </div>
-
-  //       <div className={style.allContentCard__statusGroup}>
-  //         {/* <StatusIcon status={data.} /> */}
-  //         <div className={style.allContentCard__reitingGroup}>
-  //           <img
-  //             src={arrowUp}
-  //             alt="Стрелка"
-  //             className={style.allContentCard__arrow}
-  //           />
-  //           <p className={style.allContentCard__textReiting}>Рейтинг</p>
-  //           <span className={style.allContentCard__countReiting}>
-  //             {data.rating}
-  //           </span>
-  //         </div>
-  //       </div>
-  //     </div>
-
-  //     <span className={style.line} />
-
-  //     <div className={style.allContentCard__middle}>
-  //       {/* середина */}
-  //       <h3 className={style.allContentCard__reviews}>Отзывы</h3>
-  //       <img
-  //         src={chat}
-  //         className={style.allContentCard__reviewsImg}
-  //         alt="Отзывы"
-  //       />
-  //       <span className={style.allContentCard__reviewsCount}>
-  //         {data.review_count}
-  //       </span>
-  //     </div>
-
-  //     <span className={style.line} />
-
-  //     <div className={style.allContentCard__right}>
-  //       {/* правая */}
-  //       <div className={style.allContentCard__contentContainer}>
-  //         <h3 className={style.allContentCard__contentTitle}>
-  //           Опубликовано контента
-  //         </h3>
-  //         <div className={style.allContentCard__contentGroup}>
-  //           {/* {data.content.map((row, index) => (
-  //             <div key={uuidv4()} className={style.allContentCard__social}>
-  //               <div className={style.allContentCard__icon}>
-  //                 {getPlatformIcon(row.platform)}
-  //               </div>
-  //               <span className={style.allContentCard__iconCount}>
-  //                 {row.fileCounter}
-  //               </span>
-  //             </div>
-  //           ))} */}
-  //         </div>
-  //       </div>
-
-  //       <div className={style.allContentCard__dataGroup}>
-  //         <h3 className={style.allContentCard__dataTitle}>Дата обновления</h3>
-  //         <div className={style.allContentCard__data}>
-  //           <img
-  //             src={calendarIcon}
-  //             className={style.allContentCard__calendar}
-  //             alt="Календарь"
-  //           />
-  //           <span className={style.allContentCard__dataNumber}>
-  //             {formattedDate}
-  //           </span>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // </NavLink>
   );
 };
 
