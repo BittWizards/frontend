@@ -70,11 +70,11 @@ const AmbassadorQuestionnaire = () => {
     dispatch(setIsOpen(true));
     dispatch(setRequestData(data));
   };
-  
+
   const onConfirm = () => {
     dispatch(setIsOpen(false));
     dispatch(setIsSecondaryOpen(true));
-    dispatch(setIsEdit(false))
+    dispatch(setIsEdit(false));
     dispatch(patchChangeAmbassador({ id: Number(id), body: requestData }));
   };
 
@@ -85,7 +85,7 @@ const AmbassadorQuestionnaire = () => {
   };
 
   const onCancelChanges = () => {
-    isEdit ? dispatch(setIsCancelOpen(true)) : navigate(-1);
+    isEdit ? dispatch(setIsCancelOpen(true)) : navigate('/ambassadors');
   };
 
   return (

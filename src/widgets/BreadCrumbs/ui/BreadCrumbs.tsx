@@ -76,7 +76,7 @@ const BreadCrumbs: FC = () => {
       )}
       {pathname.startsWith(`/ambassadors/${id}/promocode`) && (
         <>
-          {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
+          {renderNavLinkNext('/promocode', 'Промокоды')}
           <NavLink
             to={`/ambassadors/${id}/promocode`}
             className={style.breadcrumbs__link}
@@ -87,7 +87,7 @@ const BreadCrumbs: FC = () => {
       )}
       {pathname.startsWith(`/ambassadors/${id}/content`) && (
         <>
-          {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
+          {renderNavLinkNext('/content', 'Контент')}
           <NavLink
             to={`/ambassadors/${id}/content`}
             className={style.breadcrumbs__link}
@@ -98,7 +98,7 @@ const BreadCrumbs: FC = () => {
       )}
       {pathname.startsWith(`/ambassadors/${id}/merch`) && (
         <>
-          {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
+          {renderNavLinkNext('/merch', 'Мерч')}
           <NavLink
             to={`/ambassadors/${id}/merch`}
             className={style.breadcrumbs__link}
