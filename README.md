@@ -36,7 +36,10 @@
   <img src="https://img.shields.io/badge/figma-%23404d59.svg?style=for-the-badge&logo=figma&logoColor=purple" alt="Figma Badge" />
   <img src="https://img.shields.io/badge/vscode-%23404d59?style=for-the-badge&logo=vscode&logoColor=white" alt="VScode Badge" />
   
-### Ссылки на сторонние библиотеки и шрифты
+### Ссылки на сторонние библиотеки
+- [MUI](https://mui.com/material-ui/)
+- yup
+- react-hook-form
 
 # Установка
 
