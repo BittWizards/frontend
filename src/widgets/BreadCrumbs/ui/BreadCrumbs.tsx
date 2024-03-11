@@ -8,6 +8,7 @@ import style from './BreadCrumbs.module.scss';
 const BreadCrumbs: FC = () => {
   const { pathname } = useLocation();
   const { id } = useParams();
+  const { detailId } = useParams();
 
   const renderNavLink = (to: To, text: string) => (
     <>
@@ -128,7 +129,7 @@ const BreadCrumbs: FC = () => {
           </NavLink>
         </>
       )}
-      {pathname.startsWith(`/ambassadors/${id}/detail/${id}/report`) && (
+      {pathname.startsWith(`/ambassadors/${id}/detail/${detailId}/report`) && (
         <>
           {renderNavLinkNext('/content', 'Контент')}
           <NavLink
