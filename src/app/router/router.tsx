@@ -12,10 +12,10 @@ import { PromocodePage } from 'src/pages/PromocodePage';
 import { NewAmbassadorPage } from 'src/pages/NewAmbassadorPage';
 import { CandidateDetailPage } from 'src/pages/CandidateDetailPage';
 import { ReportContent } from 'src/pages/ReportContent';
-import { AmbassadorDetailPage } from '../../pages/AmbassadorDetailPage';
-import { AmbassadorMerchPage } from '../../pages/AmbassadorMerchPage';
-import { AmbassadorContentPage } from '../../pages/AmbassadorContentPage';
-import { AmbassadorPromocodePage } from '../../pages/AmbassadorPromocodePage';
+import { AmbassadorDetailPage } from 'src/pages/AmbassadorDetailPage';
+import { AmbassadorMerchPage } from 'src/pages/AmbassadorMerchPage';
+import { AmbassadorContentPage } from 'src/pages/AmbassadorContentPage';
+import { AmbassadorPromocodePage } from 'src/pages/AmbassadorPromocodePage';
 
 export const router = createBrowserRouter([
   {
