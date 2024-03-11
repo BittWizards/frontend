@@ -81,7 +81,7 @@ const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
 
   const onSuccessClose = () => {
     dispatch(setIsSecondaryOpen(false));
-    navigate(-1);
+    navigate('/ambassadors');
   };
 
   return (
