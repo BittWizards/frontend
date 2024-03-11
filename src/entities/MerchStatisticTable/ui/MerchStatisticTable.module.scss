@@ -1,0 +1,52 @@
+@import 'src/app/styles/variables.scss';
+
+.userInfoWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: 250px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.name {
+  font-family: 'YSText';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $baseLightBg;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tg {
+  color: $baseColorInactive;
+}
+
+.rotatedTitle {
+  font-family: 'YSText';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $baseLightBg;
+  transform: rotate(-90deg);
+  padding-left: 10px;
+}
+
+.countWrapper {
+  display: flex;
+  justify-content: center;
+}

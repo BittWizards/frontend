@@ -1,0 +1,44 @@
+@import 'src/app/styles/variables.scss';
+
+.container {
+  border: 1px solid $borderColorDark;
+  border-radius: 20px;
+  padding: 16px;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.title {
+  font-family: YSDisplay;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  color: $baseColorWhite;
+  margin: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #8e8e8e;
+  font-size: 13px;
+  line-height: 1.2;
+  padding: 0 10px;
+  display: flex;
+  gap: 10px;
+  transition: .3s ease;
+  
+  &:hover {
+    color: $baseColorWhite;
+    transition: .3s ease;
+  }
+
+  &:focus {
+    color: $baseColorWhite;
+    transition: .3s ease;
+  }
+}

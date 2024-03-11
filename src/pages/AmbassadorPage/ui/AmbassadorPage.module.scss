@@ -1,0 +1,87 @@
+@import 'src/app/styles/variables.scss';
+
+.main {
+  display: flex;
+  gap: 50px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.pageHeader {
+  margin: 0;
+  display: flex;
+  gap: 122px;
+  margin-bottom: 32px;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  color: $baseLightBg;
+  padding-bottom: 32px;
+}
+
+.btn {
+  width: 244px;
+  border: none;
+  border-radius: 4px;
+  background-color: $statusColorSpecifying;
+  color: $baseColorWhite;
+  padding: 13px;
+  cursor: pointer;
+  font-family: 'YSText';
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.titleBtnWrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+}
+.pageTitle {
+  margin: 0;
+  padding: 0;
+  padding-top: 9.5px;
+  font-family: 'YSDisplay';
+  font-size: 24px;
+  font-weight: 400;
+  color: $baseLightBg;
+}
+
+.navList {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 122px;
+  margin-bottom: 24px;
+}
+
+.filterWrapper {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-end;
+}
+
+
+.sortWrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 36px;
+}
+
+.downloadImg {
+  margin: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  align-self: center;
+}

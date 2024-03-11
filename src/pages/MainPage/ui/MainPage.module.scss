@@ -1,0 +1,25 @@
+@import 'src/app/styles/variables.scss';
+
+.main {
+  display: flex;
+  gap: 50px;
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  color: $baseColorWhite;
+}
+
+.cardColumnList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardList {
+  width: 527px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}

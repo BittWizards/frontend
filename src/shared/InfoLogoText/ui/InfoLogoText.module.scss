@@ -1,0 +1,23 @@
+@import 'src/app/styles/variables.scss';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 650px;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+}
+
+.text {
+  font-family: 'YSText';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

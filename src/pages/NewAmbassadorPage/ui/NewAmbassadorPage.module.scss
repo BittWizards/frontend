@@ -1,0 +1,16 @@
+@import 'src/app/styles/variables.scss';
+
+.main {
+  display: flex;
+  gap: 50px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  gap: 32px;
+}

@@ -1,0 +1,68 @@
+@import 'src/app/styles/variables.scss';
+
+.cardContainer {
+  border: 1px solid $borderColorDark;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 336px;
+  
+  box-sizing: border-box;
+}
+
+.nameGroup {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name {
+  margin: 0;
+  padding: 0;
+  font-family: 'YSDisplay';
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 120%;
+  max-width: 202px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.position {
+  font-family: 'YSText';
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.cardBottomWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.dateContainer {
+  display: flex;
+  align-items: center;
+}
+
+.date {
+  font-family: 'YSText';
+  font-size: 13px;
+  line-height: 120%;
+  font-weight: 400;
+}
+
+.line {
+  border-top: 1px solid $baseDarkBg;
+  width: 100%;
+}

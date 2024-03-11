@@ -1,0 +1,22 @@
+@import './fonts/fonts.css';
+@import './variables.scss';
+
+* {
+  --font-family: YSText, sans-serif;
+  font-family: var(--font-family);
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $baseColorDark;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

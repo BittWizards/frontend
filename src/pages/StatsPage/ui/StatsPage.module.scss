@@ -1,0 +1,41 @@
+@import 'src/app/styles/variables.scss';
+
+
+.main {
+  display: flex;
+  gap: 50px;
+}
+
+.statisticsAnalyticsPage {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 110px;
+  row-gap: 16px;
+}
+
+.statisticsAnalyticsPage__ambassadorDiagram {
+  margin: auto;
+  padding: 40.79px 110.62px;
+  width: 209px;
+  height: 209px;
+  border: 1px solid $borderColorDark;
+  border-radius: 10px;
+
+}
+
+.statisticsAnalyticsPage__mainDiagram {
+  margin: auto;
+  padding: 0;
+}
+
+.statisticsAnalyticsPage__promocodeDiagram {
+  margin: 0 auto;
+  margin-top: 25.29px;
+  padding: 68.18px 28.97px 24.7px;
+  width: 391px;
+  height: 209px;
+  border: 1px solid $borderColorDark;
+  border-radius: 10px;
+}

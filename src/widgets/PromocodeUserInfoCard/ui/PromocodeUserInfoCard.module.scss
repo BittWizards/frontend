@@ -1,0 +1,133 @@
+@import 'src/app/styles/variables.scss';
+
+.navLink {
+  text-decoration: none;
+}
+
+.cardContainer {
+  border: 1px solid $borderColorDark;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 520px;
+  color: $baseLightBg;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: $statusColorSpecifying;
+  }
+}
+
+.cardContainerInactive {
+  background-color: $baseDarkBg;
+  opacity: 0.6;
+}
+
+.userInfoWrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 70%;
+}
+
+.name {
+  margin: 0;
+  padding: 0;
+  font-family: 'YSDisplay';
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 120%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.position {
+  margin: 0;
+  padding: 0;
+  font-family: 'YSText';
+  font-size: 14px;
+  line-height: 120%;
+  font-weight: 400;
+  color: $baseColorInactive;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line {
+  border-top: 1px solid $baseDarkBg;
+  width: 100%;
+}
+
+.socialWrapper {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  max-width: 230px;
+}
+
+.socialIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.tg {
+  font-family: 'YSText';
+  font-size: 13px;
+  line-height: 120%;
+  font-weight: 400;
+  color: $baseColorInactive;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.statusWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.promocodeWrapper {
+  display: flex;
+  justify-content: space-between;
+  border-left: 5px solid $statusColorSpecifying;
+  padding-left: 15px;
+}
+
+.promocodeColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-family: 'YSText';
+  font-size: 16px;
+  line-height: 100%;
+  font-weight: 400;
+  color: $baseColorInactive;
+}
+
+.text {
+  font-family: 'YSDisplay';
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 400;
+  color: $baseColorWhite;
+}

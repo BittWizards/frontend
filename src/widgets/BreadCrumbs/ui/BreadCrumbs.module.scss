@@ -1,0 +1,69 @@
+@import 'src/app/styles/variables.scss';
+
+.breadcrumbs {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 16px;
+    
+    
+}
+
+.breadcrumbs__main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.breadcrumbs__title  {
+    margin: 0;
+    padding: 0;
+    font-family: 'YSText';
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 120%;
+    color: #939393;
+    text-decoration: none;
+
+}
+
+.breadcrumbs__image {
+    margin: 0;
+    padding: 0;
+    width: 24px;
+    height: 25px;
+}
+
+.breadcrumbs__component {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.breadcrumbs__link {
+    margin: 0;
+    padding: 0;
+    font-family: 'YSText';
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 120%;
+    color: #EBEEF4;
+    text-decoration: none;
+    align-self: center;
+}
+
+.breadcrumbs__link__grey {
+    margin: 0;
+    padding: 0;
+    font-family: 'YSText';
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 120%;
+    color: #939393;
+    text-decoration: none;
+    align-self: center;
+}

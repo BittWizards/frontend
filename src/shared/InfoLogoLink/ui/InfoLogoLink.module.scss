@@ -1,0 +1,39 @@
+@import 'src/app/styles/variables.scss';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 230px;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+  font-family: 'YSText';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link {
+  margin: 0;
+  padding: 0;
+  color: $baseColorWhite;
+  font-family: 'YSText';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-decoration: underline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

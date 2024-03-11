@@ -1,0 +1,65 @@
+@import 'src/app/styles/variables.scss';
+
+.listItem {
+  list-style: none;
+  margin: 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  border-left: 4px solid transparent;
+
+  &.active {
+    border-left: 4px solid $statusColorActive;
+    transition: border-left 0.3s ease;
+    background: $primaryDarkGrey;
+    border-radius: 1px 4px 4px 1px;
+  }
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: $baseColorInactive;
+  transition: color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: $baseColorWhite;
+
+    & img {
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
+    }
+  }
+
+  // Стили для активной вкладки
+  &.active,
+  &:active,
+  &:focus {
+    color: $baseColorWhite; // Цвет текста для активной вкладки
+
+    & img {
+      filter: brightness(0) invert(1); // Цвет иконки для активной вкладки
+    }
+  }
+}
+
+.logo {
+  margin-right: 10px;
+}
+
+.notification {
+  color: black;
+  width: 24px;
+  height: 21px;
+  margin-left: auto;
+  margin-right: 10px;
+  top: 266px;
+  left: 304px;
+  padding: 2px 8px 2px 8px;
+  border-radius: 8px;
+  gap: 10px;
+  background-color: #DAA700;
+}
