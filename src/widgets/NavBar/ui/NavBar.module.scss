@@ -28,14 +28,9 @@
   width: 100%;
 }
 
-.button {
+.fixedElement {
   position: fixed;
   bottom: 30px;
   padding: 0;
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: inherit;
   cursor: pointer;
 }
