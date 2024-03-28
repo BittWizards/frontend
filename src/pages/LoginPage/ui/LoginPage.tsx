@@ -1,16 +1,20 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL, CLIENT_ID } from 'src/utils/constants/api';
 
 export function LoginPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!CLIENT_ID) {
+      navigate('/');
+    }
     // @ts-ignore
     window.YaAuthSuggest.init(
       {
-        client_id: '8625584df11a4d8b84466d9df0c9872f',
+        client_id: `${CLIENT_ID}`,
         response_type: 'token',
-        redirect_uri: 'https://ambas-1.ddns.net/suggest/token',
+        redirect_uri: `${BASE_URL}/suggest/token`,
       },
       'https://ambas-1.ddns.net',
       {
