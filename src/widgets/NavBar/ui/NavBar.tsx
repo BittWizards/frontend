@@ -7,13 +7,12 @@ import { useAppSelector } from 'src/app/store/hooks';
 import { useNavigate } from 'react-router-dom';
 
 import { Avatar } from 'src/entities/Avatar';
+import Button from 'src/entities/Button/ui/Button';
 import avatar from 'src/shared/icons/userAvatar.png';
 import { NavbarLink } from '..';
 import type { INavbarProps } from '../types/types';
 
 import style from './NavBar.module.scss';
-import 'src/app/styles/variables.scss';
-import Button from 'src/entities/Button/ui/Button';
 
 const Navbar: FC<INavbarProps> = ({ links }) => {
   const count = useAppSelector((state: RootState) => state.notifications);
