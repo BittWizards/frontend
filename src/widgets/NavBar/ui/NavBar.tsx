@@ -52,7 +52,7 @@ const Navbar: FC<INavbarProps> = ({ links }) => {
         </ul>
       </nav>
       <div className={style.fixedElement}>
-        {!isLogged ? (
+        {isLogged ? (
           <button
             type="button"
             aria-label="Открыть меню пользователя"
