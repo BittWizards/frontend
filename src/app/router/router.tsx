@@ -16,6 +16,7 @@ import { AmbassadorDetailPage } from 'src/pages/AmbassadorDetailPage';
 import { AmbassadorMerchPage } from 'src/pages/AmbassadorMerchPage';
 import { AmbassadorContentPage } from 'src/pages/AmbassadorContentPage';
 import { AmbassadorPromocodePage } from 'src/pages/AmbassadorPromocodePage';
+import { LoginPage, SuggestTokenPage } from 'src/pages/LoginPage';
 
 export const router = createBrowserRouter([
   {
@@ -80,5 +81,13 @@ export const router = createBrowserRouter([
         element: <StatsPage />,
       },
     ],
+  },
+  {
+    path: 'login',
+    element: <LoginPage />,
+  },
+  {
+    path: 'suggest/token',
+    element: <SuggestTokenPage />,
   },
 ]);

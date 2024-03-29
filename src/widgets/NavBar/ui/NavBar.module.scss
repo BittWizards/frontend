@@ -39,3 +39,10 @@
   background-color: inherit;
   cursor: pointer;
 }
+
+.fixedElement {
+  position: fixed;
+  bottom: 30px;
+  padding: 0;
+  cursor: pointer;
+}
