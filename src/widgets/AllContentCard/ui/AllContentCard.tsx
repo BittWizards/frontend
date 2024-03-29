@@ -199,7 +199,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                         </Grid>
                       </Grid>
                     ) : (
-                      <Grid sx={{ width: '20px' }}></Grid>
+                      <Grid sx={{ width: '20px' }} />
                     )
                   )}
               </Grid>

@@ -34,7 +34,7 @@ const Navbar: FC<INavbarProps> = ({ links }) => {
     dict['/ambassadors'] = count.ambassadorsNewCount;
     dict['/content'] = count.contentNewCount;
     dict['/merch'] = count.merchNewCount;
-  }, [count]);
+  }, [count, dict]);
 
   return (
     <aside className={style.aside}>
@@ -52,15 +52,18 @@ const Navbar: FC<INavbarProps> = ({ links }) => {
         </ul>
       </nav>
       <div className={style.fixedElement}>
-        {isLogged ? (
-          <Avatar
-            link={avatar}
-            size="m"
+        {!isLogged ? (
+          <button
+            type="button"
+            aria-label="Открыть меню пользователя"
+            className={style.button}
             onClick={() => {
               localStorage.removeItem('token');
               setIsLogged(false);
             }}
-          />
+          >
+            <Avatar link={avatar} size="m" />
+          </button>
         ) : (
           <Button
             label="Войти"

@@ -4,12 +4,7 @@ import type { TAvatarProps } from '../types/types';
 
 import style from './Avatar.module.scss';
 
-const Avatar: FC<TAvatarProps> = ({
-  link,
-  size,
-  status,
-  onClick = undefined,
-}) => {
+const Avatar: FC<TAvatarProps> = ({ link, size, status }) => {
   const getSizeAndBorderColor = () => {
     let avatarSize;
     let borderColor;
@@ -58,7 +53,6 @@ const Avatar: FC<TAvatarProps> = ({
         width: avatarSize,
         height: avatarSize,
       }}
-      onClick={onClick}
     >
       {link ? (
         <img
