@@ -16,7 +16,7 @@ export function LoginPage() {
         response_type: 'token',
         redirect_uri: `${BASE_URL}/suggest/token`,
       },
-      'https://ambas-1.ddns.net',
+      `${BASE_URL}`,
       {
         view: 'button',
         parentId: 'loginContainer',
