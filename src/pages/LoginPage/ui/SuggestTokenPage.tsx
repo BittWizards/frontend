@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { BASE_URL } from 'src/utils/constants/api';
+import { CURRENT_URL } from 'src/utils/constants/api';
 
 export function SuggestTokenPage() {
   useEffect(() => {
     window.onload = function () {
       // @ts-ignore
-      window.YaSendSuggestToken(`${BASE_URL}/login`);
+      window.YaSendSuggestToken(`${CURRENT_URL}/login`);
     };
   }, []);
 
