@@ -7,9 +7,10 @@ import styles from './LoginPage.module.scss';
 export function LoginPage() {
   const navigate = useNavigate();
 
+  console.log(CURRENT_URL, CLIENT_ID);
+
   useEffect(() => {
-    // lowerCase нужен для сервера, без него сломается
-    if (CLIENT_ID.toLowerCase() == 'my_app_client_id') {
+    if (!CLIENT_ID) {
       navigate('/');
     }
     // @ts-ignore
