@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL, CLIENT_ID } from 'src/utils/constants/api';
+import { CURRENT_URL, CLIENT_ID } from 'src/utils/constants/api';
 
 import styles from './LoginPage.module.scss';
 
@@ -16,9 +16,9 @@ export function LoginPage() {
       {
         client_id: `${CLIENT_ID}`,
         response_type: 'token',
-        redirect_uri: `${BASE_URL}/suggest/token`,
+        redirect_uri: `${CURRENT_URL}/suggest/token`,
       },
-      `${BASE_URL}`,
+      `${CURRENT_URL}`,
       {
         view: 'button',
         parentId: 'loginContainer',

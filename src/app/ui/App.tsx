@@ -14,7 +14,9 @@ const App = () => {
 
   useEffect(() => {
     const socket = new WebSocket(
-      'wss://ambassadors.sytes.net/ws/notification/'
+      (window.location.protocol === 'https:' ? 'wss://' : 'ws://') +
+        window.location.host +
+        '/ws/notification/'
     );
     socket.onopen = () => {
       dispatch(getNewAmbassadors());
