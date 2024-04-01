@@ -7,8 +7,6 @@ import styles from './LoginPage.module.scss';
 export function LoginPage() {
   const navigate = useNavigate();
 
-  console.log(CURRENT_URL, CLIENT_ID);
-
   useEffect(() => {
     if (!CLIENT_ID) {
       navigate('/');
