@@ -1,0 +1,18 @@
+@import 'src/app/styles/variables.scss';
+
+.socialIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.tg {
+  margin-left: 2px;
+  font-family: 'YSText';
+  font-size: 13px;
+  line-height: 120%;
+  font-weight: 400;
+  color: $baseColorInactive;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

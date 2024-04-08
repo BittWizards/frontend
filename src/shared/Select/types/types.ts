@@ -6,6 +6,7 @@ type TSelectProps = {
   width: string;
   height: string;
   defaultValue?: object;
+  ambassadorRender?: boolean;
 };
 
 export type { TSelectProps };

@@ -56,6 +56,8 @@ const NewOrderPage = () => {
           methods.setValue('phone', ambassadorById.phone);
         }
       });
+    } else {
+      setAmbassador(null);
     }
   };
 
@@ -96,23 +98,28 @@ const NewOrderPage = () => {
               width="100%"
               height="40px"
               label="Выберите амбассадора"
+              ambassadorRender={true}
             />
-            <QuestionnaireProfileInfo hideExtra={true} />
-            <OrderForm ambassador={ambassador ? ambassador : undefined} />
-            <div className={style.buttons}>
-              <ButtonComponent
-                label="Сохранить"
-                width={244}
-                height={48}
-                onClick={() => setIsOpen(true)}
-              />
-              <ButtonSecondaryComponent
-                label="Отменить"
-                width={244}
-                height={48}
-                onClick={() => setIsCancelOpen(true)}
-              />
-            </div>
+            {ambassador && (
+              <>
+                <QuestionnaireProfileInfo hideExtra={true} />
+                <OrderForm ambassador={ambassador ? ambassador : undefined} />
+                <div className={style.buttons}>
+                  <ButtonComponent
+                    label="Сохранить"
+                    width={244}
+                    height={48}
+                    onClick={() => setIsOpen(true)}
+                  />
+                  <ButtonSecondaryComponent
+                    label="Отменить"
+                    width={244}
+                    height={48}
+                    onClick={() => setIsCancelOpen(true)}
+                  />
+                </div>
+              </>
+            )}
             <ChoiceModal
               open={isOpen}
               title="Создать заявку"
