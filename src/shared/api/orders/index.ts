@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { BASE_URL } from 'src/utils/constants/api';
-import type { TAmbassadorsOrders, TOrder } from './dtos';
+import type { TAmbassadorsOrders, TNewOrder, TOrder } from './dtos';
 
 const getOrders = createAsyncThunk(
   'order/getOrders',
@@ -24,6 +24,21 @@ const getAmbassadorsOrdersById = createAsyncThunk(
         `${BASE_URL}/api/v1/ambassadors/${id}/orders/`
       );
 
+      return data;
+    } catch (e: any) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const postNewOrder = createAsyncThunk(
+  'ambassadors/postNewAmbassador',
+  async ({ body }: { body: TNewOrder }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post<TNewOrder>(
+        `${BASE_URL}/api/v1/orders/`,
+        body
+      );
       return data;
     } catch (e: any) {
       return rejectWithValue(e.message);

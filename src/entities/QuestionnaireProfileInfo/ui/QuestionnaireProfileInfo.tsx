@@ -9,7 +9,9 @@ import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/amba
 import style from './QuestionnaireProfileInfo.module.scss';
 import type { IQuestionnaireProfileInfo } from '../types/types';
 
-const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = () => {
+const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
+  hideExtra,
+}) => {
   const { register } = useFormContext();
 
   const { isEdit } = useAppSelector(selectQuestionnaire);
@@ -17,30 +19,37 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = () => {
 
   return (
     <div className={style.profile}>
-      <div className={style.photoContainer}>
-        {ambassador.image ? (
-          <Avatar
-            link={ambassador.image}
-            size="l"
-            status={ambassador.achievement}
-          />
-        ) : (
-          <Avatar size="l" />
-        )}
-        {isEdit && (
-          <input
-            type="button"
-            value="+ Загрузить фото"
-            className={style.downloadLink}
-          />
-        )}
-      </div>
+      {!hideExtra && (
+        <div className={style.photoContainer}>
+          {ambassador.image ? (
+            <Avatar
+              link={ambassador.image}
+              size="l"
+              status={ambassador.achievement}
+            />
+          ) : (
+            <Avatar size="l" />
+          )}
+          {isEdit && (
+            <input
+              type="button"
+              value="+ Загрузить фото"
+              className={style.downloadLink}
+            />
+          )}
+        </div>
+      )}
       <div className={style.infoContainer}>
         {isEdit ? (
           <div className={style.info}>
-            <Input type="text" name="middle_name" placeholder="Фамилия" />
+            <Input type="text" name="last_name" placeholder="Фамилия" />
             <Input type="text" name="first_name" placeholder="Имя" />
-            <Input type="text" name="last_name" placeholder="Отчество" />
+            <Input
+              type="text"
+              name="middle_name"
+              placeholder="Отчество"
+              notRequired={true}
+            />
           </div>
         ) : (
           <div className={style.info}>
@@ -49,28 +58,30 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = () => {
             <p className={style.name}>{ambassador.middle_name}</p>
           </div>
         )}
-        <fieldset className={style.fieldset}>
-          <label className={style.label}>
-            <input
-              type="radio"
-              value="Male"
-              disabled={!isEdit}
-              className={style.radio}
-              {...register('gender')}
-            />
-            <span />М
-          </label>
-          <label className={style.label}>
-            <input
-              type="radio"
-              value="Female"
-              disabled={!isEdit}
-              className={style.radio}
-              {...register('gender')}
-            />
-            <span />Ж
-          </label>
-        </fieldset>
+        {!hideExtra && (
+          <fieldset className={style.fieldset}>
+            <label className={style.label}>
+              <input
+                type="radio"
+                value="Male"
+                disabled={!isEdit}
+                className={style.radio}
+                {...register('gender')}
+              />
+              <span />М
+            </label>
+            <label className={style.label}>
+              <input
+                type="radio"
+                value="Female"
+                disabled={!isEdit}
+                className={style.radio}
+                {...register('gender')}
+              />
+              <span />Ж
+            </label>
+          </fieldset>
+        )}
       </div>
     </div>
   );

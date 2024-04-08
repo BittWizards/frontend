@@ -31,9 +31,11 @@ import {
 } from 'src/pages/MerchPage/model/sortFunctions';
 
 import style from './MerchPage.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 const MerchPage = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { merchHistory } = useAppSelector(selectMerch);
   const { orders, isLoading } = useAppSelector(selectOrders);
 
@@ -151,7 +153,9 @@ const MerchPage = () => {
               label="Создать заявку"
               width={244}
               height={48}
-              onClick={e => {}}
+              onClick={e => {
+                navigate('/merch/new-order');
+              }}
             />
           </div>
           <div className={style.rightWrapper}>

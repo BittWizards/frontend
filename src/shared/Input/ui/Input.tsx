@@ -7,7 +7,7 @@ import type { IInput } from '../types/types';
 
 import style from './Input.module.scss';
 
-const Innput: FC<IInput> = ({ placeholder, type, name }) => {
+const Innput: FC<IInput> = ({ placeholder, type, name, notRequired }) => {
   const { register } = useFormContext();
   const { isEdit } = useAppSelector(selectQuestionnaire);
 
@@ -17,7 +17,7 @@ const Innput: FC<IInput> = ({ placeholder, type, name }) => {
       className={`${style.input} ${!isEdit && style.read}`}
       placeholder={placeholder}
       readOnly={!isEdit}
-      {...register(name, { required: true })}
+      {...register(name, { required: !notRequired })}
     />
   );
 };

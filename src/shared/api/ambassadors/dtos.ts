@@ -24,7 +24,7 @@ export interface IAmbassadorById {
   status: 'Active' | 'Pause' | 'Clarify' | 'Not active';
   created: string;
   gender: string;
-  phone: number;
+  phone: string;
   email: string;
   purpose: string;
   education: string;

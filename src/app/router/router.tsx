@@ -17,6 +17,7 @@ import { AmbassadorMerchPage } from 'src/pages/AmbassadorMerchPage';
 import { AmbassadorContentPage } from 'src/pages/AmbassadorContentPage';
 import { AmbassadorPromocodePage } from 'src/pages/AmbassadorPromocodePage';
 import { LoginPage, SuggestTokenPage } from 'src/pages/LoginPage';
+import { NewOrderPage } from 'src/pages/NewOrderPage';
 
 export const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
       {
         path: 'merch',
         element: <MerchPage />,
+      },
+      {
+        path: 'merch/new-order',
+        element: <NewOrderPage />,
       },
       {
         path: 'mailing',

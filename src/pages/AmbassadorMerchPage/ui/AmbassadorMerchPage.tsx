@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -30,6 +30,7 @@ import style from './AmbassadorMerchPage.module.scss';
 const AmbassadorMerchPage = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAmbassadorsOrdersById(Number(id)));
@@ -159,7 +160,9 @@ const AmbassadorMerchPage = () => {
             label="Создать заявку"
             width={244}
             height={48}
-            onClick={e => {}}
+            onClick={e => {
+              navigate('/merch/new-order');
+            }}
           />
         </div>
       </div>
