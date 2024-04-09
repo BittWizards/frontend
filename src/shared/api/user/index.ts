@@ -7,7 +7,6 @@ import { TToken } from 'src/pages/LoginPage/types/types';
 const getUserToken = createAsyncThunk(
   'user/getToken',
   async (token: TToken, { rejectWithValue }) => {
-    console.log(token);
     try {
       const { data } = await axios.get<string>(
         'https://login.yandex.ru/info?format=jwt',
