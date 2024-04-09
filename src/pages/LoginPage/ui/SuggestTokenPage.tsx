@@ -7,7 +7,7 @@ export function SuggestTokenPage() {
       // @ts-ignore
       window.YaSendSuggestToken(`${CURRENT_URL}/login`);
     };
-  }, []);
+  }, [window]);
 
   return null;
 }
