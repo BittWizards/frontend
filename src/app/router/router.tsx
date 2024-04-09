@@ -17,7 +17,7 @@ import { AmbassadorMerchPage } from 'src/pages/AmbassadorMerchPage';
 import { AmbassadorContentPage } from 'src/pages/AmbassadorContentPage';
 import { AmbassadorPromocodePage } from 'src/pages/AmbassadorPromocodePage';
 import { LoginPage, SuggestTokenPage } from 'src/pages/LoginPage';
-import PersonalAccount from 'src/pages/PersonalAccount/PersonalAccount/PersonalAccount';
+import { PersonalAccount } from 'src/pages/PersonalAccount';
 
 export const router = createBrowserRouter([
   {
