@@ -10,9 +10,10 @@ import { useEffect } from 'react';
 
 import email from 'src/shared/icons/mail.svg';
 import phone from 'src/shared/icons/phone.svg';
+import { Loader } from 'src/shared/Loader';
 
 const PersonalAccount = () => {
-  const { user } = useAppSelector(selectUser);
+  const { user, isLoading, error } = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
@@ -25,6 +26,15 @@ const PersonalAccount = () => {
       dispatch(getUser());
     }
   }, [dispatch, token, user]);
+
+  if (!user) {
+    return (
+      <div className={style.main}>
+        <Navbar links={navbarLinks} />
+        <div className={style.content}>{isLoading && <Loader />}</div>
+      </div>
+    );
+  }
 
   return (
     <div className={style.main}>
