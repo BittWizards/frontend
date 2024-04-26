@@ -5,7 +5,6 @@ import { useAppSelector } from 'src/app/store/hooks';
 import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
 import type { IContacts } from '../types/types';
 
-
 import telegram from '../../../shared/icons/telegramIcon.svg';
 import email from '../../../shared/icons/mail.svg';
 import phone from '../../../shared/icons/phone.svg';
@@ -13,23 +12,22 @@ import phone from '../../../shared/icons/phone.svg';
 import style from './Contacts.module.scss';
 
 const Contacts: FC<IContacts> = () => {
-
-  const {isEdit} = useAppSelector(selectQuestionnaire)
+  const { isEdit } = useAppSelector(selectQuestionnaire);
 
   return (
     <FieldsetContainer title="Контактная информация">
       <div className={`${style.inputIcons} ${isEdit && style.gap}`}>
         <img src={telegram} className={style.icon} alt="telegram" />
-        <Input type="string" placeholder="@name" name="tg_acc" />
+        <Input type="string" placeholder="username" name="tg_acc" />
       </div>
 
       <div className={`${style.inputIcons} ${isEdit && style.gap}`}>
         <img src={email} className={style.icon} alt="email" />
-        <Input type="email" placeholder="@mail.ru" name="email" />
+        <Input type="email" placeholder="example@mail.ru" name="email" />
       </div>
       <div className={`${style.inputIcons} ${isEdit && style.gap}`}>
         <img src={phone} className={style.icon} alt="phone" />
-        <Input type="phone" placeholder="+7 " name="phone" />
+        <Input type="phone" placeholder="+7(999)999-99-99" name="phone" />
       </div>
     </FieldsetContainer>
   );
