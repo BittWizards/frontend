@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Autocomplete, Box, TextField } from '@mui/material';
+import { Autocomplete, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { TSelectProps } from '../types/types';
 import { Avatar } from 'src/entities/Avatar';
@@ -20,20 +20,20 @@ const Select: FC<TSelectProps> = ({
   <Autocomplete
     onChange={(_, newValue) => onChange(newValue)}
     value={defaultValue}
-    id="controllable-states-demo"
+    ListboxProps={{ className: style.customScrollbar }}
     options={options}
+    disablePortal
     getOptionLabel={optionLabel}
     sx={{
       width: { width },
       height: { height },
-      padding: 0,
       border: `1px solid #474646`,
       borderRadius: '4px',
       '& .MuiInputBase-root': {
         padding: '5px 4px 7px 11px',
       },
       '& .MuiInputBase-input': {
-        color: '#939393',
+        color: '#ebeef4',
       },
       '& .MuiSvgIcon-root': {
         color: '#939393',
@@ -41,6 +41,28 @@ const Select: FC<TSelectProps> = ({
       '& .MuiInputLabel-root': {
         color: '#939393',
       },
+      '& .MuiInputLabel-root.Mui-focused': {
+        color: '#939393',
+      },
+      '&:hover': {
+        borderColor: '#512da8',
+        transition: 'border-color 0.2s ease-in-out',
+      },
+      '& .Mui-focused': {
+        color: '#939393',
+      },
+      '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#512da8',
+        borderWidth: '2px',
+      },
+      '& + .MuiAutocomplete-popper .MuiAutocomplete-option[aria-selected="true"]':
+        {
+          backgroundColor: '#373636',
+        },
+      '& + .MuiAutocomplete-popper .MuiAutocomplete-option[aria-selected="true"].Mui-focused':
+        {
+          backgroundColor: '#2e2d33',
+        },
     }}
     renderOption={
       ambassadorRender
@@ -50,6 +72,7 @@ const Select: FC<TSelectProps> = ({
               columns={6}
               columnSpacing={1}
               component="li"
+              width="100%"
               {...props}
             >
               <Grid
@@ -65,7 +88,9 @@ const Select: FC<TSelectProps> = ({
                   status={option.achievement}
                   size="s"
                 />
-                <span>{option.first_name + ' ' + option.last_name}</span>
+                <span style={{ paddingLeft: '5px' }}>
+                  {option.first_name + ' ' + option.last_name}
+                </span>
               </Grid>
               <Grid md={3} sx={{ display: 'flex' }}>
                 <span>{option.ya_programm}</span>
@@ -80,7 +105,7 @@ const Select: FC<TSelectProps> = ({
               >
                 <img src={tgIcon} alt="telegram" className={style.socialIcon} />
                 <span className={style.tg}>
-                  {option.tg_acc.toLocaleLowerCase()}
+                  @{option.tg_acc.toLocaleLowerCase()}
                 </span>
               </Grid>
             </Grid>
