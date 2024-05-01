@@ -3,7 +3,7 @@ interface IInput {
   type: string;
   disabled?: boolean;
   name: string;
-  required?: boolean;
+  notRequired?: boolean;
 }
 
 export type { IInput };

@@ -183,6 +183,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                   .map((row, index) =>
                     counts[row] ? (
                       <Grid
+                        key={uuidv4()}
                         container
                         direction="column"
                         display="flex"
@@ -199,7 +200,7 @@ const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
                         </Grid>
                       </Grid>
                     ) : (
-                      <Grid sx={{ width: '20px' }} />
+                      <Grid sx={{ width: '20px' }} key={uuidv4()} />
                     )
                   )}
               </Grid>

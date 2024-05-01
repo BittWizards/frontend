@@ -68,7 +68,7 @@ const ContentInfoCard: FC<TAllContentCardProps> = ({ data, index }) => {
         <h2 className={style.contentList__titleContent}>
           Опубликовано контента
         </h2>
-        <Grid className={style.contentGroup} direction="row">
+        <Grid className={style.contentGroup}>
           {Object.keys(data)
             .filter(row => row in counts)
             .map((row, index) =>
