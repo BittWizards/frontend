@@ -1,7 +1,8 @@
-import type { FC } from 'react';
 
 import { Input } from 'src/shared/Input';
 import { FieldsetContainer } from 'src/shared/FieldsetContainer';
+
+import type { FC } from 'react';
 import type { IDataMerch } from '../types/types';
 
 const DataMerch: FC<IDataMerch> = () => (

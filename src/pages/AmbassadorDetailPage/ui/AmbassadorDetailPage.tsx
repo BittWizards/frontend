@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
 
+import { useEffect } from 'react';
+
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { AmbassadorQuestionnaire } from 'src/widgets/AmbassadorQuestionnaire';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
-import { useEffect } from 'react';
 import { getAmbassadorById } from 'src/shared/api/ambassadors';
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 import { Loader } from 'src/shared/Loader';
@@ -13,6 +14,7 @@ import {
   setIsEdit,
   setIsEditable,
 } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
+
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorDetailPage.module.scss';

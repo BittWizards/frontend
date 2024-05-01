@@ -1,9 +1,11 @@
-import type { FC } from 'react';
-
 import editBtnIcon from 'src/shared/icons/pencil.svg';
-import type { TSubtitleWithEditBtnProps } from '../types/type';
 
 import style from './SubtitleWithEditBtn.module.scss';
+
+import type { FC } from 'react';
+
+import type { TSubtitleWithEditBtnProps } from '../types/type';
+
 
 const SubtitleWithEditBtn: FC<TSubtitleWithEditBtnProps> = ({
   title,

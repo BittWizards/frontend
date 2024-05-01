@@ -1,15 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type {
-  IPromocode,
-  TAmbassadorPromocodesData,
-} from 'src/shared/api/promocodes/dtos';
+
 import {
   createAmbassadorsPromocode,
   deleteAmbassadorsPromocodeById,
   getAllPromocodes,
   getAmbassadorsPromocodesById,
 } from 'src/shared/api/promocodes';
+
 import { emptyAmbassadorPromocode } from './cont';
+
+import type {
+  IPromocode,
+  TAmbassadorPromocodesData,
+} from 'src/shared/api/promocodes/dtos';
 
 interface PromocodesState {
   promocodes: IPromocode[];

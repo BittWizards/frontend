@@ -1,6 +1,10 @@
-import type { FC } from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+
 import { formatPhoneNumber } from '../model/formatTel';
+
 import style from './InfoLogoLink.module.scss';
+
+import type { FC } from 'react';
 
 type TInfoLogoLinkProps = {
   icon: string;

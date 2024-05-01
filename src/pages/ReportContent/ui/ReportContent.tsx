@@ -1,7 +1,8 @@
-import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
+import { Checkbox, styled } from '@mui/material';
 
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectContent } from 'src/app/store/reducers/contents/model/contentsSlice';
@@ -19,7 +20,6 @@ import { Loader } from 'src/shared/Loader';
 
 import contentPrev from 'src/shared/icons/contentPrev.jpg';
 
-import { Checkbox, styled } from '@mui/material';
 
 import { formatDateString } from 'src/utils/constants/formatDate';
 import vcIcon from 'src/shared/icons/vc.svg';
@@ -29,9 +29,12 @@ import linkedinIcon from 'src/shared/icons/linkedinIcon.svg';
 import instagramIcon from 'src/shared/icons/instIcon.svg';
 import otherSocialIcon from 'src/shared/icons/question-mark-circle.svg';
 import habrIcon from 'src/shared/icons/habr.svg';
+
 import { tabsData } from '../types/type';
 
 import style from './ReportContent.module.scss';
+
+import type { FC } from 'react';
 
 const ReportContent: FC = () => {
   const { detailId } = useParams();

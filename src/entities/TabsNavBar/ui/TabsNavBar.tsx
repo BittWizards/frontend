@@ -1,9 +1,10 @@
-import type { FC } from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
-import type { TTabsNavBarProps } from '../types/type';
 import style from './TabsNavBar.module.scss';
+
+import type { TTabsNavBarProps } from '../types/type';
+import type { FC } from 'react';
 
 const TabsNavBar: FC<TTabsNavBarProps> = ({ tabs }) => {
   const { id } = useParams();
@@ -15,6 +16,7 @@ const TabsNavBar: FC<TTabsNavBarProps> = ({ tabs }) => {
 
   useEffect(() => {
     setSelectedOption(getSelectedTab());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
   function getSelectedTab(): string {

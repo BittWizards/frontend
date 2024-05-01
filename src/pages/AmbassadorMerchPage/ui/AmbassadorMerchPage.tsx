@@ -2,6 +2,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@mui/material';
+
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { getAmbassadorsOrdersById } from 'src/shared/api/orders';
 import { selectOrders } from 'src/app/store/reducers/orders/model/ordersSlice';
@@ -14,15 +22,8 @@ import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
 import { Loader } from 'src/shared/Loader';
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from '@mui/material';
-
 import { formatDateString } from 'src/utils/constants/formatDate';
+
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorMerchPage.module.scss';
@@ -34,6 +35,8 @@ const AmbassadorMerchPage = () => {
 
   useEffect(() => {
     dispatch(getAmbassadorsOrdersById(Number(id)));
+    // Omitting 'dispatch' as it's not used in this effect.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const { ambassadorOrders, isLoading } = useAppSelector(selectOrders);

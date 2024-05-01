@@ -1,17 +1,22 @@
-import { Navbar } from 'src/widgets/NavBar';
-import style from './PersonalAccount.module.scss';
+import { useNavigate } from 'react-router-dom';
+
+import { useEffect, useState } from 'react';
+
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { Avatar } from 'src/entities/Avatar';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
-import { useNavigate } from 'react-router-dom';
 import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
 import { getUser } from 'src/shared/api/user';
-import { useEffect, useState } from 'react';
+
+
+import { Navbar } from 'src/widgets/NavBar';
 
 import email from 'src/shared/icons/mail.svg';
 import phone from 'src/shared/icons/phone.svg';
 import { Loader } from 'src/shared/Loader';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
+
+import style from './PersonalAccount.module.scss';
 
 const PersonalAccount = () => {
   const { user, isLoading } = useAppSelector(selectUser);
@@ -56,7 +61,7 @@ const PersonalAccount = () => {
               size="l"
             />
           </div>
-          <div className={style.infoContainer}></div>
+          <div className={style.infoContainer} />
           <div className={style.info}>
             <p className={style.name}>{user?.name.split(' ')[1]}</p>
             <p className={style.name}>{user?.name.split(' ')[0]}</p>

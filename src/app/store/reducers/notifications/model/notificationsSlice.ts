@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { getNewAmbassadors } from 'src/shared/api/ambassadors';
 import { getNewContent } from 'src/shared/api/content';
 

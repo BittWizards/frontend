@@ -1,8 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { TUser } from './dtos';
+
 import { BASE_URL } from 'src/utils/constants/api';
-import { TToken } from 'src/pages/LoginPage/types/types';
+
+import type { TToken } from 'src/pages/LoginPage/types/types';
+
+import type { TUser } from './dtos';
 
 const getUserToken = createAsyncThunk(
   'user/getToken',

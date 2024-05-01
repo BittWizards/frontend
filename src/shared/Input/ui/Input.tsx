@@ -1,14 +1,16 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* Disabled due to usage of react-hook-form */
 
-import type { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { useAppSelector } from 'src/app/store/hooks';
 import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
-import type { IInput } from '../types/types';
 
 import style from './Input.module.scss';
+
+import type { IInput } from '../types/types';
+
+import type { FC } from 'react';
 
 const Input: FC<IInput> = ({ placeholder, type, name }) => {
   const { register } = useFormContext();

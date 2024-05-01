@@ -1,5 +1,6 @@
-import type { FC } from 'react';
 import Button from '@mui/material/Button';
+
+import type { FC } from 'react';
 import type { ButtonProps } from '../types/types';
 
 const ButtonComponent: FC<ButtonProps> = ({

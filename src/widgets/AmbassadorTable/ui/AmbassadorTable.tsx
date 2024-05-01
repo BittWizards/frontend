@@ -1,8 +1,5 @@
-import type { FC } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
-import { StatusIcon } from 'src/shared/StatusIcon';
-import { Avatar } from 'src/entities/Avatar';
 
 import {
   Table,
@@ -12,9 +9,15 @@ import {
   TableRow,
 } from '@mui/material';
 
-import type { TCardProps } from '../types/type';
+import { StatusIcon } from 'src/shared/StatusIcon';
+import { Avatar } from 'src/entities/Avatar';
+
 
 import style from './AmbassadorTable.module.scss';
+
+import type { TCardProps } from '../types/type';
+
+import type { FC } from 'react';
 
 const AmbassadorTable: FC<TCardProps> = ({ data }) => {
   const navigate = useNavigate();
