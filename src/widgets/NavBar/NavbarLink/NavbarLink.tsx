@@ -1,8 +1,10 @@
-import type { FC } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import type { INavbarLinkProps } from '../types/types';
 
 import style from './NavbarLink.module.scss';
+
+import type { FC } from 'react';
+import type { INavbarLinkProps } from '../types/types';
+
 
 const NavbarLink: FC<INavbarLinkProps> = ({ text, to, icon, notification }) => {
   const location = useLocation();

@@ -1,7 +1,16 @@
-import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
+import {
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@mui/material';
+
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectPromocodes } from 'src/app/store/reducers/promocodes/model/promocodesSlice';
 import {
@@ -23,19 +32,13 @@ import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
 
 import trashIcon from 'src/shared/icons/trash.svg';
 
-import {
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from '@mui/material';
-
 import { formatDateString } from 'src/utils/constants/formatDate';
+
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorPromocodePage.module.scss';
+
+import type { FC } from 'react';
 
 const AmbassadorPromocodePage: FC = () => {
   const { id } = useParams();
@@ -112,6 +115,8 @@ const AmbassadorPromocodePage: FC = () => {
 
   useEffect(() => {
     dispatch(getAmbassadorsPromocodesById(Number(id)));
+    // Omitting 'dispatch' as it's not used in this effect.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return isLoading ? (

@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type {
-  TAmbassadorMerchHistory,
-  TMerchItem,
-} from 'src/shared/api/merch/dtos';
 
 import {
   getMerchAmbassadorsHistory,
   getMerchTypes,
 } from 'src/shared/api/merch';
+
+import type {
+  TAmbassadorMerchHistory,
+  TMerchItem,
+} from 'src/shared/api/merch/dtos';
+
 
 interface IMerchState {
   merchHistory: TAmbassadorMerchHistory[];

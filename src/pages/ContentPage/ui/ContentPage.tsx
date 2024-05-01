@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
-import type { IAllContent } from 'src/shared/api/content/dtos';
+
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
@@ -12,8 +13,12 @@ import { SortComponent } from 'src/entities/SortComponent';
 import { getAllContent, getNewContent } from 'src/shared/api/content';
 import { selectContent } from 'src/app/store/reducers/contents/model/contentsSlice';
 import downloadImg from 'src/shared/icons/document-download.svg';
-import style from './ContentPage.module.scss';
+
 import { Loader } from '../../../shared/Loader';
+
+import style from './ContentPage.module.scss';
+
+import type { IAllContent } from 'src/shared/api/content/dtos';
 
 const ContentPage = () => {
   const dispatch = useAppDispatch();

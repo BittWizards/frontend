@@ -1,14 +1,23 @@
-import { Select } from 'src/shared/Select';
-import style from './OrderMerch.module.scss';
-import { useAppSelector } from 'src/app/store/hooks';
-import { RootState } from 'src/app/store/store';
 import { useState } from 'react';
-import { TMerchItem } from 'src/shared/api/merch/dtos';
-import { TOrderMerchProps } from '../types/types';
+
+import { type FC } from 'react';
+
 import { Controller, useFormContext } from 'react-hook-form';
+
 import { ErrorMessage } from '@hookform/error-message';
 
-const OrderMerch: React.FC<TOrderMerchProps> = ({ index, required }) => {
+import { useAppSelector } from 'src/app/store/hooks';
+
+import { Select } from 'src/shared/Select';
+
+import style from './OrderMerch.module.scss';
+
+import type { TOrderMerchProps } from '../types/types';
+
+import type { TMerchItem } from 'src/shared/api/merch/dtos';
+import type { RootState } from 'src/app/store/store';
+
+const OrderMerch: FC<TOrderMerchProps> = ({ index, required }) => {
   const types = useAppSelector((state: RootState) => state.merch.merchType);
   const {
     setValue,
@@ -31,7 +40,7 @@ const OrderMerch: React.FC<TOrderMerchProps> = ({ index, required }) => {
       <ErrorMessage
         errors={errors}
         name={`merch.${index}`}
-        render={({}) => (
+        render={() => (
           <p style={{ margin: 0, color: 'red', fontWeight: 'lighter' }}>
             Выберите один из вариантов
           </p>
@@ -40,9 +49,9 @@ const OrderMerch: React.FC<TOrderMerchProps> = ({ index, required }) => {
       <Controller
         name={`merch.${index}`}
         control={control}
-        shouldUnregister={true}
+        shouldUnregister
         rules={{
-          required: required,
+          required,
         }}
         render={({ field }) => (
           <div className={style.rowTogether}>

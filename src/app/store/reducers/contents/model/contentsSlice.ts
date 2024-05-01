@@ -1,20 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import {
   getAllContent,
   getNewContent,
   getAmbassadorsContentById,
   getContentDetailById,
 } from 'src/shared/api/content';
+
+import {
+  initialAmbassadorContentData,
+  initialAmbassadorContentDetail,
+} from './const';
+
 import type {
   IAllContent,
   INewContentCardData,
   TAmbassadorContentData,
   TContentDetail,
 } from 'src/shared/api/content/dtos';
-import {
-  initialAmbassadorContentData,
-  initialAmbassadorContentDetail,
-} from './const';
 
 interface IContentsState {
   newContent: INewContentCardData[];

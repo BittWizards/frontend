@@ -1,6 +1,15 @@
 import { useEffect, type FC } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@mui/material';
+
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectContent } from 'src/app/store/reducers/contents/model/contentsSlice';
 import { getAmbassadorsContentById } from 'src/shared/api/content';
@@ -11,13 +20,6 @@ import { TabsNavBar } from 'src/entities/TabsNavBar';
 import { AmbassadorHeaderCard } from 'src/entities/AmbassadorHeaderCard';
 import { SubtitleWithEditBtn } from 'src/shared/SubtitleWithEditBtn';
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from '@mui/material';
 import { Loader } from 'src/shared/Loader';
 
 import { formatDateString } from 'src/utils/constants/formatDate';
@@ -29,6 +31,7 @@ import telegramIcon from 'src/shared/icons/telegramIcon.svg';
 import linkedinIcon from 'src/shared/icons/linkedinIcon.svg';
 import instagramIcon from 'src/shared/icons/instIcon.svg';
 import otherSocialIcon from 'src/shared/icons/question-mark-circle.svg';
+
 import { tabsData } from '../model/data';
 
 import style from './AmbassadorContentPage.module.scss';

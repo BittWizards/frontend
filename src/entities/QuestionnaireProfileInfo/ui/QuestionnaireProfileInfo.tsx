@@ -1,4 +1,6 @@
-import type { FC } from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+/* Disabled due to usage of react-hook-form */
+
 import { useFormContext } from 'react-hook-form';
 
 import { useAppSelector } from 'src/app/store/hooks';
@@ -6,8 +8,12 @@ import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/
 import { Avatar } from 'src/entities/Avatar';
 import { Input } from 'src/shared/Input';
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
+
 import style from './QuestionnaireProfileInfo.module.scss';
+
 import type { IQuestionnaireProfileInfo } from '../types/types';
+
+import type { FC } from 'react';
 
 const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
   hideExtra,
@@ -48,7 +54,7 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
               type="text"
               name="middle_name"
               placeholder="Отчество"
-              notRequired={true}
+              notRequired
             />
           </div>
         ) : (

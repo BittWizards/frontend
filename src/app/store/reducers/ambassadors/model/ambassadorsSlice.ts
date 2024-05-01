@@ -1,10 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { IAmbassador, IAmbassadorById } from 'src/shared/api/ambassadors/dtos';
+
 import {
   getAllAmbassadors,
   getAmbassadorById,
 } from 'src/shared/api/ambassadors';
+
 import { initialAmbassador } from './constants';
+
+import type { IAmbassador, IAmbassadorById } from 'src/shared/api/ambassadors/dtos';
 
 interface AmbassadorsState {
   ambassadors: IAmbassador[];

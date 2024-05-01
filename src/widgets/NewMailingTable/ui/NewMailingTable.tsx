@@ -1,6 +1,3 @@
-import type { FC } from 'react';
-
-import { rows } from 'src/utils/constants/allMailingData';
 
 import {
   Table,
@@ -11,10 +8,16 @@ import {
   styled,
 } from '@mui/material';
 
+import { rows } from 'src/utils/constants/allMailingData';
+
+
 import tgIcon from 'src/shared/icons/telegramIcon.svg';
 
 import { Avatar } from 'src/entities/Avatar';
+
 import style from './NewMailingTable.module.scss';
+
+import type { FC } from 'react';
 
 const MailingDataGrid: FC = () => {
   const commonCellStyle = {

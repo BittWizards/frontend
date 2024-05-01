@@ -1,6 +1,11 @@
-import type { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
+import Grid from '@mui/material/Unstable_Grid2';
+
+import Card from '@mui/material/Card';
+
+import Typography from '@mui/material/Typography';
 
 import { Avatar } from 'src/entities/Avatar';
 import { StatusIcon } from 'src/shared/StatusIcon';
@@ -16,13 +21,12 @@ import inIcon from 'src/shared/icons/inIcon.svg';
 import instagram from 'src/shared/icons/instIcon.svg';
 import questionIcon from 'src/shared/icons/questionIcon.svg';
 
-import Grid from '@mui/material/Unstable_Grid2';
-import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
+
+import style from './AllContentCard.module.scss';
 
 import type { TAllContentCardProps } from '../types/types';
 
-import style from './AllContentCard.module.scss';
+import type { FC } from 'react';
 
 const AllContentCard: FC<TAllContentCardProps> = ({ data }) => {
   const formattedDate = new Date(data.last_date)

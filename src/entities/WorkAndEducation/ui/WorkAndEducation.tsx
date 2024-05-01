@@ -1,7 +1,8 @@
-import type { FC } from 'react';
 
 import { FieldsetContainer } from 'src/shared/FieldsetContainer';
 import { Input } from 'src/shared/Input';
+
+import type { FC } from 'react';
 import type { IWorkAndEducation } from '../types/types';
 
 const WorkAndEducation: FC<IWorkAndEducation> = () => (

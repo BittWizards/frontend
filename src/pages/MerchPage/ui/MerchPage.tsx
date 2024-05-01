@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectMerch } from 'src/app/store/reducers/merch/model/merchSlice';
@@ -9,8 +10,6 @@ import {
   getMerchTypes,
 } from 'src/shared/api/merch';
 
-import type { TAmbassadorMerchHistory } from 'src/shared/api/merch/dtos';
-import type { TOrder } from 'src/shared/api/orders/dtos';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
@@ -31,7 +30,9 @@ import {
 } from 'src/pages/MerchPage/model/sortFunctions';
 
 import style from './MerchPage.module.scss';
-import { useNavigate } from 'react-router-dom';
+
+import type { TOrder } from 'src/shared/api/orders/dtos';
+import type { TAmbassadorMerchHistory } from 'src/shared/api/merch/dtos';
 
 const MerchPage = () => {
   const dispatch = useAppDispatch();

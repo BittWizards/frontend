@@ -1,5 +1,9 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* Disabled due to usage of mui */
+
 import { useState, type FC } from 'react';
 import { Autocomplete, TextField } from '@mui/material';
+
 import type { SortProps } from '../types/types';
 
 const SortComponent: FC<SortProps> = ({

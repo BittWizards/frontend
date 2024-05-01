@@ -1,4 +1,10 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* Disabled due to usage of react-hook-form */
+
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { FormProvider, useForm } from 'react-hook-form';
 
 import {
   setIsEdit,
@@ -13,31 +19,39 @@ import {
   getAllAmbassadors,
   getAmbassadorById,
 } from 'src/shared/api/ambassadors';
-import { RootState } from 'src/app/store/store';
 
-import style from './NewOrderPage.module.scss';
 import { OrderForm } from 'src/entities/OrderForm';
-import { IAmbassador, IAmbassadorById } from 'src/shared/api/ambassadors/dtos';
+
 import Select from 'src/shared/Select/ui/Select';
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+
 import { ButtonComponent } from 'src/entities/Button';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { postNewOrder } from 'src/shared/api/orders';
-import { TNewOrder } from 'src/shared/api/orders/dtos';
+
 import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
-import { useNavigate } from 'react-router-dom';
+
+import style from './NewOrderPage.module.scss';
+
+import type { TNewOrder } from 'src/shared/api/orders/dtos';
+import type {
+  IAmbassador,
+  IAmbassadorById,
+} from 'src/shared/api/ambassadors/dtos';
+import type { RootState } from 'src/app/store/store';
+import type { SubmitHandler } from 'react-hook-form';
 
 const NewOrderPage = () => {
   const ambassadors = useAppSelector(
     (state: RootState) => state.ambassadors.ambassadors
   );
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const methods = useForm<TNewOrder>({});
+
   const [ambassador, setAmbassador] = useState<IAmbassadorById | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isCancelOpen, setIsCancelOpen] = useState(false);
   const [isSecondaryOpen, setIsSecondaryOpen] = useState(false);
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const methods = useForm<TNewOrder>({});
 
   const handleAmbassadorChange = (newValue: IAmbassador | null) => {
     if (newValue) {
@@ -94,16 +108,16 @@ const NewOrderPage = () => {
             <Select
               onChange={handleAmbassadorChange}
               options={ambassadors}
-              optionLabel={option => option.first_name + ' ' + option.last_name}
+              optionLabel={option => `${option.first_name} ${option.last_name}`}
               width="100%"
               height="40px"
               label="Выберите амбассадора"
-              ambassadorRender={true}
+              ambassadorRender
             />
             {ambassador && (
               <>
-                <QuestionnaireProfileInfo hideExtra={true} />
-                <OrderForm ambassador={ambassador ? ambassador : undefined} />
+                <QuestionnaireProfileInfo hideExtra />
+                <OrderForm ambassador={ambassador} />
                 <div className={style.buttons}>
                   <ButtonComponent
                     label="Сохранить"

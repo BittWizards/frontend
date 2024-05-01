@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import downloadImg from 'src/shared/icons/document-download.svg';
-import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
 
-import type { ChangeEvent, MouseEvent } from 'react';
+
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
@@ -18,6 +18,7 @@ import { SortComponent } from 'src/entities/SortComponent';
 import { Loader } from 'src/shared/Loader';
 
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
+
 import {
   sortByDate,
   sortBySpecialty,
@@ -27,6 +28,9 @@ import {
 import { sortingOptions } from '../model/const';
 
 import style from './AmbassadorPage.module.scss';
+
+import type { ChangeEvent, MouseEvent } from 'react';
+import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
 
 const AmbassadorPage = () => {
   const dispatch = useAppDispatch();
