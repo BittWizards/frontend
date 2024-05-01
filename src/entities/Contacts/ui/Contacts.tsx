@@ -3,11 +3,12 @@ import { Input } from 'src/shared/Input';
 import { FieldsetContainer } from 'src/shared/FieldsetContainer';
 import { useAppSelector } from 'src/app/store/hooks';
 import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
-import type { IContacts } from '../types/types';
 
-import telegram from '../../../shared/icons/telegramIcon.svg';
-import email from '../../../shared/icons/mail.svg';
-import phone from '../../../shared/icons/phone.svg';
+import telegram from 'src/shared/icons/telegramIcon.svg';
+import email from 'src/shared/icons/mail.svg';
+import phone from 'src/shared/icons/phone.svg';
+
+import type { IContacts } from '../types/types';
 
 import style from './Contacts.module.scss';
 
