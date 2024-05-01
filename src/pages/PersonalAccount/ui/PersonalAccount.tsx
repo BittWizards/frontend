@@ -8,14 +8,12 @@ import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
 import { getUser } from 'src/shared/api/user';
 
-
 import { Navbar } from 'src/widgets/NavBar';
 
 import email from 'src/shared/icons/mail.svg';
 import phone from 'src/shared/icons/phone.svg';
 import { Loader } from 'src/shared/Loader';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
-import style from './PersonalAccount.module.scss';
 
 import style from './PersonalAccount.module.scss';
 
