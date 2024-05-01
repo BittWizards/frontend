@@ -1,6 +1,5 @@
-import type { FC } from 'react';
 import { useState } from 'react';
-import type { SelectChangeEvent } from '@mui/material';
+
 import {
   Dialog,
   DialogActions,
@@ -10,12 +9,16 @@ import {
   Select,
   TextField,
 } from '@mui/material';
+
 import { ButtonComponent } from 'src/entities/Button/';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
 import closeBtnIcon from 'src/shared/icons/closeButton.svg';
 
 import style from './InputAutoCompleteModal.module.scss';
+
+import type { SelectChangeEvent } from '@mui/material';
+import type { FC } from 'react';
 
 type TInputModalModalProps = {
   open: boolean;

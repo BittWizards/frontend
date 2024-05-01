@@ -1,7 +1,8 @@
-import type { FC } from 'react';
 
 import { FieldsetContainer } from 'src/shared/FieldsetContainer';
 import { Checkbox } from 'src/shared/Checkbox';
+
+import type { FC } from 'react';
 import type { IActivity } from '../types/types';
 
 const Activity: FC<IActivity> = () => (

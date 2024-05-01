@@ -1,4 +1,5 @@
-import type { FC } from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+/* Disabled due to usage of mui */
 
 import { Autocomplete, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -6,9 +7,11 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Avatar } from 'src/entities/Avatar';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 
+import style from './Select.module.scss';
+
 import type { TSelectProps } from '../types/types';
 
-import style from './Select.module.scss';
+import type { FC } from 'react';
 
 const Select: FC<TSelectProps> = ({
   onChange,
@@ -92,7 +95,7 @@ const Select: FC<TSelectProps> = ({
                 size="s"
               />
               <span style={{ paddingLeft: '5px' }}>
-                {`${option.first_name  } ${  option.last_name}`}
+                {`${option.first_name} ${option.last_name}`}
               </span>
             </Grid>
             <Grid md={3} sx={{ display: 'flex' }}>
@@ -120,3 +123,4 @@ const Select: FC<TSelectProps> = ({
 );
 
 export default Select;
+

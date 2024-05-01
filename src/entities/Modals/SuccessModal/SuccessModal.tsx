@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { Dialog, DialogActions } from '@mui/material';
 
 import { ButtonComponent } from 'src/entities/Button/';
@@ -6,6 +5,8 @@ import { ButtonComponent } from 'src/entities/Button/';
 import closeBtnIcon from 'src/shared/icons/closeButton.svg';
 
 import style from './SuccessModal.module.scss';
+
+import type { FC } from 'react';
 
 type TSuccessModalProps = {
   open: boolean;

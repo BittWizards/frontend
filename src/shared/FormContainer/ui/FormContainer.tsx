@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import editIcon from 'src/shared/icons/pencil.svg';
@@ -14,15 +13,18 @@ import {
   selectQuestionnaire,
   setIsEdit,
 } from 'src/app/store/reducers/questionnaire/model/questionnaireSlice';
-import type { IFormContainer } from '../types/types';
 
 import style from './FormContainer.module.scss';
+
+import type { IFormContainer } from '../types/types';
+
+import type { FC } from 'react';
 
 const FormContainer: FC<IFormContainer> = ({ title, children }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { isEditable, isEdit } = useAppSelector(selectQuestionnaire);
-  const { isRemoveOpen, isRemoveSecondaryOpen } = useAppSelector(selectModal);
+  const { isRemoveOpen } = useAppSelector(selectModal);
   const dispatch = useAppDispatch();
 
   const onConfirm = () => {

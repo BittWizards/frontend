@@ -1,9 +1,4 @@
-import type { FC } from 'react';
 import { useState } from 'react';
-import { ButtonComponent } from 'src/entities/Button';
-import { formatDateString } from 'src/utils/constants/formatDate';
-import { columns } from 'src/utils/constants/allMailingData';
-import { ChoiceModal } from 'src/entities/Modals';
 
 import {
   Table,
@@ -16,10 +11,19 @@ import {
   Portal,
 } from '@mui/material';
 
+import { ButtonComponent } from 'src/entities/Button';
+import { formatDateString } from 'src/utils/constants/formatDate';
+import { columns } from 'src/utils/constants/allMailingData';
+import { ChoiceModal } from 'src/entities/Modals';
+
+
 import tgIcon from 'src/shared/icons/telegramIcon.svg';
-import type { TMailingProps } from '../types/type';
 
 import style from './MailingDataGrid.module.scss';
+
+import type { TMailingProps } from '../types/type';
+
+import type { FC } from 'react';
 
 const MailingDataGrid: FC<TMailingProps> = ({ rows }) => {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);

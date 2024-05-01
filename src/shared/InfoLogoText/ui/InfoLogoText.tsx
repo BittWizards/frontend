@@ -1,6 +1,7 @@
+import style from './InfoLogoText.module.scss';
+
 import type { FC } from 'react';
 
-import style from './InfoLogoText.module.scss';
 
 type TInfoLogoTextProps = {
   icon: string;

@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 
 import locationIcon from 'src/shared/icons/location-marker.svg';
 import professionIcon from 'src/shared/icons/academic-cap.svg';
@@ -11,9 +10,11 @@ import { InfoLogoLink } from 'src/shared/InfoLogoLink';
 import { StatusIcon } from 'src/shared/StatusIcon';
 import { Avatar } from 'src/entities/Avatar';
 
+import style from './AmbassadorHeaderCard.module.scss';
+
 import type { TAmbassadorHeaderCardProps } from '../types/types';
 
-import style from './AmbassadorHeaderCard.module.scss';
+import type { FC } from 'react';
 
 const AmbassadorHeaderCard: FC<TAmbassadorHeaderCardProps> = ({ data }) => (
   <div className={style.ambassadorHeaderCard}>

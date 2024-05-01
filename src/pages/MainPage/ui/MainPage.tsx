@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import type { IPromocode } from 'src/shared/api/promocodes/dtos';
+
 
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectPromocodes } from 'src/app/store/reducers/promocodes/model/promocodesSlice';
@@ -19,10 +19,13 @@ import { ContentContainer } from 'src/widgets/ContentContainer';
 import { StaticsAnaliticsContainer } from 'src/widgets/StatisticsAnalyticsContainer';
 import { Loader } from 'src/shared/Loader';
 import diagramMain from 'src/shared/icons/diagramMain.svg';
+
+import style from './MainPage.module.scss';
+
 import type { IAmbassador } from 'src/shared/api/ambassadors/dtos';
 import type { IAllContent } from 'src/shared/api/content/dtos';
 
-import style from './MainPage.module.scss';
+import type { IPromocode } from 'src/shared/api/promocodes/dtos';
 
 const MainPage = () => {
   const dispatch = useAppDispatch();

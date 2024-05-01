@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { TAmbassadorsOrders, TOrder } from 'src/shared/api/orders/dtos';
+
 
 import { getAmbassadorsOrdersById, getOrders } from 'src/shared/api/orders';
+
 import { initialAmbassadorOrders } from './const';
+
+import type { TAmbassadorsOrders, TOrder } from 'src/shared/api/orders/dtos';
 
 interface IOrdersState {
   orders: TOrder[];

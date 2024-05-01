@@ -10,8 +10,6 @@ import {
   getMerchTypes,
 } from 'src/shared/api/merch';
 
-import type { TAmbassadorMerchHistory } from 'src/shared/api/merch/dtos';
-import type { TOrder } from 'src/shared/api/orders/dtos';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
@@ -32,6 +30,9 @@ import {
 } from 'src/pages/MerchPage/model/sortFunctions';
 
 import style from './MerchPage.module.scss';
+
+import type { TOrder } from 'src/shared/api/orders/dtos';
+import type { TAmbassadorMerchHistory } from 'src/shared/api/merch/dtos';
 
 const MerchPage = () => {
   const dispatch = useAppDispatch();

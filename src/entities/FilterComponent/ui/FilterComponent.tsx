@@ -1,8 +1,10 @@
-import type { FC } from 'react';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
-import type { FilterProps } from '../types/types';
 
 import style from './FilterComponent.module.scss';
+
+import type { FC } from 'react';
+import type { FilterProps } from '../types/types';
+
 
 const FilterComponent: FC<FilterProps> = ({
   onSearch,

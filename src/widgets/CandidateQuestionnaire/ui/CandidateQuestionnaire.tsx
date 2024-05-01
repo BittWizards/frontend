@@ -4,12 +4,13 @@
 import { type FC } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { FormProvider, useForm } from 'react-hook-form';
+
 import { FormContainer } from 'src/shared/FormContainer';
 import { QuestionnaireProfileInfo } from 'src/entities/QuestionnaireProfileInfo';
 import { QuestionnaireForm } from 'src/entities/QuestionnaireForm';
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
-import { FormProvider, useForm } from 'react-hook-form';
 import { ButtonComponent } from 'src/entities/Button';
 import { ChoiceModal, InputModal, SuccessModal } from 'src/entities/Modals';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
@@ -22,8 +23,10 @@ import {
 } from 'src/app/store/reducers/modal/model/modalSlice';
 
 import { patchConfirmCandidate } from 'src/shared/api/ambassadors';
-import type { ICandidateQuestionnaire } from '../types/types';
+
 import style from './CandidateQuestionnaire.module.scss';
+
+import type { ICandidateQuestionnaire } from '../types/types';
 
 const CandidateQuestionnaire: FC<ICandidateQuestionnaire> = () => {
   const { id } = useParams();

@@ -1,8 +1,10 @@
-import type { FC } from 'react';
 import { statusMappings } from 'src/utils/constants/statusMappings';
-import type { StatusIconProps } from '../types/type';
 
 import style from './StatusIcon.module.scss';
+
+import type { FC } from 'react';
+import type { StatusIconProps } from '../types/type';
+
 
 const StatusIcon: FC<StatusIconProps> = ({ status }) => {
   // Функция для определения класса цвета в зависимости от статуса

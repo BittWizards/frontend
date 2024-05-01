@@ -5,9 +5,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { FormProvider, useForm } from 'react-hook-form';
-import type { SubmitHandler } from 'react-hook-form';
-
-import type { RootState } from 'src/app/store/store';
 
 import {
   setIsEdit,
@@ -24,19 +21,24 @@ import {
 } from 'src/shared/api/ambassadors';
 
 import { OrderForm } from 'src/entities/OrderForm';
-import type {
-  IAmbassador,
-  IAmbassadorById,
-} from 'src/shared/api/ambassadors/dtos';
+
 import Select from 'src/shared/Select/ui/Select';
 
 import { ButtonComponent } from 'src/entities/Button';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { postNewOrder } from 'src/shared/api/orders';
-import type { TNewOrder } from 'src/shared/api/orders/dtos';
+
 import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
 
 import style from './NewOrderPage.module.scss';
+
+import type { TNewOrder } from 'src/shared/api/orders/dtos';
+import type {
+  IAmbassador,
+  IAmbassadorById,
+} from 'src/shared/api/ambassadors/dtos';
+import type { RootState } from 'src/app/store/store';
+import type { SubmitHandler } from 'react-hook-form';
 
 const NewOrderPage = () => {
   const ambassadors = useAppSelector(

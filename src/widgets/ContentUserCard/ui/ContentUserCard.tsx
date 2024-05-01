@@ -1,13 +1,17 @@
-import type { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import calendarIcon from 'src/shared/icons/calendar.svg';
+
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
-import { useNavigate } from 'react-router-dom';
+
+
+import style from './ContentUserCard.module.scss';
 
 import type { TCardProps } from '../types/types';
 
-import style from './ContentUserCard.module.scss';
+import type { FC } from 'react';
 
 const ContentUserCard: FC<TCardProps> = ({ data }) => {
   const navigate = useNavigate();

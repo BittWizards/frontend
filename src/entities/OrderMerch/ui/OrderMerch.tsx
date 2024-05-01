@@ -1,16 +1,21 @@
-import type { FC } from 'react';
 import { useState } from 'react';
+
+import { type FC } from 'react';
+
 import { Controller, useFormContext } from 'react-hook-form';
 
+import { ErrorMessage } from '@hookform/error-message';
+
 import { useAppSelector } from 'src/app/store/hooks';
-import type { RootState } from 'src/app/store/store';
 
 import { Select } from 'src/shared/Select';
-import type { TMerchItem } from 'src/shared/api/merch/dtos';
-import { ErrorMessage } from '@hookform/error-message';
-import type { TOrderMerchProps } from '../types/types';
 
 import style from './OrderMerch.module.scss';
+
+import type { TOrderMerchProps } from '../types/types';
+
+import type { TMerchItem } from 'src/shared/api/merch/dtos';
+import type { RootState } from 'src/app/store/store';
 
 const OrderMerch: FC<TOrderMerchProps> = ({ index, required }) => {
   const types = useAppSelector((state: RootState) => state.merch.merchType);

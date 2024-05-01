@@ -1,5 +1,6 @@
-import type { FC } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
+import { Grid } from '@mui/material';
 
 import arrowUp from 'src/shared/icons/arrow-up.svg';
 import youTube from 'src/shared/icons/youTubeIcon.svg';
@@ -10,9 +11,12 @@ import vc from 'src/shared/icons/vc.svg';
 import inIcon from 'src/shared/icons/inIcon.svg';
 import questionIcon from 'src/shared/icons/questionIcon.svg';
 
-import { Grid } from '@mui/material';
-import type { TAllContentCardProps } from '../types/types';
 import style from './ContentInfoCard.module.scss';
+
+import type { TAllContentCardProps } from '../types/types';
+
+
+import type { FC } from 'react';
 
 const ContentInfoCard: FC<TAllContentCardProps> = ({ data, index }) => {
   const getPlatformIcon = (platform: string): JSX.Element => {

@@ -1,12 +1,14 @@
-import type { FC } from 'react';
 import { useState } from 'react';
 import { Dialog, DialogActions, TextField } from '@mui/material';
+
 import { ButtonComponent } from 'src/entities/Button/';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
 import closeBtnIcon from 'src/shared/icons/closeButton.svg';
 
 import style from './DateInputModal.module.scss';
+
+import type { FC } from 'react';
 
 type TInputModalModalProps = {
   open: boolean;

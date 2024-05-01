@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* Disabled due to usage of react-hook-form */
+
 import { FormProvider, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 

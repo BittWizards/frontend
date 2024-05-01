@@ -1,4 +1,5 @@
 import avatar from 'src/shared/icons/userAvatar.png';
+
 import type { TMockData } from '../types/typeMockData';
 
 const mockCardsData: TMockData[] = [
