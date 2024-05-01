@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectMerch } from 'src/app/store/reducers/merch/model/merchSlice';
@@ -31,7 +32,6 @@ import {
 } from 'src/pages/MerchPage/model/sortFunctions';
 
 import style from './MerchPage.module.scss';
-import { useNavigate } from 'react-router-dom';
 
 const MerchPage = () => {
   const dispatch = useAppDispatch();

@@ -6,8 +6,9 @@ import { selectQuestionnaire } from 'src/app/store/reducers/questionnaire/model/
 import { Avatar } from 'src/entities/Avatar';
 import { Input } from 'src/shared/Input';
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
-import style from './QuestionnaireProfileInfo.module.scss';
 import type { IQuestionnaireProfileInfo } from '../types/types';
+
+import style from './QuestionnaireProfileInfo.module.scss';
 
 const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
   hideExtra,

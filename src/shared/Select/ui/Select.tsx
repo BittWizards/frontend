@@ -1,9 +1,12 @@
 import type { FC } from 'react';
+
 import { Autocomplete, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import { TSelectProps } from '../types/types';
+
 import { Avatar } from 'src/entities/Avatar';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
+
+import type { TSelectProps } from '../types/types';
 
 import style from './Select.module.scss';
 
