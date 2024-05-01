@@ -15,6 +15,7 @@ import email from 'src/shared/icons/mail.svg';
 import phone from 'src/shared/icons/phone.svg';
 import { Loader } from 'src/shared/Loader';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
+import style from './PersonalAccount.module.scss';
 
 import style from './PersonalAccount.module.scss';
 

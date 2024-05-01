@@ -8,6 +8,7 @@ import personalInfo from 'src/shared/icons/personal-info.svg';
 import logout from 'src/shared/icons/logout.svg';
 
 import { removeUser } from 'src/app/store/reducers/user/model/userSlice';
+import style from './UserMenu.module.scss';
 
 import style from './UserMenu.module.scss';
 
