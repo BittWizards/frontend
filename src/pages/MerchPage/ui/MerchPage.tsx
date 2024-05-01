@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { selectMerch } from 'src/app/store/reducers/merch/model/merchSlice';
@@ -34,6 +35,7 @@ import style from './MerchPage.module.scss';
 
 const MerchPage = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { merchHistory } = useAppSelector(selectMerch);
   const { orders, isLoading } = useAppSelector(selectOrders);
 
@@ -151,7 +153,9 @@ const MerchPage = () => {
               label="Создать заявку"
               width={244}
               height={48}
-              onClick={e => {}}
+              onClick={e => {
+                navigate('/merch/new-order');
+              }}
             />
           </div>
           <div className={style.rightWrapper}>

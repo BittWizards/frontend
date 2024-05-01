@@ -15,6 +15,25 @@ type TOrder = {
   status: 'created' | 'delivered';
 };
 
+type TOrderMerch = {
+  name: string;
+  size: string;
+};
+
+type TNewOrder = {
+  ambassador: number;
+  first_name: string;
+  last_name: string;
+  middle_name: string;
+  phone: string;
+  country: string;
+  city: string;
+  street_home: string;
+  post_index: number;
+  merch: TOrderMerch[];
+  comment: string;
+};
+
 type TAmbassadorsOrders = {
   id: number;
   image: string;
@@ -38,4 +57,4 @@ type TAmbassadorsOrders = {
   total_orders_cost: number;
 };
 
-export type { TOrder, TAmbassadorsOrders };
+export type { TOrder, TAmbassadorsOrders, TNewOrder };

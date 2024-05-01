@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* Disabled due to usage of react-hook-form */
+
 import type { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 

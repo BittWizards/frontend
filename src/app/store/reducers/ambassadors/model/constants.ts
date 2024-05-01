@@ -11,7 +11,7 @@ const initialAmbassador: IAmbassadorById = {
   status: 'Active',
   created: '',
   gender: '',
-  phone: 0,
+  phone: '',
   email: '',
   purpose: '',
   education: '',

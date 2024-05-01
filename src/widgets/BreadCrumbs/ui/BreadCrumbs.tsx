@@ -63,6 +63,7 @@ const BreadCrumbs: FC = () => {
       {pathname === '/mailing' && renderNavLink('/mailing', 'Рассылки')}
       {pathname === '/stats' &&
         renderNavLink('/stats', 'Статистика и Аналитика')}
+      {pathname === '/me' && renderNavLink('/me', 'Личный кабинет')}
       {pathname === `/ambassadors/${id}/detail` && (
         <>
           {renderNavLinkNext('/ambassadors', 'Амбассадоры')}
