@@ -22,7 +22,7 @@ services:
   frontend:
     env_file: .env
     build: .
-    command: cp -r /app/dist/. /frontend_static/
+    entrypoint: /app/entrypoint.sh
     volumes:
       - static:/frontend_static
 

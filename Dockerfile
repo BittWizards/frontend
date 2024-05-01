@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . ./
+RUN chmod +x /app/entrypoint.sh
 RUN npm run build
 RUN npm install --global http-server
 

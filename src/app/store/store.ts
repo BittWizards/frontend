@@ -7,6 +7,7 @@ import { ordersReducer } from './reducers/orders/imdex';
 import { questionnaireReducer } from './reducers/questionnaire';
 import { notificationsReducer } from './reducers/notifications';
 import { modalReducer } from './reducers/modal';
+import { userReducer } from './reducers/user';
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     orders: ordersReducer,
     questionnaire: questionnaireReducer,
     modal: modalReducer,
+    user: userReducer,
   },
 });
 

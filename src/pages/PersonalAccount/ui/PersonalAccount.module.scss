@@ -1,0 +1,103 @@
+@import 'src/app/styles/variables.scss';
+
+.main {
+  display: flex;
+  gap: 50px;
+}
+.content {
+  color: aliceblue;
+}
+
+.title {
+  font-family: 'YSDisplay';
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+  color: $baseColorWhite;
+}
+
+.navBar {
+  padding-bottom: 40px;
+}
+
+.navList {
+  margin: 0;
+  padding: 0;
+  color: $baseColorWhite;
+  display: flex;
+  gap: 95px;
+}
+
+.navItem {
+  list-style: none;
+  cursor: pointer;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 9px;
+  border-bottom: 3px solid transparent;
+
+  &.active {
+    color: $statusColorActive;
+    border-bottom: 3px solid $statusColorActive;
+    transition: color 0.3s ease;
+    transition: border-bottom 0.3s ease;
+  }
+}
+
+.profile {
+  margin-top: 30px;
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  max-width: fit-content;
+  margin-bottom: 30px;
+}
+
+.photoContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 120px;
+  gap: 6px;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subtitle {
+  font-family: 'YSText';
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21.6px;
+  color: $baseColorWhite;
+}
+
+.name {
+  margin: 0;
+  color: $baseColorInactive;
+  font-family: 'YSDisplay';
+  font-size: 20px;
+  line-height: 0.8;
+  font-weight: 500;
+}
+
+.inputIcons {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}

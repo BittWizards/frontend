@@ -7,7 +7,7 @@ import type { IInput } from '../types/types';
 
 import style from './Input.module.scss';
 
-const Innput: FC<IInput> = ({ placeholder, type, name }) => {
+const Input: FC<IInput> = ({ placeholder, type, name }) => {
   const { register } = useFormContext();
   const { isEdit } = useAppSelector(selectQuestionnaire);
 
@@ -22,4 +22,4 @@ const Innput: FC<IInput> = ({ placeholder, type, name }) => {
   );
 };
 
-export default Innput;
+export default Input;
