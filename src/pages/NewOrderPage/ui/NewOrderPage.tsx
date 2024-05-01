@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+/* Disabled due to usage of react-hook-form */
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

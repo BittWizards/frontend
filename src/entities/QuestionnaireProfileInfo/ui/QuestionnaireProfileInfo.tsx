@@ -49,7 +49,7 @@ const QuestionnaireProfileInfo: FC<IQuestionnaireProfileInfo> = ({
               type="text"
               name="middle_name"
               placeholder="Отчество"
-              notRequired={true}
+              notRequired
             />
           </div>
         ) : (

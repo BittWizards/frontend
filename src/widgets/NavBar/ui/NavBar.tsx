@@ -10,11 +10,11 @@ import { useNavigate } from 'react-router-dom';
 import { Avatar } from 'src/entities/Avatar';
 import { UserMenu } from 'src/entities/UserMenu';
 import Button from 'src/entities/Button/ui/Button';
+import { getUser } from 'src/shared/api/user';
 import { NavbarLink } from '..';
 import type { INavbarProps } from '../types/types';
 
 import style from './NavBar.module.scss';
-import { getUser } from 'src/shared/api/user';
 
 const Navbar: FC<INavbarProps> = ({ links }) => {
   const count = useAppSelector((state: RootState) => state.notifications);

@@ -1,5 +1,4 @@
 import { Navbar } from 'src/widgets/NavBar';
-import style from './PersonalAccount.module.scss';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { Avatar } from 'src/entities/Avatar';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
@@ -12,6 +11,7 @@ import email from 'src/shared/icons/mail.svg';
 import phone from 'src/shared/icons/phone.svg';
 import { Loader } from 'src/shared/Loader';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
+import style from './PersonalAccount.module.scss';
 
 const PersonalAccount = () => {
   const { user, isLoading } = useAppSelector(selectUser);
@@ -56,7 +56,7 @@ const PersonalAccount = () => {
               size="l"
             />
           </div>
-          <div className={style.infoContainer}></div>
+          <div className={style.infoContainer} />
           <div className={style.info}>
             <p className={style.name}>{user?.name.split(' ')[1]}</p>
             <p className={style.name}>{user?.name.split(' ')[0]}</p>

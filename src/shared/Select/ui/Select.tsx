@@ -70,49 +70,49 @@ const Select: FC<TSelectProps> = ({
     renderOption={
       ambassadorRender
         ? (props: React.HTMLAttributes<HTMLLIElement>, option) => (
+          <Grid
+            container
+            columns={6}
+            columnSpacing={1}
+            component="li"
+            width="100%"
+            {...props}
+          >
             <Grid
-              container
-              columns={6}
-              columnSpacing={1}
-              component="li"
-              width="100%"
-              {...props}
+              md={2}
+              sx={{
+                display: 'flex',
+                justifyContent: 'left',
+                alignItems: 'center',
+              }}
             >
-              <Grid
-                md={2}
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'left',
-                  alignItems: 'center',
-                }}
-              >
-                <Avatar
-                  link={option.image}
-                  status={option.achievement}
-                  size="s"
-                />
-                <span style={{ paddingLeft: '5px' }}>
-                  {option.first_name + ' ' + option.last_name}
-                </span>
-              </Grid>
-              <Grid md={3} sx={{ display: 'flex' }}>
-                <span>{option.ya_programm}</span>
-              </Grid>
-              <Grid
-                md={1}
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'left',
-                  alignItems: 'center',
-                }}
-              >
-                <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-                <span className={style.tg}>
-                  @{option.tg_acc.toLocaleLowerCase()}
-                </span>
-              </Grid>
+              <Avatar
+                link={option.image}
+                status={option.achievement}
+                size="s"
+              />
+              <span style={{ paddingLeft: '5px' }}>
+                {`${option.first_name  } ${  option.last_name}`}
+              </span>
             </Grid>
-          )
+            <Grid md={3} sx={{ display: 'flex' }}>
+              <span>{option.ya_programm}</span>
+            </Grid>
+            <Grid
+              md={1}
+              sx={{
+                display: 'flex',
+                justifyContent: 'left',
+                alignItems: 'center',
+              }}
+            >
+              <img src={tgIcon} alt="telegram" className={style.socialIcon} />
+              <span className={style.tg}>
+                  @{option.tg_acc.toLocaleLowerCase()}
+              </span>
+            </Grid>
+          </Grid>
+        )
         : undefined
     }
     renderInput={params => <TextField {...params} label={label} size="small" />}

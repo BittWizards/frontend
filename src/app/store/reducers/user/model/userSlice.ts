@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { TUser } from 'src/shared/api/user/dtos';
+import type { TUser } from 'src/shared/api/user/dtos';
 import { getUser } from 'src/shared/api/user';
 
 interface IUserState {

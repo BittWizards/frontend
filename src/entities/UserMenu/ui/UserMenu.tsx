@@ -3,10 +3,10 @@ import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 
 import personalInfo from 'src/shared/icons/personal-info.svg';
 import logout from 'src/shared/icons/logout.svg';
-import style from './UserMenu.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from 'src/app/store/store';
+import type { RootState } from 'src/app/store/store';
 import { removeUser } from 'src/app/store/reducers/user/model/userSlice';
+import style from './UserMenu.module.scss';
 
 const UserMenu = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
@@ -21,7 +21,7 @@ const UserMenu = () => {
 
           <MenuItem
             className={style.inputIcons}
-            disableGutters={true}
+            disableGutters
             onClick={() => navigate('/me')}
           >
             <img src={personalInfo} className={style.icon} alt="phone" />
@@ -31,7 +31,7 @@ const UserMenu = () => {
           </MenuItem>
           <MenuItem
             className={style.inputIcons}
-            disableGutters={true}
+            disableGutters
             onClick={() => dispatch(removeUser())}
           >
             <img src={logout} className={style.icon} alt="phone" />
