@@ -1,8 +1,9 @@
-interface ButtonProps {
-  label: string,
-  width: number,
-  height: number,
-  onClick: React.MouseEventHandler,
+import { ButtonProps } from '@mui/material';
+
+interface AppButtonProps extends ButtonProps {
+  label: string;
+  width: number;
+  height: number;
 }
 
-export type { ButtonProps }
+export type { AppButtonProps };

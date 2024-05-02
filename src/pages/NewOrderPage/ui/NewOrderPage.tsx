@@ -36,6 +36,7 @@ import type { TNewOrder } from 'src/shared/api/orders/dtos';
 import { ChoiceModal, SuccessModal } from 'src/entities/Modals';
 
 import style from './NewOrderPage.module.scss';
+import { TextField } from '@mui/material';
 
 const NewOrderPage = () => {
   const ambassadors = useAppSelector(
@@ -50,7 +51,10 @@ const NewOrderPage = () => {
   const [isCancelOpen, setIsCancelOpen] = useState(false);
   const [isSecondaryOpen, setIsSecondaryOpen] = useState(false);
 
-  const handleAmbassadorChange = (newValue: IAmbassador | null) => {
+  const handleAmbassadorChange = (
+    _: React.SyntheticEvent<Element, Event>,
+    newValue: IAmbassador | null
+  ) => {
     if (newValue) {
       dispatch(getAmbassadorById(newValue.id)).then(resultAction => {
         if (getAmbassadorById.fulfilled.match(resultAction)) {
@@ -105,10 +109,18 @@ const NewOrderPage = () => {
             <Select
               onChange={handleAmbassadorChange}
               options={ambassadors}
-              optionLabel={option => `${option.first_name} ${option.last_name}`}
+              getOptionLabel={option =>
+                `${option.first_name} ${option.last_name}`
+              }
               width="100%"
               height="40px"
-              label="Выберите амбассадора"
+              renderInput={params => (
+                <TextField
+                  {...params}
+                  label="Выберите амбассадора"
+                  size="small"
+                />
+              )}
               ambassadorRender
             />
             {ambassador && (

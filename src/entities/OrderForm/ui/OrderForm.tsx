@@ -47,7 +47,7 @@ const OrderForm: FC<TOrderFormProps> = ({ ambassador }) => {
         </div>
         <div className={style.row}>
           <FieldsetContainer title="Тип мерча">
-            <OrderMerch index={0} required={true} />
+            <OrderMerch index={0} />
             {watch('merch.0') && <OrderMerch index={1} />}
             {watch('merch.1') && <OrderMerch index={2} />}
           </FieldsetContainer>

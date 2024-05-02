@@ -5,14 +5,14 @@ import { RootState } from 'src/app/store/store';
 import { useState } from 'react';
 import { TMerchItem } from 'src/shared/api/merch/dtos';
 import { TOrderMerchProps } from '../types/types';
-import { Controller, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import { TextField } from '@mui/material';
 
-const OrderMerch: React.FC<TOrderMerchProps> = ({ index, required }) => {
+const OrderMerch: React.FC<TOrderMerchProps> = ({ index }) => {
   const types = useAppSelector((state: RootState) => state.merch.merchType);
   const {
     setValue,
-    control,
     formState: { errors },
   } = useFormContext();
   const [merch, setMerch] = useState<TMerchItem | null>(null);
@@ -37,39 +37,33 @@ const OrderMerch: React.FC<TOrderMerchProps> = ({ index, required }) => {
           </p>
         )}
       />
-      <Controller
-        name={`merch.${index}`}
-        control={control}
-        shouldUnregister={true}
-        rules={{
-          required: required,
-        }}
-        render={({ field }) => (
-          <div className={style.rowTogether}>
-            <Select
-              onChange={(value: TMerchItem) => handleChange(value)}
-              options={uniqueObjects}
-              optionLabel={option => option.name}
-              label="Выберите мерч"
-              width="333px"
-              height="40px"
-            />
-            {merch && merch.size && (
-              <Select
-                defaultValue={merch}
-                onChange={(value: TMerchItem) => handleChange(value)}
-                options={types.filter(
-                  obj => obj.name === merch.name && obj.size !== null
-                )}
-                optionLabel={option => option.size}
-                label="Выберите размер"
-                width="150px"
-                height="40px"
-              />
+      <div className={style.rowTogether}>
+        <Select
+          onChange={(_, value: TMerchItem) => handleChange(value)}
+          options={uniqueObjects}
+          getOptionLabel={option => option.name}
+          renderInput={params => (
+            <TextField {...params} label="Выберите мерч" size="small" />
+          )}
+          width="333px"
+          height="40px"
+        />
+        {merch && merch.size && (
+          <Select
+            value={merch}
+            onChange={(_, value: TMerchItem) => handleChange(value)}
+            options={types.filter(
+              obj => obj.name === merch.name && obj.size !== null
             )}
-          </div>
+            getOptionLabel={option => option.size}
+            renderInput={params => (
+              <TextField {...params} label="Выберите размер" size="small" />
+            )}
+            width="150px"
+            height="40px"
+          />
         )}
-      />
+      </div>
     </>
   );
 };

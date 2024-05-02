@@ -1,12 +1,14 @@
-type TSelectProps = {
-  onChange: Function;
-  options: readonly any[];
-  optionLabel: (option: any) => string;
-  label: string;
-  width: string;
-  height: string;
-  defaultValue?: object;
-  ambassadorRender?: boolean;
-};
+import { AutocompleteProps } from '@mui/material';
 
-export type { TSelectProps };
+export interface ISelectProps
+  extends AutocompleteProps<
+    any,
+    boolean | undefined,
+    boolean | undefined,
+    boolean | undefined
+  > {
+  width?: string | number;
+  height?: string | number;
+  margin?: string;
+  ambassadorRender?: boolean;
+}

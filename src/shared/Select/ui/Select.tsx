@@ -6,30 +6,24 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Avatar } from 'src/entities/Avatar';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 
-import type { TSelectProps } from '../types/types';
+import { ISelectProps } from '../types/types';
 
 import style from './Select.module.scss';
 
-const Select: FC<TSelectProps> = ({
-  onChange,
-  options,
-  optionLabel,
-  label,
+const Select: FC<ISelectProps> = ({
   width,
   height,
-  defaultValue,
+  margin,
   ambassadorRender,
+  ...props
 }) => (
   <Autocomplete
-    onChange={(_, newValue) => onChange(newValue)}
-    value={defaultValue}
     ListboxProps={{ className: style.customScrollbar }}
-    options={options}
     disablePortal
-    getOptionLabel={optionLabel}
     sx={{
       width: { width },
       height: { height },
+      margin: { margin },
       border: `1px solid #474646`,
       borderRadius: '4px',
       '& .MuiInputBase-root': {
@@ -46,6 +40,7 @@ const Select: FC<TSelectProps> = ({
       },
       '& .MuiInputLabel-root.Mui-focused': {
         color: '#939393',
+        borderColor: '#512da8',
       },
       '&:hover': {
         borderColor: '#512da8',
@@ -66,6 +61,10 @@ const Select: FC<TSelectProps> = ({
         {
           backgroundColor: '#2e2d33',
         },
+      '& .MuiChip-root': {
+        color: '#ebeef4',
+        backgroundColor: '#373636',
+      },
     }}
     renderOption={
       ambassadorRender
@@ -115,7 +114,7 @@ const Select: FC<TSelectProps> = ({
           )
         : undefined
     }
-    renderInput={params => <TextField {...params} label={label} size="small" />}
+    {...props}
   />
 );
 
