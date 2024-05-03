@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* Disabled due to usage of mui */
 
-import { Autocomplete, TextField } from '@mui/material';
+import { Autocomplete } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import { Avatar } from 'src/entities/Avatar';
@@ -9,30 +9,24 @@ import tgIcon from 'src/shared/icons/tgIcon.svg';
 
 import style from './Select.module.scss';
 
-import type { TSelectProps } from '../types/types';
+import type { ISelectProps } from '../types/types';
 
 import type { FC } from 'react';
 
-const Select: FC<TSelectProps> = ({
-  onChange,
-  options,
-  optionLabel,
-  label,
+const Select: FC<ISelectProps> = ({
   width,
   height,
-  defaultValue,
+  margin,
   ambassadorRender,
+  ...props
 }) => (
   <Autocomplete
-    onChange={(_, newValue) => onChange(newValue)}
-    value={defaultValue}
     ListboxProps={{ className: style.customScrollbar }}
-    options={options}
     disablePortal
-    getOptionLabel={optionLabel}
     sx={{
       width: { width },
       height: { height },
+      margin: { margin },
       border: `1px solid #474646`,
       borderRadius: '4px',
       '& .MuiInputBase-root': {
@@ -49,6 +43,7 @@ const Select: FC<TSelectProps> = ({
       },
       '& .MuiInputLabel-root.Mui-focused': {
         color: '#939393',
+        borderColor: '#512da8',
       },
       '&:hover': {
         borderColor: '#512da8',
@@ -69,58 +64,61 @@ const Select: FC<TSelectProps> = ({
         {
           backgroundColor: '#2e2d33',
         },
+      '& .MuiChip-root': {
+        color: '#ebeef4',
+        backgroundColor: '#373636',
+      },
     }}
     renderOption={
       ambassadorRender
         ? (props: React.HTMLAttributes<HTMLLIElement>, option) => (
-          <Grid
-            container
-            columns={6}
-            columnSpacing={1}
-            component="li"
-            width="100%"
-            {...props}
-          >
             <Grid
-              md={2}
-              sx={{
-                display: 'flex',
-                justifyContent: 'left',
-                alignItems: 'center',
-              }}
+              container
+              columns={6}
+              columnSpacing={1}
+              component="li"
+              width="100%"
+              {...props}
             >
-              <Avatar
-                link={option.image}
-                status={option.achievement}
-                size="s"
-              />
-              <span style={{ paddingLeft: '5px' }}>
-                {`${option.first_name} ${option.last_name}`}
-              </span>
-            </Grid>
-            <Grid md={3} sx={{ display: 'flex' }}>
-              <span>{option.ya_programm}</span>
-            </Grid>
-            <Grid
-              md={1}
-              sx={{
-                display: 'flex',
-                justifyContent: 'left',
-                alignItems: 'center',
-              }}
-            >
-              <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-              <span className={style.tg}>
+              <Grid
+                md={2}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'left',
+                  alignItems: 'center',
+                }}
+              >
+                <Avatar
+                  link={option.image}
+                  status={option.achievement}
+                  size="s"
+                />
+                <span style={{ paddingLeft: '5px' }}>
+                  {`${option.first_name} ${option.last_name}`}
+                </span>
+              </Grid>
+              <Grid md={3} sx={{ display: 'flex' }}>
+                <span>{option.ya_programm}</span>
+              </Grid>
+              <Grid
+                md={1}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'left',
+                  alignItems: 'center',
+                }}
+              >
+                <img src={tgIcon} alt="telegram" className={style.socialIcon} />
+                <span className={style.tg}>
                   @{option.tg_acc.toLocaleLowerCase()}
-              </span>
+                </span>
+              </Grid>
             </Grid>
-          </Grid>
-        )
+          )
         : undefined
     }
-    renderInput={params => <TextField {...params} label={label} size="small" />}
+    {...props}
   />
 );
 
 export default Select;
-

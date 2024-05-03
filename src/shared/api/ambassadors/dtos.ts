@@ -9,13 +9,14 @@ export interface IAmbassador {
   tg_acc: string;
   status: 'Active' | 'Pause' | 'Clarify' | 'Not active';
   created: string;
-  achievement: string;
+  achievement: 'new' | 'friend' | 'profi_friend';
+  gender: 'Male' | 'Female';
 }
 
 export interface IAmbassadorById {
   id: number;
   image: string;
-  achievement: string;
+  achievement: 'new' | 'friend' | 'profi_friend';
   first_name: string;
   last_name: string;
   middle_name: string;
@@ -23,7 +24,7 @@ export interface IAmbassadorById {
   tg_acc: string;
   status: 'Active' | 'Pause' | 'Clarify' | 'Not active';
   created: string;
-  gender: string;
+  gender: 'Male' | 'Female';
   phone: string;
   email: string;
   purpose: string;
@@ -57,7 +58,7 @@ export interface IAmbassadorChange {
   tg_acc?: string;
   status?: 'Active' | 'Pause' | 'Clarify' | 'Not active';
   created?: string;
-  gender?: string;
+  gender?: 'Male' | 'Female';
   phone?: number;
   email?: string;
   purpose?: string;

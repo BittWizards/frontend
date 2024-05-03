@@ -1,3 +1,4 @@
+import { type FC } from 'react';
 
 import {
   Table,
@@ -16,10 +17,21 @@ import tgIcon from 'src/shared/icons/telegramIcon.svg';
 import { Avatar } from 'src/entities/Avatar';
 
 import style from './NewMailingTable.module.scss';
+import { IAmbassador } from 'src/shared/api/ambassadors/dtos';
 
-import type { FC } from 'react';
+type MailingDataGridProps = {
+  options: IAmbassador[];
+  selected: IAmbassador[];
+  setSelected: (value: IAmbassador[]) => void;
+};
 
-const MailingDataGrid: FC = () => {
+const MailingDataGrid: FC<MailingDataGridProps> = ({
+  options,
+  selected,
+  setSelected,
+}) => {
+  const genderOptions = { Male: 'мужчина', Female: 'женщина' };
+
   const commonCellStyle = {
     color: '#ebeef4',
     fontFamily: 'YSText',
@@ -52,38 +64,78 @@ const MailingDataGrid: FC = () => {
     },
   }));
 
+  const handleClick = (event: React.MouseEvent<unknown>, row: IAmbassador) => {
+    const selectedIndex = selected.indexOf(row);
+    let newSelected: IAmbassador[] = [];
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, row);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1)
+      );
+    }
+    setSelected(newSelected);
+  };
+
+  const isSelected = (row: IAmbassador) => selected.indexOf(row) !== -1;
+
   return (
-    <Table style={{ width: '1048px' }}>
+    <Table>
       <TableBody>
-        {rows.map(row => (
-          <TableRow key={row.id}>
-            <TableCell style={commonCellStyle}>
-              <div className={style.avatar}>
-                {row.avatar && <Avatar link={row.avatar} />}
-              </div>
-            </TableCell>
-            <TableCell style={commonCellStyle}>
-              <p className={style.name}>
-                {row.name} {row.surname}
-              </p>
-            </TableCell>
-            <TableCell style={commonCellStyle}>
-              <p className={style.position}>{row.position}</p>
-            </TableCell>
-            <TableCell style={commonCellStyle}>
-              <p className={style.gender}>{row.gender}</p>
-            </TableCell>
-            <TableCell style={commonCellStyle}>
-              <div className={style.cellWrapper}>
-                <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-                <span className={style.cellText}>@{row.telegram}</span>
-              </div>
-            </TableCell>
-            <TableCell padding="checkbox" style={{ border: 'none' }}>
-              <StyledCheckbox />
-            </TableCell>
-          </TableRow>
-        ))}
+        {options.map(row => {
+          const isItemSelected = isSelected(row);
+          return (
+            <TableRow
+              key={row.id}
+              hover
+              role="checkbox"
+              selected={isItemSelected}
+              sx={{ cursor: 'pointer' }}
+              aria-checked={isItemSelected}
+              onClick={event => handleClick(event, row)}
+            >
+              <TableCell style={commonCellStyle}>
+                <div className={style.avatar}>
+                  {row.image && (
+                    <Avatar link={row.image} status={row.achievement} />
+                  )}
+                </div>
+              </TableCell>
+              <TableCell style={commonCellStyle}>
+                <p className={style.name}>
+                  {row.first_name} {row.last_name}
+                </p>
+              </TableCell>
+              <TableCell style={commonCellStyle}>
+                <p className={style.position}>{row.ya_programm}</p>
+              </TableCell>
+              <TableCell style={commonCellStyle}>
+                <p className={style.gender}>{genderOptions[row.gender]}</p>
+              </TableCell>
+              <TableCell style={commonCellStyle}>
+                <div className={style.cellWrapper}>
+                  <img
+                    src={tgIcon}
+                    alt="telegram"
+                    className={style.socialIcon}
+                  />
+                  <span className={style.cellText}>
+                    @{row.tg_acc.toLowerCase()}
+                  </span>
+                </div>
+              </TableCell>
+              <TableCell padding="checkbox" style={{ border: 'none' }}>
+                <StyledCheckbox checked={isItemSelected} />
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

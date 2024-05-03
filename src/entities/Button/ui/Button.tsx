@@ -1,16 +1,16 @@
 import Button from '@mui/material/Button';
 
 import type { FC } from 'react';
-import type { ButtonProps } from '../types/types';
+import type { AppButtonProps } from '../types/types';
 
-const ButtonComponent: FC<ButtonProps> = ({
+const ButtonComponent: FC<AppButtonProps> = ({
   width,
   height,
   label,
-  onClick,
+  ...props
 }) => (
   <Button
-    onClick={onClick}
+    {...props}
     sx={{
       background: '#512da8',
       textTransform: 'none',
