@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { Checkbox, styled } from '@mui/material';
-
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { ButtonComponent } from 'src/entities/Button';
@@ -21,7 +19,7 @@ import { MailingDataGrid } from 'src/widgets/MailingDataGrid';
 
 import { FilterComponent } from 'src/entities/FilterComponent';
 
-import { rows } from 'src/utils/constants/allMailingData';
+import { TRow, rows } from 'src/utils/constants/allMailingData';
 import trashimg from 'src/shared/icons/trash.svg';
 
 import style from './MailingPage.module.scss';
