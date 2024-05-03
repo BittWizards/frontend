@@ -1,9 +1,12 @@
-import type { FC } from 'react';
+
+import { NavLink, useLocation, useParams } from 'react-router-dom';
+
+import chevronRight from 'src/shared/icons/chevron-right.svg';
+
+import style from './BreadCrumbs.module.scss';
 
 import type { To } from 'react-router-dom';
-import { NavLink, useLocation, useParams } from 'react-router-dom';
-import chevronRight from 'src/shared/icons/chevron-right.svg';
-import style from './BreadCrumbs.module.scss';
+import type { FC } from 'react';
 
 const BreadCrumbs: FC = () => {
   const { pathname } = useLocation();

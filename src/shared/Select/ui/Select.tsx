@@ -1,4 +1,5 @@
-import type { FC } from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+/* Disabled due to usage of mui */
 
 import { Autocomplete, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -6,9 +7,11 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Avatar } from 'src/entities/Avatar';
 import tgIcon from 'src/shared/icons/tgIcon.svg';
 
-import { ISelectProps } from '../types/types';
-
 import style from './Select.module.scss';
+
+import type { TSelectProps } from '../types/types';
+
+import type { FC } from 'react';
 
 const Select: FC<ISelectProps> = ({
   width,
@@ -69,49 +72,49 @@ const Select: FC<ISelectProps> = ({
     renderOption={
       ambassadorRender
         ? (props: React.HTMLAttributes<HTMLLIElement>, option) => (
+          <Grid
+            container
+            columns={6}
+            columnSpacing={1}
+            component="li"
+            width="100%"
+            {...props}
+          >
             <Grid
-              container
-              columns={6}
-              columnSpacing={1}
-              component="li"
-              width="100%"
-              {...props}
+              md={2}
+              sx={{
+                display: 'flex',
+                justifyContent: 'left',
+                alignItems: 'center',
+              }}
             >
-              <Grid
-                md={2}
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'left',
-                  alignItems: 'center',
-                }}
-              >
-                <Avatar
-                  link={option.image}
-                  status={option.achievement}
-                  size="s"
-                />
-                <span style={{ paddingLeft: '5px' }}>
-                  {option.first_name + ' ' + option.last_name}
-                </span>
-              </Grid>
-              <Grid md={3} sx={{ display: 'flex' }}>
-                <span>{option.ya_programm}</span>
-              </Grid>
-              <Grid
-                md={1}
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'left',
-                  alignItems: 'center',
-                }}
-              >
-                <img src={tgIcon} alt="telegram" className={style.socialIcon} />
-                <span className={style.tg}>
-                  @{option.tg_acc.toLocaleLowerCase()}
-                </span>
-              </Grid>
+              <Avatar
+                link={option.image}
+                status={option.achievement}
+                size="s"
+              />
+              <span style={{ paddingLeft: '5px' }}>
+                {`${option.first_name} ${option.last_name}`}
+              </span>
             </Grid>
-          )
+            <Grid md={3} sx={{ display: 'flex' }}>
+              <span>{option.ya_programm}</span>
+            </Grid>
+            <Grid
+              md={1}
+              sx={{
+                display: 'flex',
+                justifyContent: 'left',
+                alignItems: 'center',
+              }}
+            >
+              <img src={tgIcon} alt="telegram" className={style.socialIcon} />
+              <span className={style.tg}>
+                  @{option.tg_acc.toLocaleLowerCase()}
+              </span>
+            </Grid>
+          </Grid>
+        )
         : undefined
     }
     {...props}
@@ -119,3 +122,4 @@ const Select: FC<ISelectProps> = ({
 );
 
 export default Select;
+

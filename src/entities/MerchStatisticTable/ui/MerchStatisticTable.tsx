@@ -1,6 +1,3 @@
-import type { FC } from 'react';
-import { Avatar } from 'src/entities/Avatar';
-
 import {
   Table,
   TableBody,
@@ -9,7 +6,12 @@ import {
   TableRow,
 } from '@mui/material';
 
+import { Avatar } from 'src/entities/Avatar';
+
+
 import style from './MerchStatisticTable.module.scss';
+
+import type { FC } from 'react';
 import type { TMerchStatisticProps } from '../types/type';
 
 type TReferenceDictionary = {

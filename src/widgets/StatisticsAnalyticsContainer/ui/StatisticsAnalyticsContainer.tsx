@@ -1,8 +1,9 @@
+import style from './StatisticsAnalyticsContainer.module.scss';
+
 import type { FC } from 'react';
 
 import type { IStaticsAnalyticsContainerProps } from '../types/types';
 
-import style from './StatisticsAnalyticsContainer.module.scss';
 
 const StatisticsAnalyticsContainer: FC<IStaticsAnalyticsContainerProps> = ({
   diagramImage,

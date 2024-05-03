@@ -1,11 +1,13 @@
-import type { FC } from 'react';
 import { Dialog, DialogActions } from '@mui/material';
+
 import { ButtonComponent } from 'src/entities/Button/';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 
 import closeBtnIcon from 'src/shared/icons/closeButton.svg';
 
 import style from './ChoiceModal.module.scss';
+
+import type { FC } from 'react';
 
 type TChoiceModalModalProps = {
   open: boolean;

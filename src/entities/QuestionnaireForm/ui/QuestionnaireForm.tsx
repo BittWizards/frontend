@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 
 import { PostalDetails } from 'src/entities/PostalDetails';
 import { Textarea } from 'src/shared/Textarea';
@@ -6,9 +5,12 @@ import { DataMerch } from 'src/entities/DataMerch';
 import { WorkAndEducation } from 'src/entities/WorkAndEducation';
 import { Contacts } from 'src/entities/Contacts';
 import { Activity } from 'src/entities/Activity';
-import type { IQuestionnaireForm } from '../types/types';
 
 import style from './QuestionnaireForm.module.scss';
+
+import type { IQuestionnaireForm } from '../types/types';
+
+import type { FC } from 'react';
 
 const QuestionnaireForm: FC<IQuestionnaireForm> = () => (
   <div>

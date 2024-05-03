@@ -1,20 +1,27 @@
+import { useMemo, type FC } from 'react';
+
 import { v4 as uuidv4 } from 'uuid';
-import type { FC } from 'react';
+
 import { useEffect, useRef, useState } from 'react';
 
-import type { RootState } from 'src/app/store/store';
-import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { ClickAwayListener, Popper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
+import { type RootState } from 'src/app/store/store';
+
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 
 import { Avatar } from 'src/entities/Avatar';
 import { UserMenu } from 'src/entities/UserMenu';
 import Button from 'src/entities/Button/ui/Button';
-import { NavbarLink } from '..';
-import type { INavbarProps } from '../types/types';
+
+import { getUser } from 'src/shared/api/user';
+
+import NavbarLink from 'src/widgets/NavBar/NavbarLink/NavbarLink';
+
+import { type INavbarProps } from '../types/types';
 
 import style from './NavBar.module.scss';
-import { getUser } from 'src/shared/api/user';
 
 const Navbar: FC<INavbarProps> = ({ links }) => {
   const count = useAppSelector((state: RootState) => state.notifications);
@@ -25,16 +32,26 @@ const Navbar: FC<INavbarProps> = ({ links }) => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
 
-  const dict: { [key: string]: number } = {
-    '/ambassadors': count.ambassadorsNewCount,
-    '/content': count.contentNewCount,
-    '/merch': count.merchNewCount,
-  };
+  // const dict: { [key: string]: number } = {
+  //   '/ambassadors': count.ambassadorsNewCount,
+  //   '/content': count.contentNewCount,
+  //   '/merch': count.merchNewCount,
+  // };
+
+  const dict: { [key: string]: number } = useMemo(
+    () => ({
+      '/ambassadors': count.ambassadorsNewCount,
+      '/content': count.contentNewCount,
+      '/merch': count.merchNewCount,
+    }),
+    [count.ambassadorsNewCount, count.contentNewCount, count.merchNewCount]
+  );
 
   useEffect(() => {
     if (token && !user) {
       dispatch(getUser());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token, user]);
 
   useEffect(() => {

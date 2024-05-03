@@ -1,5 +1,6 @@
-import type { FC } from 'react';
 import { CircularProgress, Typography, Box } from '@mui/material';
+
+import type { FC } from 'react';
 
 type TLoaderProps = {
   message?: string;

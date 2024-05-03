@@ -1,5 +1,6 @@
-import type { FC } from 'react';
 import style from './MainTabsNav.module.scss';
+
+import type { FC } from 'react';
 
 type TMainTabsNavProps = {
   tabs: string[];

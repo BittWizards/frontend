@@ -1,15 +1,24 @@
-import { Select } from 'src/shared/Select';
-import style from './OrderMerch.module.scss';
-import { useAppSelector } from 'src/app/store/hooks';
-import { RootState } from 'src/app/store/store';
 import { useState } from 'react';
-import { TMerchItem } from 'src/shared/api/merch/dtos';
-import { TOrderMerchProps } from '../types/types';
-import { useFormContext } from 'react-hook-form';
+
+import { type FC } from 'react';
+
+import { Controller, useFormContext } from 'react-hook-form';
+
 import { ErrorMessage } from '@hookform/error-message';
 import { TextField } from '@mui/material';
 
-const OrderMerch: React.FC<TOrderMerchProps> = ({ index }) => {
+import { useAppSelector } from 'src/app/store/hooks';
+
+import { Select } from 'src/shared/Select';
+
+import style from './OrderMerch.module.scss';
+
+import type { TOrderMerchProps } from '../types/types';
+
+import type { TMerchItem } from 'src/shared/api/merch/dtos';
+import type { RootState } from 'src/app/store/store';
+
+const OrderMerch: FC<TOrderMerchProps> = ({ index }) => {
   const types = useAppSelector((state: RootState) => state.merch.merchType);
   const {
     setValue,
@@ -31,7 +40,7 @@ const OrderMerch: React.FC<TOrderMerchProps> = ({ index }) => {
       <ErrorMessage
         errors={errors}
         name={`merch.${index}`}
-        render={({}) => (
+        render={() => (
           <p style={{ margin: 0, color: 'red', fontWeight: 'lighter' }}>
             Выберите один из вариантов
           </p>

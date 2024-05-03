@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { CURRENT_URL } from 'src/utils/constants/api';
 
 export function SuggestTokenPage() {

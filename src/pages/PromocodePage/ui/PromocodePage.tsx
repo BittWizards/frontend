@@ -1,10 +1,10 @@
-import type { FC } from 'react';
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
-import { selectPromocodes } from 'src/app/store/reducers/promocodes/model/promocodesSlice';
-import type { IPromocode } from 'src/shared/api/promocodes/dtos';
+
 
 import { Portal } from '@mui/material';
+
+import { selectPromocodes } from 'src/app/store/reducers/promocodes/model/promocodesSlice';
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
@@ -15,6 +15,7 @@ import { FilterComponent } from 'src/entities/FilterComponent';
 import { SortComponent } from 'src/entities/SortComponent';
 import { Loader } from 'src/shared/Loader';
 import { getAllPromocodes } from 'src/shared/api/promocodes';
+
 import {
   sortByDate,
   sortBySpecialty,
@@ -24,6 +25,10 @@ import {
 import { promocodeSortingOptions } from '../model/const';
 
 import style from './PromocodePage.module.scss';
+
+import type { IPromocode } from 'src/shared/api/promocodes/dtos';
+
+import type { FC } from 'react';
 
 const PromocodePage: FC = () => {
   const dispatch = useAppDispatch();

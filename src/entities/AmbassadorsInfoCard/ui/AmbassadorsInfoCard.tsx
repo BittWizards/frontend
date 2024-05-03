@@ -1,9 +1,11 @@
-import type { FC } from 'react';
 import { Avatar } from 'src/entities/Avatar';
 import { StatusIcon } from 'src/shared/StatusIcon';
-import type { TAmbassadorsInfoCardProps } from '../types/types';
 
 import style from './AmbassadorsInfoCard.module.scss';
+
+import type { TAmbassadorsInfoCardProps } from '../types/types';
+
+import type { FC } from 'react';
 
 const AmbassadorsInfoCard: FC<TAmbassadorsInfoCardProps> = ({ data }) => (
   <div className={style.card}>

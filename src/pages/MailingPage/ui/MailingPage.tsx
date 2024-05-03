@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+
+import { Checkbox, styled } from '@mui/material';
+
 import { Navbar } from 'src/widgets/NavBar/index';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { ButtonComponent } from 'src/entities/Button';
@@ -15,10 +18,12 @@ import { NewMailingTable } from 'src/widgets/NewMailingTable';
 import ButtonSecondaryComponent from 'src/entities/ButtonSecondary';
 import { MainTabsNav } from 'src/entities/MainTabsNav';
 import { MailingDataGrid } from 'src/widgets/MailingDataGrid';
-import type { TRow } from 'src/utils/constants/allMailingData';
+
 import { FilterComponent } from 'src/entities/FilterComponent';
+
 import { rows } from 'src/utils/constants/allMailingData';
 import trashimg from 'src/shared/icons/trash.svg';
+
 import style from './MailingPage.module.scss';
 import { Select } from 'src/shared/Select';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';

@@ -1,10 +1,11 @@
 import { useParams } from 'react-router-dom';
 
+import { useEffect } from 'react';
+
 import { Navbar } from 'src/widgets/NavBar';
 import { CandidateQuestionnaire } from 'src/widgets/CandidateQuestionnaire';
 import { navbarLinks } from 'src/utils/constants/navLinks';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
-import { useEffect } from 'react';
 import { getAmbassadorById } from 'src/shared/api/ambassadors';
 import { selectAmbassadors } from 'src/app/store/reducers/ambassadors/model/ambassadorsSlice';
 import { Loader } from 'src/shared/Loader';

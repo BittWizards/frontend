@@ -1,8 +1,10 @@
-import type { FC } from 'react';
 import { useEffect, useState } from 'react';
+
 import { colorList } from '../model/data';
 
 import style from './PromoInfoCard.module.scss';
+
+import type { FC } from 'react';
 import type { TPromoInfoCardProps } from '../types/types';
 
 let currentColorIndex = 0;

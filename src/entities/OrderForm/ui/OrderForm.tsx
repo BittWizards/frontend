@@ -1,17 +1,21 @@
 import { type FC, useEffect } from 'react';
 
+import { useFormContext } from 'react-hook-form';
+
 import { PostalDetails } from 'src/entities/PostalDetails';
 import { Textarea } from 'src/shared/Textarea';
-import type { TOrderFormProps } from '../types/types';
 
-import style from './OrderForm.module.scss';
+
 import { Input } from 'src/shared/Input';
 import phone from 'src/shared/icons/phone.svg';
 import { FieldsetContainer } from 'src/shared/FieldsetContainer';
 import { useAppDispatch } from 'src/app/store/hooks';
 import { getMerchTypes } from 'src/shared/api/merch';
 import { OrderMerch } from 'src/entities/OrderMerch';
-import { useFormContext } from 'react-hook-form';
+
+import style from './OrderForm.module.scss';
+
+import type { TOrderFormProps } from '../types/types';
 
 const OrderForm: FC<TOrderFormProps> = ({ ambassador }) => {
   const dispatch = useAppDispatch();

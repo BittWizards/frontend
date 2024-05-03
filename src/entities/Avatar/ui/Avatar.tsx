@@ -1,8 +1,10 @@
-import type { FC } from 'react';
 import defAvatar from 'src/shared/icons/defaultAvatar.webp';
-import type { TAvatarProps } from '../types/types';
 
 import style from './Avatar.module.scss';
+
+import type { FC } from 'react';
+import type { TAvatarProps } from '../types/types';
+
 
 const Avatar: FC<TAvatarProps> = ({ link, size, status }) => {
   const getSizeAndBorderColor = () => {
